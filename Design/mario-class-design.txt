@@ -1,0 +1,109 @@
+------------------------------------------------------------
+Base
+instance vars
+left
+ right
+ bottom
+ top
+
+methods
+draw (abstract)
+
+------------------------------------------------------------
+Drawable
+instance vars
+kills Mario from bottom
+ kills Mario from left/right
+ kills Mario from top
+
+methods
+
+------------------------------------------------------------
+Flag
+instance vars
+pts depending on where touch
+
+methods
+
+------------------------------------------------------------
+BreakableBlock
+instance vars
+
+methods
+
+------------------------------------------------------------
+NonBreakableBlock
+instance vars
+ type
+ content
+
+------------------------------------------------------------
+Movable
+instance vars
+bool moving
+horizontal velocity
+vertical velocity
+reverse direction if hits something
+disappears if hits edge
+
+------------------------------------------------------------
+Shell
+instance vars
+
+methods
+
+------------------------------------------------------------
+Turtle
+instance vars
+
+methods
+
+
+------------------------------------------------------------
+Goomba
+instance vars
+
+methods
+
+------------------------------------------------------------
+Plant
+instance vars
+
+methods
+
+------------------------------------------------------------
+Fireballs
+instance vars
+
+methods
+
+------------------------------------------------------------
+Scene
+instance vars
+list of stationary objects (including level end flag - or somewhere else)
+list of movable objects
+
+methods
+
+------------------------------------------------------------
+Mario object
+instance vars
+
+methods
+
+------------------------------------------------------------
+Level
+instance vars
+
+methods
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+Groups
+OpenGL/Interactivity
+Scene, Level, Game
+Mario
+Base, Drawable, Stationary subclasses
+Movable subclasses
