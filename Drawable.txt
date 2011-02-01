@@ -1,0 +1,12 @@
+------------------------------------------------------------
+Drawable
+instance vars
+kills Mario from bottom
+kills Mario from left/right
+kills Mario from top
+points
+
+methods
+touchedByMario
+getCoordinates
+setCoordinates

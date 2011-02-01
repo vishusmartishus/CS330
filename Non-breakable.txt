@@ -1,0 +1,10 @@
+------------------------------------------------------------
+NonBreakableBlock
+instance vars
+ type
+ content
+
+methods
+create
+generateReward
+redraw

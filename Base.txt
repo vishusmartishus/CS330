@@ -1,0 +1,11 @@
+------------------------------------------------------------
+Base
+instance vars
+left
+right
+bottom
+top
+color
+
+methods
+draw (abstract)
