@@ -2,9 +2,10 @@
 Base
 instance vars
 left
- right
- bottom
- top
+right
+bottom
+top
+color
 
 methods
 draw (abstract)
@@ -13,15 +14,17 @@ draw (abstract)
 Drawable
 instance vars
 kills Mario from bottom
- kills Mario from left/right
- kills Mario from top
+kills Mario from left/right
+kills Mario from top
+points
 
 methods
+touchedByMario
 
 ------------------------------------------------------------
 Flag
 instance vars
-pts depending on where touch
+array of integers number of points from bottom to top of flag
 
 methods
 
@@ -78,6 +81,11 @@ instance vars
 methods
 
 ------------------------------------------------------------
+MarioFireball
+
+EnemyFireball
+
+------------------------------------------------------------
 Scene
 instance vars
 list of stationary objects (including level end flag - or somewhere else)
@@ -88,16 +96,43 @@ methods
 ------------------------------------------------------------
 Mario object
 instance vars
+state		//Big mario, little mario, fire mario
+isInvincible	//Star power
+isJumping	//Moving Mario a bit when space is pressed
+maxHeight	//Max height of mario's jump
+isPounding    
 
 methods
+action(array of buttons currently pressed)
+update()
 
 ------------------------------------------------------------
 Level
 instance vars
+levelNumber
 
 methods
+readLevel(filename.txt)
+createBlock(type, x coord, y coord) //called as part of readLevel
+
 
 ------------------------------------------------------------
+Scene
+instance vars
+scene_enemies		#linked list containing the enemy, their position, and the next enemy
+scene_rewards		#same as above but with rewards
+
+methods
+spawnEnemy(levelpercent) #spawns enemies based on how much of the level is completed
+			 #prevents enemies from dying early by only spawning them when they're needed
+removeEnemy(levelpercent, bool killed) #removes the enemy from the scene
+				       #just removes if removed based on level percent
+				       #adds score if removed by kill
+removeBlock()			#removes a block from the scene when broken
+updateEnemyPosition(velocity)   #updates the enemy's position based off their velocity
+spawnReward(block, reward_type)	#spawns the reward from the block
+removeReward(bool acquired)	#removes the reward from the scene, adds points if it's acquired
+updateRewardPosition(velocity)  #updates the position for stars and mushrooms
 
 ------------------------------------------------------------
 
