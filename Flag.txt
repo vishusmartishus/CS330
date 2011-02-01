@@ -1,0 +1,8 @@
+------------------------------------------------------------
+Flag
+instance vars
+array of integers number of points from bottom to top of flag
+
+methods
+create
+endLevel

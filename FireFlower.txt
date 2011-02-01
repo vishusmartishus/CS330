@@ -1,0 +1,8 @@
+------------------------------------------------------------
+FireFlower
+instance vars
+
+methods
+createFireMario
+appear
+disappear
