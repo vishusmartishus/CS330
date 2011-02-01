@@ -1,0 +1,13 @@
+Game
+
+Instance Vars
+
+Local Varibles
+score //points total
+ccount //coin total
+lcount //life total
+
+methods
+Stracker(points)
+Ctracker(coins)
+Ltracker(ltype, lives) //(if ltype is true the amount given in lives is added to local varible lcount 
