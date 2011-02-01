@@ -1,20 +1,21 @@
 Andrew Peddicord, Nate Tritt, Eric Downey
+
 Mario
 	Instance variables
 		 State		//Big mario, little mario, fire mario
 		 isInvincible	//Star power
 		 isJumping	//Moving Mario a bit when space is pressed
 		 maxHeight	//Max height of mario's jump
+		 isPounding
 		
 	Methods
-		//public
-		Update(Button[], display[])	//When key is pressed
+		//public methods
+		Update(Button[])	//When key is pressed
 
-		//private
+		//pricate methods
 		Jump()
 		Move(isRunning)		//Moves Mario to the left or right and
 							//calls check() at the beginning
-
 		Check(isRunning)		//Checks to see if Mario ran into something
 		CheckLeftRight()
 		CheckTop()
