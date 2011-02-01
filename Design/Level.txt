@@ -1,0 +1,7 @@
+Level
+instance vars
+levelNumber
+
+methods
+readLevel(filename.txt)
+createBlock(type, x coord, y coord) //called as part of readLevel

@@ -1,0 +1,90 @@
+Jeremy Sampson
+Andrew Daugherty
+Matt Oldfield
+
+Movable Objects Class
+
+------------------------------------------------------------
+Movable
+instance vars
+bool moving
+horizontal velocity
+vertical velocity
+reverse direction if hits something
+type
+bool canFallOffEdge
+
+methods
+disappear - if killed by mario or fall of edge?
+drawMovableObject
+reverseDirection
+canMove - edge/block detection/other movable objects?
+
+------------------------------------------------------------
+Walking
+instance vars
+type
+cliff detection?
+height
+width
+
+	subclasses of walking
+	----------------------------------------------------
+	Turtle
+	instance vars
+	color
+
+	----------------------------------------------------
+	Goomba
+	instance vars
+	color
+
+------------------------------------------------------------
+Shell
+instance vars
+cliff detection?
+color
+height
+width
+
+methods
+
+------------------------------------------------------------
+Plant
+instance vars
+color
+height
+width
+
+methods
+shootFireball?
+
+------------------------------------------------------------
+Fireballs
+instance vars
+color
+height
+width
+
+methods
+
+------------------------------------------------------------
+Star
+instance vars
+color
+height
+width
+bool hidden?
+
+methods
+
+------------------------------------------------------------
+Mushroom
+instance vars
+color
+height
+width
+bool hidden?
+
+methods
+
