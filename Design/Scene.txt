@@ -1,6 +1,6 @@
 instance vars
-scene_Enemies		#linked list containing the enemy, their position, and the next enemy
-scene_Rewards		#same as above but with rewards
+sceneEnemies		#linked list containing the enemy, their position, and the next enemy
+sceneRewards		#same as above but with rewards
 
 methods
 spawnEnemy(levelpercent) #spawns enemies based on how much of the level is completed
