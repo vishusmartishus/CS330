@@ -1,4 +1,4 @@
-/*Game.cpp
+/*Game.h
 Initial version
 Zach Adams
 Feb. 02 2011*/
@@ -7,17 +7,18 @@ Feb. 02 2011*/
 #ifndef _GAME_H
 #define _GAME_H
 
-#include <iostream>
-using namespace std;
-
 class Game {
     public:
-        int score_, ccount_, lcount_; //point total, coin total, life total
-        //int time_; do we even handle this?
         Game();
-        int sCall(); //send score
-        int cCall(); //send coins
-        int lCall(); //send lives
+        int pointsCall(); //send score
+        int coinsCall(); //send coins
+        int livesCall(); //send lives
+        void addCoin(); //add a single coin to current total. also handles 100 coins=life transition
+        void addLife(); 
+        void subLife(); //subtract life
+    private:
+        int pointsTotal_, coinsTotal_, livesTotal_; //point total, coin total, life total
+        
 
 
 
