@@ -12,24 +12,40 @@
 
 class Mario {
 
- public:
-  Mario(); //Constructor
+public:
+	Mario(); //Constructor
   
-  void Update(int Button[]); //Gets called when key is pressed
+	void Update(int Button[]); //Gets called when key is pressed
+	
+	//Get instance variables
+	int  getState();
+	int  getMaxHeight();
+	bool getIsInvincible();
+	bool getIsJumping();
+	bool getIsPounding();
+	bool getIsRunning();
 
- private:
-  int State, maxHeight; //State can be 0,1,2 depending if he is Big/Little/Fire Mario
-  bool isInvincible, isJumping, isPounding, isRunning;
+private:
+	int state_, maxHeight_; //State can be 0,1,2 depending if he is Big/Little/Fire Mario
+	bool isInvincible_, isJumping_, isPounding_, isRunning_;
 
-  void Jump();
-  void Move(bool isRunning); //Moves Mario to the left or right and calls check() at beginning
+	void Jump();
+	void Move(bool isRunning); //Moves Mario to the left or right and calls check() at beginning
 
-  bool Check(bool isRunning); //Checks to see if Mario ran into something
-  bool CheckLeftRight();
-  bool CheckTop();
-  bool CheckBottom();
-  bool Fireball(); //Returns true if Mario is in the fire state
-  bool Buttpound();
+	bool check(bool isRunning); //Checks to see if Mario ran into something
+	bool checkLeftRight();
+	bool checkTop();
+	bool checkBottom();
+	bool fireball(); //Returns true if Mario is in the fire state
+	bool buttpound();
+	
+	//Set instance variables
+	void setState(int s);
+	void setMaxHeight(int mH);
+	void setIsInvincible(bool i);
+	void setIsJumping(bool j);
+	void setIsPounding(bool p);
+	void setIsRunning(bool r);
 };
 
 #endif
