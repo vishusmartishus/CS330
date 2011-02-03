@@ -1,15 +1,21 @@
-instance vars
-sceneEnemies		#linked list containing the enemy, their position, and the next enemy
-sceneRewards		#same as above but with rewards
+Instance Variables:
 
-methods
-spawnEnemy(levelpercent) #spawns enemies based on how much of the level is completed
-			 #prevents enemies from dying early by only spawning them when they're needed
-removeEnemy(levelpercent, bool killed) #removes the enemy from the scene
-				       #just removes if removed based on level percent
-				       #adds score if removed by kill
+sceneEnemies		#linked list containing the enemy, their position, and what % of the level it's in
+sceneRewards		#same as above but with rewards
+sceneBlocks		#linked list of blocks, their position, and if whether or not theyre removable
+removedObjects		#linked list of removed objects with their type, position and position in their original list
+			#example [enemy, koopa, (x,y), 4]
+
+Methods:
+
+createLists()		#uses information from Level to create 3 lists: sceneBlocks, SceneRewards, and sceneEnemies
+spawnEnemy(sceneEnemies, levelpercent) 	#spawns enemies based on how much of the level is completed
+			 		#prevents enemies from dying early by only spawning them when they're needed
+spawnReward(block, reward_type)		#spawns the reward from the block
+removeEnemy(levelpercent, bool killed)  #removes the enemy from the scene
+				        #just removes if removed based on level percent
+				        #adds score if removed by kill
 removeBlock()			#removes a block from the scene when broken
-updateEnemyPosition(velocity)   #updates the enemy's position based off their velocity
-spawnReward(block, reward_type)	#spawns the reward from the block
+				#adds the block to removedBlocks so it can be replaced after death
 removeReward(bool acquired)	#removes the reward from the scene, adds points if it's acquired
-updateRewardPosition(velocity)  #updates the position for stars and mushrooms
+replaceObjects(removedObjects)  #replaces each object into its original list after death
