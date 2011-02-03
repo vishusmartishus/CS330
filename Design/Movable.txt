@@ -6,44 +6,48 @@ Movable Objects Class
 
 ------------------------------------------------------------
 Movable
-instance vars
+
+instance vars:
 bool moving
-horizontal velocity
-vertical velocity
-reverse direction if hits something
+horizontalVelocity
+verticalVelocity
+bool reverseable
 type
 bool canFallOffEdge
 
 methods
-disappear - if killed by mario or fall of edge?
-drawMovableObject
-reverseDirection
-canMove - edge/block detection/other movable objects?
+disappear() - if killed by mario or fall of edge?
+reverseDirection() - if hits edge
+canMove() - edge/block detection/other movable objects?
 
 ------------------------------------------------------------
 Walking
-instance vars
+
+instance vars:
 type
-cliff detection?
+bool cliffDetection
 height
 width
 
 	subclasses of walking
 	----------------------------------------------------
 	Turtle
-	instance vars
-	color
+
+	instance vars:
+	int pointValue
 
 	----------------------------------------------------
 	Goomba
-	instance vars
-	color
+
+	instance vars:
+	int pointValue
 
 ------------------------------------------------------------
 Shell
-instance vars
-cliff detection?
-color
+
+instance vars:
+int pointValue
+bool cliffDetection
 height
 width
 
@@ -51,18 +55,20 @@ methods
 
 ------------------------------------------------------------
 Plant
-instance vars
-color
+
+instance vars:
+int pointValue
 height
 width
 
 methods
-shootFireball?
+shootFireball()
 
 ------------------------------------------------------------
 Fireballs
-instance vars
-color
+
+instance vars:
+int pointValue
 height
 width
 
@@ -70,21 +76,21 @@ methods
 
 ------------------------------------------------------------
 Star
-instance vars
-color
+
+instance vars:
+int pointValue
 height
 width
-bool hidden?
 
 methods
 
 ------------------------------------------------------------
 Mushroom
-instance vars
-color
+
+instance vars:
+int pointValue
 height
 width
-bool hidden?
 
 methods
 
