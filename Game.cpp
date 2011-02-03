@@ -1,5 +1,4 @@
 /*Game.cpp
-Initial version
 Zach Adams
 Feb. 02 2011*/
 
