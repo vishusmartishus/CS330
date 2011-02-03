@@ -1,0 +1,13 @@
+instance variables
+screenItems[][]					#an array of all elements on the screen
+
+
+methods
+loadLevel(levelname,checkpoint) #loads new level or level from checkpoint
+drawScreen()					#draw initial level on the screen
+removeElement(position)			#remove enemy or element from the stage
+centerMario(position)			#update viewport to keep mario in the center of the screen
+updateSprite(sprite)			#increment sprite animation
+updateItemPosition()			#moves all items in screenItems to their next position. Includes grabbing user input.
+
+
