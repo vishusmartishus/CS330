@@ -2,7 +2,7 @@
 Zach Adams
 Feb. 02 2011*/
 
-#include "game.h"
+#include "Game.h"
 
 Game::Game()
 {
