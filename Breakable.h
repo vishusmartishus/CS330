@@ -1,29 +1,20 @@
-// File: Breakable.h
-// A header file for Breakable.cpp
-// by: John (Jack) Johnson CS330
-
+// John (Jack) Johnson, Jay Bondzeleske
+//--------------------------------------------------------
+// If Breakable.h is not defined, defines it
 #ifndef _BREAKABLE_H
 #define _BREAKABLE_H
-
-#include <iostream>
-using namespace std;
+//--------------------------------------------------------
+// Includes the Drawable.h file
 #include "Drawable.h"
-
+//--------------------------------------------------------
+// Breakable class that inherits the Drawable class
 class Breakable:public Drawable{
+//--------------------------------------------------------
+//
 public:
-    void breakBlock(); // destroys block
-    void create(); // creates block
-
-
-
-
-
-
-
-
-
-
-
-
+    // breakBlock method that destroys blocks
+    void breakBlock();
+    // create method that creates the boxes
+    void create();
 };
 #endif
