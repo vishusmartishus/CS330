@@ -1,49 +1,36 @@
-//Jay Bondzeleske, John (Jack) Johnson
-//CS330
-
-//If Nonbreakable.h is not defined, defines it
+// Jay Bondzeleske, John (Jack) Johnson, Alex Martishius
+//------------------------------------------------------------
+// If Nonbreakable.h is not defined, defines it
 #ifndef _NONBREAKABLE_H
 #define _NONBREAKABLE_H
-
-//Includes iostream
-#include <iostream>
+//------------------------------------------------------------
+// Includes the Drawable.h file
 #include "Drawable.h"
-
-//Nonbreakable class
+//------------------------------------------------------------
+// Nonbreakable class
 class Nonbreakable:public Drawable {
-
+//------------------------------------------------------------
 public:
-    //Create Method
+    // Nonbreakable constructor
+    Nonbreakable()
+    {
+
+
+
+
+
+
+    }
+    // create Method that creates the block
     void create();
-
-
-
-
-    
-    
-    //generateReward Method
+    // generateReward method that creates an award
     void generateReward();
-    
-    
-    
-    
-    
-    
-    //redraw Method
+    // redraw method that redraws the block
     void redraw();
-
-
-
-
-
-    //Three types of blocks (Question, Regular, and Blocks little Mario cannot break)
+    // Three types of blocks (Question, Regular, and Blocks little Mario cannot break)
     int type[3];
-
-
-    //Three different contents (Mushroom, Fire Floiwer, and Coin)
+    // Three different contents (Mushroom, Fire Floiwer, and Coin)
     int content[3];
-
 };
-//Ends if
 #endif
 

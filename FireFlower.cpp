@@ -1,8 +1,9 @@
 // FireFlower.cpp
 // Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
-//-----------------------------------------
+//------------------------------------------------------------
+// include header file Breakable
 #include "FireFlower.h"
-//-----------------------------------------
+//------------------------------------------------------------
 // spawns fire mario
 void FireFlower::createFireMario() 
 {
@@ -11,22 +12,27 @@ void FireFlower::createFireMario()
 
 
 
+
 }
-void FireFlower::appear(FireFlower &f1) 
+//------------------------------------------------------------
+// Makes the fireflower appear
+void FireFlower::appear() 
 {
 
 
 
 
 
+
 }
-void FireFlower::disappear(FireFlower &f1) 
+//------------------------------------------------------------
+// Makes the fireflower disappear
+void FireFlower::disappear() 
 {
 
 
 
 
 
-}
 
-//-----------------------------------------
+}

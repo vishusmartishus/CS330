@@ -1,9 +1,8 @@
-// File: Breakable.cpp
-// by: John (Jack) Johnson CS330
-
-// include header file
+// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
+//------------------------------------------------------------
+// include header file Breakable
 #include "Breakable.h"
-
+//------------------------------------------------------------
 // create block
 void Breakable::create()
 {
@@ -13,13 +12,12 @@ void Breakable::create()
 
 
 
-
 }
 
+//------------------------------------------------------------
 // destroy block
 void Breakable::breakBlock()
 {
-
 
 
 

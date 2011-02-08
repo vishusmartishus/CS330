@@ -1,36 +1,33 @@
 // FireFlower.h
 // Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
-//-----------------------------------------
+//------------------------------------------------------------
+// If FireFlower.h is not defined, defines it
 #ifndef _FIREFLOWER_H
 #define _FIREFLOWER_H
-#include <iostream>
-//-----------------------------------------
-// We let ostream and istream be friend functions,
-// so they can access the instance variables needed to
-// input/output.
-class FireFlower {
-    friend std::istream& operator>>(std::istream& is, FireFlower &r);
-    friend std::ostream& operator<<(std::ostream& os, const FireFlower &r);
-//-----------------------------------------
+//------------------------------------------------------------
+// Includes the Drawable.h file
+#include "Drawable.h"
+//------------------------------------------------------------
+// Class FireFlower that inherits from Drawable
+class FireFlower:public Drawable{
+//------------------------------------------------------------
 public:
-	// constructor
-	FireFlower();
-    //-----------------------------------------
+	// Constructor for FireFlower
+	FireFlower()
+    {
+
+
+
+
+
+
+    }
     // Declare the method to appear
-    void appear(FireFlower &f1);
+    void appear();
     // Declare the method to disappear
-    void disappear(FireFlower &f1);
+    void disappear();
     // Declare the method to create Fire Mario.
     void createFireMario();
-
-
-
-
-
-
-
-
-    //-----------------------------------------.
 };
 
 #endif

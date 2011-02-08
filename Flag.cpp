@@ -1,9 +1,8 @@
-// File: Flag.cpp
-// by: John (Jack) Johnson CS330
-
+// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
+//------------------------------------------------------------
 // include header file
 #include "Flag.h"
-
+//------------------------------------------------------------
 // create flag
 void Flag::create()
 {
@@ -13,15 +12,12 @@ void Flag::create()
 
 
 
-
-
 }
 
+//------------------------------------------------------------
 // end level
 void Flag::endLevel()
 {
-
-
 
 
 

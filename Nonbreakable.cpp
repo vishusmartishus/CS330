@@ -1,11 +1,8 @@
-//Jay Bondzeleske, John (Jack) Johnson
-//CS330	
-
-//Imports iostream, Nonbreakable.h
-#include<iostream>
+//Jay Bondzeleske, John (Jack) Johnson, Alex Martishius
+//------------------------------------------------------------
+// include header file
 #include "Nonbreakable.h"
-using namespace std;
-
+//------------------------------------------------------------
 //create function
 void Nonbreakable::create()
 {
@@ -15,13 +12,8 @@ void Nonbreakable::create()
 
 
 
-
-
-
-
-
-
 }
+//------------------------------------------------------------
 //generateReward function
 void Nonbreakable::generateReward()
 {
@@ -31,25 +23,11 @@ void Nonbreakable::generateReward()
 
 
 
-
-
-
-
-
-
 }   
+//------------------------------------------------------------
 //redraw function
 void Nonbreakable::redraw()
 {
-
-
-
-
-
-
-
-
-
 
 
 

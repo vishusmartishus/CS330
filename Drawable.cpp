@@ -1,20 +1,10 @@
-// Drawable.cpp
 // Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
-//-----------------------------------------
+//------------------------------------------------------------
+// Includes the Drawable.h file
 #include "Drawable.h"
-//-----------------------------------------
-// Decides if the object is touched by Mario
-bool Drawable::touched(bool touching) 
-{
-
-
-
-
-
-	return false;
-}
+//------------------------------------------------------------
 // gets x-coordinate
-int Drawable::getX(Drawable &d1) 
+int Drawable::getX() 
 {
 
 
@@ -23,10 +13,10 @@ int Drawable::getX(Drawable &d1)
 
 	return 1;
 }
+//------------------------------------------------------------
 // gets y-coordinate
-int Drawable::getY(Drawable &d1) 
+int Drawable::getY() 
 {
-
 
 
 
@@ -34,24 +24,26 @@ int Drawable::getY(Drawable &d1)
 
 	return 1;
 }
+//------------------------------------------------------------
 // sets x-coordinate
-int Drawable::setX(Drawable &d1) 
+void Drawable::setX( int value ) 
 {
 
 
 
 
 
-	return 1;
+
 }
+//------------------------------------------------------------
 // sets y-coordinate
-int Drawable::setY(Drawable &d1) 
+void Drawable::setY( int value ) 
 {
 
 
 
 
 
-	return 1;
+
 }
-//-----------------------------------------
+
