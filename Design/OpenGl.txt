@@ -11,3 +11,18 @@ updateSprite(sprite)			#increment sprite animation
 updateItemPosition()			#moves all items in screenItems to their next position. Includes grabbing user input.
 
 
+MarioWindow(int argc, char **argv);
+    
+// static callbacks
+static void displayFunc();
+static void keyboardFunc(unsigned char key, int x, int y);
+static void keyboardUpFunc(unsigned char key, int x, int y);
+static void timer(int x);
+    
+// non-static callbacks
+void displayCB();
+void keyboardCB(unsigned char key, int x, int y);
+void keyboardUCB(unsigned char key, int x, int y);
+
+// run glut main loop
+void mainLoop();
