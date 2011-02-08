@@ -1,7 +1,10 @@
 ------------------------------------------------------------
-BreakableBlock
+NonBreakableBlock
 instance vars
+ type
+ content
 
 methods
 create
-breakBlock
+generateReward
+redraw
