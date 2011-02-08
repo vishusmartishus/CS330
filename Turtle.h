@@ -1,0 +1,41 @@
+/*
+ *  Turtle.h
+ *  Movable
+ *
+ *  Created by Jeremy Sampson on 2/7/11.
+ *  Copyright 2011 __MyCompanyName__. All rights reserved.
+ *
+ */
+
+#ifndef __TURTLE_H__
+#define __TURTLE_H__
+
+//---------------------------------------------------------
+
+#include "Walking.h"
+
+//---------------------------------------------------------
+
+class Turtle: public Walking {
+    
+public:
+    // constructor
+    Turtle();
+    // destructor
+    ~Turtle();
+    
+    // instance vars
+    
+    // point value if killed by mario
+    int pointValue_;
+    
+    // methods
+    
+    // openGL draw method
+    virtual void draw()=0;
+    
+};
+
+//---------------------------------------------------------
+
+#endif // _TURTLE_H
