@@ -1,6 +1,7 @@
 #ifndef __SCENEWINDOW_H__
 #define __SCENEWINDOW_H__
 
+
 //----------------------------------------------------------------------
 
 class SceneWindow {

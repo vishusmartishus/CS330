@@ -12,6 +12,7 @@
 
 extern SceneWindow *pw;
 
+
 SceneWindow::SceneWindow(int argc, char **argv)
 {
     //// window size
