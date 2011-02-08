@@ -29,8 +29,8 @@ private:
 	int state_, maxHeight_; //State can be 0,1,2 depending if he is Big/Little/Fire Mario
 	bool isInvincible_, isJumping_, isPounding_, isRunning_;
 
-	void Jump();
-	void Move(bool isRunning); //Moves Mario to the left or right and calls check() at beginning
+	void jump();
+	void move(bool isRunning); //Moves Mario to the left or right and calls check() at beginning
 
 	bool check(bool isRunning); //Checks to see if Mario ran into something
 	bool checkLeftRight();
