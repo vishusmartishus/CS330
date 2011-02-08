@@ -1,0 +1,8 @@
+Matt Oldfield
+
+Do we keep track if movable objects can move or does another group?
+Any private variables/methods?
+Do we even need the walking class?
+If we do, should shell be moved into that class?
+Do variables defined in a class (ex: int points defined in drawable) need to be
+initialized in every child class or just the class when value is set?
