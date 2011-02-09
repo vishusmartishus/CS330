@@ -20,11 +20,13 @@ public:
     }
     // OpenGL abstract method to draw object
     virtual void draw()=0;
+    //Sets the isMovable to false
+    bool isMovable() const { return false; }
     // Setters and getters for the left, right, top, and bottom
-    int left() const { return left_ }
-    int right() const { return right_ }
-    int top() const { return top_ }
-    int bottom() const { return bottom_ }
+    int left() const { return left_; }
+    int right() const { return right_; }
+    int top() const { return top_; }
+    int bottom() const { return bottom_; }
 //------------------------------------------------------------
 private:
     // Private variables for the left, right, top, and bottom

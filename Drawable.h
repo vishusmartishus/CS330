@@ -15,6 +15,8 @@ class Scene;
 class Drawable:public Base {
 //------------------------------------------------------------
 public:
+    // Default constructor
+    Drawable () {}
 	// Constructor for Drawable
     // s is the scene that holds this Drawable
 	Drawable(Scene *s)
@@ -37,11 +39,11 @@ public:
     // Set to the passed value variable
     void setY( int value );
     // Setters and getters for the killsleft, killsright, killstop, killsbottom, and points
-    bool killsFromBottom() const { return killsBottom_ }
-    bool killsFromLeft() const { return killsLeft_ }
-    bool killsFromRight() const { return killsRight_ }
-    bool killsFromTop() const { return killsTop_ }
-    int getPoints() const { return points_ }
+    bool killsFromBottom() const { return killsBottom_; }
+    bool killsFromLeft() const { return killsLeft_; }
+    bool killsFromRight() const { return killsRight_; }
+    bool killsFromTop() const { return killsTop_; }
+    int getPoints() const { return points_; }
 //------------------------------------------------------------
 private:
     // Determines if it kills Mario from the left, right, top, and bottom
