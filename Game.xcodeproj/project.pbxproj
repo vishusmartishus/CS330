@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		037A37451302C10100788A82 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
+		037A37461302C10100788A82 /* Breakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37211302C10100788A82 /* Breakable.cpp */; };
+		037A37471302C10100788A82 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
+		037A37481302C10100788A82 /* Fireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37251302C10100788A82 /* Fireball.cpp */; };
+		037A37491302C10100788A82 /* FireFlower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37271302C10100788A82 /* FireFlower.cpp */; };
+		037A374A1302C10100788A82 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37291302C10100788A82 /* Flag.cpp */; };
+		037A374B1302C10100788A82 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
+		037A374C1302C10100788A82 /* Goomba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372D1302C10100788A82 /* Goomba.cpp */; };
+		037A374D1302C10100788A82 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372F1302C10100788A82 /* Level.cpp */; };
+		037A374E1302C10100788A82 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37311302C10100788A82 /* Mario.cpp */; };
+		037A374F1302C10100788A82 /* AllMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37331302C10100788A82 /* AllMovable.cpp */; };
+		037A37501302C10100788A82 /* Mushroom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37351302C10100788A82 /* Mushroom.cpp */; };
+		037A37511302C10100788A82 /* Nonbreakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37371302C10100788A82 /* Nonbreakable.cpp */; };
+		037A37521302C10100788A82 /* Plant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37391302C10100788A82 /* Plant.cpp */; };
+		037A37531302C10100788A82 /* SceneWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A373B1302C10100788A82 /* SceneWindow.cpp */; };
+		037A37541302C10100788A82 /* Shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A373D1302C10100788A82 /* Shell.cpp */; };
+		037A37551302C10100788A82 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A373F1302C10100788A82 /* Star.cpp */; };
+		037A37561302C10100788A82 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37411302C10100788A82 /* Turtle.cpp */; };
+		037A378D1302C3C300788A82 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
+		037A37931302C41B00788A82 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37921302C41B00788A82 /* Scene.cpp */; };
+		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
+		8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Game.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
+		037A37201302C10100788A82 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
+		037A37211302C10100788A82 /* Breakable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Breakable.cpp; sourceTree = "<group>"; };
+		037A37221302C10100788A82 /* Breakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Breakable.h; sourceTree = "<group>"; };
+		037A37231302C10100788A82 /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
+		037A37241302C10100788A82 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		037A37251302C10100788A82 /* Fireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fireball.cpp; sourceTree = "<group>"; };
+		037A37261302C10100788A82 /* Fireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fireball.h; sourceTree = "<group>"; };
+		037A37271302C10100788A82 /* FireFlower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireFlower.cpp; sourceTree = "<group>"; };
+		037A37281302C10100788A82 /* FireFlower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireFlower.h; sourceTree = "<group>"; };
+		037A37291302C10100788A82 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flag.cpp; sourceTree = "<group>"; };
+		037A372A1302C10100788A82 /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flag.h; sourceTree = "<group>"; };
+		037A372B1302C10100788A82 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		037A372C1302C10100788A82 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		037A372D1302C10100788A82 /* Goomba.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Goomba.cpp; sourceTree = "<group>"; };
+		037A372E1302C10100788A82 /* Goomba.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goomba.h; sourceTree = "<group>"; };
+		037A372F1302C10100788A82 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
+		037A37301302C10100788A82 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		037A37311302C10100788A82 /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
+		037A37321302C10100788A82 /* Mario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mario.h; sourceTree = "<group>"; };
+		037A37331302C10100788A82 /* AllMovable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AllMovable.cpp; sourceTree = "<group>"; };
+		037A37341302C10100788A82 /* AllMovable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllMovable.h; sourceTree = "<group>"; };
+		037A37351302C10100788A82 /* Mushroom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mushroom.cpp; sourceTree = "<group>"; };
+		037A37361302C10100788A82 /* Mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mushroom.h; sourceTree = "<group>"; };
+		037A37371302C10100788A82 /* Nonbreakable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nonbreakable.cpp; sourceTree = "<group>"; };
+		037A37381302C10100788A82 /* Nonbreakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nonbreakable.h; sourceTree = "<group>"; };
+		037A37391302C10100788A82 /* Plant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plant.cpp; sourceTree = "<group>"; };
+		037A373A1302C10100788A82 /* Plant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = "<group>"; };
+		037A373B1302C10100788A82 /* SceneWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneWindow.cpp; sourceTree = "<group>"; };
+		037A373C1302C10100788A82 /* SceneWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneWindow.h; sourceTree = "<group>"; };
+		037A373D1302C10100788A82 /* Shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shell.cpp; sourceTree = "<group>"; };
+		037A373E1302C10100788A82 /* Shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shell.h; sourceTree = "<group>"; };
+		037A373F1302C10100788A82 /* Star.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Star.cpp; sourceTree = "<group>"; };
+		037A37401302C10100788A82 /* Star.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Star.h; sourceTree = "<group>"; };
+		037A37411302C10100788A82 /* Turtle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Turtle.cpp; sourceTree = "<group>"; };
+		037A37421302C10100788A82 /* Turtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turtle.h; sourceTree = "<group>"; };
+		037A378B1302C3C300788A82 /* Movable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movable.h; sourceTree = "<group>"; };
+		037A378C1302C3C300788A82 /* Movable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movable.cpp; sourceTree = "<group>"; };
+		037A37911302C41B00788A82 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		037A37921302C41B00788A82 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8DD76F6C0486A84900D96B5E /* Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Game; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859E8B029090EE04C91782 /* Game.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Game.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		037A37581302C14A00788A82 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				037A37911302C41B00788A82 /* Scene.h */,
+				037A37921302C41B00788A82 /* Scene.cpp */,
+				037A37301302C10100788A82 /* Level.h */,
+				037A372F1302C10100788A82 /* Level.cpp */,
+				037A372C1302C10100788A82 /* Game.h */,
+				037A372B1302C10100788A82 /* Game.cpp */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		037A37591302C15200788A82 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				037A373C1302C10100788A82 /* SceneWindow.h */,
+				037A373B1302C10100788A82 /* SceneWindow.cpp */,
+				08FB7796FE84155DC02AAC07 /* main.cpp */,
+			);
+			name = OpenGL;
+			sourceTree = "<group>";
+		};
+		037A375A1302C15D00788A82 /* Movable */ = {
+			isa = PBXGroup;
+			children = (
+				037A37341302C10100788A82 /* AllMovable.h */,
+				037A37331302C10100788A82 /* AllMovable.cpp */,
+				037A378B1302C3C300788A82 /* Movable.h */,
+				037A378C1302C3C300788A82 /* Movable.cpp */,
+				037A37261302C10100788A82 /* Fireball.h */,
+				037A37251302C10100788A82 /* Fireball.cpp */,
+				037A372E1302C10100788A82 /* Goomba.h */,
+				037A372D1302C10100788A82 /* Goomba.cpp */,
+				037A37361302C10100788A82 /* Mushroom.h */,
+				037A37351302C10100788A82 /* Mushroom.cpp */,
+				037A373A1302C10100788A82 /* Plant.h */,
+				037A37391302C10100788A82 /* Plant.cpp */,
+				037A373E1302C10100788A82 /* Shell.h */,
+				037A373D1302C10100788A82 /* Shell.cpp */,
+				037A37401302C10100788A82 /* Star.h */,
+				037A373F1302C10100788A82 /* Star.cpp */,
+				037A37421302C10100788A82 /* Turtle.h */,
+				037A37411302C10100788A82 /* Turtle.cpp */,
+			);
+			name = Movable;
+			sourceTree = "<group>";
+		};
+		037A375B1302C16600788A82 /* Mario */ = {
+			isa = PBXGroup;
+			children = (
+				037A37321302C10100788A82 /* Mario.h */,
+				037A37311302C10100788A82 /* Mario.cpp */,
+			);
+			name = Mario;
+			sourceTree = "<group>";
+		};
+		037A375C1302C1BA00788A82 /* Drawable */ = {
+			isa = PBXGroup;
+			children = (
+				037A37201302C10100788A82 /* Base.h */,
+				037A371F1302C10100788A82 /* Base.cpp */,
+				037A37241302C10100788A82 /* Drawable.h */,
+				037A37231302C10100788A82 /* Drawable.cpp */,
+				037A372A1302C10100788A82 /* Flag.h */,
+				037A37291302C10100788A82 /* Flag.cpp */,
+				037A37221302C10100788A82 /* Breakable.h */,
+				037A37211302C10100788A82 /* Breakable.cpp */,
+				037A37381302C10100788A82 /* Nonbreakable.h */,
+				037A37371302C10100788A82 /* Nonbreakable.cpp */,
+				037A37281302C10100788A82 /* FireFlower.h */,
+				037A37271302C10100788A82 /* FireFlower.cpp */,
+			);
+			name = Drawable;
+			sourceTree = "<group>";
+		};
+		08FB7794FE84155DC02AAC07 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				037A375C1302C1BA00788A82 /* Drawable */,
+				037A37581302C14A00788A82 /* Scene */,
+				037A375B1302C16600788A82 /* Mario */,
+				037A375A1302C15D00788A82 /* Movable */,
+				037A37591302C15200788A82 /* OpenGL */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* Game */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* Game.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* Game */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Game" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Game;
+			productInstallPath = "$(HOME)/bin";
+			productName = Game;
+			productReference = 8DD76F6C0486A84900D96B5E /* Game */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* Game */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* Game */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
+				037A37451302C10100788A82 /* Base.cpp in Sources */,
+				037A37461302C10100788A82 /* Breakable.cpp in Sources */,
+				037A37471302C10100788A82 /* Drawable.cpp in Sources */,
+				037A37481302C10100788A82 /* Fireball.cpp in Sources */,
+				037A37491302C10100788A82 /* FireFlower.cpp in Sources */,
+				037A374A1302C10100788A82 /* Flag.cpp in Sources */,
+				037A374B1302C10100788A82 /* Game.cpp in Sources */,
+				037A374C1302C10100788A82 /* Goomba.cpp in Sources */,
+				037A374D1302C10100788A82 /* Level.cpp in Sources */,
+				037A374E1302C10100788A82 /* Mario.cpp in Sources */,
+				037A374F1302C10100788A82 /* AllMovable.cpp in Sources */,
+				037A37501302C10100788A82 /* Mushroom.cpp in Sources */,
+				037A37511302C10100788A82 /* Nonbreakable.cpp in Sources */,
+				037A37521302C10100788A82 /* Plant.cpp in Sources */,
+				037A37531302C10100788A82 /* SceneWindow.cpp in Sources */,
+				037A37541302C10100788A82 /* Shell.cpp in Sources */,
+				037A37551302C10100788A82 /* Star.cpp in Sources */,
+				037A37561302C10100788A82 /* Turtle.cpp in Sources */,
+				037A378D1302C3C300788A82 /* Movable.cpp in Sources */,
+				037A37931302C41B00788A82 /* Scene.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Game;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = Game;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
