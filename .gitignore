@@ -1,0 +1,7 @@
+build/
+.git/
+*.pbxuser
+*.perspectivev3
+project.xcworkspace/
+xcuserdata/
+
