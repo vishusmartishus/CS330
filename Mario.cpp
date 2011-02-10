@@ -17,10 +17,9 @@ Mario::Mario()
     //init the private instance variables to default value
     state_ = 0;
     //will update to actaul height when figured out
-    maxHeight_ = 0
+    maxHeight_ = 0;
     isInvincible_ = false;
     isJumping_ = false;
-    isPounding_ = false;
     isRunning_ = false;
     
 }
@@ -55,12 +54,6 @@ bool Mario::getIsJumping()
     return isJumping_;
 }
 //------------------------------------------------------------
-//returns if Mario is pounding
-bool Mario::getIsPounding()
-{
-    return isPounding_;
-}
-//------------------------------------------------------------
 //returns if Mario is running
 bool Mario::getIsRunning()
 {
@@ -84,25 +77,6 @@ void Mario::move(bool isRunning)
 bool Mario::check(bool isRunning)
 {
     return false;
-}
-//------------------------------------------------------------
-//method to check Mario's left and right
-bool Mario::checkLeftRight()
-{
-    return false;
-}
-//------------------------------------------------------------
-//method to check Marios top to see if something falls on him
-bool Mario::checkTop()
-{
-    return false;
-}
-//------------------------------------------------------------
-//Helper method for checking to see if Mario came in contact
-//on the bottom
-bool Mario::checkBottom()
-{    
-	return false;
 }
 //------------------------------------------------------------
 //Creates a fireball
@@ -137,12 +111,6 @@ void Mario::setIsInvincible(bool i)
 //------------------------------------------------------------
 //Helper method for setting the jump
 void Mario::setIsJumping(bool j)
-{
-    
-}
-//------------------------------------------------------------
-//Helper method for pounding
-void Mario::setIsPounding(bool p)
 {
     
 }
