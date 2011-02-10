@@ -133,8 +133,6 @@
 				037A378C1302C3C300788A82 /* Movable.cpp */,
 				037A37261302C10100788A82 /* Fireball.h */,
 				037A37251302C10100788A82 /* Fireball.cpp */,
-				037A37281302C10100788A82 /* FireFlower.h */,
-				037A37271302C10100788A82 /* FireFlower.cpp */,
 				037A372E1302C10100788A82 /* Goomba.h */,
 				037A372D1302C10100788A82 /* Goomba.cpp */,
 				037A37361302C10100788A82 /* Mushroom.h */,
@@ -173,6 +171,8 @@
 				037A37211302C10100788A82 /* Breakable.cpp */,
 				037A37381302C10100788A82 /* Nonbreakable.h */,
 				037A37371302C10100788A82 /* Nonbreakable.cpp */,
+				037A37281302C10100788A82 /* FireFlower.h */,
+				037A37271302C10100788A82 /* FireFlower.cpp */,
 			);
 			name = Drawable;
 			sourceTree = "<group>";
