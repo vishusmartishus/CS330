@@ -1,5 +1,5 @@
 /*
- *  Movable.h
+ *  AllMovable.h
  *  Movable
  *
  *  Created by Jeremy Sampson on 2/7/11.
@@ -7,8 +7,8 @@
  *
  */
 
-#ifndef __MOVABLE_H__
-#define __MOVABLE_H__
+#ifndef __ALLMOVABLE_H__
+#define __ALLMOVABLE_H__
 
 //---------------------------------------------------------
 
@@ -52,4 +52,4 @@ public:
 
 //---------------------------------------------------------
 
-#endif // _MOVABLE_H
+#endif // _ALLMOVABLE_H

@@ -7,3 +7,29 @@
  *
  */
 
+#ifndef __MOVABLE_H__
+#define __MOVABLE_H__
+
+//---------------------------------------------------------
+
+#include "AllMovable.h"
+
+//---------------------------------------------------------
+
+class Movable: public AllMovable {
+
+public:
+    // constructor
+    Movable();
+    // destructor
+    ~Movable();
+
+    // instance vars
+
+    // methods
+  
+};
+
+//---------------------------------------------------------
+
+#endif //__MOVABLE_H
