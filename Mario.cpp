@@ -25,7 +25,7 @@ Mario::Mario()
 }
 //------------------------------------------------------------
 //updates Mario's info when a button is pushed
-void Mario::update(int button[])
+void Mario::Update(int button[])
 {
     
 }
@@ -82,12 +82,6 @@ bool Mario::check(bool isRunning)
 //Creates a fireball
 bool Mario::fireball()
 {    
-	return false;
-}
-//------------------------------------------------------------
-//Does the butt pound operations
-bool Mario::buttpound()
-{
 	return false;
 }
 //------------------------------------------------------------
