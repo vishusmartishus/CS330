@@ -1,1 +1,5 @@
-*.pbxproj -crlf -diff -merge
+*.pbxproj -crlf -merge
+*.vcxproj -crlf -diff -merge
+*.vcxproj.filters -crlf -diff -merge
+*.vcxproj.user -crlf -diff -merge
+
