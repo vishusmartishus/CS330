@@ -1,5 +1,5 @@
 /*
- *  Movable.cpp
+ *  AllMovable.h
  *  Game
  *
  *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty

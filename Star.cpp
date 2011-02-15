@@ -1,5 +1,5 @@
 /*
- *  Movable.cpp
+ *  Star.cpp
  *  Game
  *
  *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty
