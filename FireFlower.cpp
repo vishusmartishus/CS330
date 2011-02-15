@@ -16,7 +16,7 @@ void FireFlower::createFireMario()
 }
 //------------------------------------------------------------
 // Makes the fireflower appear
-void FireFlower::appear() 
+void FireFlower::appear(int xCoor_, int yCoor_) 
 {
 
 
@@ -27,7 +27,7 @@ void FireFlower::appear()
 }
 //------------------------------------------------------------
 // Makes the fireflower disappear
-void FireFlower::disappear() 
+void FireFlower::disappear(int xCoor_, int yCoor_) 
 {
 
 

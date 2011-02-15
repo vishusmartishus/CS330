@@ -22,9 +22,13 @@ public:
 
     }
     // Create method that creates the flag
-    void create();
-    // EndLevel method that ends teh level
+	// xCoor is x coordinate for flag
+    // yCoor is y coordinate for flag
+    void create(int xCoor_, int yCoor_);
+    // EndLevel method that ends the level
     void endLevel();
+
+private:
      // FlagPoints array of flag points awarded
     int flagPoints[5]; 
 };

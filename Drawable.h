@@ -48,10 +48,11 @@ public:
 private:
     // Determines if it kills Mario from the left, right, top, and bottom
     bool killsBottom_, killsLeft_, killsRight_, killsTop_;
-    // Integer number for the points
-    int points_;
+    // Integer number for the points, x coordinate, y coordinate
+    int points_, xCoor_, yCoor_;
     // Pointer for the scene
     Scene *scene_;
+
 };
 
 #endif

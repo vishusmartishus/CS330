@@ -4,7 +4,7 @@
 #include "Breakable.h"
 //------------------------------------------------------------
 // create block
-void Breakable::create()
+void Breakable::create(int xCoor_, int yCoor_)
 {
 
 
@@ -16,7 +16,7 @@ void Breakable::create()
 
 //------------------------------------------------------------
 // destroy block
-void Breakable::breakBlock()
+void Breakable::breakBlock(bool isLarge_, int xCoor_, int yCoor)
 {
 
 
