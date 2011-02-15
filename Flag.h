@@ -24,7 +24,7 @@ public:
     // Create method that creates the flag
 	// xCoor is x coordinate for flag
     // yCoor is y coordinate for flag
-    void create(int xCoor_, int yCoor_);
+    void create(int xCoor, int yCoor);
     // EndLevel method that ends the level
     void endLevel();
 

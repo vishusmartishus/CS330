@@ -4,7 +4,7 @@
 #include "Nonbreakable.h"
 //------------------------------------------------------------
 //create function
-void Nonbreakable::create(int xCoor_, int yCoor_)
+void Nonbreakable::create(int xCoor, int yCoor)
 {
 
 
@@ -15,7 +15,7 @@ void Nonbreakable::create(int xCoor_, int yCoor_)
 }
 //------------------------------------------------------------
 //generateReward function
-void Nonbreakable::generateReward(bool isLarge_, int reward_)
+void Nonbreakable::generateReward(bool isLarge, int reward)
 {
 
 
@@ -26,7 +26,7 @@ void Nonbreakable::generateReward(bool isLarge_, int reward_)
 }   
 //------------------------------------------------------------
 //redraw function
-void Nonbreakable::redraw(int xCoor_, int yCoor_)
+void Nonbreakable::redraw(int xCoor, int yCoor)
 {
 
 

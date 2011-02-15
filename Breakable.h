@@ -25,10 +25,10 @@ public:
     // isLarge is bool that tells if Mario is big or small
     // xCoor is x coordinate for block
     // yCoor is y coordinate for block
-    void breakBlock(bool isLarge_, int xCoor_, int yCoor_);
+    void breakBlock(bool isLarge, int xCoor, int yCoor);
     // create method that creates the boxes
     // xCoor is x coordinate for block
     // yCoor is y coordinate for block
-    void create(int xCoor_, int yCoor_);
+    void create(int xCoor, int yCoor);
 };
 #endif

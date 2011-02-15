@@ -4,7 +4,7 @@
 #include "Flag.h"
 //------------------------------------------------------------
 // create flag
-void Flag::create(int xCoor_, int yCoor_)
+void Flag::create(int xCoor, int yCoor)
 {
 
 

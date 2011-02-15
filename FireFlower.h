@@ -25,11 +25,11 @@ public:
     // Declare the method to appear
 	// xCoor is x coordinate for fire flower
     // yCoor is y coordinate for fire flower
-    void appear(int xCoor_, int yCoor_);
+    void appear(int xCoor, int yCoor);
     // Declare the method to disappear
 	// xCoor is x coordinate for fire flower
     // yCoor is y coordinate for fire flower
-    void disappear(int xCoor_, int yCoor_);
+    void disappear(int xCoor, int yCoor);
     // Declare the method to create Fire Mario.
     void createFireMario();
 };
