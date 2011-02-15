@@ -1,11 +1,13 @@
 /*
- *  Plant.h
- *  Movable
+ *  Movable.cpp
+ *  Game
  *
- *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
+ *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty
+ *  and Alex Martishius
+ *  Copyright 2011. All rights reserved.
  *
  */
+
 
 #ifndef __PLANT_H__
 #define __PLANT_H__
@@ -25,6 +27,8 @@ public:
     ~Plant();
     
     // instance vars
+    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
+    double horizontalVelocity, verticalVelocity, numPoints;
 
     
     // methods

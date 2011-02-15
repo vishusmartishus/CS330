@@ -1,11 +1,13 @@
 /*
- *  Mushroom.h
- *  Movable
+ *  Movable.cpp
+ *  Game
  *
- *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
+ *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty
+ *  and Alex Martishius
+ *  Copyright 2011. All rights reserved.
  *
  */
+
 
 #ifndef __MUSHROOM_H__
 #define __MUSHROOM_H__
@@ -25,6 +27,8 @@ public:
     ~Mushroom();
     
     // instance vars
+    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
+    double horizontalVelocity, verticalVelocity, numPoints;
     
     
     // methods

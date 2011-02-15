@@ -17,7 +17,7 @@ Mario::Mario()
     //init the private instance variables to default value
     state_ = 0;
     //will update to actaul height when figured out
-    maxHeight_ = 0
+    maxHeight_ = 0;
     isInvincible_ = false;
     isJumping_ = false;
     isPounding_ = false;

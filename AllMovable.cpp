@@ -1,11 +1,13 @@
 /*
- *  AllMovable.cpp
- *  AllMovable
+ *  Movable.cpp
+ *  Game
  *
- *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
+ *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty
+ *  and Alex Martishius
+ *  Copyright 2011. All rights reserved.
  *
  */
+
 
 #include "AllMovable.h"
 
@@ -25,26 +27,26 @@ AllMovable::~AllMovable()
 
 //---------------------------------------------------------
 
-void AllMovable::checkFront()
+bool AllMovable::checkFront()
 {
     
 }
 
 //---------------------------------------------------------
 
-void AllMovable::checkBehind()
+bool AllMovable::checkBehind()
 {
     
 }
 //---------------------------------------------------------
 
-void AllMovable::checkAbove()
+bool AllMovable::checkAbove()
 {
     
 }
 //---------------------------------------------------------
 
-void AllMovable::checkBelow()
+bool AllMovable::checkBelow()
 {
     
 }

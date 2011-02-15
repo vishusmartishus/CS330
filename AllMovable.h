@@ -1,11 +1,13 @@
 /*
- *  AllMovable.h
- *  Movable
+ *  Movable.cpp
+ *  Game
  *
- *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius.
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
+ *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty
+ *  and Alex Martishius
+ *  Copyright 2011. All rights reserved.
  *
  */
+
 
 #ifndef __ALLMOVABLE_H__
 #define __ALLMOVABLE_H__
@@ -41,8 +43,8 @@ public:
 	    // passes true if nothing is above the object    
 	bool checkAbove();
 		// getters for velocity
-	double getXvelocity();
-	double getYvelocity();
+	double getXVelocity();
+	double getYVelocity();
     
 };
 
