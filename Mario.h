@@ -10,9 +10,9 @@
 #ifndef _MARIO_H
 #define _MARIO_H
 
-#include "AllMoveable.h"
+#include "Moveable.h"
 
-class Mario: public AllMoveable {
+class Mario: public Moveable {
 
 public:
 	//Constructor
