@@ -6,27 +6,21 @@
  *  Copyright 2011 Capital University. All rights reserved.
  *
  */
+//Object constant will be 6
+const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
+#ifndef __MARIO_H__
+#define __MARIO_H__
 
-#ifndef _MARIO_H
-#define _MARIO_H
+#include "AllMovable.h"
 
-#include "Moveable.h"
-
-class Mario: public Moveable {
+class Mario: public AllMovable {
 
 public:
 	//Constructor
 	Mario();
   
   	//Gets called when key is pressed
-	void Update(int Button[]);
-	
-	//Get instance variables
-	int  getState();
-	int  getMaxHeight();
-	bool getIsInvincible();
-	bool getIsJumping();
-	bool getIsRunning();
+	void update(int Button[]);
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
@@ -42,12 +36,6 @@ private:
 	//Returns true if Mario is in the fire state
 	bool fireball(); 
 	
-	//Set instance variables
-	void setState(int s);
-	void setMaxHeight(int mH);
-	void setIsInvincible(bool i);
-	void setIsJumping(bool j);
-	void setIsRunning(bool r);
 };
 
 #endif
