@@ -15,7 +15,14 @@
 
 Star::Star()
 {
-    
+	isReward = true;
+	canKill = false;
+	canKillFromTop = false;
+	turnsAround = true;
+	canFallOff = true;
+	horizontalVelocity = 0;
+	verticalVelocity = 0;
+	numPoints = 0;   
 }
 
 //---------------------------------------------------------

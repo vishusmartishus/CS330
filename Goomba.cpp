@@ -2,7 +2,7 @@
  *  Goomba.cpp
  *  Movable
  *
- *  Created by Jeremy Sampson on 2/7/11.
+ *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
@@ -15,7 +15,14 @@
 
 Goomba::Goomba()
 {
-    
+	isReward = false;
+	canKill = true;
+	canKillFromTop = false;
+	turnsAround = true;
+	canFallOff = true;
+	horizontalVelocity = 0;
+	verticalVelocity = 0;
+	numPoints = 0;   
 }
 
 //---------------------------------------------------------

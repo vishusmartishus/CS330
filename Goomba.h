@@ -2,7 +2,7 @@
  *  Goomba.h
  *  Movable
  *
- *  Created by Jeremy Sampson on 2/7/11.
+ *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
@@ -25,9 +25,6 @@ public:
     ~Goomba();
     
     // instance vars
-    
-    // point value if killed by mario
-    int pointValue_;
     
     // methods
     

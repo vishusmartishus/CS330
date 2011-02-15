@@ -27,6 +27,8 @@
 		037A37561302C10100788A82 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37411302C10100788A82 /* Turtle.cpp */; };
 		037A378D1302C3C300788A82 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
 		037A37931302C41B00788A82 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37921302C41B00788A82 /* Scene.cpp */; };
+		03ECB8B71304C71700B5D298 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B61304C71700B5D298 /* GLUT.framework */; };
+		03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Game.1 */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,8 @@
 		037A378C1302C3C300788A82 /* Movable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movable.cpp; sourceTree = "<group>"; };
 		037A37911302C41B00788A82 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		037A37921302C41B00788A82 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		03ECB8B61304C71700B5D298 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		03ECB8B81304C71700B5D298 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Game; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* Game.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Game.1; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03ECB8B71304C71700B5D298 /* GLUT.framework in Frameworks */,
+				03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,8 +139,6 @@
 				037A378C1302C3C300788A82 /* Movable.cpp */,
 				037A37261302C10100788A82 /* Fireball.h */,
 				037A37251302C10100788A82 /* Fireball.cpp */,
-				037A37281302C10100788A82 /* FireFlower.h */,
-				037A37271302C10100788A82 /* FireFlower.cpp */,
 				037A372E1302C10100788A82 /* Goomba.h */,
 				037A372D1302C10100788A82 /* Goomba.cpp */,
 				037A37361302C10100788A82 /* Mushroom.h */,
@@ -173,6 +177,8 @@
 				037A37211302C10100788A82 /* Breakable.cpp */,
 				037A37381302C10100788A82 /* Nonbreakable.h */,
 				037A37371302C10100788A82 /* Nonbreakable.cpp */,
+				037A37281302C10100788A82 /* FireFlower.h */,
+				037A37271302C10100788A82 /* FireFlower.cpp */,
 			);
 			name = Drawable;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				037A37591302C15200788A82 /* OpenGL */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
+				03ECB8B61304C71700B5D298 /* GLUT.framework */,
+				03ECB8B81304C71700B5D298 /* OpenGL.framework */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -319,7 +327,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
@@ -331,7 +339,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};

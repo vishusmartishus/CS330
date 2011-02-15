@@ -22,15 +22,23 @@ public:
 
     }
     // create Method that creates the block
-    void create();
+	// xCoor is x coordinate for block
+    // yCoor is y coordinate for block
+    void create(int xCoor, int yCoor);
     // generateReward method that creates an award
-    void generateReward();
+	// isLarge is bool that tells if Mario is big or small
+	// reward is an int that tells which reward
+    void generateReward(bool isLarge, int reward);
     // redraw method that redraws the block
-    void redraw();
+	// xCoor is x coordinate for block
+    // yCoor is y coordinate for block
+    void redraw(int xCoor, int yCoor);
+
+private:
     // Three types of blocks (Question, Regular, and Blocks little Mario cannot break)
     int type[3];
-    // Three different contents (Mushroom, Fire Floiwer, and Coin)
-    int content[3];
+    // Four different contents (Mushroom, Fire Flower, Star, and Coin)
+    int content[4];
 };
 #endif
 

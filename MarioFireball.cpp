@@ -1,5 +1,5 @@
 /*
- *  Plant.cpp
+ *  MarioFireball.cpp
  *  Movable
  *
  *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
@@ -9,17 +9,17 @@
 
 //---------------------------------------------------------
 
-#include "Plant.h"
+#include "MarioFireball.h"
 
 //---------------------------------------------------------
 
-Plant::Plant()
+MarioFireball::Fireball()
 {
 	isReward = false;
-	canKill = true;
-	canKillFromTop = true;
+	canKill = false;
+	canKillFromTop = false;
 	turnsAround = false;
-	canFallOff = false;
+	canFallOff = true;
 	horizontalVelocity = 0;
 	verticalVelocity = 0;
 	numPoints = 0;  
@@ -27,29 +27,34 @@ Plant::Plant()
 
 //---------------------------------------------------------
 
-Plant::~Plant()
+MarioFireball::~Fireball()
 {
     
 }
 
 //---------------------------------------------------------
 
-void Plant::draw()
+void MarioFireball::draw()
 {
-
     
     
     
     
-}
-void Plant::shootFireball()
-{
-
-}
-//---------------------------------------------------------
-void Plant::move()
-{
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 //---------------------------------------------------------

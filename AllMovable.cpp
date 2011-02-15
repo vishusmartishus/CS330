@@ -2,7 +2,7 @@
  *  AllMovable.cpp
  *  AllMovable
  *
- *  Created by Jeremy Sampson on 2/7/11.
+ *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
@@ -25,23 +25,38 @@ AllMovable::~AllMovable()
 
 //---------------------------------------------------------
 
-void AllMovable::disappear()
+void AllMovable::checkFront()
 {
     
 }
 
 //---------------------------------------------------------
 
-void AllMovable::reverseDirection()
+void AllMovable::checkBehind()
 {
     
 }
-
 //---------------------------------------------------------
 
-bool AllMovable::canMove()
+void AllMovable::checkAbove()
 {
-    return true;
+    
 }
-
 //---------------------------------------------------------
+
+void AllMovable::checkBelow()
+{
+    
+}
+//---------------------------------------------------------
+
+double getXvelocity()
+{
+    
+}
+//---------------------------------------------------------
+
+double getYvelocity()
+{
+    
+}
