@@ -1,5 +1,5 @@
 /*
- *  Mushroom.h
+ *  EnemyFireball.h
  *  Movable
  *
  *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
@@ -7,8 +7,8 @@
  *
  */
 
-#ifndef __MUSHROOM_H__
-#define __MUSHROOM_H__
+#ifndef __ENEMYFIREBALL_H__
+#define __ENEMYFIREBALL_H__
 
 //---------------------------------------------------------
 
@@ -16,16 +16,17 @@
 
 //---------------------------------------------------------
 
-class Mushroom: public Movable {
+class EnemyFireball: public Movable {
     
 public:
     // constructor
-    Mushroom();
+    EnemyFireball();
     // destructor
-    ~Mushroom();
+    ~EnemyFireball();
     
     // instance vars
     
+
     
     // methods
     
@@ -36,4 +37,4 @@ public:
 
 //---------------------------------------------------------
 
-#endif // _MUSHROOM_H
+#endif // _ENEMYFIREBALL_H
