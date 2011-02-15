@@ -1,5 +1,5 @@
 /*
- *  Plant.cpp
+ *  EnemyFireball.cpp
  *  Movable
  *
  *  Created by Jeremy Sampson, Matt Oldfield, and Alex Martishius
@@ -9,47 +9,52 @@
 
 //---------------------------------------------------------
 
-#include "Plant.h"
+#include "EnemyFireball.h"
 
 //---------------------------------------------------------
 
-Plant::Plant()
+EnemyFireball::Fireball()
 {
 	isReward = false;
 	canKill = true;
 	canKillFromTop = true;
 	turnsAround = false;
-	canFallOff = false;
+	canFallOff = true;
 	horizontalVelocity = 0;
 	verticalVelocity = 0;
-	numPoints = 0;  
+	numPoints = 0;    
 }
 
 //---------------------------------------------------------
 
-Plant::~Plant()
+EnemyFireball::~Fireball()
 {
     
 }
 
 //---------------------------------------------------------
 
-void Plant::draw()
+void EnemyFireball::draw()
 {
-
     
     
     
     
-}
-void Plant::shootFireball()
-{
-
-}
-//---------------------------------------------------------
-void Plant::move()
-{
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 //---------------------------------------------------------

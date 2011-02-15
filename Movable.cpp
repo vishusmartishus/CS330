@@ -2,10 +2,10 @@
  *  Movable.cpp
  *  Game
  *
- *  Created by David Reed on 2/9/11.
- *  Copyright 2011 David M. Reed. All rights reserved.
+ *  Created by David Reed, Matt Oldfield, and Alex Martishius
+ *  Copyright 2011. All rights reserved.
  *
- */
+ *//
 
 #include "Movable.h"
 
@@ -24,5 +24,46 @@ Movable::~Movable()
 }
 
 //---------------------------------------------------------
+
+//---------------------------------------------------------
+
+bool Movable::canMove()
+{
+
+}
+//---------------------------------------------------------
+
+bool Movable::isReward()
+{
+
+}
+//---------------------------------------------------------
+
+bool Movable::canKill()
+{
+
+}
+//---------------------------------------------------------
+
+void Movable::xReverse()
+{
+
+}
+//---------------------------------------------------------
+
+void Movable::yReverse()
+{
+
+}
+//---------------------------------------------------------
+bool Movable::getKillTop()
+{
+
+}
+//---------------------------------------------------------
+void Movable::move()
+{
+
+}
 
 
