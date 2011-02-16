@@ -78,12 +78,6 @@
     <ClInclude Include="Movable.h">
       <Filter>Header Files\Movable</Filter>
     </ClInclude>
-    <ClInclude Include="Fireball.h">
-      <Filter>Header Files\Movable</Filter>
-    </ClInclude>
-    <ClInclude Include="Fireflower.h">
-      <Filter>Header Files\Movable</Filter>
-    </ClInclude>
     <ClInclude Include="Goomba.h">
       <Filter>Header Files\Movable</Filter>
     </ClInclude>
@@ -104,6 +98,15 @@
     </ClInclude>
     <ClInclude Include="SceneWindow.h">
       <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Fireflower.h">
+      <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFireball.h">
+      <Filter>Header Files\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioFireball.h">
+      <Filter>Header Files\Movable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,12 +129,6 @@
       <Filter>Source Files\Mario</Filter>
     </ClCompile>
     <ClCompile Include="AllMovable.cpp">
-      <Filter>Source Files\Movable</Filter>
-    </ClCompile>
-    <ClCompile Include="Fireball.cpp">
-      <Filter>Source Files\Movable</Filter>
-    </ClCompile>
-    <ClCompile Include="Fireflower.cpp">
       <Filter>Source Files\Movable</Filter>
     </ClCompile>
     <ClCompile Include="Goomba.cpp">
@@ -169,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Fireflower.cpp">
+      <Filter>Source Files\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFireball.cpp">
+      <Filter>Source Files\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioFireball.cpp">
+      <Filter>Source Files\Movable</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

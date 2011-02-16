@@ -64,13 +64,14 @@
     <ClInclude Include="Base.h" />
     <ClInclude Include="Breakable.h" />
     <ClInclude Include="Drawable.h" />
-    <ClInclude Include="Fireball.h" />
+    <ClInclude Include="EnemyFireball.h" />
     <ClInclude Include="Fireflower.h" />
     <ClInclude Include="Flag.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Mario.h" />
+    <ClInclude Include="MarioFireball.h" />
     <ClInclude Include="Movable.h" />
     <ClInclude Include="Mushroom.h" />
     <ClInclude Include="Nonbreakable.h" />
@@ -86,7 +87,7 @@
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Breakable.cpp" />
     <ClCompile Include="Drawable.cpp" />
-    <ClCompile Include="Fireball.cpp" />
+    <ClCompile Include="EnemyFireball.cpp" />
     <ClCompile Include="Fireflower.cpp" />
     <ClCompile Include="Flag.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mario.cpp" />
+    <ClCompile Include="MarioFireball.cpp" />
     <ClCompile Include="Movable.cpp" />
     <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="Nonbreakable.cpp" />

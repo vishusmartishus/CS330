@@ -10,7 +10,7 @@
 
 #include "SceneWindow.h"
 
-extern SceneWindow *pw;
+extern SceneWindow *sw;
 
 
 SceneWindow::SceneWindow(int argc, char **argv)
@@ -81,28 +81,28 @@ void SceneWindow::startGame()
 
 void SceneWindow::displayFunc()
 {
-    pw->displayCB();
+    sw->displayCB();
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::keyboardFunc(unsigned char key, int x, int y)
 {
-    pw->keyboardCB(key, x, y);
+    sw->keyboardCB(key, x, y);
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::keyboardUpFunc(unsigned char key, int x, int y)
 {
-    pw->keyboardUpCB(key, x, y);
+    sw->keyboardUpCB(key, x, y);
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::timerFunc(int value)
 {
-    pw->timerCB(value);
+    sw->timerCB(value);
 }
 
 //----------------------------------------------------------------------

@@ -1,11 +1,13 @@
 /*
  *  Fireball.h
- *  Movable
+ *  Game
  *
- *  Created by Jeremy Sampson on 2/7/11.
- *  Copyright 2011 __MyCompanyName__. All rights reserved.
+ *  Created by David Reed, Matt Oldfield, Jeremy Sampson, Andrew Daugherty
+ *  and Alex Martishius
+ *  Copyright 2011. All rights reserved.
  *
  */
+
 
 #ifndef __FIREBALL_H__
 #define __FIREBALL_H__

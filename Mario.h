@@ -6,46 +6,36 @@
  *  Copyright 2011 Capital University. All rights reserved.
  *
  */
+//Object constant will be 6
+const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
+#ifndef __MARIO_H__
+#define __MARIO_H__
 
-#ifndef _MARIO_H
-#define _MARIO_H
+#include "AllMovable.h"
 
-class Mario {
+class Mario: public AllMovable {
 
 public:
-	Mario(); //Constructor
+	//Constructor
+	Mario();
   
-	void Update(int Button[]); //Gets called when key is pressed
-	
-	//Get instance variables
-	int  getState();
-	int  getMaxHeight();
-	bool getIsInvincible();
-	bool getIsJumping();
-	bool getIsPounding();
-	bool getIsRunning();
+  	//Gets called when key is pressed
+	void update(int Button[]);
 
 private:
-	int state_, maxHeight_; //State can be 0,1,2 depending if he is Big/Little/Fire Mario
-	bool isInvincible_, isJumping_, isPounding_, isRunning_;
+	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
+	int state_, maxHeight_; 
+	bool isInvincible_, isJumping_, isRunning_;
 
 	void jump();
-	void move(bool isRunning); //Moves Mario to the left or right and calls check() at beginning
+	//Moves Mario to the left or right and calls check() at beginning
+	void move(bool isRunning);
 
-	bool check(bool isRunning); //Checks to see if Mario ran into something
-	bool checkLeftRight();
-	bool checkTop();
-	bool checkBottom();
-	bool fireball(); //Returns true if Mario is in the fire state
-	bool buttpound();
+	//Checks to see if Mario ran into something
+	bool check(bool isRunning); 
+	//Returns true if Mario is in the fire state
+	bool fireball(); 
 	
-	//Set instance variables
-	void setState(int s);
-	void setMaxHeight(int mH);
-	void setIsInvincible(bool i);
-	void setIsJumping(bool j);
-	void setIsPounding(bool p);
-	void setIsRunning(bool r);
 };
 
 #endif
