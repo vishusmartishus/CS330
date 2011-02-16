@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */; };
+		03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */; };
 		037A37451302C10100788A82 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
 		037A37461302C10100788A82 /* Breakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37211302C10100788A82 /* Breakable.cpp */; };
 		037A37471302C10100788A82 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
-		037A37481302C10100788A82 /* Fireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37251302C10100788A82 /* Fireball.cpp */; };
 		037A37491302C10100788A82 /* FireFlower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37271302C10100788A82 /* FireFlower.cpp */; };
 		037A374A1302C10100788A82 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37291302C10100788A82 /* Flag.cpp */; };
 		037A374B1302C10100788A82 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
@@ -47,14 +48,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyFireball.cpp; sourceTree = "<group>"; };
+		03462EDC130AFC4A004BBAE6 /* EnemyFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFireball.h; sourceTree = "<group>"; };
+		03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarioFireball.cpp; sourceTree = "<group>"; };
+		03462EDE130AFC4A004BBAE6 /* MarioFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarioFireball.h; sourceTree = "<group>"; };
 		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
 		037A37201302C10100788A82 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
 		037A37211302C10100788A82 /* Breakable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Breakable.cpp; sourceTree = "<group>"; };
 		037A37221302C10100788A82 /* Breakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Breakable.h; sourceTree = "<group>"; };
 		037A37231302C10100788A82 /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
 		037A37241302C10100788A82 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
-		037A37251302C10100788A82 /* Fireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fireball.cpp; sourceTree = "<group>"; };
-		037A37261302C10100788A82 /* Fireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fireball.h; sourceTree = "<group>"; };
 		037A37271302C10100788A82 /* FireFlower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireFlower.cpp; sourceTree = "<group>"; };
 		037A37281302C10100788A82 /* FireFlower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireFlower.h; sourceTree = "<group>"; };
 		037A37291302C10100788A82 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flag.cpp; sourceTree = "<group>"; };
@@ -137,8 +140,6 @@
 				037A37331302C10100788A82 /* AllMovable.cpp */,
 				037A378B1302C3C300788A82 /* Movable.h */,
 				037A378C1302C3C300788A82 /* Movable.cpp */,
-				037A37261302C10100788A82 /* Fireball.h */,
-				037A37251302C10100788A82 /* Fireball.cpp */,
 				037A372E1302C10100788A82 /* Goomba.h */,
 				037A372D1302C10100788A82 /* Goomba.cpp */,
 				037A37361302C10100788A82 /* Mushroom.h */,
@@ -151,6 +152,10 @@
 				037A373F1302C10100788A82 /* Star.cpp */,
 				037A37421302C10100788A82 /* Turtle.h */,
 				037A37411302C10100788A82 /* Turtle.cpp */,
+				03462EDC130AFC4A004BBAE6 /* EnemyFireball.h */,
+				03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */,
+				03462EDE130AFC4A004BBAE6 /* MarioFireball.h */,
+				03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */,
 			);
 			name = Movable;
 			sourceTree = "<group>";
@@ -269,7 +274,6 @@
 				037A37451302C10100788A82 /* Base.cpp in Sources */,
 				037A37461302C10100788A82 /* Breakable.cpp in Sources */,
 				037A37471302C10100788A82 /* Drawable.cpp in Sources */,
-				037A37481302C10100788A82 /* Fireball.cpp in Sources */,
 				037A37491302C10100788A82 /* FireFlower.cpp in Sources */,
 				037A374A1302C10100788A82 /* Flag.cpp in Sources */,
 				037A374B1302C10100788A82 /* Game.cpp in Sources */,
@@ -286,6 +290,8 @@
 				037A37561302C10100788A82 /* Turtle.cpp in Sources */,
 				037A378D1302C3C300788A82 /* Movable.cpp in Sources */,
 				037A37931302C41B00788A82 /* Scene.cpp in Sources */,
+				03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */,
+				03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
