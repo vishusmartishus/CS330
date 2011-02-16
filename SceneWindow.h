@@ -25,7 +25,7 @@ public:
     void mainLoop();
     
 private:
-    Drawable position_[];
+    //Drawable position_[];
     
     // whole level size
     int width_, height_;
