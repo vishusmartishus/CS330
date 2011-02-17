@@ -1,10 +1,33 @@
-/*Level.cpp (empty)
-Zach Adams
-Feb. 08 2011*/
+//Level.cpp
+//Zach Adams, Alex Strohmeyer, Josh Woods
 
 #include "Level.h"
-
+//------------------------------------------------------------
 Level::Level()
+{
+
+
+
+
+}
+//------------------------------------------------------------
+void Level::makeLevel()
+{
+
+
+
+
+}
+//------------------------------------------------------------
+void Level::updateExtends()
+{
+
+
+
+
+}
+//------------------------------------------------------------
+void Level::removeDrawable(*Drawable)
 {
 
 
