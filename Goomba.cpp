@@ -17,14 +17,12 @@
 
 Goomba::Goomba()
 {
-	isReward = false;
-	canKill = true;
-	canKillFromTop = false;
-	turnsAround = true;
-	canFallOff = true;
-	horizontalVelocity = 0;
-	verticalVelocity = 0;
-	numPoints = 0;   
+	killsBottom_ = true;
+	killsSide_ = true;
+	killsTop_ = false;
+	points_ = 0;
+	horizontalVelocity_ = 0;
+	verticalVelocity_ = 0;
 }
 
 //---------------------------------------------------------

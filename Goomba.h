@@ -14,11 +14,11 @@
 
 //---------------------------------------------------------
 
-#include "Walking.h"
+#include "Movable.h"
 
 //---------------------------------------------------------
 
-class Goomba: public Walking {
+class Goomba: public Movable {
     
 public:
     // constructor
@@ -27,8 +27,7 @@ public:
     ~Goomba();
     
     // instance vars
-    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
-    double horizontalVelocity, verticalVelocity, numPoints;
+    double horizontalVelocity_, verticalVelocity_;
     
     // methods
     

@@ -24,12 +24,7 @@ public:
     // constructor
     Mushroom();
     // destructor
-    ~Mushroom();
-    
-    // instance vars
-    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
-    double horizontalVelocity, verticalVelocity, numPoints;
-    
+    ~Mushroom();  
     
     // methods
     

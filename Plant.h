@@ -26,14 +26,8 @@ public:
     // destructor
     ~Plant();
     
-    // instance vars
-    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
-    double horizontalVelocity, verticalVelocity, numPoints;
-
-    
     // methods
 
-    
     // openGL draw method
     virtual void draw()=0;
     // method to shoot fireball from plant

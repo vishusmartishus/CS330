@@ -26,12 +26,7 @@ public:
     // destructor
     ~Star();
     
-    // instance vars
-    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
-    double horizontalVelocity, verticalVelocity, numPoints;
-    
     // methods
-    
     // openGL draw method
     virtual void draw()=0;
     
