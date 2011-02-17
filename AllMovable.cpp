@@ -52,18 +52,18 @@ Drawable* AllMovable::checkBelow()
 }
 //---------------------------------------------------------
 
-double getXvelocity()
+double getXVelocity()
 {
     
 }
 //---------------------------------------------------------
 
-double getYvelocity()
+double getYVelocity()
 {
     
 }
 //---------------------------------------------------------
-void kill(&Drawable)
+void AllMovable::kill(&Drawable)
 {
 
 }
