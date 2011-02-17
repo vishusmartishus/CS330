@@ -27,26 +27,26 @@ AllMovable::~AllMovable()
 
 //---------------------------------------------------------
 
-bool AllMovable::checkFront()
+Drawable* AllMovable::checkFront()
 {
     
 }
 
 //---------------------------------------------------------
 
-bool AllMovable::checkBehind()
+Drawable* AllMovable::checkBehind()
 {
     
 }
 //---------------------------------------------------------
 
-bool AllMovable::checkAbove()
+Drawable* AllMovable::checkAbove()
 {
     
 }
 //---------------------------------------------------------
 
-bool AllMovable::checkBelow()
+Drawable* AllMovable::checkBelow()
 {
     
 }
@@ -62,3 +62,9 @@ double getYvelocity()
 {
     
 }
+//---------------------------------------------------------
+void kill(&Drawable)
+{
+
+}
+//---------------------------------------------------------

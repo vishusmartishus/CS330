@@ -15,14 +15,12 @@
 
 MarioFireball::Fireball()
 {
-	isReward = false;
-	canKill = false;
-	canKillFromTop = false;
-	turnsAround = false;
-	canFallOff = true;
-	horizontalVelocity = 0;
-	verticalVelocity = 0;
-	numPoints = 0;  
+	killsBottom_ = true;
+	killsSide_ = true;
+	killsTop_ = false;
+	points_ = 0;
+	horizontalVelocity_ = 0;
+	verticalVelocity_ = 0;
 }
 
 //---------------------------------------------------------

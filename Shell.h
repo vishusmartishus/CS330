@@ -26,10 +26,6 @@ public:
     // destructor
     ~Shell();
     
-    // instance vars
-    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
-    double horizontalVelocity, verticalVelocity, numPoints;
-    
     // methods
     
     // openGL draw method

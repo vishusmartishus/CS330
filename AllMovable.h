@@ -35,16 +35,19 @@ public:
     
     // methods
 		// passes true if nothing is in front of the object    
-	bool checkFront();
+	Drawable* checkRight();
 	    // passes true if nothing is behind the object    
-	bool checkBehind();
+	Drawable* checkLeft();
 	    // passes true if nothing is below the object    
-	bool checkBelow();
+	Drawable* checkBelow();
 	    // passes true if nothing is above the object    
-	bool checkAbove();
+	Drawable* checkAbove();
 		// getters for velocity
 	double getXVelocity();
 	double getYVelocity();
+
+		// kills object
+	void kill(&Drawable);
     
 };
 

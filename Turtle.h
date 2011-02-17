@@ -14,21 +14,17 @@
 
 //---------------------------------------------------------
 
-#include "Walking.h"
+#include "Movable.h"
 
 //---------------------------------------------------------
 
-class Turtle: public Walking {
+class Turtle: public Movable {
     
 public:
     // constructor
     Turtle();
     // destructor
     ~Turtle();
-    
-    // instance vars
-    bool isReward, canKill, canKillFromTop, turnsAround, canFallOff;
-    double horizontalVelocity, verticalVelocity, numPoints;
     
     // methods
     
