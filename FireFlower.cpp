@@ -1,7 +1,7 @@
 // FireFlower.cpp
 // Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
 //------------------------------------------------------------
-// include header file Breakable
+// include header file FireFlower.h
 #include "FireFlower.h"
 //------------------------------------------------------------
 // spawns fire mario

@@ -18,6 +18,8 @@ public:
 
 
     }
+	// Returns an int to indicate an object
+	int objectType();
     // OpenGL abstract method to draw object
     virtual void draw()=0;
     //Sets the isMovable to false
