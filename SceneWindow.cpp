@@ -15,39 +15,32 @@ extern SceneWindow *sw;
 
 SceneWindow::SceneWindow(int argc, char **argv)
 {
-    //// window size
-    //width_ = 600;
-    //height_ = 400;
-    //
-    //paddleHalfHeight_ = 40;
-    //
-    //// set inital position of ball and paddle
-    //ballPosition_.set(width_ - 10, height_ / 2.0);
-    //paddlePosition_.set(20, height_ / 2);
-    //playing_ = false;
-    //
-    //// create window
-    //glutInit(&argc, argv);
-    //glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    //glutInitWindowSize(width_, height_);
-    //glutInitWindowPosition(30, 100);
-    //glutCreateWindow("Pong");
-    //
-    //// initialize orthographic viewing projections
-    //glMatrixMode(GL_PROJECTION);
-    //glLoadIdentity();
-    //gluOrtho2D(0, width_, 0, height_);
-    //glMatrixMode(GL_MODELVIEW);
-    //glLoadIdentity();
-    //
-    //// GLUT callbacks
-    //glutDisplayFunc(&PongWindow::displayFunc);
-    //glutKeyboardFunc(&PongWindow::keyboardFunc);
-    //glutKeyboardUpFunc(&PongWindow::keyboardUpFunc);
-    //glutIgnoreKeyRepeat(true);
-
-    //// draw ball as point with size 5
-    //glPointSize(5.0);
+	// create window
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(512, 448);
+    glutInitWindowPosition(30, 100);
+    glutCreateWindow("Mario");
+	
+	
+    // GLUT callbacks
+	glutDisplayFunc(&SceneWindow::displayFunc);
+    glutKeyboardFunc(&SceneWindow::keyboardFunc);
+	glutKeyboardUpFunc(&SceneWindow::keyboardUpFunc);
+	glutIgnoreKeyRepeat(true);
+	
+	
+    
+    // initialize orthographic viewing projections
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, 256, 0, 224);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+	
+	glClearColor(0.7, 0.9, 1.0, 1.0);
+	
+	glutPostRedisplay();
 }
 
 //----------------------------------------------------------------------
@@ -61,6 +54,11 @@ void SceneWindow::mainLoop()
 
 void SceneWindow::startGame()
 {
+	
+	//set intial variables
+	
+	
+	//PONG
     // initial ball position
     //ballPosition_.set(width_ - 10, height_ / 2);
     //
@@ -75,6 +73,14 @@ void SceneWindow::startGame()
     //// start playing
     //playing_ = true;
     //glutTimerFunc(10, &PongWindow::timerFunc, 0);
+}
+
+//----------------------------------------------------------------------
+
+void SceneWindow::loadLevel()
+{
+	//called from start game
+	//loads in current level from set checkpoint
 }
 
 //----------------------------------------------------------------------
@@ -109,40 +115,63 @@ void SceneWindow::timerFunc(int value)
 
 void SceneWindow::displayCB()
 {    
-    //// clear window
-    //glClear(GL_COLOR_BUFFER_BIT);
-    //
-    //// draw paddle
-    //glBegin(GL_LINES);
-    //glVertex2d(paddlePosition_[0], paddlePosition_[1] - paddleHalfHeight_);
-    //glVertex2d(paddlePosition_[0], paddlePosition_[1] + paddleHalfHeight_);
-    //glEnd();
-    //
-    //// draw game sides
-    //glBegin(GL_LINE_STRIP);
-    //glVertex2i(1, 1);
-    //glVertex2i(width_ - 1, 1);
-    //glVertex2i(width_ - 1, height_ - 1);
-    //glVertex2i(1,height_ - 1);
-    //glEnd();
-    //
-    //// draw ball
-    //glBegin(GL_POINTS);
-    //glVertex2dv(ballPosition_.array());
-    //glEnd();
-    //
-    //// force screen update
-    //glutSwapBuffers();
-    //glFlush();
+    // clear window
+    glClear(GL_COLOR_BUFFER_BIT);
+	
+	//----------------------------
+	//show grid on screen
+	
+	glColor3f(0,0,0);
+	int i;
+	for(i=0;i<14;++i){
+		glBegin(GL_LINES);
+		glVertex2d(0,(i*16));
+		glVertex2d(256,(i*16));
+		glEnd();
+	}
+	
+	int j;
+	for(j=0;j<16;++j){
+		glBegin(GL_LINES);
+		glVertex2d((j*16),0);
+		glVertex2d((j*16), 224);
+		glEnd();
+	}
+	//---------------------------
+	//
+	
+    // force screen update
+    glFlush();
+	glutSwapBuffers();
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 {
-    //if (key == 'q') {
-    //    exit(0);
-    //}
+	//need to figure out multiple key presses
+	
+    if (key == 'q') {
+        exit(0);
+		}
+	if (key == 'p') {
+        //pause
+	}
+	if (key == 'a') {
+        //run
+		//shoot fireball
+	}
+	if (key == 's') {
+        //jump
+	}
+	if (key == 'k') {
+        //left
+	}
+	if (key == 'l') {
+        //right
+	}
+	
+	//PONG
     //// indicate we should be moving paddle down
     //else if (key == 'd') {
     //    moveDown_ = true;
@@ -157,6 +186,7 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 
 void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 {
+	//PONG
     //// s to start game
     //if (key == 's') {
     //    if (!playing_) {
@@ -170,7 +200,8 @@ void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 //----------------------------------------------------------------------
 
 void SceneWindow::timerCB(int value)
-{    
+{   
+	//PONG
     //// move paddle if holding down key
     //if (moveUp_) {
     //    paddlePosition_[1] += 3;
