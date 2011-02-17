@@ -5,7 +5,7 @@
 #define _LEVEL_H
 //------------------------------------------------------------
 //forward declaration of LList and Drawable
-class LList;
+//#include "LList.h";
 class Drawable;
 //------------------------------------------------------------
 class Level {
@@ -18,11 +18,14 @@ public:
 	//updates the active area and activates the relevant drawables, removes inactive items from the front of the list
 	void updateExtends();
 	//iterates through the llist to find and remove the object
-	void removeDrawable(*Drawable);
+	void removeDrawable(Drawable *obj);
+	//void getActiveDrawable(LList &drawableList);
+	//void getActiveMovable(LList &drawableList);
+	//void getActiveBlocks(LList &drawableList);
 //------------------------------------------------------------
 private:
 	// 6 LLists 3 active 3 inactive
 	// levelDrawable_ and activeDrawable contain only coins, fire flowers, and the flag
-	LList levelMovable_, levelDrawable_, levelBlocks_, activeMovable_, activeDrawable_, activeBlocks_;
+	//	LList levelMovable_, levelDrawable_, levelBlocks_, activeMovable_, activeDrawable_, activeBlocks_;
 };
 #endif
