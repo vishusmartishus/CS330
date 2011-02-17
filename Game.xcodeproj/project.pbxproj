@@ -28,6 +28,7 @@
 		037A37561302C10100788A82 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37411302C10100788A82 /* Turtle.cpp */; };
 		037A378D1302C3C300788A82 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
 		037A37931302C41B00788A82 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37921302C41B00788A82 /* Scene.cpp */; };
+		03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		03ECB8B71304C71700B5D298 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B61304C71700B5D298 /* GLUT.framework */; };
 		03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -90,6 +91,8 @@
 		037A378C1302C3C300788A82 /* Movable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movable.cpp; sourceTree = "<group>"; };
 		037A37911302C41B00788A82 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		037A37921302C41B00788A82 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		03911FF4130CB9AB006F51B2 /* Coin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coin.cpp; sourceTree = "<group>"; };
+		03911FF5130CB9AB006F51B2 /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coin.h; sourceTree = "<group>"; };
 		03ECB8B61304C71700B5D298 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		03ECB8B81304C71700B5D298 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				037A37371302C10100788A82 /* Nonbreakable.cpp */,
 				037A37281302C10100788A82 /* FireFlower.h */,
 				037A37271302C10100788A82 /* FireFlower.cpp */,
+				03911FF5130CB9AB006F51B2 /* Coin.h */,
+				03911FF4130CB9AB006F51B2 /* Coin.cpp */,
 			);
 			name = Drawable;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				037A37931302C41B00788A82 /* Scene.cpp in Sources */,
 				03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */,
 				03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */,
+				03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
