@@ -22,10 +22,10 @@ public:
     void timerCB(int value);
     
     void startGame();
+	void loadLevel();
     void mainLoop();
     
 private:
-    Drawable position_[];
     
     // whole level size
     int width_, height_;
