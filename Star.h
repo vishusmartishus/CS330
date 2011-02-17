@@ -27,6 +27,7 @@ public:
     ~Star();
     
     // methods
+    
     // openGL draw method
     virtual void draw()=0;
     

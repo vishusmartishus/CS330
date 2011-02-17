@@ -27,44 +27,54 @@ AllMovable::~AllMovable()
 
 //---------------------------------------------------------
 
-Drawable* AllMovable::checkFront()
+Drawable* AllMovable::checkRight()
 {
-    
+    Drawable *d;
+    return d;
 }
 
 //---------------------------------------------------------
 
-Drawable* AllMovable::checkBehind()
+Drawable* AllMovable::checkLeft()
 {
-    
+    Drawable *d;
+    return d;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkAbove()
 {
-    
+    Drawable *d;
+    return d;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkBelow()
 {
-    
+    Drawable *d;
+    return d;
+}
+
+//---------------------------------------------------------
+
+double AllMovable::getXVelocity()
+{
+    return 1;
+}
+
+//---------------------------------------------------------
+
+double AllMovable::getYVelocity()
+{
+    return 1;
 }
 //---------------------------------------------------------
 
-double getXvelocity()
-{
-    
-}
-//---------------------------------------------------------
-
-double getYvelocity()
-{
-    
-}
-//---------------------------------------------------------
-void kill(&Drawable)
+void AllMovable::kill(Drawable *&d)
 {
 
 }
+
 //---------------------------------------------------------
