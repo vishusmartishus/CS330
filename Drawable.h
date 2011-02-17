@@ -38,12 +38,17 @@ public:
     // Declare the method to set the y-coordinate.
     // Set to the passed value variable
     void setY( int value );
-    // Setters and getters for the killsside, killstop, killsbottom, and points
+    // Getters for the killsside, killstop, killsbottom, and points
     bool killsFromBottom() const { return killsBottom_; }
 	bool killsFromSide() const { return killsSide_; }
     bool killsFromTop() const { return killsTop_; }
     int getPoints() const { return points_; }
-//------------------------------------------------------------
+    //Setters for left, right, top, and bottom
+    void setKillsBottom(bool kills);
+	void setKillsSide(bool kills);
+    void setKillsTop(bool kills);
+    void setPoints(int points);
+    //------------------------------------------------------------
 private:
     // Determines if it kills Mario from the side, top, and bottom
     bool killsBottom_, killsSide_, killsTop_;
