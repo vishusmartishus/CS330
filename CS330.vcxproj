@@ -67,6 +67,7 @@
     <ClInclude Include="AllMovable.h" />
     <ClInclude Include="Base.h" />
     <ClInclude Include="Breakable.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="EnemyFireball.h" />
     <ClInclude Include="Fireflower.h" />
@@ -90,6 +91,7 @@
     <ClCompile Include="AllMovable.cpp" />
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Breakable.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="EnemyFireball.cpp" />
     <ClCompile Include="Fireflower.cpp" />

@@ -108,6 +108,9 @@
     <ClInclude Include="MarioFireball.h">
       <Filter>Header Files\Movable</Filter>
     </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Base.cpp">
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="MarioFireball.cpp">
       <Filter>Source Files\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Source Files\Drawable</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
