@@ -17,10 +17,10 @@
 
 Turtle::Turtle()
 {
-	killsBottom_ = true;
-	killsSide_ = true;
-	killsTop_ = false;
-	points_ = 0;
+	setKillsBottom(true);
+	setKillsSide(true);
+	setKillsTop(false);
+	setPoints(0);
 	horizontalVelocity_ = 0;
 	verticalVelocity_ = 0;
 }

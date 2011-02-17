@@ -34,6 +34,7 @@ public:
     void shootFireball();
 	// plant's move is different from the normal move
 	void move();
+    
 };
 
 //---------------------------------------------------------
