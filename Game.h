@@ -9,9 +9,9 @@ Feb. 02 2011*/
 class Game {
     public:
         Game();
-        int pointsCall(); //send score
-        int coinsCall(); //send coins
-        int livesCall(); //send lives
+        int getPoints(); //send score
+        int getCoins(); //send coins
+        int getLives(); //send lives
         void addCoin(); //add a single coin to current total. also handles 100 coins=life transition
         void addLife(); 
         void subLife(); //subtract life

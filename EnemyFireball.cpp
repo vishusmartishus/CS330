@@ -13,19 +13,19 @@
 
 //---------------------------------------------------------
 
-EnemyFireball::Fireball()
+EnemyFireball::EnemyFireball()
 {
-	killsBottom_ = true;
-	killsSide_ = true;
-	killsTop_ = false;
-	points_ = 0;
+	setKillsBottom(true);
+	setKillsSide(true);
+	setKillsTop(true);
+	setPoints(0);
 	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0; 
+	verticalVelocity_ = 0;
 }
 
 //---------------------------------------------------------
 
-EnemyFireball::~Fireball()
+EnemyFireball::~EnemyFireball()
 {
     
 }

@@ -21,6 +21,8 @@ public:
 
 
     }
+	// Returns object type
+	int objectType() { return 1; }
     // Create method that creates the flag
 	// xCoor is x coordinate for flag
     // yCoor is y coordinate for flag

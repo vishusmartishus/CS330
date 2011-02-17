@@ -22,6 +22,8 @@ public:
 
 
     }
+	// Returns object type
+	int objectType() { return 4; }
     // Declare the method to appear
 	// xCoor is x coordinate for fire flower
     // yCoor is y coordinate for fire flower

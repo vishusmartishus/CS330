@@ -28,26 +28,27 @@ public:
     
     // instance vars
 
-		// direction of object; horizontal/vertical velocity
+    // direction of object; horizontal/vertical velocity
     double horizontalVelocity_;
     double verticalVelocity_;
 
     
     // methods
-		// passes true if nothing is in front of the object    
+    
+    // passes true if nothing is in front of the object    
 	Drawable* checkRight();
-	    // passes true if nothing is behind the object    
+    // passes true if nothing is behind the object    
 	Drawable* checkLeft();
-	    // passes true if nothing is below the object    
+    // passes true if nothing is below the object    
 	Drawable* checkBelow();
-	    // passes true if nothing is above the object    
+    // passes true if nothing is above the object    
 	Drawable* checkAbove();
-		// getters for velocity
+    // getters for velocity
 	double getXVelocity();
 	double getYVelocity();
 
-		// kills object
-	void kill(&Drawable);
+    // kills object
+	void kill(Drawable *&d);
     
 };
 
