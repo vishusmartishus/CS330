@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "SceneWindow.h"
+#include "Mario.h"
 
 extern SceneWindow *sw;
 
@@ -140,37 +141,24 @@ void SceneWindow::displayCB()
 
 void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 {
-    //if (key == 'q') {
-    //    exit(0);
-    //}
-    //// indicate we should be moving paddle down
-    //else if (key == 'd') {
-    //    moveDown_ = true;
-    //}
-    //// indicate we should be moving paddle up
-    //else if (key == 'f') {
-    //    moveUp_ = true;
-    //}
+    //Mario.updateKeyDown(key);
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 {
-    //// s to start game
-    //if (key == 's') {
-    //    if (!playing_) {
-    //        startGame();
-    //    }
-    //}
-    //// key release so stop moving paddle
-    //moveUp_ = moveDown_ = false;
+    //Mario.updateKeyUp(key);
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::timerCB(int value)
-{    
+{
+	// look at where mario is
+	// update extents in level class
+	// iterate through objects and move them
+	// redraw
     //// move paddle if holding down key
     //if (moveUp_) {
     //    paddlePosition_[1] += 3;

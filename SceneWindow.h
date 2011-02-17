@@ -25,12 +25,11 @@ public:
     void mainLoop();
     
 private:
-    //Drawable position_[];
-    
     // whole level size
     int width_, height_;
 	// viewport size
 	int viewportWidth_, viewportHeight_;
+	int viewportLeftX_, viewportRightx_;
 };
 
 //----------------------------------------------------------------------
