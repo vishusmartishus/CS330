@@ -19,6 +19,7 @@ public:
 	//Constructor
 	Mario();
   
+	virtual void draw();
   	//Gets called when key is pressed
 	void update(int Button[]);
 

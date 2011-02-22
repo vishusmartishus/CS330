@@ -21,6 +21,7 @@ public:
 
 
     }
+	virtual void draw();
 	// Returns object type
 	int objectType() { return 3; }
     // create Method that creates the block
