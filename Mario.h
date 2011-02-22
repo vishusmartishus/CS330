@@ -21,12 +21,14 @@ public:
   
 	virtual void draw();
   	//Gets called when key is pressed
-	void update(int Button[]);
+	void updateKeyDown(unsigned char button);
+	//Gets called when key is let up
+	void updateKeyUp(unsigned char button);
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
 	int state_, maxHeight_; 
-	bool isInvincible_, isJumping_, isRunning_;
+	bool isInvincible_, isJumping_, isRunning_, isFalling_;
 
 	void jump();
 	//Moves Mario to the left or right and calls check() at beginning

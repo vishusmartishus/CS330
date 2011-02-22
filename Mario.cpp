@@ -30,11 +30,18 @@ Mario::Mario()
     isInvincible_ = false;
     isJumping_ = false;
     isRunning_ = false;
+	isFalling_ = false;
     
 }
 //------------------------------------------------------------
 //updates Mario's info when a button is pushed
-void Mario::update(int button[])
+void Mario::updateKeyDown(unsigned char button)
+{
+    
+}
+//------------------------------------------------------------
+//upadates Mario's info when a button is let up
+void Mario::updateKeyUp(unsigned char button)
 {
     
 }
@@ -42,13 +49,41 @@ void Mario::update(int button[])
 //method to calculate Marios Jump
 void Mario::jump()
 {
-
+	if (!isJumping_ and !isFalling_) {
+		isJumping_ = true;
+	}
+	if (isJumping_) {
+		if (this->getY() < maxHeight_) {
+			if (isRunning_) {
+				this->setY(this->getY() + 5);
+			}
+			else {
+				this->setY(this->getY() + 3);
+			}
+		}
+		else {
+			isJumping_ = false;
+			isFalling_ = true;
+		}
+	}
+	if (isFalling_) {
+		this->setY(this->getY() - 4);
+	}
 }
 //------------------------------------------------------------
 //method to calculate Marios movement
 void Mario::move(bool isRunning)
 {
-    
+	//Check right barrier for screen movement?
+	
+	if (check(isRunning_)) {
+		if (isRunning_) {
+			this->setX(this->getX() + 5);
+		}
+		else {
+			this->setX(this->getX() + 3);
+		}
+	}
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
