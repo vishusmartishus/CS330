@@ -4,6 +4,15 @@
 // include header file FireFlower.h
 #include "FireFlower.h"
 //------------------------------------------------------------
+void FireFlower::draw()
+{
+	
+	
+	
+	
+	
+}
+//------------------------------------------------------------
 // Makes the fireflower appear
 void FireFlower::appear(int xCoor, int yCoor) 
 {

@@ -21,15 +21,16 @@
 class Turtle: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     Turtle();
     // destructor
     ~Turtle();
     
     // methods
-    
-    // openGL draw method
-    virtual void draw()=0;
+
     
 };
 

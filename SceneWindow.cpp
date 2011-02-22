@@ -157,19 +157,8 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 	if (key == 'p') {
         //pause
 	}
-	if (key == 'a') {
-        //run
-		//shoot fireball
-	}
-	if (key == 's') {
-        //jump
-	}
-	if (key == 'k') {
-        //left
-	}
-	if (key == 'l') {
-        //right
-	}
+
+	//call update mario to move
 	
 	//PONG
     //// indicate we should be moving paddle down
@@ -186,6 +175,9 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 
 void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 {
+	//call update mario to move
+
+	
 	//PONG
     //// s to start game
     //if (key == 's') {
