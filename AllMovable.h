@@ -26,13 +26,6 @@ public:
     // destructor
     ~AllMovable();
     
-    // instance vars
-
-    // direction of object; horizontal/vertical velocity
-    double horizontalVelocity_;
-    double verticalVelocity_;
-
-    
     // methods
     
     // passes true if nothing is in front of the object    
@@ -46,9 +39,19 @@ public:
     // getters for velocity
 	double getXVelocity();
 	double getYVelocity();
+    // setters for velocity
+    void setXVelocity(double x);
+    void setYVelocity(double y);
 
     // kills object
 	void kill(Drawable *&d);
+    
+private:
+    // instance vars
+    
+    // direction of object; horizontal/vertical velocity
+    double horizontalVelocity_;
+    double verticalVelocity_;
     
 };
 

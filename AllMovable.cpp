@@ -15,7 +15,8 @@
 
 AllMovable::AllMovable()
 {
-
+    horizontalVelocity_ = 0;
+    verticalVelocity_ = 0;
 }
 
 //---------------------------------------------------------
@@ -61,14 +62,28 @@ Drawable* AllMovable::checkBelow()
 
 double AllMovable::getXVelocity()
 {
-    return 1;
+    return horizontalVelocity_;
+}
+
+//---------------------------------------------------------
+
+void AllMovable::setXVelocity(double x)
+{
+    horizontalVelocity_ = x;
+}
+
+//---------------------------------------------------------
+
+void AllMovable::setYVelocity(double y)
+{
+    verticalVelocity_ = y;
 }
 
 //---------------------------------------------------------
 
 double AllMovable::getYVelocity()
 {
-    return 1;
+    return verticalVelocity_;
 }
 //---------------------------------------------------------
 
