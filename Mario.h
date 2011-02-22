@@ -7,9 +7,9 @@
  *
  */
 //Object constant will be 6
-const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 #ifndef __MARIO_H__
 #define __MARIO_H__
+const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 
 #include "AllMovable.h"
 
