@@ -21,6 +21,9 @@
 class Shell: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     Shell();
     // destructor
@@ -28,8 +31,7 @@ public:
     
     // methods
     
-    // openGL draw method
-    virtual void draw()=0;
+
     
 };
 

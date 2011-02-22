@@ -4,6 +4,15 @@
 // include header file FireFlower.h
 #include "FireFlower.h"
 //------------------------------------------------------------
+void FireFlower::draw()
+{
+	
+	
+	
+	
+	
+}
+//------------------------------------------------------------
 // spawns fire mario
 void FireFlower::createFireMario() 
 {
