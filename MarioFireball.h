@@ -19,6 +19,9 @@
 class MarioFireball: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     MarioFireball();
     // destructor
@@ -29,8 +32,7 @@ public:
     
     // methods
     
-    // openGL draw method
-    virtual void draw()=0;
+
     
 };
 
