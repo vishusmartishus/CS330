@@ -3,7 +3,8 @@
 // Included the Base.h file
 #include "Base.h"
 //------------------------------------------------------------
-void Base::draw() {
+void Base::draw() 
+{
 
 
 
@@ -12,12 +13,9 @@ void Base::draw() {
 
 }
 //------------------------------------------------------------
-int Base::objectType() {
-
-
-
-
-
+// return the object type
+int Base::objectType() 
+{
 	return 0;
 }
 //------------------------------------------------------------
