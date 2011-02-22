@@ -21,6 +21,7 @@ Mario::Mario()
     isInvincible_ = false;
     isJumping_ = false;
     isRunning_ = false;
+	isFalling_ = false;
     
 }
 //------------------------------------------------------------
@@ -39,17 +40,24 @@ void Mario::updateKeyUp(unsigned char button)
 //method to calculate Marios Jump
 void Mario::jump()
 {
-	int yCoor = this->getY();
-	isJumping_ = true;
-	if (yCoor < maxHeight_) {
-		if (isRunning_) {
-			this->setY(this->getY() + 5);
+	if (!isJumping_ and !isFalling_) {
+		isJumping_ = true;
+	}
+	if (isJumping_) {
+		if (this->getY() < maxHeight_) {
+			if (isRunning_) {
+				this->setY(this->getY() + 5);
+			}
+			else {
+				this->setY(this->getY() + 3);
+			}
 		}
 		else {
-			this->setY(this->getY() + 3);
+			isJumping_ = false;
+			isFalling_ = true;
 		}
 	}
-	else if (yCoor >= maxHeight_) {
+	if (isFalling_) {
 		this->setY(this->getY() - 4);
 	}
 }
@@ -59,12 +67,13 @@ void Mario::move(bool isRunning)
 {
 	//Check right barrier for screen movement?
 	
-	
-	if (isRunning) {
-		this->setX(this->getX() + 5);
-	}
-	else {
-		this->setX(this->getX() + 3);
+	if (check(isRunning_)) {
+		if (isRunning_) {
+			this->setX(this->getX() + 5);
+		}
+		else {
+			this->setX(this->getX() + 3);
+		}
 	}
 }
 //------------------------------------------------------------
