@@ -22,6 +22,7 @@ public:
 
 
     }
+	virtual void draw();
 	// Returns object type
 	int objectType() { return 4; }
     // Declare the method to appear

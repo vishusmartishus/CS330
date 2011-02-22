@@ -3,6 +3,15 @@
 // include header file
 #include "Nonbreakable.h"
 //------------------------------------------------------------
+void Nonbreakable::draw()
+{
+	
+	
+	
+	
+	
+}
+//------------------------------------------------------------
 //create function
 void Nonbreakable::create(int xCoor, int yCoor)
 {

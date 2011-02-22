@@ -3,6 +3,15 @@
 // include header file
 #include "Flag.h"
 //------------------------------------------------------------
+void Flag::draw()
+{
+	
+	
+	
+	
+	
+}
+//------------------------------------------------------------
 // create flag
 void Flag::create(int xCoor, int yCoor)
 {
