@@ -27,7 +27,7 @@ void Nonbreakable::create(int xCoor, int yCoor)
 //generateReward function
 void Nonbreakable::generateReward(bool isLarge, int reward)
 {
-	//reward ints, 1=coin, 2=mushroom/fireflower, 3=star
+	/*//reward ints, 1=coin, 2=mushroom/fireflower, 3=star
 	if (reward == 1) {
 		//reward will be a coin
 	}
@@ -44,7 +44,7 @@ void Nonbreakable::generateReward(bool isLarge, int reward)
 
 			
 
-
+*/
 }   
 //------------------------------------------------------------
 //redraw function
