@@ -1,5 +1,5 @@
 // Drawable.h
-// Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
+// Jamie Veals, John (Jack) Johnson, Jay Bondzeleske
 //------------------------------------------------------------
 // If Drawable.h is not defined, defines it
 #ifndef _DRAWABLE_H
@@ -7,9 +7,17 @@
 //------------------------------------------------------------
 // Includes the Base.h file
 #include "Base.h"
+//Includes the Glut/OpenGl Libraries
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+#else
+#include <glut.h>
+#include <GL/gl.h>
+#endif
 //------------------------------------------------------------
 // Forward declaration of scene
-class Level; 
+class Level;
 //------------------------------------------------------------
 // Drawable class that inherits the Base class
 class Drawable:public Base {

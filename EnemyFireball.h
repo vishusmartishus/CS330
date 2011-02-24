@@ -27,12 +27,10 @@ public:
     // destructor
     ~EnemyFireball();
     
-    // instance vars
-    
-
-    
     // methods
     
+    // object type
+    int objectType() { return 13; }
     
 };
 
