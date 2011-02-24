@@ -16,11 +16,11 @@ void FireFlower::draw()
 }
 //------------------------------------------------------------
 // Makes the fireflower appear
-void FireFlower::appear(int xCoor, int yCoor) 
+void FireFlower::create(int xCoor, int yCoor) 
 {
-
-
-
+    setX(xCoor);
+    setY(yCoor);
+    draw();
 
 
 
