@@ -1,5 +1,5 @@
 // Drawable.h
-// Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
+// Jamie Veals, John (Jack) Johnson, Jay Bondzeleske
 //------------------------------------------------------------
 // If Drawable.h is not defined, defines it
 #ifndef _DRAWABLE_H
@@ -9,7 +9,7 @@
 #include "Base.h"
 //------------------------------------------------------------
 // Forward declaration of scene
-class Level; 
+#include "Level.h"
 //------------------------------------------------------------
 // Drawable class that inherits the Base class
 class Drawable:public Base {
