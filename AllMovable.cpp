@@ -37,9 +37,7 @@ Drawable* AllMovable::checkRight()
     
     // if x velocity is positive (moving right)
     
-      // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
-      // assign large object type number to distinguish nil drawable object
-      // and the object can move?
+      // assign object type of -1 for nothing in the way
     
       // iterate through active lists
       // get x velocity of current object
@@ -68,9 +66,7 @@ Drawable* AllMovable::checkLeft()
     
     // if x velocity is negative (moving left)
     
-      // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
-      // assign large object type number to distinguish nil drawable object
-      // and the object can move?
+      // assign object type of -1 for nothing in the way
     
       // iterate through active lists
       // get x velocity of current object
@@ -99,9 +95,7 @@ Drawable* AllMovable::checkAbove()
     
     // if y velocity is positive (moving up)
     
-    // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
-    // assign large object type number to distinguish nil drawable object
-    // and the object can move?
+    // assign object type of -1 for nothing in the way
     
     // iterate through active lists
     // get y velocity of current object
@@ -130,9 +124,7 @@ Drawable* AllMovable::checkBelow()
     
     // if y velocity is negative (moving down)
     
-    // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
-    // assign large object type number to distinguish nil drawable object
-    // and the object can move?
+    // assign object type of -1 for nothing in the way
     
     // iterate through active lists
     // get y velocity of current object

@@ -30,7 +30,9 @@ public:
     ~Turtle();
     
     // methods
-
+    
+    // object type
+    int objectType() { return 12; }
     
 };
 

@@ -7,6 +7,14 @@
 //------------------------------------------------------------
 // Includes the Base.h file
 #include "Base.h"
+//Includes the Glut/OpenGl Libraries
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+#else
+#include <glut.h>
+#include <GL/gl.h>
+#endif
 //------------------------------------------------------------
 // Forward declaration of scene
 class Level;

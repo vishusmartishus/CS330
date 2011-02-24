@@ -16,21 +16,28 @@
 class LList {
 public:
 	LList();
+	~LList();
+	
+	LList(const LList& source);
+	LList& operator=(const LList &list);
 	
 	void removeFirst(Drawable *&item);
 	
 	void append(Drawable *&item);
 	
-	void first(Drawable *&item);
+	void first(Drawable *&item) const;
 	
 	void removeDrawable(Drawable *obj);
 	
-	LList& operator=(const LList &list);
+	int size() const { return size_; }
 	
 private:
-	ListNode *head;
-	ListNode *tail;
-	int size;
+	
+	void copy(const LList &source);
+	
+	ListNode *head_;
+	ListNode *tail_;
+	int size_;
 	
 };
 

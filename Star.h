@@ -31,8 +31,9 @@ public:
     
     // methods
     
+    // object type
+    int objectType() { return 11; }
 
-    
 };
 
 //---------------------------------------------------------

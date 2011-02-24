@@ -29,11 +29,10 @@ public:
     // destructor
     ~Goomba();
     
-    // instance vars
-    
     // methods
     
-
+    // object type
+    int objectType() { return 7; }
     
 };
 

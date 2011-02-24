@@ -33,9 +33,6 @@ public:
 	// reward is an int that tells which reward
     void generateReward(bool isLarge, int reward);
     // redraw method that redraws the block
-	// xCoor is x coordinate for block
-    // yCoor is y coordinate for block
-    void redraw(int xCoor, int yCoor);
 
 private:
     // Three types of blocks (Question, Regular, and Blocks little Mario cannot break)
