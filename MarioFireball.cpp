@@ -19,8 +19,8 @@ MarioFireball::MarioFireball()
 	setKillsSide(false);
 	setKillsTop(false);
 	setPoints(0);
-	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0;
+	setXVelocity(0);
+	setYVelocity(0);
 }
 
 //---------------------------------------------------------
