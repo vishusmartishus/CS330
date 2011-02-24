@@ -15,9 +15,9 @@ void Breakable::draw()
 // create block
 void Breakable::create(int xCoor, int yCoor)
 {
-	Breakable::draw();
-	Breakable::setX(xCoor);
-	Breakable::setY(yCoor);
+	draw();
+	setX(xCoor);
+	setY(yCoor);
 
 
 

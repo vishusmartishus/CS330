@@ -16,9 +16,9 @@ void Flag::draw()
 void Flag::create(int xCoor, int yCoor)
 {
 
-
-
-
+	draw();
+	setX(xCoor);
+	setY(yCoor);
 
 
 }
