@@ -27,12 +27,10 @@ public:
     // destructor
     ~MarioFireball();
     
-    // instance vars
-   
-    
     // methods
     
-
+    // object type
+    int objectType() { return 14; }
     
 };
 
