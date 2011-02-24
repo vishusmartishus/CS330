@@ -37,14 +37,18 @@ bool Movable::canMove()
 
 void Movable::xReverse()
 {
-
+	double xVel = getXVelocity();
+	double reversedXVel = -1*xVel;
+	setXVelocity(reversedXVel);
 }
 
 //---------------------------------------------------------
 
 void Movable::yReverse()
 {
-
+	double yVel = getYVelocity();
+	double reversedYVel = -1*yVel;
+	setXVelocity(reversedYVel);
 }
 
 //---------------------------------------------------------
