@@ -16,12 +16,11 @@ void Coin::draw()
 }
 //------------------------------------------------------------
 // Makes the coin appear
-void Coin::appear(int xCoor, int yCoor) 
+void Coin::create(int xCoor, int yCoor) 
 {
-
-
-
-
+    setX(xCoor);
+    setY(yCoor);
+    draw();
 
 
 }
