@@ -9,7 +9,7 @@
 #include "Base.h"
 //------------------------------------------------------------
 // Forward declaration of scene
-class Scene; 
+class Level; 
 //------------------------------------------------------------
 // Drawable class that inherits the Base class
 class Drawable:public Base {
@@ -19,7 +19,7 @@ public:
     Drawable () {}
 	// Constructor for Drawable
     // s is the scene that holds this Drawable
-	Drawable(Scene *s)
+	Drawable(Level *l)
     {
 
 
@@ -28,10 +28,9 @@ public:
 
 
     }
-    // Declare the method to get the x-coordinate.
-    int getX();
-    // Declare the method to get the y-coordinate.
-    int getY();
+    // Declare the method to get the x-coordinate and the y-coordinate
+    int getX() const { return xCoor_;}
+    int getY() const { return yCoor_;}
     // Declare the method to set the x-coordinate.
     // Set to the passed value variable
     void setX( int value );
@@ -54,8 +53,9 @@ private:
     bool killsBottom_, killsSide_, killsTop_;
     // Integer number for the points, x coordinate, y coordinate
     int points_, xCoor_, yCoor_;
-    // Pointer for the scene
-    Scene *scene_;
+protected:
+    // Pointer for the level
+    Level *level_;
 
 };
 

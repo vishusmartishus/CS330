@@ -13,17 +13,6 @@ void FireFlower::draw()
 	
 }
 //------------------------------------------------------------
-// spawns fire mario
-void FireFlower::createFireMario() 
-{
-
-
-
-
-
-
-}
-//------------------------------------------------------------
 // Makes the fireflower appear
 void FireFlower::appear(int xCoor, int yCoor) 
 {
