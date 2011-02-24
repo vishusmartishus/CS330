@@ -31,9 +31,6 @@ public:
     
     // instance vars
     
-    // horizontal and vertical velocities
-    double horizontalVelocity_, verticalVelocity_;
-    
     // methods
     
 
