@@ -33,6 +33,7 @@
 		03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Game.1 */; };
+		DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,6 +99,10 @@
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Game; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* Game.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Game.1; sourceTree = "<group>"; };
+		DA38FB79130D9E4800C5F7A6 /* ListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNode.h; sourceTree = "<group>"; };
+		DA38FB7A130D9E5700C5F7A6 /* LList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LList.h; sourceTree = "<group>"; };
+		DA38FB7B130D9E5700C5F7A6 /* LList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LList.cpp; sourceTree = "<group>"; };
+		DA38FB7D130D9E6D00C5F7A6 /* LListIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LListIterator.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +201,7 @@
 		08FB7794FE84155DC02AAC07 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				DA38FB78130D9E1C00C5F7A6 /* Data Structures */,
 				037A375C1302C1BA00788A82 /* Drawable */,
 				037A37581302C14A00788A82 /* Scene */,
 				037A375B1302C16600788A82 /* Mario */,
@@ -223,6 +229,17 @@
 				C6859E8B029090EE04C91782 /* Game.1 */,
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		DA38FB78130D9E1C00C5F7A6 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				DA38FB79130D9E4800C5F7A6 /* ListNode.h */,
+				DA38FB7A130D9E5700C5F7A6 /* LList.h */,
+				DA38FB7B130D9E5700C5F7A6 /* LList.cpp */,
+				DA38FB7D130D9E6D00C5F7A6 /* LListIterator.h */,
+			);
+			name = "Data Structures";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +315,7 @@
 				03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */,
 				03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */,
 				03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */,
+				DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
