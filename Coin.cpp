@@ -3,6 +3,8 @@
 //------------------------------------------------------------
 // include header file Coin.h
 #include "Coin.h"
+// include header file Scene.h
+#include "Level.h"
 //------------------------------------------------------------
 void Coin::draw()
 {

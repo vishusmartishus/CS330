@@ -3,6 +3,8 @@
 //------------------------------------------------------------
 // include header file FireFlower.h
 #include "FireFlower.h"
+// include header file Scene.h
+#include "Level.h"
 //------------------------------------------------------------
 void FireFlower::draw()
 {

@@ -9,7 +9,7 @@
 #include "Base.h"
 //------------------------------------------------------------
 // Forward declaration of scene
-#include "Level.h"
+class Level;
 //------------------------------------------------------------
 // Drawable class that inherits the Base class
 class Drawable:public Base {
