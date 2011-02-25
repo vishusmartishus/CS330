@@ -17,14 +17,12 @@
 
 Mushroom::Mushroom()
 {
-	isReward = true;
-	canKill = false;
-	canKillFromTop = false;
-	turnsAround = true;
-	canFallOff = false;
-	horizontalVelocity = 0;
-	verticalVelocity = 0;
-	numPoints = 0;
+	setKillsBottom(false);
+	setKillsSide(false);
+	setKillsTop(false);
+	setPoints(0);
+	setXVelocity(0);
+	setYVelocity(0);
 }
 
 //---------------------------------------------------------

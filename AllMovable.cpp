@@ -15,7 +15,8 @@
 
 AllMovable::AllMovable()
 {
-
+    horizontalVelocity_ = 0;
+    verticalVelocity_ = 0;
 }
 
 //---------------------------------------------------------
@@ -27,44 +28,166 @@ AllMovable::~AllMovable()
 
 //---------------------------------------------------------
 
-Drawable* AllMovable::checkFront()
+Drawable* AllMovable::checkRight()
 {
+    Drawable *d;
     
+    // get x velocity of self object
+    // get x coordinate of self object
+    
+    // if x velocity is positive (moving right)
+    
+      // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
+      // assign large object type number to distinguish nil drawable object
+      // and the object can move?
+    
+      // iterate through active lists
+      // get x velocity of current object
+      // get x coordinate of current object
+      // if current iteration object's x coordinate + x velocity is less
+      // than self object's x coordinate + x velocity
+        // going to hit that object
+          // determine what object is by object type number
+          // decide how to react
+          // call kill (remove from active LList)
+          // or do nothing if able to pass through
+    
+        // return that object that will be hit
+    
+    return d;
 }
 
 //---------------------------------------------------------
 
-Drawable* AllMovable::checkBehind()
+Drawable* AllMovable::checkLeft()
 {
+    Drawable *d;
     
+    // get x velocity of self object
+    // get x coordinate of self object
+    
+    // if x velocity is negative (moving left)
+    
+      // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
+      // assign large object type number to distinguish nil drawable object
+      // and the object can move?
+    
+      // iterate through active lists
+      // get x velocity of current object
+      // get x coordinate of current object
+      // if current iteration object's x coordinate + x velocity is greater
+      // than self object's x coordinate + x velocity
+        // going to hit that object
+        // determine what object is by object type number
+          // decide how to react
+          // call kill (remove from active LList)
+          // or do nothing if able to pass through
+       
+        // return that object that will be hit
+    
+    return d;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkAbove()
 {
+    Drawable *d;
     
+    // get y velocity of self object
+    // get y coordinate of self object
+    
+    // if y velocity is positive (moving up)
+    
+    // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
+    // assign large object type number to distinguish nil drawable object
+    // and the object can move?
+    
+    // iterate through active lists
+    // get y velocity of current object
+    // get y coordinate of current object
+    // if current iteration object's y coordinate + y velocity is less
+    // than self object's y coordinate + y velocity
+      // going to hit that object
+      // determine what object is by object type number
+        // decide how to react
+        // call kill (remove from active LList)
+        // or do nothing if able to pass through
+    
+      // return that object that will be hit
+    
+    return d;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkBelow()
 {
+    Drawable *d;
     
+    // get y velocity of self object
+    // get y coordinate of self object
+    
+    // if y velocity is negative (moving down)
+    
+    // ASK HOW WE SHOULD HANDLE WHAT TO RETURN IF NOTHING IS IN THE WAY
+    // assign large object type number to distinguish nil drawable object
+    // and the object can move?
+    
+    // iterate through active lists
+    // get y velocity of current object
+    // get y coordinate of current object
+    // if current iteration object's y coordinate + y velocity is greater
+    // than self object's y coordinate + y velocity
+      // going to hit that object
+      // determine what object is by object type number
+        // decide how to react
+        // call kill (remove from active LList)
+        // or do nothing if able to pass through
+    
+      // return that object that will be hit
+    
+    return d;
+}
+
+//---------------------------------------------------------
+
+double AllMovable::getXVelocity()
+{
+    return horizontalVelocity_;
+}
+
+//---------------------------------------------------------
+
+void AllMovable::setXVelocity(double x)
+{
+    horizontalVelocity_ = x;
+}
+
+//---------------------------------------------------------
+
+void AllMovable::setYVelocity(double y)
+{
+    verticalVelocity_ = y;
+}
+
+//---------------------------------------------------------
+
+double AllMovable::getYVelocity()
+{
+    return verticalVelocity_;
 }
 //---------------------------------------------------------
 
-double getXvelocity()
+void AllMovable::kill(Drawable *&d)
 {
-    
+    // get object type
+    // if object is mario
+      // see how many lives are left
+      // if no more lives, remove from active LList
+        // signal game over
+    // any other object
+      // remove from active LList
 }
-//---------------------------------------------------------
 
-double getYvelocity()
-{
-    
-}
-//---------------------------------------------------------
-void kill(&Drawable)
-{
-
-}
 //---------------------------------------------------------

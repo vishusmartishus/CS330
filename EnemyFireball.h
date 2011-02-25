@@ -19,6 +19,9 @@
 class EnemyFireball: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     EnemyFireball();
     // destructor
@@ -30,8 +33,6 @@ public:
     
     // methods
     
-    // openGL draw method
-    virtual void draw()=0;
     
 };
 

@@ -21,6 +21,9 @@ public:
 
 
     }
+	virtual void draw();
+	// Returns object type
+	int objectType() { return 2; }
     // breakBlock method that destroys blocks
     // isLarge is bool that tells if Mario is big or small
     // xCoor is x coordinate for block

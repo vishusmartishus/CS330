@@ -21,6 +21,9 @@
 class Plant: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     Plant();
     // destructor
@@ -28,12 +31,12 @@ public:
     
     // methods
 
-    // openGL draw method
-    virtual void draw()=0;
+
     // method to shoot fireball from plant
     void shootFireball();
 	// plant's move is different from the normal move
 	void move();
+    
 };
 
 //---------------------------------------------------------

@@ -22,6 +22,9 @@ public:
 
 
     }
+	virtual void draw();
+	// Returns object type
+	int objectType() { return 5; }
     // Declare the method to appear
 	// xCoor is x coordinate for coin
     // yCoor is y coordinate for coin

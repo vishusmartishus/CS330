@@ -17,12 +17,12 @@
 
 Plant::Plant()
 {
-	killsBottom_ = true;
-	killsSide_ = true;
-	killsTop_ = false;
-	points_ = 0;
-	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0;
+	setKillsBottom(true);
+	setKillsSide(true);
+	setKillsTop(true);
+	setPoints(0);
+	setXVelocity(0);
+	setYVelocity(0);
 }
 
 //---------------------------------------------------------
@@ -42,11 +42,16 @@ void Plant::draw()
     
     
 }
+
+//---------------------------------------------------------
+
 void Plant::shootFireball()
 {
 
 }
+
 //---------------------------------------------------------
+
 void Plant::move()
 {
 

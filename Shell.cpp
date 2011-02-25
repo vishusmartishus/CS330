@@ -17,12 +17,12 @@
 
 Shell::Shell()
 {
-	killsBottom_ = false;
-	killsSide_ = false;
-	killsTop_ = false;
-	points_ = 0;
-	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0;
+	setKillsBottom(true);
+	setKillsSide(true);
+	setKillsTop(false);
+	setPoints(0);
+	setXVelocity(0);
+	setYVelocity(0);
 }
 
 //---------------------------------------------------------

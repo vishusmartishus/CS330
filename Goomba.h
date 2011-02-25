@@ -21,18 +21,19 @@
 class Goomba: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     Goomba();
     // destructor
     ~Goomba();
     
     // instance vars
-    double horizontalVelocity_, verticalVelocity_;
     
     // methods
     
-    // openGL draw method
-    virtual void draw()=0;
+
     
 };
 

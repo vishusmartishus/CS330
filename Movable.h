@@ -27,6 +27,7 @@ public:
     ~Movable();
 
     // methods
+    
 	// scans movable and drawable arrays and decides if they can move
 	// uses "above" bools to decide how to react
 	bool canMove();
@@ -35,9 +36,7 @@ public:
 	void yReverse();
 	// tells the object to move this step
 	void move();
-
-
-  
+    
 };
 
 //---------------------------------------------------------
