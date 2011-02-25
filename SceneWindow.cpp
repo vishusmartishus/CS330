@@ -176,94 +176,19 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 
 void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 {
-<<<<<<< HEAD
     //Mario.updateKeyUp(key);
-=======
 	//call update mario to move
-
-	
-	//PONG
-    //// s to start game
-    //if (key == 's') {
-    //    if (!playing_) {
-    //        startGame();
-    //    }
-    //}
-    //// key release so stop moving paddle
-    //moveUp_ = moveDown_ = false;
->>>>>>> dreed/master
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::timerCB(int value)
-<<<<<<< HEAD
 {
 	// look at where mario is
 	// update extents in level class
 	// iterate through objects and move them
-	// redraw
-=======
-{   
-	//PONG
->>>>>>> dreed/master
-    //// move paddle if holding down key
-    //if (moveUp_) {
-    //    paddlePosition_[1] += 3;
-    //    if (paddlePosition_[1] > height_ - 10) {
-    //        moveUp_ = false;
-    //    }
-    //}
-    //else if (moveDown_) {
-    //    paddlePosition_[1] -= 3;
-    //    if (paddlePosition_[1] < 10) {
-    //        moveDown_ = false;
-    //    }
-    //}
-    //
-    //// update ball position
-    //ballPosition_ += ballVelocity_;
-    //
-    //// bounce off top or bottom wall
-    //if (ballPosition_[1] < 1 || ballPosition_[1] > height_ - 1) {
-    //    ballVelocity_[1] = -ballVelocity_[1];
-    //}
-    //
-    //// bounce off right wall
-    //if (ballPosition_[0] > width_ - 1) {
-    //    ballVelocity_[0] = -ballVelocity_[0];
-    //}
-    //
-    //// check if bounce off paddle
-    //if (ballPosition_[0] <= paddlePosition_[0] + 2) {
-    //    double diff = fabs(ballPosition_[1] - paddlePosition_[1]);
-    //    if (diff < paddleHalfHeight_) {
-    //        // basic reflection
-    //        //ballVelocity_[0] = -ballVelocity_[0];
-    //        
-    //        // realistic pong reflection
-    //        // simulates the paddle as an arc
-    //        Vec2 origin(paddlePosition_[0] - 5.0 * paddleHalfHeight_, paddlePosition_[1]);
-    //        Vec2 normal = ballPosition_ - origin;
-    //        normal.normalize();
-    //        // reflection formual
-    //        ballVelocity_ -= (2 * dot(ballVelocity_, normal) * normal);
-    //        
-    //        
-    //        // normalize and make velocity magnitude 3
-    //        ballVelocity_.normalize();
-    //        ballVelocity_ = 3.0 * ballVelocity_;
-    //    }
-    //    else {
-    //        playing_ = false;
-    //        return;
-    //    }
-    //}
+	// redraw   
 
-    //// force a redraw
-    //glutPostRedisplay();
-    //// continue game
-    //glutTimerFunc(10, &PongWindow::timerFunc, 0);
 }
 
 //----------------------------------------------------------------------

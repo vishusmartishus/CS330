@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-=======
+
 #include <iostream>
->>>>>>> dreed/master
 #include "SceneWindow.h"
 
 SceneWindow *sw;
