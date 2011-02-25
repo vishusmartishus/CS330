@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "SceneWindow.h"
+#include "Mario.h"
 
 extern SceneWindow *sw;
 
@@ -175,6 +176,9 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 
 void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 {
+<<<<<<< HEAD
+    //Mario.updateKeyUp(key);
+=======
 	//call update mario to move
 
 	
@@ -187,13 +191,22 @@ void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
     //}
     //// key release so stop moving paddle
     //moveUp_ = moveDown_ = false;
+>>>>>>> dreed/master
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::timerCB(int value)
+<<<<<<< HEAD
+{
+	// look at where mario is
+	// update extents in level class
+	// iterate through objects and move them
+	// redraw
+=======
 {   
 	//PONG
+>>>>>>> dreed/master
     //// move paddle if holding down key
     //if (moveUp_) {
     //    paddlePosition_[1] += 3;
