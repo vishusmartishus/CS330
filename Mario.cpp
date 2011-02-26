@@ -56,7 +56,7 @@ void Mario::updateKeyUp(unsigned char button)
 //method to calculate Marios Jump
 void Mario::jump()
 {
-	if (!isJumping_ and !isFalling_) {
+	if (!isJumping_ && !isFalling_) {
 		isJumping_ = true;
 	}
 	if (isJumping_) {
