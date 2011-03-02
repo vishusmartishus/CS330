@@ -3,16 +3,7 @@
 // Included the Base.h file
 #include "Base.h"
 //------------------------------------------------------------
-void Base::draw() 
-{
 
-
-
-
-
-
-}
-//------------------------------------------------------------
 // return the object type
 int Base::objectType() 
 {
