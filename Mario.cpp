@@ -30,15 +30,15 @@ Mario::Mario()
 {
     //init the private instance variables to default value
     state_ = SMALL_STATE;
-    jumpCount = 0;
+    jumpCount_ = 0;
     
     isInvincible_ = false;
     
     //init the keys
-    jumpKey = false;
-    rightKey = false;
-    leftKey = false;
-    sprintKey = false;
+    jumpKey_ = false;
+    rightKey_ = false;
+    leftKey_ = false;
+    sprintKey_ = false;
     
     
 }
