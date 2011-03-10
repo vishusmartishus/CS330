@@ -53,12 +53,9 @@ void Level::makeLevel()
 		 correct LList*/
 		
 		/*if (xcoord == 211) {
-			ycoord --;
-			xcoord =0; */
-		}
-	}
-	
-
+         ycoord --;
+         xcoord =0; */
+    }
 
 
 
