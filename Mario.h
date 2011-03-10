@@ -27,15 +27,20 @@ public:
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
-	int state_, maxHeight_; 
-	bool isInvincible_, isJumping_, isRunning_, isFalling_;
-
-	void jump();
+	int state_, jumpCount_; 
+	bool isInvincible_;
+    bool jumpKey_, rightKey_, leftKey_, sprintKey_;
+    
 	//Moves Mario to the left or right and calls check() at beginning
-	void move(bool isRunning);
+	void move();
 
-	//Checks to see if Mario ran into something
-	bool check(bool isRunning); 
+    //updates Mario 
+    void updateScene();
+    
+	//Checks to see if Mario ran into an enemy
+	bool checkEnemy();
+    //returns distance of allowed movement
+    int checkDistance();
 	//Returns true if Mario is in the fire state
 	bool fireball(); 
 	

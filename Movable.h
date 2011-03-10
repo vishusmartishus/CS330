@@ -27,15 +27,20 @@ public:
     ~Movable();
 
     // methods
+	//---------------------------------------------------------
     
 	// scans movable and drawable arrays and decides if they can move
 	// uses "above" bools to decide how to react
 	bool canMove();
-	// methods to reverse x or y velocity
-	void xReverse();
-	void yReverse();
-	// tells the object to move this step
-	void move();
+	//---------------------------------------------------------
+
+	// tells the object to move this step, which means to update its information for one frame.
+	// A timer will tell it to reverse its y-direction and a collision on the appropriate side
+	// will tell it to reverse its x-direction. All velocities are constant (no acceleration)
+	// so the only change in velocity should result from a change in direction, not magnitude.
+	// there are no methods to reverse velocity; this change can be handled directly by changing
+	// instance variables.
+	void updateScene();
     
 };
 

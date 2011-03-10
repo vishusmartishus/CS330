@@ -25,15 +25,6 @@ public:
 	virtual void draw();
 	// Returns object type
 	int objectType() { return 4; }
-    // Declare the method to appear
-	// xCoor is x coordinate for fire flower
-    // yCoor is y coordinate for fire flower
-    void create(int xCoor, int yCoor);
-    // Declare the method to disappear
-	// xCoor is x coordinate for fire flower
-    // yCoor is y coordinate for fire flower
-    void disappear(int xCoor, int yCoor);
-
 };
 
 #endif

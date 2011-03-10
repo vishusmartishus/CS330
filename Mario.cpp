@@ -13,7 +13,6 @@
 //------------------------------------------------------------
 void Mario::draw()
 {
-	
 	glColor3i(255, 0, 0);
 	int i;
 	for(i=0;i<4;++i){
@@ -24,20 +23,23 @@ void Mario::draw()
 		glVertex2d(getX(),getY()+16);
 		glEnd();
 	}
-	
 }
 //------------------------------------------------------------
 //constructor for Mario Class
 Mario::Mario()
 {
     //init the private instance variables to default value
-    state_ = 0;
-    //will update to actaul height when figured out
-    maxHeight_ = 0;
+    state_ = SMALL_STATE;
+    jumpCount_ = 0;
+    
     isInvincible_ = false;
-    isJumping_ = false;
-    isRunning_ = false;
-	isFalling_ = false;
+    
+    //init the keys
+    jumpKey_ = false;
+    rightKey_ = false;
+    leftKey_ = false;
+    sprintKey_ = false;
+    
     
 }
 //------------------------------------------------------------
@@ -53,51 +55,44 @@ void Mario::updateKeyUp(unsigned char button)
     
 }
 //------------------------------------------------------------
-//method to calculate Marios Jump
-void Mario::jump()
+//method to calculate Marios movement
+void Mario::move()
 {
-	if (!isJumping_ and !isFalling_) {
-		isJumping_ = true;
-	}
-	if (isJumping_) {
-		if (this->getY() < maxHeight_) {
-			if (isRunning_) {
-				this->setY(this->getY() + 5);
-			}
-			else {
-				this->setY(this->getY() + 3);
-			}
-		}
-		else {
-			isJumping_ = false;
-			isFalling_ = true;
-		}
-	}
-	if (isFalling_) {
-		this->setY(this->getY() - 4);
-	}
+    //sets Mario's x position to allowed distance
+    //this->setX(this->getX() + checkDistance(isRunning_));
+    
 }
 //------------------------------------------------------------
-//method to calculate Marios movement
-void Mario::move(bool isRunning)
+//updates Mario for one Frame
+void Mario::updateScene()
 {
-	//Check right barrier for screen movement?
-	
-	if (check(isRunning_)) {
-		if (isRunning_) {
-			this->setX(this->getX() + 5);
-		}
-		else {
-			this->setX(this->getX() + 3);
-		}
-	}
+ 
+    
+    
+}
+//------------------------------------------------------------
+//method that checks to see if Mario runs into or is hit by
+//an enemy
+bool Mario::checkEnemy()
+{
+    
+
+    
+    
+    
+    
+    
+    return false;
+    
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
 //to see if Mario runs into anything
-bool Mario::check(bool isRunning)
+int Mario::checkDistance()
 {
-    return false;
+    
+    
+    return 0;
 }
 //------------------------------------------------------------
 //Creates a fireball

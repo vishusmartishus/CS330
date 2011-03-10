@@ -23,16 +23,10 @@ public:
     }
 	virtual void draw();
 	// Returns object type
-	int objectType() { return 1; }
-    // Create method that creates the flag
-	// xCoor is x coordinate for flag
-    // yCoor is y coordinate for flag
-    void create(int xCoor, int yCoor);
-    // EndLevel method that ends the level
-    void endLevel();
+	virtual int objectType() { return 1; }
 
 private:
-     // FlagPoints array of flag points awarded
+     // FlagPoints array of flag points awarded based on where you touch the flag
     int flagPoints[5]; 
 };
 #endif
