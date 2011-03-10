@@ -39,7 +39,7 @@ Mario::Mario()
     rightKey_ = false;
     leftKey_ = false;
     sprintKey_ = false;
-    
+    fireballKey_ = false;
     
 }
 //------------------------------------------------------------
@@ -52,7 +52,26 @@ void Mario::updateKeyDown(unsigned char button)
 //upadates Mario's info when a button is let up
 void Mario::updateKeyUp(unsigned char button)
 {
-    
+	if (button == 'a') {
+		leftKey_ = false;
+	}
+	else if (button == 'w') {
+		jumpKey_ = false;
+	}
+	else if (button == 'd') {
+		rightKey_ = false;
+	}
+	else if (button == 'j') {
+		sprintKey_ = false;
+	}
+	else if (button == 'k') {
+		fireballKey_ = false;
+	}
+}
+//Returns Mario's state
+int Mario::getState() 
+{
+	return state_;
 }
 //------------------------------------------------------------
 //method to calculate Marios movement
