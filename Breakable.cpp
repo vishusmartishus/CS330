@@ -12,20 +12,8 @@ void Breakable::draw()
 	
 }
 //------------------------------------------------------------
-// create block
-void Breakable::create(int xCoor, int yCoor)
-{
-	draw();
-	setX(xCoor);
-	setY(yCoor);
-
-
-
-}
-
-//------------------------------------------------------------
 // destroy block
-void Breakable::breakBlock(bool isLarge, int xCoor, int yCoor)
+void Breakable::breakBlock(bool isLarge)
 {
 	if (isLarge == true) {
 		level_->removeDrawable(this);

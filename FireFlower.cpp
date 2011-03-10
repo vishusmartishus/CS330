@@ -21,20 +21,3 @@ void FireFlower::draw()
 	}
 	
 }
-//------------------------------------------------------------
-// Makes the fireflower appear
-void FireFlower::create(int xCoor, int yCoor) 
-{
-    setX(xCoor);
-    setY(yCoor);
-    draw();
-
-
-
-}
-//------------------------------------------------------------
-// Makes the fireflower disappear
-void FireFlower::disappear(int xCoor, int yCoor) 
-{
-    level_->removeDrawable(this);
-}

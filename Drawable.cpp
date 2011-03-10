@@ -3,18 +3,6 @@
 // Includes the Drawable.h file
 #include "Drawable.h"
 //------------------------------------------------------------
-// sets x-coordinate
-void Drawable::setX( int value ) 
-{
-    xCoor_ = value;
-}
-//------------------------------------------------------------
-// sets y-coordinate
-void Drawable::setY( int value ) 
-{
-    yCoor_ = value;
-}
-//------------------------------------------------------------
 // set killsBottom_
 void Drawable::setKillsBottom(bool kills)
 {
