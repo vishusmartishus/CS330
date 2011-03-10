@@ -33,27 +33,10 @@ bool Movable::canMove()
     return true;
 }
 
-//---------------------------------------------------------
-
-void Movable::xReverse()
-{
-	double xVel = getXVelocity();
-	double reversedXVel = -1.0 * xVel;
-	setXVelocity(reversedXVel);
-}
 
 //---------------------------------------------------------
 
-void Movable::yReverse()
-{
-	double yVel = getYVelocity();
-	double reversedYVel = -1.0 * yVel;
-	setXVelocity(reversedYVel);
-}
-
-//---------------------------------------------------------
-
-void Movable::move()
+void Movable::updateScene()
 {
 
 }
