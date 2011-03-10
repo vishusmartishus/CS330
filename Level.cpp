@@ -20,7 +20,7 @@ void Level::makeLevel()
 
 }
 //------------------------------------------------------------
-void Level::updateExtends()
+void Level::updateExtents(int leftBound, int rightBound)
 {
 
 
