@@ -12,7 +12,7 @@
 #include "Mario.h"
 
 extern SceneWindow *sw;
-
+Mario *mario;
 
 SceneWindow::SceneWindow(int argc, char **argv)
 {
@@ -57,8 +57,7 @@ void SceneWindow::startGame()
 {
 	
 	//set intial variables
-	
-	
+
 	//PONG
     // initial ball position
     //ballPosition_.set(width_ - 10, height_ / 2);
@@ -74,6 +73,7 @@ void SceneWindow::startGame()
     //// start playing
     //playing_ = true;
     //glutTimerFunc(10, &PongWindow::timerFunc, 0);
+	sw->loadLevel();
 }
 
 //----------------------------------------------------------------------
@@ -82,6 +82,7 @@ void SceneWindow::loadLevel()
 {
 	//called from start game
 	//loads in current level from set checkpoint
+	mario = new Mario();
 }
 
 //----------------------------------------------------------------------
@@ -154,12 +155,15 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 	
     if (key == 'q') {
         exit(0);
-		}
-	if (key == 'p') {
+	}
+	else if (key == 'p') {
         //pause
 	}
-
-	//call update mario to move
+	else
+	{
+		//call update mario to move
+		mario->updateKeyDown(key);
+	}
 	
 	//PONG
     //// indicate we should be moving paddle down
@@ -176,7 +180,7 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 
 void SceneWindow::keyboardUpCB(unsigned char key, int x, int y)
 {
-    //Mario.updateKeyUp(key);
+    mario->updateKeyUp(key);
 	//call update mario to move
 }
 
@@ -188,6 +192,8 @@ void SceneWindow::timerCB(int value)
 	// update extents in level class
 	// iterate through objects and move them
 	// redraw   
+
+	mario->updateScene();
 
 }
 

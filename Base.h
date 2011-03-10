@@ -35,19 +35,10 @@ public:
     void setRight(int right);
     void setTop(int top);
     void setBottom(int bottom);
-	// Declare the method to get the x-coordinate and the y-coordinate
-    int getX() const { return xCoor_;}
-    int getY() const { return yCoor_;}
-    // Declare the method to set the x-coordinate.
-    // Set to the passed value variable
-    void setX( int value );
-    // Declare the method to set the y-coordinate.
-    // Set to the passed value variable
-    void setY( int value );
 //------------------------------------------------------------
 private:
     // Private variables for the left, right, top, and bottom
-    int left_, right_, bottom_, top_, xCoor_, yCoor_;
+    int left_, right_, bottom_, top_;
     // Array of three numbers for the color
     float color_[3];    
 };

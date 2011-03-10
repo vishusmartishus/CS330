@@ -1,0 +1,17 @@
+Game
+
+Instance Vars
+array of points based on element //ex: (50,200,500,...ect)=(brick,coins,shellhit,...ect)
+score //points total
+ccount //coin total
+lcount //life total
+time //most likley not kept by us, but would be very useful if it was kept public
+
+methods
+Stracker(elnum) //given element corresponds to number of points to add based on an array.
+Ctracker(coins) //adds a given amount of coins to the local varriable ccount.
+Ltracker(ltype, lives) //(ltype=true add lives, ltype=false subtract lives.
+scall //sends score total
+ccall //sends coin total
+Lcall //send lives total
+
