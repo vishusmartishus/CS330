@@ -43,10 +43,34 @@ Mario::Mario()
     
 }
 //------------------------------------------------------------
-//updates Mario's info when a button is pushed
+//updates Mario's movement info when a button is pushed
 void Mario::updateKeyDown(unsigned char button)
 {
+    if (button == 'a')
+    {
+        leftKey_ = true;
+    }
     
+    else if (button == 'd')
+    {
+        rightKey_ = true;
+    }
+    
+    if (button == 'w')
+    {
+        jumpKey_ = true;
+        jumpCount_ = 5;
+    }
+    
+    if (button == 'j')
+    {
+        sprintKey_ = true;
+    }
+    
+    if (button = 'k')
+    {
+        fireballKey_ = true;
+    }
 }
 //------------------------------------------------------------
 //upadates Mario's info when a button is let up

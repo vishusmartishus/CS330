@@ -26,8 +26,8 @@ public:
 	void updateKeyUp(unsigned char button);
 	//Returns State of Mario
 	int getState();
-	
-	//updates Mario 
+    
+    //updates Mario 
     void updateScene();
 
 private:
