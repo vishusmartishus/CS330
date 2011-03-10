@@ -16,7 +16,7 @@ public:
 	//Creates the LLists from a text file
 	void makeLevel();
 	//updates the active area and activates the relevant drawables, removes inactive items from the front of the list
-	void updateExtends();
+	void updateExtents(int leftBound, int rightBound);
 	//iterates through the llist to find and remove the object
 	void removeDrawable(Drawable *obj);
 	//void getActiveDrawable(LList &drawableList);
