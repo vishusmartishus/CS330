@@ -75,7 +75,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="ListNode.h" />
     <ClInclude Include="LList.h" />
+    <ClInclude Include="LListIterator.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="MarioFireball.h" />
     <ClInclude Include="Movable.h" />
