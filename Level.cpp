@@ -6,6 +6,22 @@
 #include <fstream>
 using namespace std;
 
+bool Level::instanceFlag = false;
+Level* Level::single = NULL;
+Level* Level::sharedLevel()
+{
+	if(! instanceFlag)
+	{
+		single= new Level();
+		instanceFlag = true;
+		return single;
+	}
+	else 
+		{
+			return single;
+		}
+	}
+
 //------------------------------------------------------------
 Level::Level()
 {
@@ -15,25 +31,30 @@ Level::Level()
 
 }
 //------------------------------------------------------------
+Level::~Level()
+{
+	instanceFlag =false;
+}
+//------------------------------------------------------------
 void Level::makeLevel()
 {
 	
 	ifstream inFile;
 	inFile.open("level/level1.txt");
 	
-	int xcord= -1, ycord= 18;
+	int xcoord= -1, ycoord= 18;
 	char object;
 	
 	while (inFile.get(object)) {
-		xcord++;
+		//xcoord++;
 		
 		/*at this point the varible 'object' has the next item in the .txt 
 		 and here the 'object' and it's xcord and ycord are sent off to the 
 		 correct LList*/
 		
-		if (xcord == 211) {
-			ycord --;
-			xcord =0;
+		/*if (xcoord == 211) {
+			ycoord --;
+			xcoord =0; */
 		}
 	}
 	
