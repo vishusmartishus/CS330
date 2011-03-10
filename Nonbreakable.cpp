@@ -12,18 +12,6 @@ void Nonbreakable::draw()
 	
 }
 //------------------------------------------------------------
-//create function
-void Nonbreakable::create(int xCoor, int yCoor)
-{
-
-	draw();
-	setX(xCoor);
-	setY(yCoor);
-
-
-
-}
-//------------------------------------------------------------
 //generateReward function
 void Nonbreakable::generateReward(bool isLarge, int reward)
 {
@@ -45,4 +33,14 @@ void Nonbreakable::generateReward(bool isLarge, int reward)
 			
 
 }   
+//-------------------------------------------------------------
+bool Nonbreakable::hasReward(int item) {
+	if (item > -1) {
+	return true;
+	}
+	else {
+	return false;
+	}
+
+}
 

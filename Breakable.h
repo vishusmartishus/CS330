@@ -23,15 +23,10 @@ public:
     }
 	virtual void draw();
 	// Returns object type
-	int objectType() { return 2; }
+	virtual int objectType() { return 2; }
     // breakBlock method that destroys blocks
+	// Mario calls when he hits a block
     // isLarge is bool that tells if Mario is big or small
-    // xCoor is x coordinate for block
-    // yCoor is y coordinate for block
-    void breakBlock(bool isLarge, int xCoor, int yCoor);
-    // create method that creates the boxes
-    // xCoor is x coordinate for block
-    // yCoor is y coordinate for block
-    void create(int xCoor, int yCoor);
+    void breakBlock(bool isLarge);
 };
 #endif

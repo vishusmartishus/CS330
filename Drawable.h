@@ -36,31 +36,23 @@ public:
 
 
     }
-    // Declare the method to get the x-coordinate and the y-coordinate
-    int getX() const { return xCoor_;}
-    int getY() const { return yCoor_;}
-    // Declare the method to set the x-coordinate.
-    // Set to the passed value variable
-    void setX( int value );
-    // Declare the method to set the y-coordinate.
-    // Set to the passed value variable
-    void setY( int value );
     // Getters for the killsside, killstop, killsbottom, and points
     bool killsFromBottom() const { return killsBottom_; }
 	bool killsFromSide() const { return killsSide_; }
     bool killsFromTop() const { return killsTop_; }
     int getPoints() const { return points_; }
-    //Setters for left, right, top, and bottom
+    //Setters for side, top, and bottom
     void setKillsBottom(bool kills);
 	void setKillsSide(bool kills);
     void setKillsTop(bool kills);
-    void setPoints(int points);
+    // Accumulates points when called from child classes
+	void setPoints(int points);
     //------------------------------------------------------------
 private:
     // Determines if it kills Mario from the side, top, and bottom
     bool killsBottom_, killsSide_, killsTop_;
-    // Integer number for the points, x coordinate, y coordinate
-    int points_, xCoor_, yCoor_;
+    // Integer number for the points that all others inherit from to accumulate
+    int points_;
 protected:
     // Pointer for the level
     Level *level_;
