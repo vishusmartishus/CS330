@@ -171,15 +171,3 @@ double AllMovable::getYVelocity()
 }
 //---------------------------------------------------------
 
-void AllMovable::kill(Drawable *&d)
-{
-    // get object type
-    // if object is mario
-      // see how many lives are left
-      // if no more lives, remove from active LList
-        // signal game over
-    // any other object
-      // remove from active LList
-}
-
-//---------------------------------------------------------
