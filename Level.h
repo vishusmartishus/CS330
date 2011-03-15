@@ -20,12 +20,12 @@ public:
 	static Level* sharedLevel();
 	~Level();
 	//getters for all six linked lists
-	LList getActiveMovable() {return activeMovable_; }
-	LList getActiveDrawable() {return activeDrawable_; }
-	LList getActiveBlocks() {return activeBlocks_; }
-	LList getLevelMovable() {return levelMovable_; }
-	LList getLevelDrawable() {return levelDrawable_; }
-	LList getLevelBlocks() {return levelBlocks_; }
+	LList& getActiveMovable() {return activeMovable_; }
+	LList& getActiveDrawable() {return activeDrawable_; }
+	LList& getActiveBlocks() {return activeBlocks_; }
+	LList& getLevelMovable() {return levelMovable_; }
+	LList& getLevelDrawable() {return levelDrawable_; }
+	LList& getLevelBlocks() {return levelBlocks_; }
 	//creates a line of unbreakable blocks across the bottom for testing
 	void loadTestLevel();
 //------------------------------------------------------------
