@@ -4,8 +4,8 @@
 #ifndef _LEVEL_H
 #define _LEVEL_H
 //------------------------------------------------------------
-//forward declaration of LList and Drawable
-//#include "LList.h";
+#include "LList.h"
+//Forward declaration of Drawable
 class Drawable;
 //------------------------------------------------------------
 class Level {
@@ -19,9 +19,15 @@ public:
 	void removeDrawable(Drawable *obj);
 	static Level* sharedLevel();
 	~Level();
-	//void getActiveDrawable(LList &drawableList);
-	//void getActiveMovable(LList &drawableList);
-	//void getActiveBlocks(LList &drawableList);
+	//getters for all six linked lists
+	LList getActiveMovable() {return activeMovable_; }
+	LList getActiveDrawable() {return activeDrawable_; }
+	LList getActiveBlocks() {return activeBlocks_; }
+	LList getLevelMovable() {return levelMovable_; }
+	LList getLevelDrawable() {return levelDrawable_; }
+	LList getLevelBlocks() {return levelBlocks_; }
+	//creates a line of unbreakable blocks across the bottom for testing
+	void loadTestLevel();
 //------------------------------------------------------------
 private:
 	//constructor for level
@@ -31,6 +37,6 @@ private:
 	
 	// 6 LLists 3 active 3 inactive
 	// levelDrawable_ and activeDrawable contain only coins, fire flowers, and the flag
-	//	LList levelMovable_, levelDrawable_, levelBlocks_, activeMovable_, activeDrawable_, activeBlocks_;
+	LList levelMovable_, levelDrawable_, levelBlocks_, activeMovable_, activeDrawable_, activeBlocks_;
 };
 #endif
