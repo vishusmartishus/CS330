@@ -24,18 +24,20 @@ public:
 	void updateKeyDown(unsigned char button);
 	//Gets called when key is let up
 	void updateKeyUp(unsigned char button);
+	//Returns State of Mario
+	int getState();
+    
+    //updates Mario 
+    void updateScene();
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
 	int state_, jumpCount_; 
 	bool isInvincible_;
-    bool jumpKey_, rightKey_, leftKey_, sprintKey_;
+    bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
-
-    //updates Mario 
-    void updateScene();
     
 	//Checks to see if Mario ran into an enemy
 	bool checkEnemy();

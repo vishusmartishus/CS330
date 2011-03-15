@@ -33,16 +33,3 @@ void Base::setBottom(int bottom)
 {
     bottom_ = bottom;
 }
-//------------------------------------------------------------
-// sets x-coordinate
-void Base::setX( int value ) 
-{
-    xCoor_ = value;
-}
-//------------------------------------------------------------
-// sets y-coordinate
-void Base::setY( int value ) 
-{
-    yCoor_ = value;
-}
-//------------------------------------------------------------
