@@ -10,6 +10,9 @@
 
 #include "SceneWindow.h"
 #include "Mario.h"
+#include "Level.h"
+#include "LList.h"
+#include "LListIterator.h"
 
 extern SceneWindow *sw;
 Mario *mario;
@@ -141,6 +144,25 @@ void SceneWindow::displayCB()
 	}
 	//---------------------------
 	//
+	//Level *level_ = Level:: sharedLevel();
+	//LList movable = level_->getActiveMovable();
+	//LList drawable = level_->getActiveDrawable();
+	//LList blocks = level_->getActiveBlocks();
+	//LListIterator li;
+	//li.init(movable);
+	//Drawable *item;
+	//while (item = li.next()) {
+	//	item->draw();
+	//}
+	//li.init(drawable);
+	//while (item = li.next()) {
+	//	item->draw();
+	//}
+	//li.init(blocks);
+	//while (item = li.next()) {
+	//	item->draw();
+	//}
+
 	
     // force screen update
     glFlush();
@@ -164,16 +186,6 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 		//call update mario to move
 		mario->updateKeyDown(key);
 	}
-	
-	//PONG
-    //// indicate we should be moving paddle down
-    //else if (key == 'd') {
-    //    moveDown_ = true;
-    //}
-    //// indicate we should be moving paddle up
-    //else if (key == 'f') {
-    //    moveUp_ = true;
-    //}
 }
 
 //----------------------------------------------------------------------
