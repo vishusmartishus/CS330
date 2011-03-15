@@ -4,6 +4,7 @@
 #include "Level.h"
 #include "Drawable.h"
 #include <fstream>
+#include "Nonbreakable.h"
 using namespace std;
 
 bool Level::instanceFlag = false;
@@ -72,6 +73,17 @@ void Level::updateExtents(int leftBound, int rightBound)
 void Level::removeDrawable(Drawable *obj)
 {
 
+
+
+
+}
+//------------------------------------------------------------
+void Level::loadTestLevel()
+{
+	/*int left, top;
+	top = 544;
+	left = 0;
+	*/
 
 
 
