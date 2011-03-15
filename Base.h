@@ -35,6 +35,8 @@ public:
     void setRight(int right);
     void setTop(int top);
     void setBottom(int bottom);
+    // Sets color values, parameters RGB values
+    void setColor(float red, float green, float blue);
 //------------------------------------------------------------
 private:
     // Private variables for the left, right, top, and bottom
