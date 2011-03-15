@@ -12,6 +12,11 @@
 LList::LList() {
 	this->size_ = 0;
 }
+
+LList::~LList() {
+    
+}
+
 //------------------------------------------------------------
 void LList::removeFirst(Drawable *&item) {
 	if (this->size_ > 0) {
