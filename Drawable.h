@@ -29,7 +29,7 @@ public:
     // s is the scene that holds this Drawable
 	Drawable(Level *l)
     {
-
+        points_ = 0;
 
 
 
@@ -41,18 +41,21 @@ public:
 	bool killsFromSide() const { return killsSide_; }
     bool killsFromTop() const { return killsTop_; }
     int getPoints() const { return points_; }
-    //Setters for side, top, and bottom
-    void setKillsBottom(bool kills);
-	void setKillsSide(bool kills);
-    void setKillsTop(bool kills);
-    // Accumulates points when called from child classes
+    // Setters for whether an option kills from the side, top, and bottom
+    // By default all kills are set to false
+    void setKillsBottom(bool kills = false);
+	void setKillsSide(bool kills = false);
+    void setKillsTop(bool kills = false);
+    // Set points when called from child classes
 	void setPoints(int points);
+    // Accumulates the total points for the game
+    void incrementPoints(int points);
     //------------------------------------------------------------
 private:
     // Determines if it kills Mario from the side, top, and bottom
     bool killsBottom_, killsSide_, killsTop_;
     // Integer number for the points that all others inherit from to accumulate
-    int points_;
+    int points_, totalPoints_;
 protected:
     // Pointer for the level
     Level *level_;
