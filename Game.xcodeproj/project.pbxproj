@@ -27,7 +27,6 @@
 		037A37551302C10100788A82 /* Star.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A373F1302C10100788A82 /* Star.cpp */; };
 		037A37561302C10100788A82 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37411302C10100788A82 /* Turtle.cpp */; };
 		037A378D1302C3C300788A82 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
-		037A37931302C41B00788A82 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37921302C41B00788A82 /* Scene.cpp */; };
 		03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		03ECB8B71304C71700B5D298 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B61304C71700B5D298 /* GLUT.framework */; };
 		03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
@@ -90,8 +89,6 @@
 		037A37421302C10100788A82 /* Turtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turtle.h; sourceTree = "<group>"; };
 		037A378B1302C3C300788A82 /* Movable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movable.h; sourceTree = "<group>"; };
 		037A378C1302C3C300788A82 /* Movable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movable.cpp; sourceTree = "<group>"; };
-		037A37911302C41B00788A82 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
-		037A37921302C41B00788A82 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		03911FF4130CB9AB006F51B2 /* Coin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coin.cpp; sourceTree = "<group>"; };
 		03911FF5130CB9AB006F51B2 /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coin.h; sourceTree = "<group>"; };
 		03ECB8B61304C71700B5D298 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -121,8 +118,6 @@
 		037A37581302C14A00788A82 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				037A37911302C41B00788A82 /* Scene.h */,
-				037A37921302C41B00788A82 /* Scene.cpp */,
 				037A37301302C10100788A82 /* Level.h */,
 				037A372F1302C10100788A82 /* Level.cpp */,
 				037A372C1302C10100788A82 /* Game.h */,
@@ -270,7 +265,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -311,7 +305,6 @@
 				037A37551302C10100788A82 /* Star.cpp in Sources */,
 				037A37561302C10100788A82 /* Turtle.cpp in Sources */,
 				037A378D1302C3C300788A82 /* Movable.cpp in Sources */,
-				037A37931302C41B00788A82 /* Scene.cpp in Sources */,
 				03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */,
 				03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */,
 				03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */,
