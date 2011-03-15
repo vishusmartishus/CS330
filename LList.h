@@ -13,7 +13,12 @@
 #include "ListNode.h";
 #include "Drawable.h";
 
+class LListIterator;
+
 class LList {
+    
+    friend class LListIterator;
+    
 public:
 	LList();
 	~LList();
