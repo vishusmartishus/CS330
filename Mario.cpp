@@ -41,6 +41,7 @@ Mario::Mario()
     sprintKey_ = false;
     fireballKey_ = false;
     
+
 }
 //------------------------------------------------------------
 //updates Mario's movement info when a button is pushed
@@ -109,33 +110,39 @@ void Mario::move()
 //updates Mario for one Frame
 void Mario::updateScene()
 {
- 
+    //depending on whats happening we need to update Mario
+    // check the key and move mario according to the button that is being pushed
+    //call the check methods to check to see if Mario is running into things
+    //this works one frame at a time
+    //if Mario jumps decrease the jumpCount_ by 1 every frame
     
-    
-}
-//------------------------------------------------------------
-//method that checks to see if Mario runs into or is hit by
-//an enemy
-bool Mario::checkEnemy()
-{
-    
-
-    
-    
-    
-    
-    
-    return false;
     
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
 //to see if Mario runs into anything
-int Mario::checkDistance()
+bool Mario::check()
 {
+    //get all the values of the objects so Mario knows what to do 
+    // the object
+    //check each case for each object
+    //object list
+    //flag: 1, breakable: 2, nonbreakable: 3, Fireflower: 4, coin: 5
+    //Mario: 6, Goomba: 7, Mushroom: 8, Plant: 9, Shell: 10, Star: 11
+    //Turtle: 12, EnemyFireball: 13, MarioFireball: 14
     
+    //the level 
+    Level *level = Level::sharedLevel();
     
-    return 0;
+    //the lists of active objects
+    LList moveableList = level->getActiveMovable();
+    LList drawableList = level->getActiveDrawable();
+    LList blockList = level->getActiveBlocks();
+    
+    //instance of LListIterator
+    LListIterator iter;
+    
+    return false;
 }
 //------------------------------------------------------------
 //Creates a fireball

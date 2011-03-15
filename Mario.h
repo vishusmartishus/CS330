@@ -25,10 +25,13 @@ public:
 	//Gets called when key is let up
 	void updateKeyUp(unsigned char button);
 	//Returns State of Mario
-	int getState();
+	inline int getState() {return state_;}
     
     //updates Mario 
     void updateScene();
+    
+    //returns the object type of Mario
+    virtual int objectType() { return 6; }
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
@@ -38,11 +41,8 @@ private:
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
-    
-	//Checks to see if Mario ran into an enemy
-	bool checkEnemy();
-    //returns distance of allowed movement
-    int checkDistance();
+    //checks to see if Mario runs into an object
+    bool check();
 	//Returns true if Mario is in the fire state
 	bool fireball(); 
 	
