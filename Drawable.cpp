@@ -28,7 +28,7 @@ void Drawable::setPoints(int points)
 }
 //------------------------------------------------------------
 //increments totalPoints_
-void incrementPoints(int points)
+void Drawable::incrementPoints(int points)
 {
     totalPoints_ += points;
 }
