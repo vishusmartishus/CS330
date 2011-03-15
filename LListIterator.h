@@ -34,7 +34,7 @@ private:
 	ListNode *node;
 };
 
-inline LListIterator::init(LList & list) 
+inline void LListIterator::init(LList & list) 
 {
 	node = list.head_;
 }

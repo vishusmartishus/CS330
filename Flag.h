@@ -24,9 +24,8 @@ public:
 	virtual void draw();
 	// Returns object type
 	virtual int objectType() { return 1; }
-
-private:
-     // FlagPoints array of flag points awarded based on where you touch the flag
-    int flagPoints[5]; 
+    // Method to decides and returns how many points awarded by touching the flag
+    // Touched is the level that the flag was touched
+    int flagPoints(int touched);
 };
 #endif
