@@ -19,3 +19,23 @@ void Flag::draw()
 	}
 	
 }
+//------------------------------------------------------------
+// returns the points based on where flag is touched
+int Flag::flagPoints(int touched)
+{
+	if (touched = 1) {
+		return 200;
+	}
+	else if (touched = 2) {
+		return 400;
+	}
+	else if (touched = 3) {
+		return 800;
+	}
+	else if (touched = 4) {
+		return 2000;
+	}
+	else {
+		return 5000;
+	}
+}
