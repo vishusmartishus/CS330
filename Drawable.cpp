@@ -24,5 +24,11 @@ void Drawable::setKillsTop(bool kills)
 //set points_
 void Drawable::setPoints(int points)
 {
-    points_ += points;
+    points_ = points;
+}
+//------------------------------------------------------------
+//increments totalPoints_
+void Drawable::incrementPoints(int points)
+{
+    totalPoints_ += points;
 }

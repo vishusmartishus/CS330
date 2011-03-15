@@ -33,3 +33,11 @@ void Base::setBottom(int bottom)
 {
     bottom_ = bottom;
 }
+//------------------------------------------------------------
+// set color_[]
+void Base::setColor(float red, float green, float blue)
+{
+    color_[0] = red;
+    color_[1] = green;
+    color_[2] = blue;
+}

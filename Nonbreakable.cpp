@@ -1,4 +1,4 @@
-//Jay Bondzeleske, John (Jack) Johnson, Alex Martishius
+//Jay Bondzeleske, John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 // include header file
 #include "Nonbreakable.h"
@@ -13,23 +13,33 @@ void Nonbreakable::draw()
 }
 //------------------------------------------------------------
 //generateReward function
-void Nonbreakable::generateReward(bool isLarge, int reward)
+void Nonbreakable::generateReward(bool isLarge)
 {
-	//reward ints, 1=coin, 2=mushroom/fireflower, 3=star
+	/* Rewards: 
+     Coin - 1
+     Mushroom (small Mario) / Fireflower (large Mario) - 2
+     Star - 3
+     */
 	if (reward == 1) {
-		//reward will be a coin
+		// Create a coin
 	}
 	else if (reward == 2) {
-		if (isLarge == true) {
-			// Reward will be fireflower
+		if (isLarge != true) {
+			// Create a mushroom
 		}	
 		else {
-			// Reward will be a mushroom
+			// Create a fireflower
 		}	
 	}
 	else {
-		// reward will be a star
+		// Create a star
 	}
+    /* Change the type from a question block to a regular block 
+     once the reward has been generated
+     */
+    type = 15;
+    
+    //Will need to be redrawn
 			
 
 }   
