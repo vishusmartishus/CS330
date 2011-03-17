@@ -10,6 +10,8 @@
 
 
 #include "AllMovable.h"
+#include "Level.h"
+#include "LListIterator.h"
 
 //---------------------------------------------------------
 
@@ -261,7 +263,6 @@ Drawable* AllMovable::checkBelow()
 //---------------------------------------------------------
 
 double AllMovable::getXVelocity()
->>>>>>> dreed/master
 {
     return horizontalVelocity_;
 }
@@ -269,7 +270,6 @@ double AllMovable::getXVelocity()
 //---------------------------------------------------------
 
 void AllMovable::setXVelocity(double x)
->>>>>>> dreed/master
 {
     horizontalVelocity_ = x;
 }
@@ -277,7 +277,6 @@ void AllMovable::setXVelocity(double x)
 //---------------------------------------------------------
 
 void AllMovable::setYVelocity(double y)
->>>>>>> dreed/master
 {
     verticalVelocity_ = y;
 }
