@@ -21,8 +21,8 @@ Plant::Plant()
 	setKillsSide(true);
 	setKillsTop(true);
 	setPoints(0);
-	setXVelocity(0);
-	setYVelocity(0);
+	setXVelocity(2.0);
+	setYVelocity(0.0);
 }
 
 //---------------------------------------------------------
