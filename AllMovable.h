@@ -14,6 +14,8 @@
 
 //---------------------------------------------------------
 
+#include <cstdlib>
+
 #include "Drawable.h"
 
 //---------------------------------------------------------
@@ -28,6 +30,9 @@ public:
     
     // methods
 	//---------------------------------------------------------
+    
+    // override isMovable from Base to return TRUE for AllMovable
+    virtual bool isMovable() const { return true; }
     
     // returns a drawable object that is causing a collision to the right
 	// side of the object. Returns a drawable which has the characteristic

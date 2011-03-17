@@ -35,13 +35,45 @@ public:
     void setRight(int right);
     void setTop(int top);
     void setBottom(int bottom);
-    // Sets color values, parameters RGB values
-    void setColor(float red, float green, float blue);
 //------------------------------------------------------------
 private:
     // Private variables for the left, right, top, and bottom
     int left_, right_, bottom_, top_;
-    // Array of three numbers for the color
-    float color_[3];    
+
+//------------------------------------------------------------
 };
+//------------------------------------------------------------
+// Inline methods
+//------------------------------------------------------------
+// set the object type to 0
+inline int Base::objectType()
+{
+    return 0;
+}
+//------------------------------------------------------------
+// set left_
+inline void Base::setLeft(int left)
+{
+    left_ = left;
+}
+ 
+ //------------------------------------------------------------
+ // set right_
+ inline void Base::setRight(int right)
+ {
+ right_ = right;
+ }
+ //------------------------------------------------------------
+ // set top_
+ inline void Base::setTop(int top)
+ {
+ top_ = top;
+ }
+ //------------------------------------------------------------
+ // set botttom_
+ inline void Base::setBottom(int bottom)
+ {
+ bottom_ = bottom;
+ }
+//------------------------------------------------------------
 #endif

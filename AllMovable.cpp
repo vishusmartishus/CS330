@@ -10,6 +10,8 @@
 
 
 #include "AllMovable.h"
+#include "Level.h"
+#include "LListIterator.h"
 
 //---------------------------------------------------------
 
@@ -30,116 +32,232 @@ AllMovable::~AllMovable()
 
 Drawable* AllMovable::checkRight()
 {
-    Drawable *d;
-    
-    // get x velocity of self object
-    // get x coordinate of self object
-    
-    // if x velocity is positive (moving right)
-    
-      // assign object type of -1 for nothing in the way
-    
-      // iterate through active lists
-      // get x velocity of current object
-      // get x coordinate of current object
-      // if current iteration object's x coordinate + x velocity is less
-      // than self object's x coordinate + x velocity
-        // going to hit that object
-          // determine what object is by object type number
-          // decide how to react
-          // call kill (remove from active LList)
-          // or do nothing if able to pass through
-    
-        // return that object that will be hit
-    
-    return d;
+	// get instance of level
+	Level* level = Level::sharedLevel();
+
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
+
+    Drawable *item;
+    int thisRight, objLeft;
+
+	// get right value of object
+	thisRight = right();
+
+	while(liBlocks.next(item))
+	{
+		//get left value of block
+		objLeft = item->left();
+
+		// if they are touching return that block
+		if (thisRight == objLeft)
+		{
+			return item;
+		}
+	}
+
+	while(liMovable.next(item))
+	{
+		//get left value of movable
+		objLeft = item->left();
+
+		// if they are touching return that movable
+		if (thisRight == objLeft)
+		{
+			return item;
+		}
+	}
+
+	while(liDrawable.next(item))
+	{
+		//get left value of drawable
+		objLeft = item->left();
+
+		// if they are touching return that drawable
+		if (thisRight == objLeft)
+		{
+			return item;
+		}
+	}
+
+    return NULL;
 }
 
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkLeft()
 {
-    Drawable *d;
-    
-    // get x velocity of self object
-    // get x coordinate of self object
-    
-    // if x velocity is negative (moving left)
-    
-      // assign object type of -1 for nothing in the way
-    
-      // iterate through active lists
-      // get x velocity of current object
-      // get x coordinate of current object
-      // if current iteration object's x coordinate + x velocity is greater
-      // than self object's x coordinate + x velocity
-        // going to hit that object
-        // determine what object is by object type number
-          // decide how to react
-          // call kill (remove from active LList)
-          // or do nothing if able to pass through
-       
-        // return that object that will be hit
-    
-    return d;
+	// get instance of level
+	Level* level = Level::sharedLevel();
+
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
+
+    Drawable *item;
+    int thisLeft, objRight;
+
+	// get left value of object
+	thisLeft = left();
+
+	while(liBlocks.next(item))
+	{
+		//get right value of block
+		objRight = item->right();
+
+		// if they are touching return that block
+		if (thisLeft == objRight)
+		{
+			return item;
+		}
+	}
+
+	while(liMovable.next(item))
+	{
+		//get right value of movable
+		objRight = item->right();
+
+		// if they are touching return that movable
+		if (thisLeft == objRight)
+		{
+			return item;
+		}
+	}
+
+	while(liDrawable.next(item))
+	{
+		//get right value of drawable
+		objRight = item->right();
+
+		// if they are touching return that drawable
+		if (thisLeft == objRight)
+		{
+			return item;
+		}
+	}
+
+    return NULL;
 }
 
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkAbove()
 {
-    Drawable *d;
-    
-    // get y velocity of self object
-    // get y coordinate of self object
-    
-    // if y velocity is positive (moving up)
-    
-    // assign object type of -1 for nothing in the way
-    
-    // iterate through active lists
-    // get y velocity of current object
-    // get y coordinate of current object
-    // if current iteration object's y coordinate + y velocity is less
-    // than self object's y coordinate + y velocity
-      // going to hit that object
-      // determine what object is by object type number
-        // decide how to react
-        // call kill (remove from active LList)
-        // or do nothing if able to pass through
-    
-      // return that object that will be hit
-    
-    return d;
+	// get instance of level
+	Level* level = Level::sharedLevel();
+
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
+
+    Drawable *item;
+    int thisTop, objBottom;
+
+	// get top value of object
+	thisTop = top();
+
+	while(liBlocks.next(item))
+	{
+		//get bottom value of block
+		objBottom = item->bottom();
+
+		// if they are touching return that block
+		if (thisTop == objBottom)
+		{
+			return item;
+		}
+	}
+
+	while(liMovable.next(item))
+	{
+		//get bottom value of movable
+		objBottom = item->bottom();
+
+		// if they are touching return that movable
+		if (thisTop == objBottom)
+		{
+			return item;
+		}
+	}
+
+	while(liDrawable.next(item))
+	{
+		//get bottom value of drawable
+		objBottom = item->bottom();
+
+		// if they are touching return that drawable
+		if (thisTop == objBottom)
+		{
+			return item;
+		}
+	}
+
+    return NULL;
 }
 
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkBelow()
 {
-    Drawable *d;
-    
-    // get y velocity of self object
-    // get y coordinate of self object
-    
-    // if y velocity is negative (moving down)
-    
-    // assign object type of -1 for nothing in the way
-    
-    // iterate through active lists
-    // get y velocity of current object
-    // get y coordinate of current object
-    // if current iteration object's y coordinate + y velocity is greater
-    // than self object's y coordinate + y velocity
-      // going to hit that object
-      // determine what object is by object type number
-        // decide how to react
-        // call kill (remove from active LList)
-        // or do nothing if able to pass through
-    
-      // return that object that will be hit
-    
-    return d;
+	// get instance of level
+	Level* level = Level::sharedLevel();
+
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
+
+    Drawable *item;
+    int thisBottom, objTop;
+
+	// get bottom value of object
+	thisBottom = bottom();
+
+	while(liBlocks.next(item))
+	{
+		//get top value of block
+		objTop = item->top();
+
+		// if they are touching return that block
+		if (thisBottom == objTop)
+		{
+			return item;
+		}
+	}
+
+	while(liMovable.next(item))
+	{
+		//get top value of movable
+		objTop = item->top();
+
+		// if they are touching return that movable
+		if (thisBottom == objTop)
+		{
+			return item;
+		}
+	}
+
+	while(liDrawable.next(item))
+	{
+		//get top value of drawable
+		objTop = item->top();
+
+		// if they are touching return that drawable
+		if (thisBottom == objTop)
+		{
+			return item;
+		}
+	}
+
+    return NULL;
 }
 
 //---------------------------------------------------------

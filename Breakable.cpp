@@ -6,9 +6,17 @@
 //------------------------------------------------------------
 void Breakable::draw()
 {
-
-
-	
+	glColor3i(151,84,79);
+	int i;
+	for(i=0;i<4;++i){
+		glBegin(GL_POLYGON);
+		glVertex2d(left(),bottom());
+        glVertex2d(right(),bottom());
+        glVertex2d(right(),top());
+        glVertex2d(left(),top());
+		
+		glEnd();
+	}
 	
 }
 //------------------------------------------------------------
@@ -16,7 +24,7 @@ void Breakable::draw()
 void Breakable::breakBlock(bool isLarge)
 {
 	if (isLarge == true) {
-		level_->removeDrawable(this);
+        Level::sharedLevel()->removeDrawable(this);
 	}
 
 

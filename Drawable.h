@@ -23,18 +23,11 @@ class Level;
 class Drawable:public Base {
 //------------------------------------------------------------
 public:
-    // Default constructor
-    Drawable () {}
-	// Constructor for Drawable
-    // s is the scene that holds this Drawable
-	Drawable(Level *l)
+    // Drawable constructor
+    Drawable () 
     {
-        points_ = 0;
-
-
-
-
-
+        //Point value for all items default are 100 unless overridden
+        points_ = 100;
     }
     // Getters for the killsside, killstop, killsbottom, and points
     bool killsFromBottom() const { return killsBottom_; }
@@ -46,20 +39,40 @@ public:
     void setKillsBottom(bool kills = false);
 	void setKillsSide(bool kills = false);
     void setKillsTop(bool kills = false);
-    // Set points when called from child classes
+    // Set points allows items to override their default value of 100
 	void setPoints(int points);
-    // Accumulates the total points for the game
-    void incrementPoints(int points);
     //------------------------------------------------------------
 private:
     // Determines if it kills Mario from the side, top, and bottom
     bool killsBottom_, killsSide_, killsTop_;
-    // Integer number for the points that all others inherit from to accumulate
-    int points_, totalPoints_;
-protected:
-    // Pointer for the level
-    Level *level_;
-
+    // Integer number for the points for each object that inherits from it
+    int points_;
 };
-
+//------------------------------------------------------------
+// Inline methods
+//------------------------------------------------------------
+// set killsBottom_
+inline void Drawable::setKillsBottom(bool kills)
+{
+    killsBottom_ = kills;
+}
+//------------------------------------------------------------
+//set killsSide_
+inline void Drawable::setKillsSide(bool kills)
+{
+    killsSide_ = kills;
+}
+//------------------------------------------------------------
+//set killsTop_
+inline void Drawable::setKillsTop(bool kills)
+{
+    killsTop_ = kills;
+}
+//------------------------------------------------------------
+//set points_
+inline void Drawable::setPoints(int points)
+{
+    points_ = points;
+}
+//------------------------------------------------------------
 #endif
