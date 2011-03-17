@@ -16,7 +16,7 @@ void Breakable::draw()
 void Breakable::breakBlock(bool isLarge)
 {
 	if (isLarge == true) {
-		level_->removeDrawable(this);
+        Level::sharedLevel()->removeDrawable(this);
 	}
 
 

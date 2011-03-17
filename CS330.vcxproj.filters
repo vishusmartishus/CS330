@@ -66,9 +66,6 @@
     <ClInclude Include="Nonbreakable.h">
       <Filter>Header Files\Drawable</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
@@ -180,9 +177,6 @@
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Fireflower.cpp">
