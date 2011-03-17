@@ -1,27 +1,26 @@
 // Coin.cpp
-// John (Jack) Johnson
+// John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 // include header file Coin.h
 #include "Coin.h"
+// include header file Scene.h
+#include "Level.h"
 //------------------------------------------------------------
-// Makes the coin appear
-void Coin::appear(int xCoor, int yCoor) 
+void Coin::draw()
 {
-
-
-
-
-
-
+	
+	glColor3i(255, 255, 0);
+	int i;
+	for(i=0;i<4;++i){
+		glBegin(GL_POLYGON);
+		glVertex2d(left(),bottom());
+        glVertex2d(right(),bottom());
+        glVertex2d(right(),top());
+        glVertex2d(left(),top());
+		
+		glEnd();
+	}
+	
 }
-//------------------------------------------------------------
-// Makes the coin disappear
-void Coin::disappear(int xCoor, int yCoor) 
-{
 
 
-
-
-
-
-}

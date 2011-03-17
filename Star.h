@@ -21,15 +21,19 @@
 class Star: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     Star();
     // destructor
     ~Star();
     
     // methods
-    // openGL draw method
-    virtual void draw()=0;
     
+    // object type
+    int objectType() { return 11; }
+
 };
 
 //---------------------------------------------------------

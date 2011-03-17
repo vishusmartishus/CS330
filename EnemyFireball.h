@@ -19,19 +19,18 @@
 class EnemyFireball: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     EnemyFireball();
     // destructor
     ~EnemyFireball();
     
-    // instance vars
-    
-
-    
     // methods
     
-    // openGL draw method
-    virtual void draw()=0;
+    // object type
+    int objectType() { return 13; }
     
 };
 

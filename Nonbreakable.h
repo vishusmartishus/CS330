@@ -1,4 +1,4 @@
-// Jay Bondzeleske, John (Jack) Johnson, Alex Martishius
+// Jay Bondzeleske, John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 // If Nonbreakable.h is not defined, defines it
 #ifndef _NONBREAKABLE_H
@@ -14,31 +14,29 @@ public:
     // Nonbreakable constructor
     Nonbreakable()
     {
-
+        //Will set the type dependent on the scene information
+        //Only Question blocks can have rewards that are also set this way
 
 
 
 
 
     }
-    // create Method that creates the block
-	// xCoor is x coordinate for block
-    // yCoor is y coordinate for block
-    void create(int xCoor, int yCoor);
+	virtual void draw();
+	// Returns object type
+	virtual int objectType() { return type; }
     // generateReward method that creates an award
 	// isLarge is bool that tells if Mario is big or small
-	// reward is an int that tells which reward
-    void generateReward(bool isLarge, int reward);
-    // redraw method that redraws the block
-	// xCoor is x coordinate for block
-    // yCoor is y coordinate for block
-    void redraw(int xCoor, int yCoor);
+    void generateReward(bool isLarge);
+	// Checks to see if there is a reward in the nonbreakable box
+	bool hasReward(int item = -1);
 
 private:
-    // Three types of blocks (Question, Regular, and Blocks little Mario cannot break)
-    int type[3];
-    // Four different contents (Mushroom, Fire Flower, Star, and Coin)
-    int content[4];
+    // Two types of blocks (Question - 3, Regular - 15)
+    int type;
+    // Four different rewards (coin - 1, mushroom/fireflower -2 , star - 3)
+    // Mushroom or fireflower is dependent on whether Mario is large or not
+    int reward;
 };
 #endif
 

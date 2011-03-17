@@ -17,12 +17,12 @@
 
 Goomba::Goomba()
 {
-	killsBottom_ = true;
-	killsSide_ = true;
-	killsTop_ = false;
-	points_ = 0;
-	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0;
+	setKillsBottom(true);
+	setKillsSide(true);
+	setKillsTop(false);
+	setPoints(0);
+	setXVelocity(2.0);
+	setYVelocity(0.0);
 }
 
 //---------------------------------------------------------
@@ -36,21 +36,21 @@ Goomba::~Goomba()
 
 void Goomba::draw()
 {
+	glColor3i(205, 133, 63);
+    int i;
+    for(i=0;i<4;++i){
+        glBegin(GL_POLYGON);
+        glVertex2d(left(),bottom());
+        glVertex2d(right(),bottom());
+        glVertex2d(right(),top());
+        glVertex2d(left(),top());
+        glEnd();
+    }
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     

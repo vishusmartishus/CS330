@@ -1,5 +1,5 @@
 // Coin.h
-// John (Jack) Johnson
+// John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 // If Coin.h is not defined, defines it
 #ifndef _COIN_H
@@ -22,14 +22,9 @@ public:
 
 
     }
-    // Declare the method to appear
-	// xCoor is x coordinate for coin
-    // yCoor is y coordinate for coin
-    void appear(int xCoor, int yCoor);
-    // Declare the method to disappear
-	// xCoor is x coordinate for coin
-    // yCoor is y coordinate for coin
-    void disappear(int xCoor, int yCoor);
+	virtual void draw();
+	// Returns object type
+	int objectType() { return 5; }
 };
 
 #endif

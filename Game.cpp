@@ -13,21 +13,21 @@ Game::Game()
 
 //------------------------------------------------------------
 
-int Game::pointsCall()
+int Game::getPoints()
 {
     return pointsTotal_;
 }
 
 //------------------------------------------------------------
 
-int Game::coinsCall()
+int Game::getCoins()
 {
     return coinsTotal_;
 }
 
 //------------------------------------------------------------
 
-int Game::livesCall()
+int Game::getLives()
 {
     return livesTotal_;
 }

@@ -13,19 +13,19 @@
 
 //---------------------------------------------------------
 
-MarioFireball::Fireball()
+MarioFireball::MarioFireball()
 {
-	killsBottom_ = true;
-	killsSide_ = true;
-	killsTop_ = false;
-	points_ = 0;
-	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0;
+	setKillsBottom(false);
+	setKillsSide(false);
+	setKillsTop(false);
+	setPoints(0);
+	setXVelocity(0);
+	setYVelocity(0);
 }
 
 //---------------------------------------------------------
 
-MarioFireball::~Fireball()
+MarioFireball::~MarioFireball()
 {
     
 }
@@ -35,16 +35,17 @@ MarioFireball::~Fireball()
 void MarioFireball::draw()
 {
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	glColor3i(139, 26, 26);
+    int i;
+    for(i=0;i<4;++i){
+        glBegin(GL_POLYGON);
+		glVertex2d(left(),bottom());
+        glVertex2d(right(),bottom());
+        glVertex2d(right(),top());
+        glVertex2d(left(),top());
+		
+        glEnd();
+    } 
     
     
     

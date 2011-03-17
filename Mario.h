@@ -7,9 +7,9 @@
  *
  */
 //Object constant will be 6
-const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 #ifndef __MARIO_H__
 #define __MARIO_H__
+const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 
 #include "AllMovable.h"
 
@@ -19,20 +19,30 @@ public:
 	//Constructor
 	Mario();
   
+	virtual void draw();
   	//Gets called when key is pressed
-	void update(int Button[]);
+	void updateKeyDown(unsigned char button);
+	//Gets called when key is let up
+	void updateKeyUp(unsigned char button);
+	//Returns State of Mario
+	int getState();
+    
+    //updates Mario 
+    void updateScene();
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
-	int state_, maxHeight_; 
-	bool isInvincible_, isJumping_, isRunning_;
-
-	void jump();
+	int state_, jumpCount_; 
+	bool isInvincible_;
+    bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
+    
 	//Moves Mario to the left or right and calls check() at beginning
-	void move(bool isRunning);
-
-	//Checks to see if Mario ran into something
-	bool check(bool isRunning); 
+	void move();
+    
+	//Checks to see if Mario ran into an enemy
+	bool checkEnemy();
+    //returns distance of allowed movement
+    int checkDistance();
 	//Returns true if Mario is in the fire state
 	bool fireball(); 
 	

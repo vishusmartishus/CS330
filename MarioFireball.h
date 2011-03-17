@@ -19,18 +19,18 @@
 class MarioFireball: public Movable {
     
 public:
+	// openGL draw method
+    virtual void draw();
+	
     // constructor
     MarioFireball();
     // destructor
     ~MarioFireball();
     
-    // instance vars
-   
-    
     // methods
     
-    // openGL draw method
-    virtual void draw()=0;
+    // object type
+    int objectType() { return 14; }
     
 };
 

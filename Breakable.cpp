@@ -2,23 +2,22 @@
 //------------------------------------------------------------
 // include header file Breakable
 #include "Breakable.h"
+#include "Level.h"
 //------------------------------------------------------------
-// create block
-void Breakable::create(int xCoor, int yCoor)
+void Breakable::draw()
 {
 
 
-
-
-
-
+	
+	
 }
-
 //------------------------------------------------------------
 // destroy block
-void Breakable::breakBlock(bool isLarge, int xCoor, int yCoor)
+void Breakable::breakBlock(bool isLarge)
 {
-
+	if (isLarge == true) {
+        Level::sharedLevel()->removeDrawable(this);
+	}
 
 
 

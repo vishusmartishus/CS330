@@ -15,7 +15,8 @@
 
 AllMovable::AllMovable()
 {
-
+    horizontalVelocity_ = 0;
+    verticalVelocity_ = 0;
 }
 
 //---------------------------------------------------------
@@ -27,44 +28,149 @@ AllMovable::~AllMovable()
 
 //---------------------------------------------------------
 
-Drawable* AllMovable::checkFront()
+Drawable* AllMovable::checkRight()
 {
+    Drawable *d;
     
+    // get x velocity of self object
+    // get x coordinate of self object
+    
+    // if x velocity is positive (moving right)
+    
+      // assign object type of -1 for nothing in the way
+    
+      // iterate through active lists
+      // get x velocity of current object
+      // get x coordinate of current object
+      // if current iteration object's x coordinate + x velocity is less
+      // than self object's x coordinate + x velocity
+        // going to hit that object
+          // determine what object is by object type number
+          // decide how to react
+          // call kill (remove from active LList)
+          // or do nothing if able to pass through
+    
+        // return that object that will be hit
+    
+    return d;
 }
 
 //---------------------------------------------------------
 
-Drawable* AllMovable::checkBehind()
+Drawable* AllMovable::checkLeft()
 {
+    Drawable *d;
     
+    // get x velocity of self object
+    // get x coordinate of self object
+    
+    // if x velocity is negative (moving left)
+    
+      // assign object type of -1 for nothing in the way
+    
+      // iterate through active lists
+      // get x velocity of current object
+      // get x coordinate of current object
+      // if current iteration object's x coordinate + x velocity is greater
+      // than self object's x coordinate + x velocity
+        // going to hit that object
+        // determine what object is by object type number
+          // decide how to react
+          // call kill (remove from active LList)
+          // or do nothing if able to pass through
+       
+        // return that object that will be hit
+    
+    return d;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkAbove()
 {
+    Drawable *d;
     
+    // get y velocity of self object
+    // get y coordinate of self object
+    
+    // if y velocity is positive (moving up)
+    
+    // assign object type of -1 for nothing in the way
+    
+    // iterate through active lists
+    // get y velocity of current object
+    // get y coordinate of current object
+    // if current iteration object's y coordinate + y velocity is less
+    // than self object's y coordinate + y velocity
+      // going to hit that object
+      // determine what object is by object type number
+        // decide how to react
+        // call kill (remove from active LList)
+        // or do nothing if able to pass through
+    
+      // return that object that will be hit
+    
+    return d;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkBelow()
 {
+    Drawable *d;
     
+    // get y velocity of self object
+    // get y coordinate of self object
+    
+    // if y velocity is negative (moving down)
+    
+    // assign object type of -1 for nothing in the way
+    
+    // iterate through active lists
+    // get y velocity of current object
+    // get y coordinate of current object
+    // if current iteration object's y coordinate + y velocity is greater
+    // than self object's y coordinate + y velocity
+      // going to hit that object
+      // determine what object is by object type number
+        // decide how to react
+        // call kill (remove from active LList)
+        // or do nothing if able to pass through
+    
+      // return that object that will be hit
+    
+    return d;
+}
+
+//---------------------------------------------------------
+
+double AllMovable::getXVelocity()
+>>>>>>> dreed/master
+{
+    return horizontalVelocity_;
+}
+
+//---------------------------------------------------------
+
+void AllMovable::setXVelocity(double x)
+>>>>>>> dreed/master
+{
+    horizontalVelocity_ = x;
+}
+
+//---------------------------------------------------------
+
+void AllMovable::setYVelocity(double y)
+>>>>>>> dreed/master
+{
+    verticalVelocity_ = y;
+}
+
+//---------------------------------------------------------
+
+double AllMovable::getYVelocity()
+{
+    return verticalVelocity_;
 }
 //---------------------------------------------------------
 
-double getXVelocity()
-{
-    
-}
-//---------------------------------------------------------
-
-double getYVelocity()
-{
-    
-}
-//---------------------------------------------------------
-void AllMovable::kill(&Drawable)
-{
-
-}
-//---------------------------------------------------------

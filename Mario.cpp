@@ -11,42 +11,131 @@
 
 #include "Mario.h"
 //------------------------------------------------------------
+void Mario::draw()
+{
+	glColor3i(255, 0, 0);
+	int i;
+	for(i=0;i<4;++i){
+		glBegin(GL_POLYGON);
+		glVertex2d(left(), bottom());
+		glVertex2d(left(), top());
+		glVertex2d(right(),top());
+		glVertex2d(right(), bottom());
+		glEnd();
+	}
+}
+//------------------------------------------------------------
 //constructor for Mario Class
 Mario::Mario()
 {
     //init the private instance variables to default value
-    state_ = 0;
-    //will update to actaul height when figured out
-    maxHeight_ = 0;
+    state_ = SMALL_STATE;
+    jumpCount_ = 0;
+    
     isInvincible_ = false;
-    isJumping_ = false;
-    isRunning_ = false;
+    
+    //init the keys
+    jumpKey_ = false;
+    rightKey_ = false;
+    leftKey_ = false;
+    sprintKey_ = false;
+    fireballKey_ = false;
     
 }
 //------------------------------------------------------------
-//updates Mario's info when a button is pushed
-void Mario::update(int button[])
+//updates Mario's movement info when a button is pushed
+void Mario::updateKeyDown(unsigned char button)
 {
+    if (button == 'a')
+    {
+        leftKey_ = true;
+    }
     
+    else if (button == 'd')
+    {
+        rightKey_ = true;
+    }
+    
+    if (button == 'w')
+    {
+        jumpKey_ = true;
+        jumpCount_ = 5;
+    }
+    
+    if (button == 'j')
+    {
+        sprintKey_ = true;
+    }
+    
+    if (button = 'k')
+    {
+        fireballKey_ = true;
+    }
 }
 //------------------------------------------------------------
-//method to calculate Marios Jump
-void Mario::jump()
+//upadates Mario's info when a button is let up
+void Mario::updateKeyUp(unsigned char button)
 {
-
+	if (button == 'a') {
+		leftKey_ = false;
+	}
+	else if (button == 'w') {
+		jumpKey_ = false;
+	}
+	else if (button == 'd') {
+		rightKey_ = false;
+	}
+	else if (button == 'j') {
+		sprintKey_ = false;
+	}
+	else if (button == 'k') {
+		fireballKey_ = false;
+	}
+}
+//Returns Mario's state
+int Mario::getState() 
+{
+	return state_;
 }
 //------------------------------------------------------------
 //method to calculate Marios movement
-void Mario::move(bool isRunning)
+void Mario::move()
 {
+    //sets Mario's x position to allowed distance
+    //this->setX(this->getX() + checkDistance(isRunning_));
+    
+}
+//------------------------------------------------------------
+//updates Mario for one Frame
+void Mario::updateScene()
+{
+ 
+    
+    
+}
+//------------------------------------------------------------
+//method that checks to see if Mario runs into or is hit by
+//an enemy
+bool Mario::checkEnemy()
+{
+    
+
+    
+    
+    
+    
+    
+    return false;
     
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
 //to see if Mario runs into anything
-bool Mario::check(bool isRunning)
+int Mario::checkDistance()
 {
-    return false;
+    
+    
+    return 0;
 }
 //------------------------------------------------------------
 //Creates a fireball

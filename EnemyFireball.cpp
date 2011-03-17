@@ -13,19 +13,19 @@
 
 //---------------------------------------------------------
 
-EnemyFireball::Fireball()
+EnemyFireball::EnemyFireball()
 {
-	killsBottom_ = true;
-	killsSide_ = true;
-	killsTop_ = false;
-	points_ = 0;
-	horizontalVelocity_ = 0;
-	verticalVelocity_ = 0; 
+	setKillsBottom(true);
+	setKillsSide(true);
+	setKillsTop(true);
+	setPoints(0);
+	setXVelocity(0);
+	setYVelocity(0);
 }
 
 //---------------------------------------------------------
 
-EnemyFireball::~Fireball()
+EnemyFireball::~EnemyFireball()
 {
     
 }
@@ -34,12 +34,17 @@ EnemyFireball::~Fireball()
 
 void EnemyFireball::draw()
 {
-    
-    
-    
-    
-    
-    
+    glColor3i(255, 48, 48);
+    int i;
+    for(i=0;i<4;++i){
+        glBegin(GL_POLYGON);
+		glVertex2d(left(),bottom());
+        glVertex2d(right(),bottom());
+        glVertex2d(right(),top());
+        glVertex2d(left(),top());
+		
+        glEnd();
+    }
     
     
     
