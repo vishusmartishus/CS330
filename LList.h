@@ -14,6 +14,9 @@
 #include "Drawable.h";
 
 class LList {
+	
+	friend class LListIterator;
+	
 public:
 	LList();
 	~LList();
@@ -23,13 +26,15 @@ public:
 	
 	void removeFirst(Drawable *&item);
 	
-	void append(Drawable *&item);
+	void append(Drawable *item);
 	
-	void first(Drawable *&item) const;
+	Drawable* first() const;
 	
 	void removeDrawable(Drawable *obj);
 	
 	int size() const { return size_; }
+	
+	Drawable* operator[](unsigned int index);
 	
 private:
 	

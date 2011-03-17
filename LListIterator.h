@@ -10,42 +10,45 @@
 #ifndef __LLISTITERATOR_H__
 #define __LLISTITERATOR_H__
 
-#include "LList.h";
+#include "LList.h"
 
 /*
 	LListIterator li;
     li.init(llist);
 	Drawable *item;
-	while (li.next(item)) {
+	while ((item = li.next())) {
 		// do something with item
+		item = li.next();
 	}
-*/
+*/ 
 
 class LListIterator {
-
+	
 public:
 	LListIterator() {}
 	
 	void init(LList &list);
-	bool next(Drawable *&item);
+	Drawable* next();
 
 private:
 	LListIterator(const LListIterator&);
 	ListNode *node;
 };
 
-inline LListIterator::init(LList & list) 
+inline LListIterator::init(LList &list) 
 {
 	node = list.head_;
 }
 
-inline bool LListIterator::next(Drawable *&item)
+inline Drawable* LListIterator::next()
 {
+	Drawable *item;
 	if (node) {
 		item = node->item_;
-		return true;
+		node = node->next_;
+		return item;
 	}
-	return false;
+	return NULL;
 }
 
 
