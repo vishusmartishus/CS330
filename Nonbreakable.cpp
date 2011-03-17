@@ -26,21 +26,21 @@ void Nonbreakable::generateReward(bool isLarge)
      */
 	if (reward_ == 1) {
 		// Create a coin
-		Coin coin = Coin::Coin();
+		Coin *coin = new Coin();
 	}
 	else if (reward_ == 2) {
 		if (isLarge != true) {
 			// Create a mushroom
-			Mushroom mushroom = Mushroom::Mushroom();
+			Mushroom *mushroom = new Mushroom();
 		}	
 		else {
 			// Create a fireflower
-			FireFlower fireFlower = FireFlower::FireFlower();
+			FireFlower *fireFlower = new FireFlower();
 		}	
 	}
 	else {
 		// Create a star
-		Star Star = Star::Star();
+		Star *star = new Star();
 	}
     /* Change the type from a question block to a regular block 
      once the reward has been generated
