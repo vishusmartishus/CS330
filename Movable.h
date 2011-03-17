@@ -29,8 +29,9 @@ public:
     // methods
 	//---------------------------------------------------------
     
-	// scans movable and drawable arrays and decides if they can move
-	// uses "above" bools to decide how to react
+	// call checkLeft and check Right methods in AllMovable
+    // if returned drawable object is NULL, can move returns TRUE
+    // if checks fail, returns FALSE, reverse objects direction
 	bool canMove();
 	//---------------------------------------------------------
 
