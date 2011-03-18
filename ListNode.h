@@ -10,12 +10,19 @@
 #ifndef __LISTNODE_H__
 #define __LISTNODE_H__
 
-#include "Drawable.h";
+#include "Drawable.h"
+#include <cstdlib>
 
 class ListNode {
 public:
+	ListNode() { next_ = NULL; }
+	~ListNode();
 	Drawable *item_;
 	ListNode *next_;
 };
+
+inline ListNode::~ListNode() {
+	delete item_;
+}
 
 #endif
