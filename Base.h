@@ -1,9 +1,25 @@
-// Jamie Veals, Jay Bondzeleske
+// Jamie Veals, Jay Bondzeleske, John (Jack) Johnson
 //------------------------------------------------------------
 //If Base.h is not defined, defines it
 #ifndef _BASE_H
 #define _BASE_H
 //------------------------------------------------------------
+// object types
+const int flag_ = 1;
+const int breakable_ = 2;
+const int question_ = 3;
+const int fireflower_ = 4;
+const int coin_ = 5;
+const int mario_ = 6;
+const int goomba_ = 7;
+const int mushroom_ = 8;
+const int plant_ = 9;
+const int shell_ = 10;
+const int star_ = 11;
+const int turtle_ = 12;
+const int enemyfireball_ = 13;
+const int mariofireball_ = 14;
+const int regular_ = 15;
 // Base class
 class Base {
 //------------------------------------------------------------ 
@@ -18,6 +34,10 @@ public:
 
 
     }
+	// Destructor for Base
+	~Base()
+	{
+	}
 	// Returns an int to indicate an object
 	// Is called by movable and drawable classes to determine which object is in that spot: a reward, enemy, or block
 	virtual int objectType();
@@ -39,8 +59,6 @@ public:
 private:
     // Private variables for the left, right, top, and bottom
     int left_, right_, bottom_, top_;
-
-//------------------------------------------------------------
 };
 //------------------------------------------------------------
 // Inline methods

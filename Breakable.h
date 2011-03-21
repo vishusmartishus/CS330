@@ -21,6 +21,10 @@ public:
 
 
     }
+	// Breakable destructor
+	~Breakable()
+	{
+	}
 	virtual void draw();
 	// Returns object type
 	virtual int objectType() { return 2; }

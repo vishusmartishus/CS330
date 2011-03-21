@@ -29,6 +29,10 @@ public:
         //Point value for all items default are 100 unless overridden
         points_ = 100;
     }
+	// Drawable destructor
+	~Drawable ()
+	{
+	}
     // Getters for the killsside, killstop, killsbottom, and points
     bool killsFromBottom() const { return killsBottom_; }
 	bool killsFromSide() const { return killsSide_; }

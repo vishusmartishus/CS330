@@ -22,6 +22,10 @@ public:
 
 
     }
+	// Nonbreakable destructor
+	~Nonbreakable()
+	{
+	}
 	virtual void draw();
 	// Returns object type
 	virtual int objectType() { return type; }
