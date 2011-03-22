@@ -22,7 +22,7 @@ public:
 
     }
 	// Breakable destructor
-	~Breakable()
+	virtual ~Breakable()
 	{
 	}
 	virtual void draw();

@@ -23,7 +23,7 @@ public:
 
     }
 	// Coin destructor
-	~Coin()
+	virtual ~Coin()
 	{
 	}
 	virtual void draw();

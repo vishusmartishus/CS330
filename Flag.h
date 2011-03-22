@@ -22,7 +22,7 @@ public:
 
     }
 	// Flag destructor
-	~Flag()
+	virtual ~Flag()
 	{
 	}
 	virtual void draw();

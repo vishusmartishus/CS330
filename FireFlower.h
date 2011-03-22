@@ -23,7 +23,7 @@ public:
 
     }
 	// Destructor for FireFlower
-	~FireFlower()
+	virtual ~FireFlower()
 	{
 	}
 	virtual void draw();

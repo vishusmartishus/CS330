@@ -30,7 +30,7 @@ public:
         points_ = 100;
     }
 	// Drawable destructor
-	~Drawable ()
+	virtual ~Drawable ()
 	{
 	}
     // Getters for the killsside, killstop, killsbottom, and points

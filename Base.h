@@ -35,7 +35,7 @@ public:
 
     }
 	// Destructor for Base
-	~Base()
+	virtual ~Base()
 	{
 	}
 	// Returns an int to indicate an object

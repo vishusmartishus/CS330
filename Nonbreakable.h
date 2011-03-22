@@ -23,7 +23,7 @@ public:
 
     }
 	// Nonbreakable destructor
-	~Nonbreakable()
+	virtual ~Nonbreakable()
 	{
 	}
 	virtual void draw();
