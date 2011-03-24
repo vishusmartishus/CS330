@@ -80,11 +80,18 @@ void Level::removeDrawable(Drawable *obj)
 //------------------------------------------------------------
 void Level::loadTestLevel()
 {
-	/*int left, top;
-	top = 544;
+	/*int left, bottom, i;
+	bottom = 0;
 	left = 0;
+	for (i=0; i<20; ++i){
+		Nonbreakable *block = new Nonbreakable;
+		block->setTop(bottom  + 16);
+		block->setBottom(bottom);
+		block->setLeft(left);
+		block->setRight(left + 16);
+		activeBlocks_.append(block);
+		left += 16;
+	}
 	*/
-
-
 
 }

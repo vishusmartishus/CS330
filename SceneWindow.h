@@ -31,7 +31,7 @@ private:
     int width_, height_;
 	// viewport size
 	int viewportWidth_, viewportHeight_;
-	int viewportLeftX_, viewportRightx_;
+	int viewportLeftX_, viewportRightX_;
 };
 
 //----------------------------------------------------------------------
