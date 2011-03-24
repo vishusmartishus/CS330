@@ -8,6 +8,7 @@
  */
 
 #include "LList.h"
+#include "LListIterator.h"
 //------------------------------------------------------------
 LList::LList() {
 	this->size_ = 0;
@@ -30,7 +31,10 @@ LList::~LList() {
 LList::LList(const LList& source) {
 	LListIterator it;
 	it.init(source);
-	
+	Drawable* item;
+	while ((item = it.next())) {
+		this->append(item);
+	}
 }
 
 //------------------------------------------------------------
@@ -104,13 +108,4 @@ LList& LList::operator=(const LList &list) {
 		node = node->next_;
 	}
 	return *temp;
-}
-//------------------------------------------------------------
-LList::LList(const LList& source) {
-	int size = source.size();
-	int i;
-	for (i = 0; i<size; ++i) {
-		this->append(source.first());
-	}
-
 }

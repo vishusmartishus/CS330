@@ -109,9 +109,10 @@ void Mario::move()
 //updates Mario for one Frame
 void Mario::updateScene()
 {
-	
-    
-    
+	this->setLeft(this->left() + (vector[0] * vector[2]));
+	this->setRight(this->right() + (vector[0] * vector[2]));
+	this->setTop(this->top() + (vector[1] * vector[2]));
+	this->setBottom(this->bottom() + (vector[1] * vector[2]));
 }
 //------------------------------------------------------------
 //method that checks to see if Mario runs into or is hit by

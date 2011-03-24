@@ -15,14 +15,14 @@
 
 class ListNode {
 public:
-	ListNode() { next_ = NULL; }
+	ListNode() { this->next_ = NULL; }
 	~ListNode();
 	Drawable *item_;
 	ListNode *next_;
 };
 
 inline ListNode::~ListNode() {
-	delete item_;
+	delete this->item_;
 }
 
 #endif
