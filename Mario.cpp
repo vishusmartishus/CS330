@@ -114,7 +114,6 @@ void Mario::move()
 //updates Mario for one Frame
 void Mario::updateScene()
 {
-<<<<<<< HEAD
     //depending on whats happening we need to update Mario
     // check the key and move mario according to the button that is being pushed
     //call the check methods to check to see if Mario is running into things
@@ -122,12 +121,10 @@ void Mario::updateScene()
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
     
-=======
 	this->setLeft(this->left() + (vector[0] * vector[2]));
 	this->setRight(this->right() + (vector[0] * vector[2]));
 	this->setTop(this->top() + (vector[1] * vector[2]));
 	this->setBottom(this->bottom() + (vector[1] * vector[2]));
->>>>>>> dreed/master
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
@@ -158,7 +155,7 @@ bool Mario::check()
     
     iter.init(moveableList);
     
-    while (iter.next(object)) 
+    while ((object = iter.next())) 
     {
         if (((this->right() >= object->left() and this->right() <= object->right()) or (this->left() <= object->right() and this->left() >= object->left())) and (this->bottom() <= object->top()))
         {
@@ -310,7 +307,7 @@ bool Mario::check()
 
     iter.init(drawableList);
     
-    while (iter.next(object))
+    while ((object = iter.next()))
     {
         if (((this->right() >= object->left() and this->right() <= object->right()) or (this->left() <= object->right() and this->left() >= object->left())) and (this->bottom() <= object->top())) 
         {
@@ -331,7 +328,7 @@ bool Mario::check()
     
     iter.init(blockList);
     
-    while (iter.next(object))
+    while ((object = iter.next()))
     {
         //check if Mario is jumping into a block
         if (this->top() == object->bottom() and ((this->right() >= object->left() or this->right() <= object->right()) or (this->left() >= object->left() or this->left() <= object->right()))) 
