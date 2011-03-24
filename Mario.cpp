@@ -10,6 +10,9 @@
 
 
 #include "Mario.h"
+#include "LListIterator.h"
+#include "Level.h"
+
 //------------------------------------------------------------
 void Mario::draw()
 {
@@ -31,6 +34,7 @@ Mario::Mario()
     //init the private instance variables to default value
     state_ = SMALL_STATE;
     jumpCount_ = 0;
+    starCount_ = 0;
     
     isInvincible_ = false;
     
@@ -93,17 +97,17 @@ void Mario::updateKeyUp(unsigned char button)
 		fireballKey_ = false;
 	}
 }
-//Returns Mario's state
-int Mario::getState() 
-{
-	return state_;
-}
 //------------------------------------------------------------
 //method to calculate Marios movement
 void Mario::move()
 {
-    //sets Mario's x position to allowed distance
-    //this->setX(this->getX() + checkDistance(isRunning_));
+    //assuming Mario Moves 1 unit sprinting or not
+    
+    //handle if Mario Falls while walking
+    //if (check()) 
+    //{
+    //  this->setX(this->getX() + one unit);
+    //}
     
 }
 //------------------------------------------------------------
@@ -142,11 +146,208 @@ bool Mario::check()
     //instance of LListIterator
     LListIterator iter;
     
-    return false;
+    //object that will be checked for its type
+    Drawable *object;
+    
+    iter.init(moveableList);
+    
+    while (iter.next(object)) 
+    {
+        if (((this->right() >= object->left() and this->right() <= object->right()) or (this->left() <= object->right() and this->left() >= object->left())) and (this->bottom() <= object->top()))
+        {
+            //if Mario runs into an enemy
+            if (object->objectType() == 7 or object->objectType() == 9 or object->objectType() == 10 or object->objectType() == 12 or object->objectType() == 13)
+            {
+                //Mario dies from the right
+                //go through the changes of Mario's state based on current state
+                //and him getting hit by an enemy
+                if (isInvincible_)
+                {
+                    //Mario kills the enemy
+                }
+                else if (this->state_ == FIRE_STATE)
+                {
+                    this->state_ = BIG_STATE;
+                }
+                else if (this->state_ == BIG_STATE)
+                {
+                    this->state_ = SMALL_STATE;
+                }
+                else {
+                    
+                }
+                
+            }
+            //if Mario runs into a Reward
+            else if (object->objectType() == 8 or object->objectType() == 11)
+            {
+                //update Mario's State
+                if (object->objectType() == 8) 
+                {
+                    if (this->state_ == SMALL_STATE)
+                    {
+                        this->state_ == BIG_STATE;
+                    }
+                    else
+                    {
+                        //give Mario Points for getting mushroom
+                    }
+                    
+                }
+                else if (object->objectType() == 11)
+                {
+                    //Mario is invincible 
+                    isInvincible_ = true;
+                }
+            }
+        }
+                
+        //ARE OBJECTS FALLING OFF OF LEDGES ONTO MARIO OR OTHER LEDGES? :yes
+        //goomba mushroom shell star(can hit on top of head from bounce) fall off the ledge
+        //possibly checking if things fall on Mario's Head
+        
+         if ((this->top() == object->bottom()) and ((this->right() >= object->left() or this->right() <= object->right()) or (this->left() >= object->left() or this->left() <= object->right())))
+         {
+             //if an enemy lands on top of Mario
+             if (object->objectType() == 7 or object->objectType() == 10 or object->objectType() == 12 or object->objectType() == 13)
+             {
+                 if (isInvincible_)
+                 {
+                     //enemy dies
+                 }
+                 else 
+                 {
+                     //Mario dies from the right
+                 }
+             }
+             //if a reward lands on top of Mario
+             else if (object->objectType() == 8 or object->objectType() == 11)
+             {
+                 //update Mario's State
+                 if (object->objectType() == 8) 
+                 {
+                     if (this->state_ == SMALL_STATE)
+                     {
+                         this->state_ == BIG_STATE;
+                     }
+                     else
+                     {
+                         //give Mario Points for getting mushroom
+                     }
+                     
+                 }
+                 else if (object->objectType() == 11)
+                 {
+                     //Mario is invincible 
+                     isInvincible_ = true;
+                 }
+                 
+             }
+         }
+        
+        
+        //checks if mario lands on top of object
+        if ((this->bottom() == object->top()) and ((this->right() >= object->left() or this->right() <= object->right()) or (this->left() >= object->left() or this->left() <= object->right()))) 
+        {
+            //if Mario lands on top of an enemy
+            if (object->objectType() == 7 or object->objectType() == 10 or object->objectType() == 12)
+            {
+                //enemy dies
+                //Mario's jumpcount reset? (Mario will jump higher (bounce))
+            }
+            //if Mario lands on a reward
+            else if (object->objectType() == 8 or object->objectType() == 11)
+            {
+                //update Mario's State
+                if (object->objectType() == 8) 
+                {
+                    if (this->state_ == SMALL_STATE)
+                    {
+                        this->state_ == BIG_STATE;
+                    }
+                    else
+                    {
+                        //give Mario Points for getting mushroom
+                    }
+                    
+                }
+                else if (object->objectType() == 11)
+                {
+                    //Mario is invincible 
+                    isInvincible_ = true;
+                }
+            }
+            //if Mario lands on an enemy that can't be killed
+            else if (object->objectType() == 9 or object->objectType() == 13)
+            {
+                //go through the changes of Mario's state based on current state
+                //and him getting hit by an enemy
+                if (this->state_ == FIRE_STATE)
+                {
+                    this->state_ = BIG_STATE;
+                }
+                else if (this->state_ == BIG_STATE)
+                {
+                    this->state_ = SMALL_STATE;
+                }
+                else {
+                    
+                }
+
+                
+            }
+        }
+        
+    }
+
+
+    iter.init(drawableList);
+    
+    while (iter.next(object))
+    {
+        if (((this->right() >= object->left() and this->right() <= object->right()) or (this->left() <= object->right() and this->left() >= object->left())) and (this->bottom() <= object->top())) 
+        {
+            if (object->objectType() == 1) 
+            {
+                //end game
+            }
+            else if (object->objectType() == 4) 
+            {
+                //update Mario's State
+            }
+            else if(object->objectType() == 5) 
+            {
+                //update Mario's Points
+            }
+        }
+    }
+    
+    iter.init(blockList);
+    
+    while (iter.next(object))
+    {
+        //check if Mario is jumping into a block
+        if (this->top() == object->bottom() and ((this->right() >= object->left() or this->right() <= object->right()) or (this->left() >= object->left() or this->left() <= object->right()))) 
+        {
+            if (this->state_ == BIG_STATE and object->objectType() == 2) {
+                //break block
+            }
+            else {
+                //stop moving
+            }
+        }
+        //check if Mario lands on a block
+        if (((this->right() >= object->left() and this->right() <= object->right()) or (this->left() <= object->right() and this->left() >= object->left())) and (this->bottom() <= object->top()))
+        {
+            //stop falling
+            //keep moving
+        }
+    }
+    return true;
 }
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()
-{    
+{
 	return false;
 }

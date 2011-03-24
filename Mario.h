@@ -35,7 +35,7 @@ public:
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
-	int state_, jumpCount_; 
+	int state_, jumpCount_, starCount_; 
 	bool isInvincible_;
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     
