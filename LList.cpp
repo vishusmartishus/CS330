@@ -38,8 +38,9 @@ LList::LList(const LList& source) {
 }
 
 //------------------------------------------------------------
-void LList::removeFirst(Drawable *&item) {
+Drawable* LList::removeFirst() {
 	ListNode *node;
+	Drawable *item = NULL;
 	if (this->size_ > 0) {
 		item = this->head_->item_;
 		if (this->size_ > 1) {
@@ -53,6 +54,7 @@ void LList::removeFirst(Drawable *&item) {
 		}
 		size_--;
 	}
+	return item;
 }
 //------------------------------------------------------------
 void LList::append(Drawable *item){
@@ -74,7 +76,6 @@ Drawable* LList::first() const {
 //------------------------------------------------------------
 void LList::removeDrawable(Drawable *obj) {
 	int i;
-	Drawable *temp;
 	ListNode *prenode;
 	ListNode *node = this->head_;
 	for (i = 0; i<(this->size_); i++) {
@@ -85,18 +86,18 @@ void LList::removeDrawable(Drawable *obj) {
 		node = node->next_;
 	}
 	if (i == 0) {
-		removeFirst(temp);
+		removeFirst();
 		return;
 	} else if (i == ((this->size_) - 1)) {
 		delete this->tail_;
 		this->tail_ = prenode;
 		prenode->next_ = NULL;
-	} else {
+		size_--;
+	} else if (i == this->size_) {
 		prenode->next_ = node->next_;
 		delete node;
+		size_--;
 	}
-	delete node;
-	size_--;
 }
 //------------------------------------------------------------
 LList& LList::operator=(const LList &list) {
