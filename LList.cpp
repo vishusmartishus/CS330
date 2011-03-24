@@ -16,6 +16,13 @@ LList::LList() {
 LList::~LList() {
     
 }
+//------------------------------------------------------------
+
+LList::LList(const LList& source) {
+	LListIterator it;
+	it.init(source);
+	
+}
 
 //------------------------------------------------------------
 void LList::removeFirst(Drawable *&item) {
