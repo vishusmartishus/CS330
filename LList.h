@@ -36,8 +36,6 @@ public:
 	
 	int size() const { return size_; }
 	
-	Drawable* operator[](unsigned int index);
-	
 private:
 	
 	void copy(const LList &source);
