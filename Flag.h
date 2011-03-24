@@ -21,6 +21,10 @@ public:
 
 
     }
+	// Flag destructor
+	virtual ~Flag()
+	{
+	}
 	virtual void draw();
 	// Returns object type
 	virtual int objectType() { return 1; }
