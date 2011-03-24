@@ -114,6 +114,7 @@ void Mario::move()
 //updates Mario for one Frame
 void Mario::updateScene()
 {
+<<<<<<< HEAD
     //depending on whats happening we need to update Mario
     // check the key and move mario according to the button that is being pushed
     //call the check methods to check to see if Mario is running into things
@@ -121,6 +122,12 @@ void Mario::updateScene()
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
     
+=======
+	this->setLeft(this->left() + (vector[0] * vector[2]));
+	this->setRight(this->right() + (vector[0] * vector[2]));
+	this->setTop(this->top() + (vector[1] * vector[2]));
+	this->setBottom(this->bottom() + (vector[1] * vector[2]));
+>>>>>>> dreed/master
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects

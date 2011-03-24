@@ -8,29 +8,54 @@
  */
 
 #include "LList.h"
+#include "LListIterator.h"
 //------------------------------------------------------------
 LList::LList() {
 	this->size_ = 0;
+	this->head_ = NULL;
+	this->tail_ = NULL;
 }
 
 LList::~LList() {
-    
+    ListNode *node = this->head_;
+	ListNode *temp;
+	int i;
+	for (i=0; i<this->size_; ++i) {
+		temp = node->next_;
+		delete[] node;
+		node = temp;
+	}
+}
+//------------------------------------------------------------
+
+LList::LList(const LList& source) {
+	LListIterator it;
+	it.init(source);
+	Drawable* item;
+	while ((item = it.next())) {
+		this->append(item);
+	}
 }
 
 //------------------------------------------------------------
 void LList::removeFirst(Drawable *&item) {
+	ListNode *node;
 	if (this->size_ > 0) {
 		item = this->head_->item_;
 		if (this->size_ > 1) {
+			node = this->head_;
 			head_ = this->head_->next_;
+			delete node;
 		} else {
 			delete this->head_;
+			this->head_ = NULL;
+			this->tail_ = NULL;
 		}
-		size_ --;
+		size_--;
 	}
 }
 //------------------------------------------------------------
-void LList::append(Drawable *&item){
+void LList::append(Drawable *item){
 	ListNode *temp = new ListNode();
 	temp->item_ = item;
 	
@@ -43,8 +68,8 @@ void LList::append(Drawable *&item){
 	size_++;
 }
 //------------------------------------------------------------
-void LList::first(Drawable *&item) const {
-	item = head_->item_;
+Drawable* LList::first() const {
+	return head_->item_;
 }
 //------------------------------------------------------------
 void LList::removeDrawable(Drawable *obj) {
@@ -63,10 +88,12 @@ void LList::removeDrawable(Drawable *obj) {
 		removeFirst(temp);
 		return;
 	} else if (i == ((this->size_) - 1)) {
+		delete this->tail_;
 		this->tail_ = prenode;
-		prenode->next_ = 0;
+		prenode->next_ = NULL;
 	} else {
 		prenode->next_ = node->next_;
+		delete node;
 	}
 	delete node;
 	size_--;

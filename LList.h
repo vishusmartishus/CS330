@@ -10,15 +10,15 @@
 #ifndef __LLIST_H__
 #define __LLIST_H__
 
-#include "ListNode.h";
-#include "Drawable.h";
+#include "ListNode.h"
+#include "Drawable.h"
 
 class LListIterator;
 
 class LList {
-    
-    friend class LListIterator;
-    
+
+	friend class LListIterator;
+	
 public:
 	LList();
 	~LList();
@@ -28,9 +28,9 @@ public:
 	
 	void removeFirst(Drawable *&item);
 	
-	void append(Drawable *&item);
+	void append(Drawable *item);
 	
-	void first(Drawable *&item) const;
+	Drawable* first() const;
 	
 	void removeDrawable(Drawable *obj);
 	

@@ -38,6 +38,7 @@ private:
 	int state_, jumpCount_, starCount_; 
 	bool isInvincible_;
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
+	int vector[3];
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();

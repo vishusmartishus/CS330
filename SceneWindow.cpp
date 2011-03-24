@@ -41,6 +41,13 @@ SceneWindow::SceneWindow(int argc, char **argv)
     gluOrtho2D(0, 256, 0, 224);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
+	// view port initializer
+	/*viewportWidth_ = 16;
+	viewportHeight_ = 16;
+	viewportLeftX_ = 0;
+	viewportRightX_ = viewportLeftX_ + viewportWidth_;
+	glViewport(0, 0, viewportWidth_, viewportHeight_);*/
 	
 	glClearColor(0.7, 0.9, 1.0, 1.0);
 	
@@ -205,7 +212,17 @@ void SceneWindow::timerCB(int value)
 	// iterate through objects and move them
 	// redraw   
 
+	//Level *level_ = Level:: sharedLevel();
+	//level_->updateExtents(viewportLeftX_, viewportRightX_);
+	//LList movable = level_->getActiveMovable();
+	//LListIterator li;
+	//li.init(movable);
+	//Drawable *item;
+	//while (item = li.next()) {
+	//	item->updateScene();
+	//}
 	mario->updateScene();
+	glutPostRedisplay();
 
 }
 

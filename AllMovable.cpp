@@ -46,7 +46,7 @@ Drawable* AllMovable::checkRight()
 
 	// get right value of object
 	thisRight = right();
-
+/*
 	while(liBlocks.next(item))
 	{
 		//get left value of block
@@ -82,7 +82,7 @@ Drawable* AllMovable::checkRight()
 			return item;
 		}
 	}
-
+*/
     return NULL;
 }
 
@@ -104,7 +104,7 @@ Drawable* AllMovable::checkLeft()
 
 	// get left value of object
 	thisLeft = left();
-
+/*
 	while(liBlocks.next(item))
 	{
 		//get right value of block
@@ -140,7 +140,7 @@ Drawable* AllMovable::checkLeft()
 			return item;
 		}
 	}
-
+*/
     return NULL;
 }
 
@@ -162,7 +162,7 @@ Drawable* AllMovable::checkAbove()
 
 	// get top value of object
 	thisTop = top();
-
+/*
 	while(liBlocks.next(item))
 	{
 		//get bottom value of block
@@ -198,7 +198,7 @@ Drawable* AllMovable::checkAbove()
 			return item;
 		}
 	}
-
+*/
     return NULL;
 }
 
@@ -220,7 +220,7 @@ Drawable* AllMovable::checkBelow()
 
 	// get bottom value of object
 	thisBottom = bottom();
-
+/*
 	while(liBlocks.next(item))
 	{
 		//get top value of block
@@ -256,7 +256,7 @@ Drawable* AllMovable::checkBelow()
 			return item;
 		}
 	}
-
+*/
     return NULL;
 }
 
