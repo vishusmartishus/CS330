@@ -36,9 +36,9 @@ bool Movable::canMove()
     Drawable *dBelow = checkBelow();
     
     // if check is NULL, nothing in the way, can move
-    if (dRight == NULL or dLeft == NULL) {
+    if (dRight == NULL || dLeft == NULL) {
         // check if goomba, mushroom, shell, can fall off edge
-        if ((this->objectType() == 7 or this->objectType() == 8 or this->objectType() == 10) and dBelow == NULL) {
+        if ((this->objectType() == 7 || this->objectType() == 8 || this->objectType() == 10) && dBelow == NULL) {
             // can fall
             this->setYVelocity(2.0);
         }
