@@ -16,13 +16,8 @@
 class ListNode {
 public:
 	ListNode() { this->next_ = NULL; }
-	~ListNode();
 	Drawable *item_;
 	ListNode *next_;
 };
-
-inline ListNode::~ListNode() {
-	delete this->item_;
-}
 
 #endif
