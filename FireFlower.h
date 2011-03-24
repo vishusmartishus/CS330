@@ -22,6 +22,10 @@ public:
 
 
     }
+	// Destructor for FireFlower
+	virtual ~FireFlower()
+	{
+	}
 	virtual void draw();
 	// Returns object type
 	int objectType() { return 4; }

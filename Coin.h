@@ -22,6 +22,10 @@ public:
 
 
     }
+	// Coin destructor
+	virtual ~Coin()
+	{
+	}
 	virtual void draw();
 	// Returns object type
 	int objectType() { return 5; }

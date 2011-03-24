@@ -18,7 +18,6 @@
 	Drawable *item;
 	while ((item = li.next())) {
 		// do something with item
-		item = li.next();
 	}
 */ 
 
