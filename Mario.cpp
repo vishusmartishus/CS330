@@ -79,16 +79,16 @@ void Mario::updateKeyUp(unsigned char button)
 	if (button == 'a') {
 		leftKey_ = false;
 	}
-	else if (button == 'w') {
+	if (button == 'w') {
 		jumpKey_ = false;
 	}
-	else if (button == 'd') {
+	if (button == 'd') {
 		rightKey_ = false;
 	}
-	else if (button == 'j') {
+	if (button == 'j') {
 		sprintKey_ = false;
 	}
-	else if (button == 'k') {
+	if (button == 'k') {
 		fireballKey_ = false;
 	}
 }
