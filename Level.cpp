@@ -64,10 +64,41 @@ void Level::makeLevel()
 //------------------------------------------------------------
 void Level::updateExtents(int leftBound, int rightBound)
 {
+	//removes from the levelDrawable_ llist and adds onto the end of the active list
+	while ((levelDrawable_.first() != NULL) && (levelDrawable_.first()->left() < rightBound)){
+		Drawable *obj = levelDrawable_.removeFirst();
+		activeDrawable_.append(obj);
+	}
+	
+	//removes from the active list when and deleted the object when the right end of an object falls off the left bound
+	while ((activeDrawable_.first() != NULL) && (activeDrawable_.first()->right() < leftBound)){
+		Drawable *obj = activeDrawable_.removeFirst();
+		delete obj;
+	}
 
+	//removes from the levelMovable_ llist and appends to the active list
+	while ((levelMovable_.first() != NULL) && (levelMovable_.first()->left() < rightBound)){
+		Drawable *obj = levelMovable_.removeFirst();
+		activeMovable_.append(obj);
+	}
 
+	//removes from the activeMovable_ llist and deletes the object
+	while ((activeMovable_.first() != NULL) && (activeMovable_.first()->right() < leftBound)){
+		Drawable *obj = activeMovable_.removeFirst();
+		delete obj;
+	}
+	
+	//removes from the levelBlocks_ llist and appends to the active list
+	while ((levelBlocks_.first() != NULL) && (levelBlocks_.first()->left() < rightBound)){
+		Drawable *obj = levelBlocks_.removeFirst();
+		activeBlocks_.append(obj);
+	}
 
-
+	//removes from the activeBlocks_ llist and deletes the object
+	while ((activeBlocks_.first() != NULL) && (activeBlocks_.first()->right() < leftBound)){
+		Drawable *obj = activeBlocks_.removeFirst();
+		delete obj;
+	}
 }
 //------------------------------------------------------------
 void Level::removeDrawable(Drawable *obj)

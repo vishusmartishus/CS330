@@ -38,7 +38,7 @@ bool Movable::canMove()
     // if check is NULL, nothing in the way, can move
     if (dRight == NULL || dLeft == NULL) {
         // check if goomba, mushroom, shell, can fall off edge
-        if ((this->objectType() == 7 || this->objectType() == 8 || this->objectType() == 10) && dBelow == NULL) {
+        if ((this->objectType() == goomba_ || this->objectType() == mushroom_ || this->objectType() == shell_) && dBelow == NULL) {
             // can fall
             this->setYVelocity(2.0);
         }
@@ -62,22 +62,11 @@ void Movable::updateScene()
     double currentXVelocity, currentYVelocity;
     int updatedLeft, updatedRight, updatedTop, updatedBottom;
     
-    // call canMove
-    b = canMove();
+    // get velocities
+    currentXVelocity = this->getXVelocity();
+    currentYVelocity = this->getYVelocity();
     
-    // if b is false, need to turn around
-    if (b == false) {
-        currentXVelocity = this->getXVelocity();
-        currentXVelocity = (-1) * currentXVelocity;
-        currentYVelocity = this->getYVelocity();
-    }
-    else {
-        currentXVelocity = this->getXVelocity();
-        currentYVelocity = this->getYVelocity();
-    }
-
-    
-    // update position
+    // update position to check next move
     updatedLeft = this->left() + currentXVelocity;
     this->setLeft(updatedLeft);
     updatedRight = this->right() + currentXVelocity;
@@ -86,6 +75,29 @@ void Movable::updateScene()
     this->setTop(updatedTop);
     updatedBottom = this->bottom() + currentYVelocity;
     this->setBottom(updatedBottom);
+    
+    b = canMove();
+    
+    // if b is false, can't move that direction, reverse x direction
+    // if b is true, movement can stay
+    if (b == false) {
+        // undo potential move
+        updatedLeft = this->left() - currentXVelocity;
+        this->setLeft(updatedLeft);
+        updatedRight = this->right() - currentXVelocity;
+        this->setRight(updatedRight);
+        updatedTop = this->top() - currentYVelocity;
+        this->setTop(updatedTop);
+        updatedBottom = this->bottom() - currentYVelocity;
+        this->setBottom(updatedBottom);
+        
+        // reverse x
+        currentXVelocity = (-1) * currentXVelocity;
+        updatedLeft = this->left() + currentXVelocity;
+        this->setLeft(updatedLeft);
+        updatedRight = this->right() + currentXVelocity;
+        this->setRight(updatedRight);
+    }
 }
 
 //---------------------------------------------------------

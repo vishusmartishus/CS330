@@ -42,48 +42,57 @@ Drawable* AllMovable::checkRight()
 	liDrawable.init(level->getActiveDrawable());
 
     Drawable *item;
-    int thisRight, objLeft;
+    int thisRight, objLeft, objRight;
 
 	// get right value of object
-	thisRight = right();
-/*
-	while(liBlocks.next(item))
-	{
-		//get left value of block
-		objLeft = item->left();
+	thisRight = this->right();
 
-		// if they are touching return that block
-		if (thisRight == objLeft)
+	// iterate through active Blocks list
+	while ((item = liBlocks.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+
+		// if the right is in between objects left & right boundaries
+		if (thisRight >= objLeft && thisRight <= objRight)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liMovable.next(item))
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
 	{
-		//get left value of movable
+		//get left, right, top and bottom of block
 		objLeft = item->left();
+		objRight = item->right();
 
-		// if they are touching return that movable
-		if (thisRight == objLeft)
+		// if the right is in between objects left & right boundaries
+		if (thisRight >= objLeft && thisRight <= objRight)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liDrawable.next(item))
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
 	{
-		//get left value of drawable
+		//get left, right, top and bottom of block
 		objLeft = item->left();
+		objRight = item->right();
 
-		// if they are touching return that drawable
-		if (thisRight == objLeft)
+		// if the right is in between objects left & right boundaries
+		if (thisRight >= objLeft && thisRight <= objRight)
 		{
+			// return that object
 			return item;
 		}
 	}
-*/
-    return NULL;
+
+	return NULL;
 }
 
 //---------------------------------------------------------
@@ -100,48 +109,57 @@ Drawable* AllMovable::checkLeft()
 	liDrawable.init(level->getActiveDrawable());
 
     Drawable *item;
-    int thisLeft, objRight;
+    int thisLeft, objLeft, objRight;
 
-	// get left value of object
-	thisLeft = left();
-/*
-	while(liBlocks.next(item))
+	// get right value of object
+	thisLeft = this->left();
+
+	// iterate through active Block list
+	while ((item = liBlocks.next())) 
 	{
-		//get right value of block
+		//get left, right, top and bottom of block
+		objLeft = item->left();
 		objRight = item->right();
 
-		// if they are touching return that block
-		if (thisLeft == objRight)
+		// if the right is in between objects left & right boundaries
+		if (thisLeft >= objLeft && thisLeft <= objRight)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liMovable.next(item))
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
 	{
-		//get right value of movable
+		//get left, right, top and bottom of block
+		objLeft = item->left();
 		objRight = item->right();
 
-		// if they are touching return that movable
-		if (thisLeft == objRight)
+		// if the right is in between objects left & right boundaries
+		if (thisLeft >= objLeft && thisLeft <= objRight)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liDrawable.next(item))
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
 	{
-		//get right value of drawable
+		//get left, right, top and bottom of block
+		objLeft = item->left();
 		objRight = item->right();
 
-		// if they are touching return that drawable
-		if (thisLeft == objRight)
+		// if the right is in between objects left & right boundaries
+		if (thisLeft >= objLeft && thisLeft <= objRight)
 		{
+			// return that object
 			return item;
 		}
 	}
-*/
-    return NULL;
+
+	return NULL;
 }
 
 //---------------------------------------------------------
@@ -158,48 +176,57 @@ Drawable* AllMovable::checkAbove()
 	liDrawable.init(level->getActiveDrawable());
 
     Drawable *item;
-    int thisTop, objBottom;
+    int thisTop, objTop, objBottom;
 
-	// get top value of object
-	thisTop = top();
-/*
-	while(liBlocks.next(item))
+	// get right value of object
+	thisTop = this->top();
+
+	// iterate through active Blocks list
+	while ((item = liBlocks.next())) 
 	{
-		//get bottom value of block
+		//get left, right, top and bottom of block
+		objTop = item->top();
 		objBottom = item->bottom();
 
-		// if they are touching return that block
-		if (thisTop == objBottom)
+		// if the top is in between objects top & bottom boundaries
+		if (thisTop >= objBottom && thisTop <= objTop)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liMovable.next(item))
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
 	{
-		//get bottom value of movable
+		//get left, right, top and bottom of block
+		objTop = item->top();
 		objBottom = item->bottom();
 
-		// if they are touching return that movable
-		if (thisTop == objBottom)
+		// if the top is in between objects top & bottom boundaries
+		if (thisTop >= objBottom && thisTop <= objTop)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liDrawable.next(item))
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
 	{
-		//get bottom value of drawable
+		//get left, right, top and bottom of block
+		objTop = item->top();
 		objBottom = item->bottom();
 
-		// if they are touching return that drawable
-		if (thisTop == objBottom)
+		// if the top is in between objects top & bottom boundaries
+		if (thisTop >= objBottom && thisTop <= objTop)
 		{
+			// return that object
 			return item;
 		}
 	}
-*/
-    return NULL;
+
+	return NULL;
 }
 
 //---------------------------------------------------------
@@ -216,48 +243,57 @@ Drawable* AllMovable::checkBelow()
 	liDrawable.init(level->getActiveDrawable());
 
     Drawable *item;
-    int thisBottom, objTop;
+    int thisBottom, objTop, objBottom;
 
-	// get bottom value of object
-	thisBottom = bottom();
-/*
-	while(liBlocks.next(item))
+	// get right value of object
+	thisBottom = this->bottom();
+
+	// iterate through active Blocks list
+	while ((item = liBlocks.next())) 
 	{
-		//get top value of block
+		//get left, right, top and bottom of block
 		objTop = item->top();
+		objBottom = item->bottom();
 
-		// if they are touching return that block
-		if (thisBottom == objTop)
+		// if the top is in between objects top & bottom boundaries
+		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liMovable.next(item))
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
 	{
-		//get top value of movable
+		//get left, right, top and bottom of block
 		objTop = item->top();
+		objBottom = item->bottom();
 
-		// if they are touching return that movable
-		if (thisBottom == objTop)
+		// if the top is in between objects top & bottom boundaries
+		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
+			// return that object
 			return item;
 		}
 	}
 
-	while(liDrawable.next(item))
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
 	{
-		//get top value of drawable
+		//get left, right, top and bottom of block
 		objTop = item->top();
+		objBottom = item->bottom();
 
-		// if they are touching return that drawable
-		if (thisBottom == objTop)
+		// if the top is in between objects top & bottom boundaries
+		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
+			// return that object
 			return item;
 		}
 	}
-*/
-    return NULL;
+
+	return NULL;
 }
 
 //---------------------------------------------------------
