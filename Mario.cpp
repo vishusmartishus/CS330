@@ -120,11 +120,14 @@ void Mario::updateScene()
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
-    
-	this->setLeft(this->left() + (vector[0] * vector[2]));
-	this->setRight(this->right() + (vector[0] * vector[2]));
-	this->setTop(this->top() + (vector[1] * vector[2]));
-	this->setBottom(this->bottom() + (vector[1] * vector[2]));
+    if (check()) {
+        this->setLeft(this->left() + (vector[0] * vector[2]));
+        this->setRight(this->right() + (vector[0] * vector[2]));
+        this->setTop(this->top() + (vector[1] * vector[2]));
+        this->setBottom(this->bottom() + (vector[1] * vector[2]));
+    } else {
+        
+    }
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects

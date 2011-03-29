@@ -15,7 +15,7 @@ LList::LList() {
 	this->head_ = NULL;
 	this->tail_ = NULL;
 }
-
+//------------------------------------------------------------
 LList::~LList() {
     ListNode *node = this->head_;
 	ListNode *temp;
@@ -29,6 +29,7 @@ LList::~LList() {
 //------------------------------------------------------------
 
 LList::LList(const LList& source) {
+    this->size_ = 0;
 	LListIterator it;
 	it.init(source);
 	Drawable* item;
@@ -91,9 +92,9 @@ void LList::removeDrawable(Drawable *obj) {
 	} else if (i == ((this->size_) - 1)) {
 		delete this->tail_;
 		this->tail_ = prenode;
-		prenode->next_ = NULL;
+		this->tail_->next_ = NULL;
 		size_--;
-	} else if (i == this->size_) {
+	} else if (i != (this->size_)) {
 		prenode->next_ = node->next_;
 		delete node;
 		size_--;
@@ -109,4 +110,21 @@ LList& LList::operator=(const LList &list) {
 		node = node->next_;
 	}
 	return *temp;
+}
+//------------------------------------------------------------
+void LList::insertInSortedOrder(Drawable *item) {
+    /*ListNode *node = this->head_;
+    ListNode *temp;
+    int x;
+    for (int i = 0; i < this->size_; ++i) {
+        x = node->item_->left();
+        if (x >= item->left()) {
+            break;
+        }
+        node = node->next_;
+    }
+    if (!node) {
+        temp = node
+    }*/
+    this->append(item);
 }
