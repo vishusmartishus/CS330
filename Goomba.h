@@ -32,7 +32,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return 7; }
+    int objectType() { return goomba_; }
     
 };
 
