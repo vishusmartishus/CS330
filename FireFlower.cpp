@@ -9,7 +9,7 @@
 void FireFlower::draw()
 {
 	
-	glColor3i(255, 140, 0);
+	glColor3ub(255, 140, 0);
 	int i;
 	for(i=0;i<4;++i){
 		glBegin(GL_POLYGON);

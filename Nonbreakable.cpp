@@ -10,7 +10,7 @@
 void Nonbreakable::draw()
 {
 	
-	glColor3i(199,113,64);
+	glColor3ub(199,113,64);
 	int i;
 	for(i=0;i<4;++i){
 		glBegin(GL_POLYGON);

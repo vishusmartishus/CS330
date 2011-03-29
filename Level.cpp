@@ -111,11 +111,11 @@ void Level::removeDrawable(Drawable *obj)
 //------------------------------------------------------------
 void Level::loadTestLevel()
 {
-	/*int left, bottom, i;
+	int left, bottom, i;
 	bottom = 0;
 	left = 0;
 	for (i=0; i<20; ++i){
-		Nonbreakable *block = new Nonbreakable;
+		Nonbreakable *block = new Nonbreakable(15,0);
 		block->setTop(bottom  + 16);
 		block->setBottom(bottom);
 		block->setLeft(left);
@@ -123,6 +123,6 @@ void Level::loadTestLevel()
 		activeBlocks_.append(block);
 		left += 16;
 	}
-	*/
+	
 
 }

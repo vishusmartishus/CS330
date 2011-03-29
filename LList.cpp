@@ -15,7 +15,7 @@ LList::LList() {
 	this->head_ = NULL;
 	this->tail_ = NULL;
 }
-
+//------------------------------------------------------------
 LList::~LList() {
     ListNode *node = this->head_;
 	ListNode *temp;
@@ -29,6 +29,7 @@ LList::~LList() {
 //------------------------------------------------------------
 
 LList::LList(const LList& source) {
+    this->size_ = 0;
 	LListIterator it;
 	it.init(source);
 	Drawable* item;
@@ -45,14 +46,14 @@ Drawable* LList::removeFirst() {
 		item = this->head_->item_;
 		if (this->size_ > 1) {
 			node = this->head_;
-			head_ = this->head_->next_;
+			this->head_ = this->head_->next_;
 			delete node;
 		} else {
 			delete this->head_;
 			this->head_ = NULL;
 			this->tail_ = NULL;
 		}
-		size_--;
+		this->size_--;
 	}
 	return item;
 }
@@ -66,8 +67,9 @@ void LList::append(Drawable *item){
 		this->tail_ = temp;
 	} else {
 		tail_->next_ = temp;
+        tail_ = temp;
 	}
-	size_++;
+	this->size_++;
 }
 //------------------------------------------------------------
 Drawable* LList::first() const {
@@ -91,12 +93,12 @@ void LList::removeDrawable(Drawable *obj) {
 	} else if (i == ((this->size_) - 1)) {
 		delete this->tail_;
 		this->tail_ = prenode;
-		prenode->next_ = NULL;
-		size_--;
-	} else if (i == this->size_) {
+		this->tail_->next_ = NULL;
+		this->size_--;
+	} else if (i != (this->size_)) {
 		prenode->next_ = node->next_;
 		delete node;
-		size_--;
+		this->size_--;
 	}
 }
 //------------------------------------------------------------
@@ -109,4 +111,32 @@ LList& LList::operator=(const LList &list) {
 		node = node->next_;
 	}
 	return *temp;
+}
+//------------------------------------------------------------
+void LList::insertInSortedOrder(Drawable *item) {
+    ListNode *node = this->head_;
+    ListNode *temp = NULL;
+    ListNode *newNode = new ListNode();
+    newNode->item_ = item;
+    int x, i;
+    for (i = 0; i < (this->size_); ++i) {
+        x = node->item_->left();
+        if (x <= item->left()) {
+            break;
+        }
+        temp = node;
+        node = node->next_;
+    }
+    if (i == 0){
+        this->head_ = newNode;
+        newNode->next_ = node;
+    }
+    else if (!node) {
+        this->tail_->next_ = newNode;
+        this->tail_ = newNode;
+    } else {
+        temp->next_ = newNode;
+        newNode->next_ = node;
+    }
+    this->size_++;
 }

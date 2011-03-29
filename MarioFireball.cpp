@@ -35,7 +35,7 @@ MarioFireball::~MarioFireball()
 void MarioFireball::draw()
 {
     
-	glColor3i(139, 26, 26);
+	glColor3ub(139, 26, 26);
     int i;
     for(i=0;i<4;++i){
         glBegin(GL_POLYGON);
