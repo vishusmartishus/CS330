@@ -32,7 +32,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return 11; }
+    int objectType() { return star_; }
 
 };
 
