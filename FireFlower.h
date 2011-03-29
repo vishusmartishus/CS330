@@ -28,7 +28,7 @@ public:
 	}
 	virtual void draw();
 	// Returns object type
-	int objectType() { return 4; }
+	int objectType() { return fireFlower_; }
 };
 
 #endif
