@@ -44,13 +44,15 @@ SceneWindow::SceneWindow(int argc, char **argv)
     glLoadIdentity();
 
 	// view port initializer
-	/*viewportWidth_ = 16;
+	viewportWidth_ = 16;
 	viewportHeight_ = 16;
 	viewportLeftX_ = 0;
 	viewportRightX_ = viewportLeftX_ + viewportWidth_;
-	glViewport(0, 0, viewportWidth_, viewportHeight_);*/
+	glViewport(0, 0, viewportWidth_, viewportHeight_);
 	
 	glClearColor(0.7, 0.9, 1.0, 1.0);
+	
+	startGame();
 	
 	glutPostRedisplay();
 }
@@ -83,7 +85,7 @@ void SceneWindow::startGame()
 
     //// start playing
     //playing_ = true;
-    //glutTimerFunc(10, &PongWindow::timerFunc, 0);
+    glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 	sw->loadLevel();
 }
 
@@ -93,6 +95,8 @@ void SceneWindow::loadLevel()
 {
 	//called from start game
 	//loads in current level from set checkpoint
+	Level *level_ = Level::sharedLevel();
+	level_->loadTestLevel();
 	mario = new Mario();
 }
 
@@ -151,13 +155,19 @@ void SceneWindow::displayCB()
 		glEnd();
 	}
 	//---------------------------
-	Level *level_ = Level:: sharedLevel();
+	Level *level_ = Level::sharedLevel();
 	LList movable = level_->getActiveMovable();
 	LList drawable = level_->getActiveDrawable();
 	LList blocks = level_->getActiveBlocks();
 	LListIterator li;
 	li.init(movable);
 	Drawable *item;
+	
+	//LList movable = level_->getActiveMovable();
+	//LList drawable = level_->getActiveDrawable();
+	//li.init(movable);
+	
+	/*
 	while (item = li.next()) {
 		item->draw();
 	}
@@ -165,11 +175,19 @@ void SceneWindow::displayCB()
 	while (item = li.next()) {
 		item->draw();
 	}
+	 */
 	li.init(blocks);
 	while (item = li.next()) {
 		item->draw();
 	}
-
+	 
+	/*
+	li.init(blocks);
+	for (int i = 0; i<15; ++i) {
+		item = li.next();
+		item->draw();
+	}
+*/
 	
     // force screen update
     glFlush();
@@ -224,6 +242,7 @@ void SceneWindow::timerCB(int value)
 	}
 	mario->updateScene();
 	// check if screen needs to be moved
+    /*
 	int temp;
 	temp = viewportRightX_ - (viewportRightX_ - viewportLeftX_)/2;
 	if (mario->right() > temp)
@@ -232,6 +251,17 @@ void SceneWindow::timerCB(int value)
 		viewportLeftX_ += temp - mario->right();
 		level_->updateExtents(viewportLeftX_, viewportRightX_);
 	}
+     */
+	//Level *level_ = Level:: sharedLevel();
+	//level_->updateExtents(viewportLeftX_, viewportRightX_);
+	//LList movable = level_->getActiveMovable();
+	//LListIterator li;
+	//li.init(movable);
+	//Drawable *item;
+	//while (item = li.next()) {
+	//	item->updateScene();
+	//}
+	//mario->updateScene();
 	glutPostRedisplay();
 
 }
