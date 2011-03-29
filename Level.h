@@ -28,6 +28,11 @@ public:
 	LList& getLevelBlocks() {return levelBlocks_; }
 	//creates a line of unbreakable blocks across the bottom for testing
 	void loadTestLevel();
+	//add rewards in sorted order
+	void addMovable(Drawable *obj);
+	void addDrawable(Drawable *obj);
+
+
 //------------------------------------------------------------
 private:
 	//constructor for level
