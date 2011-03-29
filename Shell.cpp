@@ -37,7 +37,7 @@ Shell::~Shell()
 void Shell::draw()
 {
     
-	glColor3i(153, 50, 204);
+	glColor3ub(153, 50, 204);
     int i;
     for(i=0;i<4;++i){
         glBegin(GL_POLYGON);
