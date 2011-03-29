@@ -32,7 +32,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return 8; }
+    int objectType() { return mushroom_; }
 
 };
 

@@ -18,7 +18,6 @@
 	Drawable *item;
 	while ((item = li.next())) {
 		// do something with item
-		item = li.next();
 	}
 */ 
 
@@ -28,6 +27,8 @@ public:
 	LListIterator() {}
 	
 	void init(LList &list);
+	void init(const LList &list);
+	
 	Drawable* next();
 
 private:
@@ -36,6 +37,11 @@ private:
 };
 
 inline void LListIterator::init(LList & list) 
+{
+	node = list.head_;
+}
+
+inline void LListIterator::init(const LList & list) 
 {
 	node = list.head_;
 }

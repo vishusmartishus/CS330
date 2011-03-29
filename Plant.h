@@ -32,7 +32,7 @@ public:
     // methods
 
     // object type
-    int objectType() { return 9; }
+    int objectType() { return plant_; }
     // method to shoot fireball from plant
     void shootFireball();
 	// plant's move is different from the normal move

@@ -26,7 +26,7 @@ public:
 	LList(const LList& source);
 	LList& operator=(const LList &list);
 	
-	void removeFirst(Drawable *&item);
+	Drawable* removeFirst();
 	
 	void append(Drawable *item);
 	
@@ -36,7 +36,7 @@ public:
 	
 	int size() const { return size_; }
 	
-	Drawable* operator[](unsigned int index);
+	void insertInSortedOrder(Drawable *item);
 	
 private:
 	

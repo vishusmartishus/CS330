@@ -30,7 +30,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return 13; }
+    int objectType() { return enemyfireball_; }
     
 };
 
