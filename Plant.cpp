@@ -37,7 +37,7 @@ Plant::~Plant()
 void Plant::draw()
 {
 
-	glColor3i(0, 255, 0);
+	glColor3ub(0, 255, 0);
     int i;
     for(i=0;i<4;++i){
         glBegin(GL_POLYGON);

@@ -37,7 +37,7 @@ Turtle::~Turtle()
 void Turtle::draw()
 {
     
-	glColor3i(110, 139, 61);
+	glColor3ub(110, 139, 61);
     int i;
     for(i=0;i<4;++i){
         glBegin(GL_POLYGON);

@@ -39,7 +39,7 @@ void Mushroom::draw()
     
     
     
-	glColor3i(255,182,193);
+	glColor3ub(255,182,193);
     int i;
     for(i=0;i<4;++i){
         glBegin(GL_POLYGON);

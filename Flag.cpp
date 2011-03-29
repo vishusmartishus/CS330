@@ -6,7 +6,7 @@
 void Flag::draw()
 {
 	
-	glColor3i(220,220,220);
+	glColor3ub(220,220,220);
 	int i;
 	for(i=0;i<4;++i){
 		glBegin(GL_POLYGON);
