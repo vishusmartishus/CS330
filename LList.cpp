@@ -110,3 +110,7 @@ LList& LList::operator=(const LList &list) {
 	}
 	return *temp;
 }
+//------------------------------------------------------------
+void LList::insertInSortedOrder(Drawable *item) {
+    this->append(item);
+}
