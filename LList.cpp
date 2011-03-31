@@ -30,6 +30,8 @@ LList::~LList() {
 
 LList::LList(const LList& source) {
     this->size_ = 0;
+    this->head_ = NULL;
+    this->tail_ = NULL;
 	LListIterator it;
 	it.init(source);
 	Drawable* item;
