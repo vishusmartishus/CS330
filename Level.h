@@ -31,6 +31,8 @@ public:
 	//add rewards in sorted order
 	void addMovable(Drawable *obj);
 	void addDrawable(Drawable *obj);
+	//empties the current lists to create a new level
+	void resetLevel();
 
 
 //------------------------------------------------------------
