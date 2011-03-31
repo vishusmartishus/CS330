@@ -46,7 +46,7 @@ Mario::Mario()
     fireballKey_ = false;
     
     //Set X and Y velocity
-    this->setXVelocity(0.0);
+    this->setXVelocity(1.0);
     this->setYVelocity(0.0);
 
 }
@@ -168,11 +168,11 @@ void Mario::updateScene()
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
-    //if (check()) {
-    move();
-    //} else {
+    if (check()) {
+        move();
+    } else {
         //Mario Dies
-    //}
+    }
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
