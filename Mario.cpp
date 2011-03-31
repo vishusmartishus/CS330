@@ -12,6 +12,11 @@
 #include "Mario.h"
 #include "LListIterator.h"
 #include "Level.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 
 //------------------------------------------------------------
 void Mario::draw()
