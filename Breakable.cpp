@@ -6,7 +6,7 @@
 //------------------------------------------------------------
 void Breakable::draw()
 {
-	glColor3i(151,84,79);
+	glColor3ub(151,84,79);
 	int i;
 	for(i=0;i<4;++i){
 		glBegin(GL_POLYGON);
