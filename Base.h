@@ -8,7 +8,7 @@
 const int flag_ = 1;
 const int breakable_ = 2;
 const int question_ = 3;
-const int fireflower_ = 4;
+const int fireFlower_ = 4;
 const int coin_ = 5;
 const int mario_ = 6;
 const int goomba_ = 7;
@@ -17,8 +17,8 @@ const int plant_ = 9;
 const int shell_ = 10;
 const int star_ = 11;
 const int turtle_ = 12;
-const int enemyfireball_ = 13;
-const int mariofireball_ = 14;
+const int enemyFireball_ = 13;
+const int marioFireball_ = 14;
 const int regular_ = 15;
 // Base class
 class Base {
