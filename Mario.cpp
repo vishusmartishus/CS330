@@ -46,6 +46,9 @@ Mario::Mario()
     sprintKey_ = false;
     fireballKey_ = false;
     
+    //Set X and Y velocity
+    this->setXVelocity(0.0);
+    this->setYVelocity(0.0);
 
 }
 //------------------------------------------------------------
@@ -58,11 +61,11 @@ void Mario::updateKeyDown(unsigned char button)
         //set Mario's Velocity
         if (sprintKey_ == true)
         {
-            this->setXVelocity(this->getXVelocity() * -2.0);
+            this->setXVelocity(-2.0);
         }
         else 
         {
-            this->setXVelocity(this->getXVelocity() * -1.0);
+            this->setXVelocity(-1.0);
         }
     }
     
@@ -84,10 +87,14 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'w')
     {
         jumpKey_ = true;
-        jumpCount_ = 5;
         
-        //set Mario's velocity
-        this->setYVelocity(1.0);
+        if (jumpCount_ == 0) 
+        {
+            jumpCount_ = 5;
+            
+            //set Mario's velocity
+            this->setYVelocity(1.0);
+        }
     }
     
     if (button == 'j')
@@ -106,21 +113,40 @@ void Mario::updateKeyUp(unsigned char button)
 {
 	if (button == 'a') {
 		leftKey_ = false;
-        this->setXVelocity(0.0);
+        if (rightKey_) {
+            if (this->getXVelocity() < 0) {
+                this->setXVelocity(1.0);
+            }
+            else {
+                this->setXVelocity(0.0);
+            }
+        }
+        else {
+            this->setXVelocity(0.0);
+        }
 	}
-	else if (button == 'w') {
+	if (button == 'w') {
 		jumpKey_ = false;
-        jumpCount_ = 0;
-        this->setYVelocity(0.0);
 	}
-	else if (button == 'd') {
+    
+	if (button == 'd') {
 		rightKey_ = false;
-        this->setXVelocity(0.0);
+        if (leftKey_) {
+            if (this->getXVelocity() > 0) {
+                this->setXVelocity(-1.0);
+            }
+            else {
+                this->setXVelocity(0.0);
+            }
+        }
+        else {
+            this->setXVelocity(0.0);
+        }
 	}
-	else if (button == 'j') {
+	if (button == 'j') {
 		sprintKey_ = false;
 	}
-	else if (button == 'k') {
+	if (button == 'k') {
 		fireballKey_ = false;
 	}
 }
@@ -129,6 +155,8 @@ void Mario::updateKeyUp(unsigned char button)
 void Mario::move()
 {
     //actually does the movement of Mario
+    this->setRight(this->right() + this->getXVelocity());
+    this->setLeft(this->left() + this->getXVelocity());
     
 }
 //------------------------------------------------------------
@@ -141,14 +169,11 @@ void Mario::updateScene()
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
-    if (check()) {
-        setLeft(left() + getXVelocity());
-        setRight(right() + getXVelocity());
-        setTop(top() + getYVelocity());
-        setBottom(bottom() + getYVelocity());
-    } else {
+    //if (check()) {
+    move();
+    //} else {
         //Mario Dies
-    }
+    //}
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects

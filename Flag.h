@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
+// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
 // If Drawable.h is not defined, defines it
 #ifndef _FLAG_H
@@ -27,7 +27,7 @@ public:
 	}
 	virtual void draw();
 	// Returns object type
-	virtual int objectType() { return 1; }
+	virtual int objectType() { return flag_; }
     // Method to decides and returns how many points awarded by touching the flag
     // Touched is the level that the flag was touched
     int flagPoints(int touched);
