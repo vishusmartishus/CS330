@@ -18,14 +18,15 @@ void Mario::draw()
 {
 	glColor3ub(255, 0, 0);
 	int i;
-	for(i=0;i<4;++i){
+	
 		glBegin(GL_POLYGON);
 		glVertex2d(left(), bottom());
-		glVertex2d(left(), top());
-		glVertex2d(right(),top());
+		//glVertex2d(left(), top());
+        glVertex2d(((right()-left())/2)+left(), top());
+		//glVertex2d(right(),top());
 		glVertex2d(right(), bottom());
 		glEnd();
-	}
+	
 }
 //------------------------------------------------------------
 //constructor for Mario Class
