@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */; };
 		03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */; };
+		037608EF1342470000A50E9A /* test_LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037608EE1342470000A50E9A /* test_LList.cpp */; };
+		037608F01342471000A50E9A /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
+		037608F11342472700A50E9A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
+		037608F21342472700A50E9A /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
 		037A37451302C10100788A82 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
 		037A37461302C10100788A82 /* Breakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37211302C10100788A82 /* Breakable.cpp */; };
 		037A37471302C10100788A82 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
@@ -53,6 +57,8 @@
 		03462EDC130AFC4A004BBAE6 /* EnemyFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFireball.h; sourceTree = "<group>"; };
 		03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarioFireball.cpp; sourceTree = "<group>"; };
 		03462EDE130AFC4A004BBAE6 /* MarioFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarioFireball.h; sourceTree = "<group>"; };
+		037608E8134246D700A50E9A /* test_LList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_LList; sourceTree = BUILT_PRODUCTS_DIR; };
+		037608EE1342470000A50E9A /* test_LList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_LList.cpp; sourceTree = "<group>"; };
 		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
 		037A37201302C10100788A82 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
 		037A37211302C10100788A82 /* Breakable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Breakable.cpp; sourceTree = "<group>"; };
@@ -103,6 +109,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		037608E6134246D700A50E9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DD76F660486A84900D96B5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		037608EC134246E500A50E9A /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				037608EE1342470000A50E9A /* test_LList.cpp */,
+			);
+			name = UnitTests;
+			sourceTree = "<group>";
+		};
 		037A37581302C14A00788A82 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +217,7 @@
 		08FB7794FE84155DC02AAC07 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				037608EC134246E500A50E9A /* UnitTests */,
 				DA38FB78130D9E1C00C5F7A6 /* Data Structures */,
 				037A375C1302C1BA00788A82 /* Drawable */,
 				037A37581302C14A00788A82 /* Scene */,
@@ -214,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				8DD76F6C0486A84900D96B5E /* Game */,
+				037608E8134246D700A50E9A /* test_LList */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +263,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		037608E7134246D700A50E9A /* test_LList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 037608ED134246E500A50E9A /* Build configuration list for PBXNativeTarget "test_LList" */;
+			buildPhases = (
+				037608E5134246D700A50E9A /* Sources */,
+				037608E6134246D700A50E9A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test_LList;
+			productName = test_LList;
+			productReference = 037608E8134246D700A50E9A /* test_LList */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DD76F620486A84900D96B5E /* Game */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Game" */;
@@ -265,6 +304,7 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -277,11 +317,23 @@
 			projectRoot = "";
 			targets = (
 				8DD76F620486A84900D96B5E /* Game */,
+				037608E7134246D700A50E9A /* test_LList */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		037608E5134246D700A50E9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037608EF1342470000A50E9A /* test_LList.cpp in Sources */,
+				037608F01342471000A50E9A /* LList.cpp in Sources */,
+				037608F11342472700A50E9A /* Base.cpp in Sources */,
+				037608F21342472700A50E9A /* Drawable.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DD76F640486A84900D96B5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +367,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		037608EA134246D700A50E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = test_LList;
+			};
+			name = Debug;
+		};
+		037608EB134246D700A50E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = test_LList;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		1DEB923208733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -371,6 +453,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		037608ED134246E500A50E9A /* Build configuration list for PBXNativeTarget "test_LList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				037608EA134246D700A50E9A /* Debug */,
+				037608EB134246D700A50E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

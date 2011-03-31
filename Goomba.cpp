@@ -36,7 +36,7 @@ Goomba::~Goomba()
 
 void Goomba::draw()
 {
-	glColor3i(205, 133, 63);
+	glColor3ub(205, 133, 63);
     int i;
     for(i=0;i<4;++i){
         glBegin(GL_POLYGON);
