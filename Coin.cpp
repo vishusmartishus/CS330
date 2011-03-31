@@ -9,7 +9,7 @@
 void Coin::draw()
 {
 	
-	glColor3i(255, 255, 0);
+	glColor3ub(255, 255, 0);
 	int i;
 	for(i=0;i<4;++i){
 		glBegin(GL_POLYGON);

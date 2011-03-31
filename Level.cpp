@@ -134,15 +134,12 @@ void Level::loadTestLevel()
 		activeBlocks_.append(block);
 		left += 16;
 	}
-	
-
 }
 //------------------------------------------------------------
 void Level::addDrawable(Drawable *obj)
 {
 	//inserts the object to the correct list
 	activeDrawable_.insertInSortedOrder(obj);
-
 }
 //------------------------------------------------------------
 void Level::addMovable(Drawable *obj)
