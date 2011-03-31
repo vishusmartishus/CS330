@@ -72,7 +72,7 @@ void Mario::updateKeyDown(unsigned char button)
         sprintKey_ = true;
     }
     
-    if (button = 'k')
+    if (button == 'k')
     {
         fireballKey_ = true;
     }
@@ -121,12 +121,12 @@ void Mario::updateScene()
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
     if (check()) {
-        this->setLeft(this->left() + (vector[0] * vector[2]));
-        this->setRight(this->right() + (vector[0] * vector[2]));
-        this->setTop(this->top() + (vector[1] * vector[2]));
-        this->setBottom(this->bottom() + (vector[1] * vector[2]));
+        setLeft(left() + getXVelocity());
+        setRight(right() + getXVelocity());
+        setTop(top() + getYVelocity());
+        setBottom(bottom() + getYVelocity());
     } else {
-        
+        //Mario Dies
     }
 }
 //------------------------------------------------------------
