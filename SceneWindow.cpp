@@ -85,8 +85,8 @@ void SceneWindow::startGame()
 
     //// start playing
     //playing_ = true;
-    glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 	sw->loadLevel();
+    glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 }
 
 //----------------------------------------------------------------------
@@ -251,9 +251,8 @@ void SceneWindow::timerCB(int value)
 		level_->updateExtents(viewportLeftX_, viewportRightX_);
 	}
      */
-    
 	glutPostRedisplay();
-
+	glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 }
 
 //----------------------------------------------------------------------

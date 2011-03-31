@@ -238,7 +238,7 @@ void Level::loadTestLevel()
 	int left, bottom, i;
 	bottom = 0;
 	left = 0;
-	for (i=0; i<20; ++i){
+	for (i=0; i<10; ++i){
 		Nonbreakable *block = new Nonbreakable(15,0);
 		block->setTop(bottom  + 16);
 		block->setBottom(bottom);
