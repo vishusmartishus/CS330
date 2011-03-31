@@ -218,10 +218,19 @@ void Level::updateExtents(int leftBound, int rightBound)
 //------------------------------------------------------------
 void Level::removeDrawable(Drawable *obj)
 {
+	int type;
 	
-	
-	
-	
+	//checks the object type and calls remove on the correct list
+	type = obj->objectType();
+	if ((type = 1) || (type = 4) || (type = 5)){
+		activeDrawable_.removeDrawable(obj);
+	}
+	else if ((type = 2) || (type = 3) || (type = 15)){
+		activeBlocks_.removeDrawable(obj);
+	}
+	else {
+		activeMovable_.removeDrawable(obj);
+	}
 }
 //------------------------------------------------------------
 void Level::loadTestLevel()
@@ -229,7 +238,7 @@ void Level::loadTestLevel()
 	int left, bottom, i;
 	bottom = 0;
 	left = 0;
-	for (i=0; i<20; ++i){
+	for (i=0; i<10; ++i){
 		Nonbreakable *block = new Nonbreakable(15,0);
 		block->setTop(bottom  + 16);
 		block->setBottom(bottom);
