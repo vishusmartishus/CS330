@@ -98,6 +98,12 @@ void SceneWindow::loadLevel()
 	Level *level_ = Level::sharedLevel();
 	level_->loadTestLevel();
 	mario = new Mario();
+    
+    mario->setLeft(16);
+    mario->setRight(16+16);
+    mario->setBottom(16);
+    mario->setTop(16+16);
+    
 }
 
 //----------------------------------------------------------------------
@@ -160,34 +166,26 @@ void SceneWindow::displayCB()
 	LList drawable = level_->getActiveDrawable();
 	LList blocks = level_->getActiveBlocks();
 	LListIterator li;
-	li.init(movable);
+	
 	Drawable *item;
-	
-	//LList movable = level_->getActiveMovable();
-	//LList drawable = level_->getActiveDrawable();
-	//li.init(movable);
-	
-	/*
-	while (item = li.next()) {
+    
+	li.init(movable);
+	while ((item = li.next())) {
 		item->draw();
 	}
+    
 	li.init(drawable);
-	while (item = li.next()) {
-		item->draw();
-	}
-	 */
-	li.init(blocks);
-	while (item = li.next()) {
+	while ((item = li.next())) {
 		item->draw();
 	}
 	 
-	/*
 	li.init(blocks);
-	for (int i = 0; i<15; ++i) {
-		item = li.next();
+	while ((item = li.next())) {
 		item->draw();
 	}
-*/
+    
+    mario->draw();
+	 
 	
     // force screen update
     glFlush();
@@ -236,12 +234,13 @@ void SceneWindow::timerCB(int value)
 	li.init(movable);
 	Drawable *item;
 	Movable *movableItem;
-	while (item = li.next()) {
+	while ((item = li.next())) {
 		movableItem = (Movable*)item;
 		movableItem->updateScene();
 	}
 	mario->updateScene();
 	// check if screen needs to be moved
+    
     /*
 	int temp;
 	temp = viewportRightX_ - (viewportRightX_ - viewportLeftX_)/2;
@@ -252,16 +251,7 @@ void SceneWindow::timerCB(int value)
 		level_->updateExtents(viewportLeftX_, viewportRightX_);
 	}
      */
-	//Level *level_ = Level:: sharedLevel();
-	//level_->updateExtents(viewportLeftX_, viewportRightX_);
-	//LList movable = level_->getActiveMovable();
-	//LListIterator li;
-	//li.init(movable);
-	//Drawable *item;
-	//while (item = li.next()) {
-	//	item->updateScene();
-	//}
-	//mario->updateScene();
+    
 	glutPostRedisplay();
 
 }
