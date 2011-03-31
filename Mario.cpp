@@ -140,14 +140,11 @@ void Mario::updateScene()
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
-    if (check()) {
-        setLeft(left() + getXVelocity());
-        setRight(right() + getXVelocity());
-        setTop(top() + getYVelocity());
-        setBottom(bottom() + getYVelocity());
-    } else {
+    //if (check()) {
+    move();
+    //} else {
         //Mario Dies
-    }
+    //}
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
