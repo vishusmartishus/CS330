@@ -43,12 +43,19 @@ Level::~Level()
 	instanceFlag =false;
 }
 //------------------------------------------------------------
-void Level::makeLevel()
+void Level::makeLevel(int levelNumber)
 {
 	
 	ifstream inFile;
-	inFile.open("levelfiles/level1.txt");
-	
+	if (levelNumber==1){
+		inFile.open("levelfiles/level1.txt");
+	}
+	if (levelNumber==2){
+		inFile.open("levelfiles/level2.txt");
+	}
+	if (levelNumber==3){
+		inFile.open("levelfiles/level3.txt");
+	}
 	int xcoord = 0, ycoord = -16;
 	char object;
 	
@@ -159,10 +166,10 @@ void Level::makeLevel()
          xcoord += 16;
          ycoord = 0; 
 		}
-
-
-
+		
+		
 	}
+	inFile.close();
 }
 //------------------------------------------------------------
 void Level::updateExtents(int leftBound, int rightBound)
