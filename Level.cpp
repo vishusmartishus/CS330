@@ -47,10 +47,10 @@ void Level::makeLevel(int levelNumber)
 {
 	
 	ifstream inFile;
-	if (levelNumber==1){
+	if (levelNumber== 1){
 		inFile.open("levelfiles/level1.txt");
 	}
-	if (levelNumber==3){
+	if (levelNumber== 2){
 		inFile.open("levelfiles/level3.txt");
 	}
 	int xcoord = 0, ycoord = -16;
