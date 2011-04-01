@@ -50,9 +50,6 @@ void Level::makeLevel(int levelNumber)
 	if (levelNumber==1){
 		inFile.open("levelfiles/level1.txt");
 	}
-	if (levelNumber==2){
-		inFile.open("levelfiles/level2.txt");
-	}
 	if (levelNumber==3){
 		inFile.open("levelfiles/level3.txt");
 	}
