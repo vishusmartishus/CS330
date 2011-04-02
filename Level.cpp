@@ -78,7 +78,7 @@ void Level::makeLevel(int levelNumber)
 				levelBlocks_.append(bBlock);
 			}
 		}
-		if (object== 'B' | object=='M' | object=='C' | object=='S'){
+		if (object== 'B' || object=='M' || object=='C' || object=='S'){
 			//create blocks depending on the inside-Shroom/Coin/other
 			//The block creation below is for regular blocks and the pointer will change if the block is 
 			//supposed to be different, and at the end the block will be placed in the correct LList
