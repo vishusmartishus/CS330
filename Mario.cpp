@@ -14,6 +14,10 @@
 #include "Level.h"
 #include "Breakable.h"
 #include "Nonbreakable.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 #include <iostream>
 using namespace std;
@@ -91,7 +95,6 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'w')
     {
         jumpKey_ = true;
-        
         if (jumpCount_ == 0 && this->getYVelocity() == 0.0) 
         {
             jumpCount_ = 50;
@@ -171,7 +174,7 @@ void Mario::move()
 //------------------------------------------------------------
 //Handels all jump cases
 void Mario::jump() {
-    Drawable *node;
+    /*Drawable *node;
     int object;
     if (jumpCount_ > 0) {
         node = this->checkAbove();
@@ -221,6 +224,11 @@ void Mario::jump() {
         if (!node) {
             this->setYVelocity(-2.0);
         }
+    }*/
+    if (this->jumpCount_ > 0) {
+        jumpCount_--;
+    } else if (this->getYVelocity() > 0.0) {
+        this->setYVelocity(-2.0);
     }
 }
 //------------------------------------------------------------
@@ -252,6 +260,8 @@ bool Mario::check()
     //flag: 1, breakable: 2, nonbreakable: 3, Fireflower: 4, coin: 5
     //Mario: 6, Goomba: 7, Mushroom: 8, Plant: 9, Shell: 10, Star: 11
     //Turtle: 12, EnemyFireball: 13, MarioFireball: 14
+    
+    int count = 0;;
     
     //the level 
     Level *level = Level::sharedLevel();
@@ -472,14 +482,22 @@ bool Mario::check()
                     //generate reward
                 }
             }
+            this->setYVelocity(-2.0);
+            this->jumpCount_ = 0;
         }
         //check if Mario lands on a block
         if ((((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top())) && jumpCount_ == 0)
         {
             //stop falling
             //keep moving
-            this->setYVelocity(0.0);
+            count = 1;
+            if (jumpCount_ == 0) {
+                this->setYVelocity(0.0);
+            }
         }
+    }
+    if (count == 0 && this->getYVelocity() == 0) {
+        this->setYVelocity(-2.0);
     }
     return true;
 }
