@@ -15,6 +15,8 @@
 #include "Breakable.h"
 #include "Nonbreakable.h"
 
+#include <iostream>
+using namespace std;
 
 //------------------------------------------------------------
 void Mario::draw()
@@ -71,7 +73,7 @@ void Mario::updateKeyDown(unsigned char button)
         }
     }
     
-    else if (button == 'd')
+    if (button == 'd')
     {
         rightKey_ = true;
         
@@ -165,8 +167,6 @@ void Mario::move()
     //actually does the movement of Mario
     this->setRight(this->right() + this->getXVelocity());
     this->setLeft(this->left() + this->getXVelocity());
-    this->setTop(this->top() + this->getYVelocity());
-    this->setBottom(this->bottom() + this->getYVelocity());
 }
 //------------------------------------------------------------
 //Handels all jump cases
@@ -207,6 +207,7 @@ void Mario::jump() {
             object = node->objectType();
             if (object >= 1) {
                 //this->setBottom(this->bottom() + this->getYVelocity());
+                this->setYVelocity(0.0);
             } else {
                 this->setYVelocity(0.0);
             }
@@ -473,7 +474,7 @@ bool Mario::check()
             }
         }
         //check if Mario lands on a block
-        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
+        if ((((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top())) && jumpCount_ == 0)
         {
             //stop falling
             //keep moving
