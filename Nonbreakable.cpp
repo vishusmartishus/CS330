@@ -37,13 +37,13 @@ void Nonbreakable::draw()
         glEnd();
         
         glBegin(GL_LINES);
-        glVertex2d(left()+(4*i), j*4);
-        glVertex2d(left()+(4*i), (j+1)*4);
+        glVertex2d(left()+(4*i), bottom()+j*4);
+        glVertex2d(left()+(4*i), bottom()+(j+1)*4);
         glEnd();
         
         glBegin(GL_LINES);
-        glVertex2d(left()+(4*i), (j+2)*4);
-        glVertex2d(left()+(4*i), (j+3)*4);
+        glVertex2d(left()+(4*i), bottom()+(j+2)*4);
+        glVertex2d(left()+(4*i), bottom()+(j+3)*4);
         glEnd();
         
     }
