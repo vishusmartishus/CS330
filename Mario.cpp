@@ -12,20 +12,27 @@
 #include "Mario.h"
 #include "LListIterator.h"
 #include "Level.h"
+#include "Breakable.h"
+#include "Nonbreakable.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 
 //------------------------------------------------------------
 void Mario::draw()
 {
 	glColor3ub(255, 0, 0);
-	int i;
-	for(i=0;i<4;++i){
-		glBegin(GL_POLYGON);
-		glVertex2d(left(), bottom());
-		glVertex2d(left(), top());
-		glVertex2d(right(),top());
-		glVertex2d(right(), bottom());
-		glEnd();
-	}
+    
+    glBegin(GL_POLYGON);
+    glVertex2d(left(), bottom());
+    //glVertex2d(left(), top());
+    glVertex2d(((right()-left())/2)+left(), top());
+    //glVertex2d(right(),top());
+    glVertex2d(right(), bottom());
+    glEnd();
+	
 }
 //------------------------------------------------------------
 //constructor for Mario Class
@@ -45,6 +52,9 @@ Mario::Mario()
     sprintKey_ = false;
     fireballKey_ = false;
     
+    //Set X and Y velocity
+    this->setXVelocity(0.0);
+    this->setYVelocity(0.0);
 
 }
 //------------------------------------------------------------
@@ -57,11 +67,11 @@ void Mario::updateKeyDown(unsigned char button)
         //set Mario's Velocity
         if (sprintKey_ == true)
         {
-            this->setXVelocity(this->getXVelocity() * -2.0);
+            this->setXVelocity(-2.0);
         }
         else 
         {
-            this->setXVelocity(this->getXVelocity() * -1.0);
+            this->setXVelocity(-1.0);
         }
     }
     
@@ -83,10 +93,13 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'w')
     {
         jumpKey_ = true;
-        jumpCount_ = 5;
-        
-        //set Mario's velocity
-        this->setYVelocity(1.0);
+        if (jumpCount_ == 0 && this->getYVelocity() == 0.0) 
+        {
+            jumpCount_ = 50;
+            
+            //set Mario's velocity
+            this->setYVelocity(2.0);
+        }
     }
     
     if (button == 'j')
@@ -94,7 +107,7 @@ void Mario::updateKeyDown(unsigned char button)
         sprintKey_ = true;
     }
     
-    if (button = 'k')
+    if (button == 'k')
     {
         fireballKey_ = true;
     }
@@ -105,21 +118,46 @@ void Mario::updateKeyUp(unsigned char button)
 {
 	if (button == 'a') {
 		leftKey_ = false;
-        this->setXVelocity(0.0);
+        if (rightKey_) {
+            if (this->getXVelocity() < 0) {
+                this->setXVelocity(1.0);
+            }
+            else {
+                this->setXVelocity(0.0);
+            }
+        }
+        else {
+            this->setXVelocity(0.0);
+        }
 	}
-	else if (button == 'w') {
+	if (button == 'w') {
 		jumpKey_ = false;
-        jumpCount_ = 0;
-        this->setYVelocity(0.0);
+        if (jumpCount_ > 15) {
+            jumpCount_ = 15;
+        } else {
+            jumpCount_ = 0;
+            this->setYVelocity(-2.0);
+        }
 	}
-	else if (button == 'd') {
+    
+	if (button == 'd') {
 		rightKey_ = false;
-        this->setXVelocity(0.0);
+        if (leftKey_) {
+            if (this->getXVelocity() > 0) {
+                this->setXVelocity(-1.0);
+            }
+            else {
+                this->setXVelocity(0.0);
+            }
+        }
+        else {
+            this->setXVelocity(0.0);
+        }
 	}
-	else if (button == 'j') {
+	if (button == 'j') {
 		sprintKey_ = false;
 	}
-	else if (button == 'k') {
+	if (button == 'k') {
 		fireballKey_ = false;
 	}
 }
@@ -128,7 +166,70 @@ void Mario::updateKeyUp(unsigned char button)
 void Mario::move()
 {
     //actually does the movement of Mario
-    
+    this->setRight(this->right() + this->getXVelocity());
+    this->setLeft(this->left() + this->getXVelocity());
+    this->setTop(this->top() + this->getYVelocity());
+    this->setBottom(this->bottom() + this->getYVelocity());
+}
+//------------------------------------------------------------
+//Handels all jump cases
+void Mario::jump() {
+    /*Drawable *node;
+    int object;
+    if (jumpCount_ > 0) {
+        node = this->checkAbove();
+        //There is a object above Mario
+        if (node) {
+            object = node->objectType();
+            if (object == -1) { //Will be fixed by AllMovable Group
+                //this->setTop(this->top() + this->getYVelocity());
+                //this->setBottom(this->bottom() + this->getYVelocity());
+            } else if (object == breakable_){
+                Breakable *temp = (Breakable*)node;
+                temp->breakBlock(state_ == BIG_STATE || state_ == FIRE_STATE);
+                jumpCount_ = 1;
+            } else if (object == question_) {
+                Nonbreakable *temp = (Nonbreakable*)node;
+                temp->generateReward(true); //Question for the Nonbreakable group
+                jumpCount_ = 1;
+            }
+        } else {
+            //There is no block above Mario
+            this->setTop(this->top() + this->getYVelocity());
+            this->setBottom(this->bottom() + this->getYVelocity());
+        }
+        jumpCount_--;
+        //Set Mario's Y Velocity
+        if (jumpCount_ == 0) {
+            this->setYVelocity(-2.0);
+        }
+    } else if (this->getYVelocity() < 0) {
+        node = this->checkBelow();
+        //There is an object below Mario, so stop him from moving
+        if (node) {
+            object = node->objectType();
+            if (object >= 1) {
+                //this->setBottom(this->bottom() + this->getYVelocity());
+                this->setYVelocity(0.0);
+            } else {
+                this->setYVelocity(0.0);
+            }
+        } else {
+            //No block below Mario
+            this->setBottom(this->bottom() + this->getYVelocity());
+            this->setTop(this->top() + this->getYVelocity());
+        }
+    } else {
+        node = this->checkBelow();
+        if (!node) {
+            this->setYVelocity(-2.0);
+        }
+    }*/
+    if (this->jumpCount_ > 0) {
+        jumpCount_--;
+    } else if (this->getYVelocity() > 0.0) {
+        this->setYVelocity(-2.0);
+    }
 }
 //------------------------------------------------------------
 //updates Mario for one Frame
@@ -141,12 +242,10 @@ void Mario::updateScene()
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
     if (check()) {
-        this->setLeft(this->left() + (vector[0] * vector[2]));
-        this->setRight(this->right() + (vector[0] * vector[2]));
-        this->setTop(this->top() + (vector[1] * vector[2]));
-        this->setBottom(this->bottom() + (vector[1] * vector[2]));
+        jump();
+        move();
     } else {
-        
+        //Mario Dies
     }
 }
 //------------------------------------------------------------
@@ -161,6 +260,8 @@ bool Mario::check()
     //flag: 1, breakable: 2, nonbreakable: 3, Fireflower: 4, coin: 5
     //Mario: 6, Goomba: 7, Mushroom: 8, Plant: 9, Shell: 10, Star: 11
     //Turtle: 12, EnemyFireball: 13, MarioFireball: 14
+    
+    int count = 0;;
     
     //the level 
     Level *level = Level::sharedLevel();
@@ -381,13 +482,22 @@ bool Mario::check()
                     //generate reward
                 }
             }
+            this->setYVelocity(-2.0);
+            this->jumpCount_ = 0;
         }
         //check if Mario lands on a block
         if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
         {
             //stop falling
             //keep moving
+            count = 1;
+            if (jumpCount_ == 0) {
+                this->setYVelocity(0.0);
+            }
         }
+    }
+    if (count == 0 && this->getYVelocity() == 0) {
+        this->setYVelocity(-2.0);
     }
     return true;
 }

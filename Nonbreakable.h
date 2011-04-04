@@ -12,7 +12,7 @@ class Nonbreakable:public Drawable {
 //------------------------------------------------------------
 public:
     // Nonbreakable constructor
-    Nonbreakable(int type, int reward)
+    Nonbreakable(int type, int reward = 0)
     {
         //Will set the type dependent on the scene information
         //Only Question blocks can have rewards that are also set this way
