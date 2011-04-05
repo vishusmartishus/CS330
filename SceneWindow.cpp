@@ -23,7 +23,7 @@ SceneWindow::SceneWindow(int argc, char **argv)
 	// create window
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(256, 224);
+    glutInitWindowSize(512, 448);
     glutInitWindowPosition(30, 100);
     glutCreateWindow("Mario");
 	
@@ -248,7 +248,7 @@ void SceneWindow::timerCB(int value)
 	{
 		viewportRightX_ = mario->right() + viewportWidth_/2;
 		viewportLeftX_ = mario->right() - viewportWidth_/2;
-		level_->updateExtents(viewportLeftX_, viewportRightX_);
+		//level_->updateExtents(viewportLeftX_, viewportRightX_);
 	}
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
