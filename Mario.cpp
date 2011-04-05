@@ -14,13 +14,6 @@
 #include "Level.h"
 #include "Breakable.h"
 #include "Nonbreakable.h"
-#include <iostream>
-
-using std::cout;
-using std::endl;
-
-#include <iostream>
-using namespace std;
 
 //------------------------------------------------------------
 void Mario::draw()
@@ -170,6 +163,8 @@ void Mario::move()
     //actually does the movement of Mario
     this->setRight(this->right() + this->getXVelocity());
     this->setLeft(this->left() + this->getXVelocity());
+    this->setTop(this->top() + this->getYVelocity());
+    this->setBottom(this->bottom() + this->getYVelocity());
 }
 //------------------------------------------------------------
 //Handels all jump cases
