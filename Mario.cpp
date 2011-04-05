@@ -23,6 +23,7 @@ using std::endl;
 //------------------------------------------------------------
 void Mario::draw()
 {
+
     int pattern[256] = {0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
                 0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
                 0,0,2,2,2,3,3,2,3,0,0,0,0,0,0,0,
@@ -67,6 +68,7 @@ void Mario::draw()
         }
     }
       
+
 	
 }
 //------------------------------------------------------------
@@ -128,7 +130,6 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'w')
     {
         jumpKey_ = true;
-        
         if (jumpCount_ == 0 && this->getYVelocity() == 0.0) 
         {
             jumpCount_ = 50;
@@ -204,11 +205,13 @@ void Mario::move()
     //actually does the movement of Mario
     this->setRight(this->right() + this->getXVelocity());
     this->setLeft(this->left() + this->getXVelocity());
+    this->setTop(this->top() + this->getYVelocity());
+    this->setBottom(this->bottom() + this->getYVelocity());
 }
 //------------------------------------------------------------
 //Handels all jump cases
 void Mario::jump() {
-    Drawable *node;
+    /*Drawable *node;
     int object;
     if (jumpCount_ > 0) {
         node = this->checkAbove();
@@ -242,8 +245,9 @@ void Mario::jump() {
         //There is an object below Mario, so stop him from moving
         if (node) {
             object = node->objectType();
-            if (object == -1) {
+            if (object >= 1) {
                 //this->setBottom(this->bottom() + this->getYVelocity());
+                this->setYVelocity(0.0);
             } else {
                 this->setYVelocity(0.0);
             }
@@ -257,6 +261,11 @@ void Mario::jump() {
         if (!node) {
             this->setYVelocity(-2.0);
         }
+    }*/
+    if (this->jumpCount_ > 0) {
+        jumpCount_--;
+    } else if (this->getYVelocity() > 0.0) {
+        this->setYVelocity(-2.0);
     }
 }
 //------------------------------------------------------------
@@ -269,9 +278,12 @@ void Mario::updateScene()
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
     
-    //check();
-    move();
-    jump();
+    if (check()) {
+        jump();
+        move();
+    } else {
+        //Mario Dies
+    }
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
@@ -285,6 +297,8 @@ bool Mario::check()
     //flag: 1, breakable: 2, nonbreakable: 3, Fireflower: 4, coin: 5
     //Mario: 6, Goomba: 7, Mushroom: 8, Plant: 9, Shell: 10, Star: 11
     //Turtle: 12, EnemyFireball: 13, MarioFireball: 14
+    
+    int count = 0;;
     
     //the level 
     Level *level = Level::sharedLevel();
@@ -505,13 +519,22 @@ bool Mario::check()
                     //generate reward
                 }
             }
+            this->setYVelocity(-2.0);
+            this->jumpCount_ = 0;
         }
         //check if Mario lands on a block
         if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
         {
             //stop falling
             //keep moving
+            count = 1;
+            if (jumpCount_ == 0) {
+                this->setYVelocity(0.0);
+            }
         }
+    }
+    if (count == 0 && this->getYVelocity() == 0) {
+        this->setYVelocity(-2.0);
     }
     return true;
 }
