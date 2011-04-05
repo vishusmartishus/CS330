@@ -9,6 +9,7 @@
 
 #include "LList.h"
 #include "LListIterator.h"
+#include <iostream>
 //------------------------------------------------------------
 LList::LList() {
 	this->size_ = 0;
@@ -68,14 +69,17 @@ void LList::append(Drawable *item){
 		this->head_ = temp;
 		this->tail_ = temp;
 	} else {
-		tail_->next_ = temp;
-        tail_ = temp;
+		this->tail_->next_ = temp;
+        this->tail_ = temp;
 	}
 	this->size_++;
 }
 //------------------------------------------------------------
 Drawable* LList::first() const {
-	return head_->item_;
+    if (this->head_) {
+        return this->head_->item_;
+    }
+    return NULL;
 }
 //------------------------------------------------------------
 void LList::removeDrawable(Drawable *obj) {
@@ -105,14 +109,16 @@ void LList::removeDrawable(Drawable *obj) {
 }
 //------------------------------------------------------------
 LList& LList::operator=(const LList &list) {
-	int i;
-	LList *temp = new LList();
-	ListNode *node = this->head_;
-	for (i = 0; i<(this->size_); i++) {
-		temp->append(node->item_);
-		node = node->next_;
+    this->size_ = 0;
+    this->head_ = NULL;
+    this->tail_ = NULL;
+	LListIterator it;
+	it.init(list);
+	Drawable* item;
+	while ((item = it.next())) {
+		this->append(item);
 	}
-	return *temp;
+    return *this;
 }
 //------------------------------------------------------------
 void LList::insertInSortedOrder(Drawable *item) {
