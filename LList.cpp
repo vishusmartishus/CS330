@@ -75,7 +75,10 @@ void LList::append(Drawable *item){
 }
 //------------------------------------------------------------
 Drawable* LList::first() const {
-	return head_->item_;
+    if (this->head_) {
+        return this->head_->item_;
+    }
+    return NULL;
 }
 //------------------------------------------------------------
 void LList::removeDrawable(Drawable *obj) {

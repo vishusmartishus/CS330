@@ -501,10 +501,13 @@ bool Mario::check()
         //check if Mario is jumping into a block
         if (this->top() == object->bottom() && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right()))) 
         {
+            this->jumpCount_ = 0;
+            this->setYVelocity(-2.0);
             if (this->state_ == BIG_STATE && object->objectType() == breakable_) {
                 //break block
             }
-            else {
+            else 
+            {
                 //stop moving
                 if (object->objectType() == question_)
                 {
