@@ -58,10 +58,10 @@ void Mario::draw()
             
             if (current > 0) {
                 glBegin(GL_POLYGON);
-                glVertex2d(left()+j, top()-i);
+                glVertex2d(left()+j, top()-i-1);
+                glVertex2d(left()+j+1, top()-i-1);
                 glVertex2d(left()+j+1, top()-i);
-                glVertex2d(left()+j+1, top()-i+1);
-                glVertex2d(left()+j, top()-i+1);
+                glVertex2d(left()+j, top()-i);
                 glEnd();
             }
         }
