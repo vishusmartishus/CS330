@@ -23,8 +23,7 @@ using std::endl;
 //------------------------------------------------------------
 void Mario::draw()
 {
-    int pattern[256] = {
-                0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
+    int pattern[256] = {0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
                 0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
                 0,0,2,2,2,3,3,2,3,0,0,0,0,0,0,0,
                 0,2,3,2,3,3,3,2,3,3,3,0,0,0,0,0,
@@ -59,15 +58,14 @@ void Mario::draw()
             
             if (current > 0) {
                 glBegin(GL_POLYGON);
-                glVertex2d(left()+j, top()-i);
+                glVertex2d(left()+j, top()-i-1);
+                glVertex2d(left()+j+1, top()-i-1);
                 glVertex2d(left()+j+1, top()-i);
-                glVertex2d(left()+j+1, top()-i+1);
-                glVertex2d(left()+j, top()-i+1);
+                glVertex2d(left()+j, top()-i);
                 glEnd();
             }
         }
     }
-	
 }
 //------------------------------------------------------------
 //constructor for Mario Class
