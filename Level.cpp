@@ -43,12 +43,16 @@ Level::~Level()
 	instanceFlag =false;
 }
 //------------------------------------------------------------
-void Level::makeLevel()
+void Level::makeLevel(int levelNumber)
 {
 	
 	ifstream inFile;
-	inFile.open("levelfiles/level1.txt");
-	
+	if (levelNumber== 1){
+		inFile.open("levelfiles/level1.txt");
+	}
+	if (levelNumber== 2){
+		inFile.open("levelfiles/level3.txt");
+	}
 	int xcoord = 0, ycoord = -16;
 	char object;
 	
@@ -74,7 +78,7 @@ void Level::makeLevel()
 				levelBlocks_.append(bBlock);
 			}
 		}
-		if (object== 'B' | object=='M' | object=='C' | object=='S'){
+		if (object== 'B' || object=='M' || object=='C' || object=='S'){
 			//create blocks depending on the inside-Shroom/Coin/other
 			//The block creation below is for regular blocks and the pointer will change if the block is 
 			//supposed to be different, and at the end the block will be placed in the correct LList
@@ -159,10 +163,10 @@ void Level::makeLevel()
          xcoord += 16;
          ycoord = 0; 
 		}
-
-
-
+		
+		
 	}
+	inFile.close();
 }
 //------------------------------------------------------------
 void Level::updateExtents(int leftBound, int rightBound)
