@@ -43,12 +43,16 @@ Level::~Level()
 	instanceFlag =false;
 }
 //------------------------------------------------------------
-void Level::makeLevel()
+void Level::makeLevel(int levelNumber)
 {
 	
 	ifstream inFile;
-	inFile.open("levelfiles/level1.txt");
-	
+	if (levelNumber== 1){
+		inFile.open("levelfiles/level1.txt");
+	}
+	else if (levelNumber== 2){
+		inFile.open("levelfiles/level3.txt");
+	}
 	int xcoord = 0, ycoord = -16;
 	char object;
 	
@@ -56,7 +60,7 @@ void Level::makeLevel()
 	while (inFile.get(object)) {
 		ycoord +=16;
 		
-		/*at this point the varible 'object' has the next item in the .txt 
+		/*at this point the variable 'object' has the next item in the .txt 
 		 and here the 'object' and it's xcord and ycord are sent off to the 
 		 correct LList*/
 		if (object== 'b') {
@@ -74,27 +78,28 @@ void Level::makeLevel()
 				levelBlocks_.append(bBlock);
 			}
 		}
-		if (object== 'B' | object=='M' | object=='C' | object=='S'){
+		else if (object== 'B' || object=='M' || object=='C' || object=='S'){
 			//create blocks depending on the inside-Shroom/Coin/other
 			//The block creation below is for regular blocks and the pointer will change if the block is 
 			//supposed to be different, and at the end the block will be placed in the correct LList
 			
-			Nonbreakable *nBlock = new Nonbreakable(15,15);
 			
+			Nonbreakable *nBlock = new Nonbreakable(15);
+
 			if (object== 'M'){
-				//delete old nBlock
+				//delete the old nblock
 				delete nBlock;
-				Nonbreakable *nBlock = new Nonbreakable(3,8);
+				Nonbreakable *nBlock = new Nonbreakable(3,2);
 			}
-			if (object== 'S'){
-				//delete old nBlock
+			else if (object== 'S'){
+				//delete the old nblock
 				delete nBlock;
-				Nonbreakable *nBlock = new Nonbreakable(3,11);
+				Nonbreakable *nBlock = new Nonbreakable(3,3);
 			}
-			if (object== 'C'){
-				//delete old nBlock
+			else if (object== 'C'){
+				//delete the old nblock
 				delete nBlock;
-				Nonbreakable *nBlock = new Nonbreakable(3,5);
+				Nonbreakable *nBlock = new Nonbreakable(3,1);
 			}
 			
 			nBlock->setTop(xcoord  + 16);
@@ -110,7 +115,7 @@ void Level::makeLevel()
 			}
 
 		}
-		if (object== 'c'){
+		else if (object== 'c'){
 			//create coin
 			Coin *coin = new Coin;
 			coin->setTop(xcoord  + 16);
@@ -125,7 +130,7 @@ void Level::makeLevel()
 				levelDrawable_.append(coin);
 			}
 		}
-		if (object== 'g'){
+		else if (object== 'g'){
 			//create goomba
 			Goomba *goomba = new Goomba;
 			goomba->setTop(xcoord  + 16);
@@ -140,7 +145,7 @@ void Level::makeLevel()
 				levelMovable_.append(goomba);
 			}
 		}
-		if (object== 'k'){
+		else if (object== 'k'){
 			//create koopa
 			Turtle *koopa = new Turtle;
 			koopa->setTop(xcoord  + 16);
@@ -159,10 +164,10 @@ void Level::makeLevel()
          xcoord += 16;
          ycoord = 0; 
 		}
-
-
-
+		
+		
 	}
+	inFile.close();
 }
 //------------------------------------------------------------
 void Level::updateExtents(int leftBound, int rightBound)

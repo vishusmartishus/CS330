@@ -11,7 +11,13 @@ void Nonbreakable::draw()
 {
     int j;
 	
-	glColor3ub(199,113,64);
+    if (reward_== 0) {
+        glColor3ub(199, 133, 64);
+    }
+	else{
+        glColor3ub(255,255,51);
+    }
+	
 	
     glBegin(GL_POLYGON);
     glVertex2d(left(),bottom());
@@ -21,33 +27,49 @@ void Nonbreakable::draw()
     glEnd();
 	
     
-    
-    for (int i = 0; i<4; ++i) {
-        if (i%2 == 1) {
-            j = 0;
-        }
-        else{
-            j = 1;
-        }
+    if (reward_ == 0) {
         
         glColor3ub(0, 0, 0);
-        glBegin(GL_LINES);
-        glVertex2d(left(), bottom()+(i*4));
-        glVertex2d(right(), bottom()+(i*4));
+        
+        glPointSize(2.0);
+        
+        glBegin(GL_POINTS);
+        glVertex2d(left()+2, bottom()+2);
+        glVertex2d(left()+2, top()-2);
+        glVertex2d(right()-2, bottom()+2);
+        glVertex2d(right()-2, top()-2);
         glEnd();
         
-        glBegin(GL_LINES);
-        glVertex2d(left()+(4*i), j*4);
-        glVertex2d(left()+(4*i), (j+1)*4);
+
+    }
+    else{
+        
+        glColor3ub(255, 0, 0);
+        
+        glBegin(GL_POLYGON);
+        glVertex2d(left()+6, bottom()+6);
+        glVertex2d(left()+10, bottom()+6);
+        glVertex2d(left()+10, bottom()+14);
+        glVertex2d(left()+6, bottom()+14);
         glEnd();
         
-        glBegin(GL_LINES);
-        glVertex2d(left()+(4*i), (j+2)*4);
-        glVertex2d(left()+(4*i), (j+3)*4);
+        glBegin(GL_POLYGON);
+        glVertex2d(left()+6, bottom()+2);
+        glVertex2d(left()+10, bottom()+2);
+        glVertex2d(left()+10, bottom()+4);
+        glVertex2d(left()+6, bottom()+4);
         glEnd();
         
     }
-     
+    
+    glColor3ub(0, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2d(left(), bottom());
+    glVertex2d(left(), top());
+    glVertex2d(right(), top());
+    glVertex2d(right(), bottom());
+    glEnd();
+         
     
   
 }
