@@ -23,7 +23,8 @@ using std::endl;
 //------------------------------------------------------------
 void Mario::draw()
 {
-    int pattern[256] = {0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
+    int pattern[256] = {
+                0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
                 0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
                 0,0,2,2,2,3,3,2,3,0,0,0,0,0,0,0,
                 0,2,3,2,3,3,3,2,3,3,3,0,0,0,0,0,
@@ -38,7 +39,7 @@ void Mario::draw()
                 3,3,1,1,1,1,1,1,1,1,3,3,0,0,0,0,
                 0,0,1,1,1,0,0,1,1,1,0,0,0,0,0,0,
                 0,2,2,2,0,0,0,0,2,2,2,0,0,0,0,0,
-        2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0};
+                2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0};
     
     int current;
     
@@ -156,9 +157,6 @@ void Mario::updateKeyUp(unsigned char button)
             if (this->getXVelocity() < 0) {
                 this->setXVelocity(1.0);
             }
-            else {
-                this->setXVelocity(0.0);
-            }
         }
         else {
             this->setXVelocity(0.0);
@@ -179,9 +177,6 @@ void Mario::updateKeyUp(unsigned char button)
         if (leftKey_) {
             if (this->getXVelocity() > 0) {
                 this->setXVelocity(-1.0);
-            }
-            else {
-                this->setXVelocity(0.0);
             }
         }
         else {
