@@ -527,6 +527,10 @@ bool Mario::check()
                 this->setYVelocity(0.0);
             }
         }
+        //check if Mario runs into a block from the side
+        /*if (((this->right() == object->left() || this->left() == object->right()) && this->bottom() <= object->top()) && this->getXVelocity() >= 0) {
+            this->setXVelocity(0.0);
+        }*/
     }
     if (count == 0 && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
