@@ -18,8 +18,7 @@
 //------------------------------------------------------------
 void Mario::draw()
 {
-    int pattern[256] = {
-                0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
+    int pattern[256] = {0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
                 0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
                 0,0,2,2,2,3,3,2,3,0,0,0,0,0,0,0,
                 0,2,3,2,3,3,3,2,3,3,3,0,0,0,0,0,
@@ -269,6 +268,10 @@ void Mario::updateScene()
         move();
     } else {
         //Mario Dies
+        this->setLeft(16);
+        this->setRight(16+16);
+        this->setBottom(16);
+        this->setTop(16+16);
     }
 }
 //------------------------------------------------------------
@@ -493,7 +496,7 @@ bool Mario::check()
     while ((object = iter.next()))
     {
         //check if Mario is jumping into a block
-        if (this->top() == object->bottom() && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right()))) 
+        if ((this->top() >= object->bottom() && this->top() <= object->top()) && ((this->right() >= object->left() && this->right() <= object->right()) || (this->left() >= object->left() && this->left() <= object->right()))) 
         {
             this->jumpCount_ = 0;
             this->setYVelocity(-2.0);
@@ -510,7 +513,7 @@ bool Mario::check()
             }
         }
         //check if Mario lands on a block
-        if ((((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top())) && jumpCount_ == 0)
+        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top() && this->bottom() >= object->bottom()))
         {
             //stop falling
             //keep moving
@@ -519,16 +522,17 @@ bool Mario::check()
                 this->setYVelocity(0.0);
             }
         }
-        //check if Mario runs into a block from the side
-        /*if (((this->right() == object->left() || this->left() == object->right()) && this->bottom() <= object->top()) && this->getXVelocity() >= 0) {
-            this->setXVelocity(0.0);
-        }*/
     }
     if (count == 0 && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
-    return true;
+    if (this->bottom() > 0)
+        return true;
+    else
+        return false;
 }
+//------------------------------------------------------------
+//Drews Test Methods
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()
