@@ -275,6 +275,10 @@ void Mario::updateScene()
         move();
     } else {
         //Mario Dies
+        this->setLeft(16);
+        this->setRight(16+16);
+        this->setBottom(16);
+        this->setTop(16+16);
     }
 }
 //------------------------------------------------------------
@@ -499,7 +503,7 @@ bool Mario::check()
     while ((object = iter.next()))
     {
         //check if Mario is jumping into a block
-        if (this->top() == object->bottom() && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right()))) 
+        if ((this->top() >= object->bottom() && this->top() <= object->top()) && ((this->right() >= object->left() && this->right() <= object->right()) || (this->left() >= object->left() && this->left() <= object->right()))) 
         {
             this->jumpCount_ = 0;
             this->setYVelocity(-2.0);
@@ -514,11 +518,9 @@ bool Mario::check()
                     //generate reward
                 }
             }
-            this->setYVelocity(-2.0);
-            this->jumpCount_ = 0;
         }
         //check if Mario lands on a block
-        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
+        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top() && this->bottom() >= object->bottom()))
         {
             //stop falling
             //keep moving
@@ -531,8 +533,13 @@ bool Mario::check()
     if (count == 0 && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
-    return true;
+    if (this->bottom() > 0)
+        return true;
+    else
+        return false;
 }
+//------------------------------------------------------------
+//Drews Test Methods
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()
