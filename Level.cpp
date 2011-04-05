@@ -71,7 +71,7 @@ void Level::makeLevel(int levelNumber)
 			bBlock->setLeft(xcoord);
 			bBlock->setRight(xcoord + 16);
 			//add block to the list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeBlocks_.append(bBlock);
 			}
 			else {
@@ -106,7 +106,7 @@ void Level::makeLevel(int levelNumber)
 			nBlock->setLeft(xcoord);
 			nBlock->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeBlocks_.append(nBlock);
 			}
 			else {
@@ -122,7 +122,7 @@ void Level::makeLevel(int levelNumber)
 			coin->setLeft(xcoord);
 			coin->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeDrawable_.append(coin);
 			}
 			else {
@@ -137,7 +137,7 @@ void Level::makeLevel(int levelNumber)
 			goomba->setLeft(xcoord);
 			goomba->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeMovable_.append(goomba);
 			}
 			else {
@@ -152,7 +152,7 @@ void Level::makeLevel(int levelNumber)
 			koopa->setLeft(xcoord);
 			koopa->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeMovable_.append(koopa);
 			}
 			else {
@@ -162,7 +162,7 @@ void Level::makeLevel(int levelNumber)
 		if (ycoord < 224){
 			ycoord += 16;
 		}
-		if (ycoord == 224) {
+		else if (ycoord == 224) {
          xcoord += 16;
          ycoord = 0; 
 		}
@@ -180,6 +180,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 			Drawable *obj = levelDrawable_.removeFirst();
 			activeDrawable_.append(obj);
 		}
+		else {
+			break;
+		}
 	}
 	
 	//removes from the active list when and deleted the object when the right end of an object falls off the left bound
@@ -187,6 +190,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 		if (activeDrawable_.first()->right() < leftBound){
 			Drawable *obj = activeDrawable_.removeFirst();
 			delete obj;
+		}
+		else {
+			break;
 		}
 	}
 	
@@ -196,6 +202,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 			Drawable *obj = levelMovable_.removeFirst();
 			activeMovable_.append(obj);
 		}
+		else {
+			break;
+		}
 	}
 	
 	//removes from the activeMovable_ llist and deletes the object
@@ -203,6 +212,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 		if (activeMovable_.first()->right() < leftBound){
 			Drawable *obj = activeMovable_.removeFirst();
 			delete obj;
+		}
+		else {
+			break;
 		}
 	}
 	
@@ -212,6 +224,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 			Drawable *obj = levelBlocks_.removeFirst();
 			activeBlocks_.append(obj);
 		}
+		else {
+			break;
+		}
 	}
 	
 	//removes from the activeBlocks_ llist and deletes the object
@@ -219,6 +234,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 		if (activeBlocks_.first()->right() < leftBound){
 			Drawable *obj = activeBlocks_.removeFirst();
 			delete obj;
+		}
+		else {
+			break;
 		}
 	}
 }
