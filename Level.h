@@ -12,7 +12,7 @@ class Level {
 //------------------------------------------------------------    
 public:
 	//Creates the LLists from a text file
-	void makeLevel();
+	void makeLevel(int levelNumber= 1);
 	//updates the active area and activates the relevant drawables, removes inactive items from the front of the list
 	void updateExtents(int leftBound, int rightBound);
 	//iterates through the llist to find and remove the object
