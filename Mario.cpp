@@ -23,16 +23,49 @@ using std::endl;
 //------------------------------------------------------------
 void Mario::draw()
 {
-	glColor3ub(255, 0, 0);
+    int pattern[256] = {0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
+                0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
+                0,0,2,2,2,3,3,2,3,0,0,0,0,0,0,0,
+                0,2,3,2,3,3,3,2,3,3,3,0,0,0,0,0,
+                0,2,3,2,2,3,3,3,2,3,3,3,0,0,0,0,
+                0,2,2,3,3,3,3,2,2,2,2,0,0,0,0,0,
+                0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0,
+                0,0,2,2,1,2,2,2,0,0,0,0,0,0,0,0,
+                0,2,2,2,1,2,2,1,2,2,2,0,0,0,0,0,
+                2,2,2,2,1,1,1,1,2,2,2,2,0,0,0,0,
+                3,3,2,1,3,1,1,3,1,2,3,3,0,0,0,0,
+                3,3,3,1,1,1,1,1,1,3,3,3,0,0,0,0,
+                3,3,1,1,1,1,1,1,1,1,3,3,0,0,0,0,
+                0,0,1,1,1,0,0,1,1,1,0,0,0,0,0,0,
+                0,2,2,2,0,0,0,0,2,2,2,0,0,0,0,0,
+                2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0};
     
-    glBegin(GL_POLYGON);
-    glVertex2d(left(), bottom());
-    //glVertex2d(left(), top());
-    glVertex2d(((right()-left())/2)+left(), top());
-    //glVertex2d(right(),top());
-    glVertex2d(right(), bottom());
-    glEnd();
-	
+    int current;
+    
+    for (int i = 0; i<16; ++i) {
+        for (int j = 0; j<16; ++j) {
+            current = pattern[(i*16)+j];
+            
+            if (current == 1) {
+                glColor3ub(255, 0, 0);
+            }
+            else if (current == 2){
+                glColor3ub(153, 102, 0);
+            }
+            else{
+                glColor3ub(255, 255, 102);
+            }
+            
+            if (current > 0) {
+                glBegin(GL_POLYGON);
+                glVertex2d(left()+j, top()-i-1);
+                glVertex2d(left()+j+1, top()-i-1);
+                glVertex2d(left()+j+1, top()-i);
+                glVertex2d(left()+j, top()-i);
+                glEnd();
+            }
+        }
+    }
 }
 //------------------------------------------------------------
 //constructor for Mario Class
@@ -122,9 +155,6 @@ void Mario::updateKeyUp(unsigned char button)
             if (this->getXVelocity() < 0) {
                 this->setXVelocity(1.0);
             }
-            else {
-                this->setXVelocity(0.0);
-            }
         }
         else {
             this->setXVelocity(0.0);
@@ -145,9 +175,6 @@ void Mario::updateKeyUp(unsigned char button)
         if (leftKey_) {
             if (this->getXVelocity() > 0) {
                 this->setXVelocity(-1.0);
-            }
-            else {
-                this->setXVelocity(0.0);
             }
         }
         else {
@@ -246,6 +273,10 @@ void Mario::updateScene()
         move();
     } else {
         //Mario Dies
+        this->setLeft(16);
+        this->setRight(16+16);
+        this->setBottom(16);
+        this->setTop(16+16);
     }
 }
 //------------------------------------------------------------
@@ -470,23 +501,24 @@ bool Mario::check()
     while ((object = iter.next()))
     {
         //check if Mario is jumping into a block
-        if (this->top() == object->bottom() && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right()))) 
+        if ((this->top() >= object->bottom() && this->top() <= object->top()) && ((this->right() >= object->left() && this->right() <= object->right()) || (this->left() >= object->left() && this->left() <= object->right()))) 
         {
+            this->jumpCount_ = 0;
+            this->setYVelocity(-2.0);
             if (this->state_ == BIG_STATE && object->objectType() == breakable_) {
                 //break block
             }
-            else {
+            else 
+            {
                 //stop moving
                 if (object->objectType() == question_)
                 {
                     //generate reward
                 }
             }
-            this->setYVelocity(-2.0);
-            this->jumpCount_ = 0;
         }
         //check if Mario lands on a block
-        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
+        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top() && this->bottom() >= object->bottom()))
         {
             //stop falling
             //keep moving
@@ -499,8 +531,13 @@ bool Mario::check()
     if (count == 0 && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
-    return true;
+    if (this->bottom() > 0)
+        return true;
+    else
+        return false;
 }
+//------------------------------------------------------------
+//Drews Test Methods
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()

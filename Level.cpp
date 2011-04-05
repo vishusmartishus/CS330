@@ -272,6 +272,18 @@ void Level::loadTestLevel()
 		activeBlocks_.append(block);
 		left += 16;
 	}
+    bottom = 64;
+    left = 32;
+    for (i=0; i<4; ++i){
+		Nonbreakable *block = new Nonbreakable(15,0);
+		block->setTop(bottom  + 16);
+		block->setBottom(bottom);
+		block->setLeft(left);
+		block->setRight(left + 16);
+		activeBlocks_.append(block);
+		left += 16;
+	}
+    
 }
 //------------------------------------------------------------
 void Level::addDrawable(Drawable *obj)

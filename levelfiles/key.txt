@@ -1,6 +1,5 @@
 - empty space
 
-s spawn point
 f flag
 x end
 
@@ -8,6 +7,7 @@ b breakable block
 B unbreakable block
 M unbreakable w/mushroom (or flower depending on mario's size)
 C unbreakable w/coin
+S star
 
 P pipe (left top)
 i pipe (right top)
@@ -21,13 +21,5 @@ c coin
 
 
 to be resolved:
--could use of of both upper and lower case of same letter cause issues?
 
--current flag symbol does not differentiate between different sections of the flag. 
-
--tree-type platforms in second level (based off 1-3) have been replaced with blocks. Acceptable?
-
--flying koopas in second level have been removed. Acceptable?
-
--moving platofrms replaced with stationary ones. Acceptable?
-will need to sort out how we are choosing to represent the flag.
+-current flag symbol does not differentiate between different sections of the flag. Maybe just one symbol at top or bottom.
