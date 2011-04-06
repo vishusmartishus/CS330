@@ -1,6 +1,9 @@
 //Level.cpp
 //Zach Adams, Alex Strohmeyer, Josh Woods
 
+#include <cstdlib>
+#include <iostream>
+#include <string>
 #include "Level.h"
 #include "Drawable.h"
 #include <fstream>
@@ -45,13 +48,26 @@ Level::~Level()
 //------------------------------------------------------------
 void Level::makeLevel(int levelNumber)
 {
-	
+    // Mac environment variable for home directory
+    char *cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (strlen(cHomeDir) == 0) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    homeDir += "/CS330/";
+    string fname;
+    cout << "home: " << homeDir << endl;
+    
 	ifstream inFile;
 	if (levelNumber== 1){
-		inFile.open("levelfiles/level1.txt");
+        fname = homeDir + "levelfiles/level1.txt";
+		inFile.open(fname.c_str());
 	}
 	else if (levelNumber== 2){
-		inFile.open("levelfiles/level3.txt");
+        fname = homeDir + "levelfiles/level3.txt";
+		inFile.open(fname.c_str());
 	}
 	int xcoord = 0, ycoord = 0, type, reward;
 	char object;
