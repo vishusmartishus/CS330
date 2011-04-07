@@ -17,7 +17,6 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
-
 using namespace std;
 
 //------------------------------------------------------------
