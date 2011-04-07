@@ -96,7 +96,7 @@ void SceneWindow::loadLevel()
 	//called from start game
 	//loads in current level from set checkpoint
 	Level *level_ = Level::sharedLevel();
-	level_->loadTestLevel();
+	level_->makeLevel();
 	// initialize orthographic viewing projections
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -110,8 +110,8 @@ void SceneWindow::loadLevel()
     
     mario->setLeft(16);
     mario->setRight(16+16);
-    mario->setBottom(16);
-    mario->setTop(16+16);
+    mario->setBottom(32);
+    mario->setTop(32+16);
     
 }
 
