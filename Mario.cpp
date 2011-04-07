@@ -233,6 +233,7 @@ void Mario::updateScene()
 //to see if Mario runs into anything
 bool Mario::check()
 {
+    /*
     //get all the values of the objects so Mario knows what to do 
     // the object
     //check each case for each object
@@ -484,9 +485,40 @@ bool Mario::check()
         return true;
     else
         return false;
+    */
+    Drawable *objb, *objt, *objl, *objr;
+    objb = this->checkBottom();
+    objt = this->checkTop();
+    objl = this->checkLeft();
+    objr = this->checkRight();
+    if (objb) {
+        cout << "TRUE";
+    }
+    if (objt) {
+        if (objt->objectType() == question_) {
+            Nonbreakable *temp = (Nonbreakable*)objt;
+            temp->generateReward(this->getState() != SMALL_STATE);
+        } else if (objt->objectType() == breakable_) {
+            Breakable *temp = (Breakable*)objt;
+        }
+        this->jumpCount_ = 0;
+        this->setYVelocity(-2.0);
+        cout << "top";
+    }
+    if (objb && this->getYVelocity() < 0) {
+        this->setYVelocity(0.0);
+        cout << "bottom";
+    }
+    if (objl && this->getXVelocity() < 0) {
+        this->setXVelocity(0.0);
+        cout << "left";
+    }
+    if (objr && this->getXVelocity() > 0) {
+        this->setXVelocity(0.0);
+        cout << "right";
+    }
+    return true;
 }
-//------------------------------------------------------------
-//Drews Test Methods
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()
