@@ -96,13 +96,13 @@ void SceneWindow::loadLevel()
 	//called from start game
 	//loads in current level from set checkpoint
 	Level *level_ = Level::sharedLevel();
-	level_->loadTestLevel();
+	level_->makeLevel(1);
 	mario = new Mario();
     
     mario->setLeft(16);
     mario->setRight(16+16);
-    mario->setBottom(16);
-    mario->setTop(16+16);
+    mario->setBottom(32);
+    mario->setTop(16+32);
     
 }
 
