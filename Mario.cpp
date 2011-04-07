@@ -535,7 +535,6 @@ bool Mario::check()
         this->setYVelocity(-2.0);
     }
     //mario falls on something
-    cout << this->getYVelocity() << endl;
     if (objb && this->getYVelocity() < 0) {
         this->setYVelocity(0.0);
         if (objb->objectType() == goomba_ || objb->objectType() == shell_ || objb->objectType() == turtle_ || objb->objectType() == enemyfireball_ || objb->objectType() == plant_) {
