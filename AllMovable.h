@@ -82,17 +82,6 @@ public:
 	//---------------------------------------------------------
     
 private:
-    
-    // private helper methods
-    Drawable* collisionBottom();
-    Drawable* collisionTop();
-    Drawable* collisionLeft();
-    Drawable* collisionRight();
-    Drawable* paddedRight();
-    Drawable* paddedLeft();
-    Drawable* paddedTop();
-    Drawable* paddedBottom();
-    
     // instance vars
     // direction of object; horizontal/vertical velocity
     double horizontalVelocity_;
