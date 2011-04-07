@@ -488,7 +488,7 @@ bool Mario::check()
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
-    if (!objb) {
+    if (!objb && jumpCount_ == 0) {
         this->setYVelocity(-2.0);
     }
     //mario jumps into something
@@ -535,9 +535,9 @@ bool Mario::check()
         this->setYVelocity(-2.0);
     }
     //mario falls on something
+    cout << this->getYVelocity() << endl;
     if (objb && this->getYVelocity() < 0) {
         this->setYVelocity(0.0);
-        cout << "bottom";
         if (objb->objectType() == goomba_ || objb->objectType() == shell_ || objb->objectType() == turtle_ || objb->objectType() == enemyfireball_ || objb->objectType() == plant_) {
             if (starCount_ > 0) {
                 //kill enemy
@@ -619,7 +619,6 @@ bool Mario::check()
             }
         }
         
-        cout << "left";
     }
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
@@ -662,7 +661,6 @@ bool Mario::check()
                 //Mario get some points
             }
         }
-        cout << "right";
     }
     return true;
 }
