@@ -491,8 +491,8 @@ bool Mario::check()
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
-    if (objb) {
-        cout << "TRUE";
+    if (!objb) {
+        this->setYVelocity(-2.0);
     }
     if (objt) {
         if (objt->objectType() == question_) {
@@ -500,23 +500,19 @@ bool Mario::check()
             temp->generateReward(this->getState() != SMALL_STATE);
         } else if (objt->objectType() == breakable_) {
             Breakable *temp = (Breakable*)objt;
-            
+            temp->breakBlock(this->getState() != SMALL_STATE);
         }
         this->jumpCount_ = 0;
         this->setYVelocity(-2.0);
-        cout << "top";
     }
     if (objb && this->getYVelocity() < 0) {
         this->setYVelocity(0.0);
-        cout << "bottom";
     }
     if (objl && this->getXVelocity() < 0) {
         this->setXVelocity(0.0);
-        cout << "left";
     }
     if (objr && this->getXVelocity() > 0) {
         this->setXVelocity(0.0);
-        cout << "right";
     }
     return true;
 }
