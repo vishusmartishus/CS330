@@ -62,7 +62,7 @@ Drawable* AllMovable::checkRight()
 		if (thisRight >= objLeft && thisRight <= objRight)
 		{
 			// check if between top and bottom
-            if ((thisTop < objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom > objBottom)) {
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
                 return item;
             }
 		}
@@ -79,7 +79,7 @@ Drawable* AllMovable::checkRight()
 		if (thisRight >= objLeft && thisRight <= objRight)
 		{
 			// check if between top and bottom
-            if ((thisTop < objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom > objBottom)) {
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
                 return item;
             }
 		}
@@ -96,7 +96,7 @@ Drawable* AllMovable::checkRight()
 		if (thisRight >= objLeft && thisRight <= objRight)
 		{
 			// check if between top and bottom
-            if ((thisTop < objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom > objBottom)) {
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
                 return item;
             }
 		}
@@ -139,7 +139,7 @@ Drawable* AllMovable::checkLeft()
 		if (thisLeft >= objLeft && thisLeft <= objRight)
 		{
 			// check if between top and bottom
-            if ((thisTop < objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom > objBottom)) {
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
                 return item;
             }
 		}
@@ -156,7 +156,7 @@ Drawable* AllMovable::checkLeft()
 		if (thisLeft >= objLeft && thisLeft <= objRight)
 		{
 			// check if between top and bottom
-            if ((thisTop < objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom > objBottom)) {
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
                 return item;
             }
 		}
@@ -173,7 +173,7 @@ Drawable* AllMovable::checkLeft()
 		if (thisLeft >= objLeft && thisLeft <= objRight)
 		{
 			// check if between top and bottom
-            if ((thisTop < objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom > objBottom)) {
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
                 return item;
             }
 		}
