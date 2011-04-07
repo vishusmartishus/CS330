@@ -50,9 +50,9 @@ Goomba::Goomba()
     
     
     FILE *fp = fopen(homeDir.c_str(), "r");
-    unsigned char *texture = new unsigned char[4 * 16 * 16];
-    if (fread(texture, sizeof(unsigned char), 4 * 16 * 16, fp)
-        != 4* 16 *16) {
+    unsigned char *texture = new unsigned char[4 * 256 * 256];
+    if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
+        != 4* 256 *256) {
         fprintf(stderr, "error reading %s", "sprites/goomba.tiff");
     }
     fclose(fp);
@@ -70,7 +70,7 @@ Goomba::Goomba()
                     GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                     GL_CLAMP );
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 16, 16, GL_RGBA,
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;
    

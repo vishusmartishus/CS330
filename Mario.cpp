@@ -31,10 +31,10 @@ void Mario::draw()
     glBindTexture( GL_TEXTURE_2D, textureMario);
     
     glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(left(),top());
-    glTexCoord2d(1.0,0.0); glVertex2d(right(),top());
-    glTexCoord2d(1.0,1.0); glVertex2d(right(),bottom());
-    glTexCoord2d(0.0,1.0); glVertex2d(left(),bottom());
+    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
     glEnd();
     
     glDisable(GL_TEXTURE_2D);}
@@ -71,13 +71,13 @@ Mario::Mario()
         cHomeDir = getenv("HOMEPATH");
     }
     string homeDir = cHomeDir;
-    homeDir += "/CS330/sprites/mario.tiff";
+    homeDir += "/CS330/sprites/mario.tex";
     
     FILE *fp = fopen(homeDir.c_str(), "r");
-    unsigned char *texture = new unsigned char[4 * 16 * 16];
-    if (fread(texture, sizeof(unsigned char), 4 * 16 * 16, fp)
-        != 4* 16 *16) {
-        fprintf(stderr, "error reading %s", "sprites/mario.tiff");
+    unsigned char *texture = new unsigned char[4 * 256 * 256];
+    if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
+        != 4* 256 *256) {
+        fprintf(stderr, "error reading %s", "sprites/mario.tex");
     }
     fclose(fp);
     
@@ -93,7 +93,7 @@ Mario::Mario()
                     GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                     GL_CLAMP );
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 16, 16, GL_RGBA,
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;
 
