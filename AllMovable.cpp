@@ -216,7 +216,7 @@ Drawable* AllMovable::checkTop()
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
-			if ((thisLeft > objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight < objRight)) {
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 return item;
             }
 		}
@@ -232,7 +232,7 @@ Drawable* AllMovable::checkTop()
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
-			if ((thisLeft > objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight < objRight)) {
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 return item;
             }
 		}
@@ -248,7 +248,7 @@ Drawable* AllMovable::checkTop()
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
-			if ((thisLeft > objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight < objRight)) {
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 return item;
             }
 		}
@@ -291,7 +291,7 @@ Drawable* AllMovable::checkBottom()
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
-			if ((thisLeft > objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight < objRight)) {
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 return item;
             }
 		}
@@ -307,7 +307,7 @@ Drawable* AllMovable::checkBottom()
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
-			if ((thisLeft > objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight < objRight)) {
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 return item;
             }
 		}
@@ -323,7 +323,7 @@ Drawable* AllMovable::checkBottom()
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
-			if ((thisLeft > objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight < objRight)) {
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 return item;
             }
 		}
