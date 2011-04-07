@@ -13,8 +13,14 @@
 
 #include "Goomba.h"
 #include <stdio.h>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 
-GLuint textureNum;
+using namespace std;
+
+
+GLuint textureGoomba;
 
 //---------------------------------------------------------
 
@@ -27,18 +33,33 @@ Goomba::Goomba()
 	setXVelocity(2.0);
 	setYVelocity(0.0);
     
+    // Mac environment variable for home directory
+    char *cHomeDir = NULL;
     
-    FILE *fp = fopen("/Users/rwatters/Desktop/goomba.tiff", "r");
+    cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (!cHomeDir) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    homeDir += "/CS330/sprites/goomba.tiff";
+    
+    cout<<"\n cd:" << homeDir <<endl;
+    
+    
+    
+    FILE *fp = fopen(homeDir.c_str(), "r");
     unsigned char *texture = new unsigned char[4 * 16 * 16];
     if (fread(texture, sizeof(unsigned char), 4 * 16 * 16, fp)
         != 4* 16 *16) {
-        fprintf(stderr, "error reading %s", "/Users/rwatters/Desktop/goomba.tiff");
+        fprintf(stderr, "error reading %s", "sprites/goomba.tiff");
     }
     fclose(fp);
     
     
-    glGenTextures(1, &textureNum);
-    glBindTexture(GL_TEXTURE_2D, textureNum);
+    glGenTextures(1, &textureGoomba);
+    glBindTexture(GL_TEXTURE_2D, textureGoomba);
     
     glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
@@ -69,7 +90,7 @@ void Goomba::draw()
 {
 	    
     glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, textureNum);
+    glBindTexture( GL_TEXTURE_2D, textureGoomba);
     
     glBegin( GL_QUADS );
     glTexCoord2d(0.0,0.0); glVertex2d(left(),top());
