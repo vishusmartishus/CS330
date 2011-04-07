@@ -153,22 +153,7 @@ void SceneWindow::displayCB()
 	//----------------------------
 	//show grid on screen
 	
-	glColor3f(0,0,0);
-	int i;
-	for(i=0;i<14;++i){
-		glBegin(GL_LINES);
-		glVertex2d(0,(i*16));
-		glVertex2d(256,(i*16));
-		glEnd();
-	}
 	
-	int j;
-	for(j=0;j<16;++j){
-		glBegin(GL_LINES);
-		glVertex2d((j*16),0);
-		glVertex2d((j*16), 224);
-		glEnd();
-	}
 	//---------------------------
 	Level *level_ = Level::sharedLevel();
 	LList movable = level_->getActiveMovable();
