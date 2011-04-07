@@ -97,6 +97,15 @@ void SceneWindow::loadLevel()
 	//loads in current level from set checkpoint
 	Level *level_ = Level::sharedLevel();
 	level_->loadTestLevel();
+	// initialize orthographic viewing projections
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, 512, 0, 224);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+
+
 	mario = new Mario();
     
     mario->setLeft(16);
@@ -201,8 +210,11 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
     if (key == 'q') {
         exit(0);
 	}
-	else if (key == 'p') {
-        //pause
+	else if (key == 'r') {
+        // reset level
+		viewportLeftX_ = 0;
+		viewportRightX_ = viewportLeftX_ + viewportWidth_;
+		sw->loadLevel();
 	}
 	else
 	{
