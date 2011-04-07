@@ -312,7 +312,6 @@ void Level::loadTestLevel()
 		activeBlocks_.append(block);
 		left += 16;
 	}
-    
 }
 //------------------------------------------------------------
 void Level::addDrawable(Drawable *obj)
