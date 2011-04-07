@@ -201,57 +201,6 @@ void Mario::move()
 //------------------------------------------------------------
 //Handels all jump cases
 void Mario::jump() {
-    /*Drawable *node;
-    int object;
-    if (jumpCount_ > 0) {
-        node = this->checkAbove();
-        //There is a object above Mario
-        if (node) {
-            object = node->objectType();
-            if (object == -1) { //Will be fixed by AllMovable Group
-                //this->setTop(this->top() + this->getYVelocity());
-                //this->setBottom(this->bottom() + this->getYVelocity());
-            } else if (object == breakable_){
-                Breakable *temp = (Breakable*)node;
-                temp->breakBlock(state_ == BIG_STATE || state_ == FIRE_STATE);
-                jumpCount_ = 1;
-            } else if (object == question_) {
-                Nonbreakable *temp = (Nonbreakable*)node;
-                temp->generateReward(true); //Question for the Nonbreakable group
-                jumpCount_ = 1;
-            }
-        } else {
-            //There is no block above Mario
-            this->setTop(this->top() + this->getYVelocity());
-            this->setBottom(this->bottom() + this->getYVelocity());
-        }
-        jumpCount_--;
-        //Set Mario's Y Velocity
-        if (jumpCount_ == 0) {
-            this->setYVelocity(-2.0);
-        }
-    } else if (this->getYVelocity() < 0) {
-        node = this->checkBelow();
-        //There is an object below Mario, so stop him from moving
-        if (node) {
-            object = node->objectType();
-            if (object >= 1) {
-                //this->setBottom(this->bottom() + this->getYVelocity());
-                this->setYVelocity(0.0);
-            } else {
-                this->setYVelocity(0.0);
-            }
-        } else {
-            //No block below Mario
-            this->setBottom(this->bottom() + this->getYVelocity());
-            this->setTop(this->top() + this->getYVelocity());
-        }
-    } else {
-        node = this->checkBelow();
-        if (!node) {
-            this->setYVelocity(-2.0);
-        }
-    }*/
     if (this->jumpCount_ > 0) {
         jumpCount_--;
     } else if (this->getYVelocity() > 0.0) {
@@ -284,6 +233,7 @@ void Mario::updateScene()
 //to see if Mario runs into anything
 bool Mario::check()
 {
+    /*
     //get all the values of the objects so Mario knows what to do 
     // the object
     //check each case for each object
@@ -535,9 +485,41 @@ bool Mario::check()
         return true;
     else
         return false;
+    */
+    Drawable *objb, *objt, *objl, *objr;
+    objb = this->checkBottom();
+    objt = this->checkTop();
+    objl = this->checkLeft();
+    objr = this->checkRight();
+    if (objb) {
+        cout << "TRUE";
+    }
+    if (objt) {
+        if (objt->objectType() == question_) {
+            Nonbreakable *temp = (Nonbreakable*)objt;
+            temp->generateReward(this->getState() != SMALL_STATE);
+        } else if (objt->objectType() == breakable_) {
+            Breakable *temp = (Breakable*)objt;
+            
+        }
+        this->jumpCount_ = 0;
+        this->setYVelocity(-2.0);
+        cout << "top";
+    }
+    if (objb && this->getYVelocity() < 0) {
+        this->setYVelocity(0.0);
+        cout << "bottom";
+    }
+    if (objl && this->getXVelocity() < 0) {
+        this->setXVelocity(0.0);
+        cout << "left";
+    }
+    if (objr && this->getXVelocity() > 0) {
+        this->setXVelocity(0.0);
+        cout << "right";
+    }
+    return true;
 }
-//------------------------------------------------------------
-//Drews Test Methods
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()
