@@ -1,6 +1,9 @@
 //Level.cpp
 //Zach Adams, Alex Strohmeyer, Josh Woods
 
+#include <cstdlib>
+#include <iostream>
+#include <string>
 #include "Level.h"
 #include "Drawable.h"
 #include <fstream>
@@ -45,20 +48,35 @@ Level::~Level()
 //------------------------------------------------------------
 void Level::makeLevel(int levelNumber)
 {
-	
+    // Mac environment variable for home directory
+    char *cHomeDir = NULL;
+    
+    cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (!cHomeDir) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    homeDir += "/CS330/";
+    string fname;
+    cout << "home: " << homeDir << endl;
+    
 	ifstream inFile;
 	if (levelNumber== 1){
-		inFile.open("levelfiles/level1.txt");
+        fname = homeDir + "levelfiles/level1.txt";
+		inFile.open(fname.c_str());
 	}
 	else if (levelNumber== 2){
-		inFile.open("levelfiles/level3.txt");
+        fname = homeDir + "levelfiles/level3.txt";
+		inFile.open(fname.c_str());
 	}
-	int xcoord = 0, ycoord = -16;
+	int xcoord = 0, ycoord = 0, type, reward;
 	char object;
 	
-	LList(levelBlocks_);
-	while (inFile.get(object)) {
-		ycoord +=16;
+	while (inFile.good()) {
+		object= inFile.get();
+
 		
 		/*at this point the variable 'object' has the next item in the .txt 
 		 and here the 'object' and it's xcord and ycord are sent off to the 
@@ -66,48 +84,47 @@ void Level::makeLevel(int levelNumber)
 		if (object== 'b') {
 			//create breakable block
 			Breakable *bBlock = new Breakable;
-			bBlock->setTop(xcoord  + 16);
-			bBlock->setBottom(xcoord);
-			bBlock->setLeft(ycoord);
-			bBlock->setRight(ycoord + 16);
+			bBlock->setTop(ycoord  + 16);
+			bBlock->setBottom(ycoord);
+			bBlock->setLeft(xcoord);
+			bBlock->setRight(xcoord + 16);
 			//add block to the list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeBlocks_.append(bBlock);
 			}
 			else {
 				levelBlocks_.append(bBlock);
 			}
 		}
-		else if (object== 'B' || object=='M' || object=='C' || object=='S'){
-			//create blocks depending on the inside-Shroom/Coin/other
-			//The block creation below is for regular blocks and the pointer will change if the block is 
-			//supposed to be different, and at the end the block will be placed in the correct LList
-			
-			
-			Nonbreakable *nBlock = new Nonbreakable(15);
 
-			if (object== 'M'){
-				//delete the old nblock
-				delete nBlock;
-				Nonbreakable *nBlock = new Nonbreakable(3,2);
+		else if (object== 'B' || object=='M' || object=='C' || object=='S'){
+			// sets the type and reward based off the letter passed and creates the block
+			
+			if (object == 'B'){
+				type = 15;
+				reward = 0;
 			}
-			else if (object== 'S'){
-				//delete the old nblock
-				delete nBlock;
-				Nonbreakable *nBlock = new Nonbreakable(3,3);
+			else if (object == 'M'){
+				type = 3;
+				reward = 2;
 			}
-			else if (object== 'C'){
-				//delete the old nblock
-				delete nBlock;
-				Nonbreakable *nBlock = new Nonbreakable(3,1);
+			else if (object == 'S'){
+				type = 3;
+				reward = 1;
+			}
+			else if (object == 'C'){
+				type = 3;
+				reward = 1;
 			}
 			
-			nBlock->setTop(xcoord  + 16);
-			nBlock->setBottom(xcoord);
-			nBlock->setLeft(ycoord);
-			nBlock->setRight(ycoord + 16);
+			Nonbreakable *nBlock = new Nonbreakable(type, reward);
+
+			nBlock->setTop(ycoord  + 16);
+			nBlock->setBottom(ycoord);
+			nBlock->setLeft(xcoord);
+			nBlock->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeBlocks_.append(nBlock);
 			}
 			else {
@@ -118,12 +135,12 @@ void Level::makeLevel(int levelNumber)
 		else if (object== 'c'){
 			//create coin
 			Coin *coin = new Coin;
-			coin->setTop(xcoord  + 16);
-			coin->setBottom(xcoord);
-			coin->setLeft(ycoord);
-			coin->setRight(ycoord + 16);
+			coin->setTop(ycoord  + 16);
+			coin->setBottom(ycoord);
+			coin->setLeft(xcoord);
+			coin->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeDrawable_.append(coin);
 			}
 			else {
@@ -133,12 +150,12 @@ void Level::makeLevel(int levelNumber)
 		else if (object== 'g'){
 			//create goomba
 			Goomba *goomba = new Goomba;
-			goomba->setTop(xcoord  + 16);
-			goomba->setBottom(xcoord);
-			goomba->setLeft(ycoord);
-			goomba->setRight(ycoord + 16);
+			goomba->setTop(ycoord  + 16);
+			goomba->setBottom(ycoord);
+			goomba->setLeft(xcoord);
+			goomba->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeMovable_.append(goomba);
 			}
 			else {
@@ -148,19 +165,22 @@ void Level::makeLevel(int levelNumber)
 		else if (object== 'k'){
 			//create koopa
 			Turtle *koopa = new Turtle;
-			koopa->setTop(xcoord  + 16);
-			koopa->setBottom(xcoord);
-			koopa->setLeft(ycoord);
-			koopa->setRight(ycoord + 16);
+			koopa->setTop(ycoord  + 16);
+			koopa->setBottom(ycoord);
+			koopa->setLeft(xcoord);
+			koopa->setRight(xcoord + 16);
 			//place in correct list
-			if (xcoord<208){
+			if (xcoord<256){
 				activeMovable_.append(koopa);
 			}
 			else {
 				levelMovable_.append(koopa);
 			}
 		}
-		if (ycoord == 162) {
+		if (ycoord < 224){
+			ycoord += 16;
+		}
+		else if (ycoord == 224) {
          xcoord += 16;
          ycoord = 0; 
 		}
@@ -178,6 +198,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 			Drawable *obj = levelDrawable_.removeFirst();
 			activeDrawable_.append(obj);
 		}
+		else {
+			break;
+		}
 	}
 	
 	//removes from the active list when and deleted the object when the right end of an object falls off the left bound
@@ -185,6 +208,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 		if (activeDrawable_.first()->right() < leftBound){
 			Drawable *obj = activeDrawable_.removeFirst();
 			delete obj;
+		}
+		else {
+			break;
 		}
 	}
 	
@@ -194,6 +220,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 			Drawable *obj = levelMovable_.removeFirst();
 			activeMovable_.append(obj);
 		}
+		else {
+			break;
+		}
 	}
 	
 	//removes from the activeMovable_ llist and deletes the object
@@ -201,6 +230,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 		if (activeMovable_.first()->right() < leftBound){
 			Drawable *obj = activeMovable_.removeFirst();
 			delete obj;
+		}
+		else {
+			break;
 		}
 	}
 	
@@ -210,6 +242,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 			Drawable *obj = levelBlocks_.removeFirst();
 			activeBlocks_.append(obj);
 		}
+		else {
+			break;
+		}
 	}
 	
 	//removes from the activeBlocks_ llist and deletes the object
@@ -217,6 +252,9 @@ void Level::updateExtents(int leftBound, int rightBound)
 		if (activeBlocks_.first()->right() < leftBound){
 			Drawable *obj = activeBlocks_.removeFirst();
 			delete obj;
+		}
+		else {
+			break;
 		}
 	}
 }
@@ -252,6 +290,18 @@ void Level::loadTestLevel()
 		activeBlocks_.append(block);
 		left += 16;
 	}
+    bottom = 64;
+    left = 32;
+    for (i=0; i<4; ++i){
+		Nonbreakable *block = new Nonbreakable(15,0);
+		block->setTop(bottom  + 16);
+		block->setBottom(bottom);
+		block->setLeft(left);
+		block->setRight(left + 16);
+		activeBlocks_.append(block);
+		left += 16;
+	}
+    
 }
 //------------------------------------------------------------
 void Level::addDrawable(Drawable *obj)
