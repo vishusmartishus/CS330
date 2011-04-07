@@ -152,7 +152,7 @@ void Level::makeLevel(int levelNumber)
 				levelDrawable_.append(coin);
 			}
 		}
-		/*else if (object== 'g'){
+		else if (object== 'g'){
 			//create goomba
 			Goomba *goomba = new Goomba;
 			goomba->setTop(ycoord  + 16);
@@ -181,7 +181,7 @@ void Level::makeLevel(int levelNumber)
 			else {
 				levelMovable_.append(koopa);
 			}
-		}*/
+		}
 		else if (object == 's'){
 			//creates the coordinates for marios starting point
 			leftStart_ = xcoord;
@@ -312,7 +312,6 @@ void Level::loadTestLevel()
 		activeBlocks_.append(block);
 		left += 16;
 	}
-    
 }
 //------------------------------------------------------------
 void Level::addDrawable(Drawable *obj)

@@ -17,6 +17,9 @@
 
 extern SceneWindow *sw;
 Mario *mario;
+static int p;
+
+using namespace std;
 
 SceneWindow::SceneWindow(int argc, char **argv)
 {
@@ -195,12 +198,25 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
     if (key == 'q') {
         exit(0);
 	}
+	else if (key == 'p') {
+		if (p==0){
+			p=1;
+			cout << "pause";
+		}
+		else if (p==1){
+			p=0;
+			timerFunc(0);
+			cout << "unpause";
+		}
+		
+	}
 	else if (key == 'r') {
         // reset level
 		viewportLeftX_ = 0;
 		viewportRightX_ = viewportLeftX_ + viewportWidth_;
 		sw->loadLevel();
 	}
+	
 	else
 	{
 		//call update mario to move
@@ -253,7 +269,9 @@ void SceneWindow::timerCB(int value)
 
     //std::cout << viewportLeftX_ << " " << viewportRightX_ << std::endl;
 	glutPostRedisplay();
-	glutTimerFunc(10, &SceneWindow::timerFunc, 0);
+	if (p==0) {
+		glutTimerFunc(10, &SceneWindow::timerFunc, 0);
+	}
 }
 
 //----------------------------------------------------------------------
