@@ -33,6 +33,8 @@ public:
 	void addDrawable(Drawable *obj);
 	//empties the current lists to create a new level
 	void resetLevel();
+	int getLeftStart(){ return leftStart_;}
+	int getBottomStart(){ return bottomStart_;}
 
 
 //------------------------------------------------------------
@@ -45,5 +47,6 @@ private:
 	// 6 LLists 3 active 3 inactive
 	// levelDrawable_ and activeDrawable contain only coins, fire flowers, and the flag
 	LList levelMovable_, levelDrawable_, levelBlocks_, activeMovable_, activeDrawable_, activeBlocks_;
+	int leftStart_, bottomStart_;
 };
 #endif
