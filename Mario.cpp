@@ -500,6 +500,7 @@ bool Mario::check()
             temp->generateReward(this->getState() != SMALL_STATE);
         } else if (objt->objectType() == breakable_) {
             Breakable *temp = (Breakable*)objt;
+            
         }
         this->jumpCount_ = 0;
         this->setYVelocity(-2.0);
