@@ -49,10 +49,12 @@ Level::~Level()
 void Level::makeLevel(int levelNumber)
 {
     // Mac environment variable for home directory
-    char *cHomeDir = getenv("HOME");
+    char *cHomeDir = NULL;
+    
+    cHomeDir = getenv("HOME");
     
     // I think Windows uses HOMEPATH
-    if (strlen(cHomeDir) == 0) {
+    if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
     string homeDir = cHomeDir;

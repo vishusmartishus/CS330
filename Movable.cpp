@@ -33,12 +33,12 @@ bool Movable::canMove()
     // call checkRight and checkLeft methods
     Drawable *dRight = checkLeft();
     Drawable *dLeft = checkRight();
-    Drawable *dBelow = checkBelow();
+    Drawable *dBottom = checkBottom();
     
     // if check is NULL, nothing in the way, can move
     if (dRight == NULL || dLeft == NULL) {
         // check if goomba, mushroom, shell, can fall off edge
-        if ((this->objectType() == goomba_ || this->objectType() == mushroom_ || this->objectType() == shell_) && dBelow == NULL) {
+        if ((this->objectType() == goomba_ || this->objectType() == mushroom_ || this->objectType() == shell_) && dBottom == NULL) {
             // can fall
             this->setYVelocity(2.0);
         }
