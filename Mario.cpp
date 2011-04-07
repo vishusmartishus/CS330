@@ -20,11 +20,11 @@
 #include <string>
 #include <sstream>
 
-using namespace std;
 
 GLuint textureMario[10];
 int texturePos = 0;
 
+using namespace std;
 
 //------------------------------------------------------------
 void Mario::draw()
@@ -143,7 +143,7 @@ void Mario::updateKeyDown(unsigned char button)
         }
     }
     
-    else if (button == 'd')
+    if (button == 'd')
     {
         rightKey_ = true;
         
@@ -236,57 +236,6 @@ void Mario::move()
 //------------------------------------------------------------
 //Handels all jump cases
 void Mario::jump() {
-    /*Drawable *node;
-    int object;
-    if (jumpCount_ > 0) {
-        node = this->checkAbove();
-        //There is a object above Mario
-        if (node) {
-            object = node->objectType();
-            if (object == -1) { //Will be fixed by AllMovable Group
-                //this->setTop(this->top() + this->getYVelocity());
-                //this->setBottom(this->bottom() + this->getYVelocity());
-            } else if (object == breakable_){
-                Breakable *temp = (Breakable*)node;
-                temp->breakBlock(state_ == BIG_STATE || state_ == FIRE_STATE);
-                jumpCount_ = 1;
-            } else if (object == question_) {
-                Nonbreakable *temp = (Nonbreakable*)node;
-                temp->generateReward(true); //Question for the Nonbreakable group
-                jumpCount_ = 1;
-            }
-        } else {
-            //There is no block above Mario
-            this->setTop(this->top() + this->getYVelocity());
-            this->setBottom(this->bottom() + this->getYVelocity());
-        }
-        jumpCount_--;
-        //Set Mario's Y Velocity
-        if (jumpCount_ == 0) {
-            this->setYVelocity(-2.0);
-        }
-    } else if (this->getYVelocity() < 0) {
-        node = this->checkBelow();
-        //There is an object below Mario, so stop him from moving
-        if (node) {
-            object = node->objectType();
-            if (object >= 1) {
-                //this->setBottom(this->bottom() + this->getYVelocity());
-                this->setYVelocity(0.0);
-            } else {
-                this->setYVelocity(0.0);
-            }
-        } else {
-            //No block below Mario
-            this->setBottom(this->bottom() + this->getYVelocity());
-            this->setTop(this->top() + this->getYVelocity());
-        }
-    } else {
-        node = this->checkBelow();
-        if (!node) {
-            this->setYVelocity(-2.0);
-        }
-    }*/
     if (this->jumpCount_ > 0) {
         jumpCount_--;
     } else if (this->getYVelocity() > 0.0) {
@@ -319,6 +268,7 @@ void Mario::updateScene()
 //to see if Mario runs into anything
 bool Mario::check()
 {
+    /*
     //get all the values of the objects so Mario knows what to do 
     // the object
     //check each case for each object
@@ -570,9 +520,188 @@ bool Mario::check()
         return true;
     else
         return false;
+    */
+    Drawable *objb, *objt, *objl, *objr;
+    objb = this->checkBottom();
+    objt = this->checkTop();
+    objl = this->checkLeft();
+    objr = this->checkRight();
+    if (!objb && jumpCount_ == 0) {
+        this->setYVelocity(-2.0);
+    }
+    //mario jumps into something
+    if (objt) {
+        if (objt->objectType() == question_) {
+            Nonbreakable *temp = (Nonbreakable*)objt;
+            temp->generateReward(this->getState() != SMALL_STATE);
+        } else if (objt->objectType() == breakable_) {
+            Breakable *temp = (Breakable*)objt;
+            temp->breakBlock(this->getState() != SMALL_STATE);
+        }
+        else if (objt->objectType() == goomba_ || objt->objectType() == shell_ || objt->objectType() == turtle_ || objt->objectType() == enemyfireball_) {
+            if (starCount_ > 0) {
+                //kill enemy
+            }
+            else {
+                return false;
+            }
+        }
+        else if (objt->objectType() == mushroom_ || objt->objectType() == star_ || objt->objectType() == fireflower_ || objt->objectType() == coin_) {
+            //update state
+            if (objt->objectType() == mushroom_) {
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                }
+                else {
+                    //add points
+                }
+            }
+            else if (objt->objectType() == fireflower_) {
+                if (this->getState() == FIRE_STATE) {
+                    //add points
+                }
+                else {
+                    this->state_ = FIRE_STATE;
+                }
+            }
+            else {
+                starCount_ = 50;
+            }
+        }
+        //Up above, waiting for Drew
+        this->jumpCount_ = 0;
+        this->setYVelocity(-2.0);
+    }
+    //mario falls on something
+    cout << this->getYVelocity() << endl;
+    if (objb && this->getYVelocity() < 0) {
+        this->setYVelocity(0.0);
+        if (objb->objectType() == goomba_ || objb->objectType() == shell_ || objb->objectType() == turtle_ || objb->objectType() == enemyfireball_ || objb->objectType() == plant_) {
+            if (starCount_ > 0) {
+                //kill enemy
+            }
+            else {
+                if (objb->objectType() == turtle_) {
+                    //turn turtle into shell
+                }
+                else if (objb->objectType() == enemyfireball_ || objb->objectType() == plant_){
+                    //Mario Dies
+                    return false;
+                }
+                else {
+                    //delete enemy
+                }
+            }
+        }
+        else if (objb->objectType() == mushroom_ || objb->objectType() == star_ || objb->objectType() == fireflower_) {
+            //update state
+            if (objb->objectType() == mushroom_) {
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                }
+                else if (objb->objectType() == fireflower_) {
+                    this->state_ = FIRE_STATE;
+                }
+                else {
+                    //add points
+                }
+            }
+            else {
+                starCount_ = 50;
+            }
+        }
+        else if (objb->objectType() == breakable_ || objb->objectType() == regular_ || objb->objectType() == question_) {
+            jumpCount_ = 0;
+            this->setYVelocity(0.0);
+        }
+    }
+    //Mario moves to the left
+    if (objl && this->getXVelocity() < 0) {
+        this->setXVelocity(0.0);
+        if (objl->objectType() == goomba_ || objl->objectType() == shell_ || objl->objectType() == turtle_ || objl->objectType() == enemyfireball_){
+            if (this->starCount_ > 0){
+                //enemy dies
+            }
+            else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
+                this->state_--;
+            }
+            else{
+                return false;
+            }
+        }
+        else if (objl->objectType() == breakable_ || objl->objectType() == regular_ || objl->objectType() == question_){
+            this->setXVelocity(0.0);
+        }
+        else if (objl->objectType() == mushroom_ || objl->objectType() == star_ || objl->objectType() == fireflower_ || objl->objectType() == coin_){
+            if (objl->objectType() == mushroom_) {
+                if (this->getState() == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                }
+                else{
+                    //mario gets points
+                }
+            }
+            else if (objl->objectType() == fireflower_){
+                if (this->getState() == FIRE_STATE) {
+                    //mario gets some points
+                }
+                else {
+                    this->state_ = FIRE_STATE;
+                }
+            }
+            else if (objl->objectType() == star_){
+                starCount_ = 50;
+            }
+            else{
+                //Mario get some points
+            }
+        }
+        
+    }
+    //Mario is moving to the right
+    if (objr && this->getXVelocity() > 0) {
+        this->setXVelocity(0.0);
+        if (objr->objectType() == goomba_ || objr->objectType() == shell_ || objr->objectType() == turtle_ || objr->objectType() == enemyfireball_){
+            if (this->starCount_ > 0){
+                //enemy dies
+            }
+            else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
+                this->state_--;
+            }
+            else{
+                return false;
+            }
+        }
+        else if (objr->objectType() == breakable_ || objr->objectType() == regular_ || objr->objectType() == question_){
+            this->setXVelocity(0.0);
+        }
+        else if (objr->objectType() == mushroom_ || objr->objectType() == star_ || objr->objectType() == fireflower_ || objr->objectType() == coin_){
+            if (objr->objectType() == mushroom_) {
+                if (this->getState() == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                }
+                else{
+                    //mario gets points
+                }
+            }
+            else if (objr->objectType() == fireflower_){
+                if (this->getState() == FIRE_STATE) {
+                    //mario gets some points
+                }
+                else {
+                    this->state_ = FIRE_STATE;
+                }
+            }
+            else if (objr->objectType() == star_){
+                starCount_ = 50;
+            }
+            else{
+                //Mario get some points
+            }
+        }
+    }
+    return true;
 }
-//------------------------------------------------------------
-//Drews Test Methods
 //------------------------------------------------------------
 //Creates a fireball
 bool Mario::fireball()
