@@ -38,7 +38,7 @@ public:
 	// side of the object. Returns a drawable which has the characteristic
 	// of an object type which will tell us what the appropriate action
 	// is to take as a result of the collision. If there is no collision,
-	// the returned object type will be "-1".
+	// the returned object type will be "NULL".
 	Drawable* checkRight();
 	//---------------------------------------------------------
 
@@ -46,7 +46,7 @@ public:
 	// side of the object. Returns a drawable which has the characteristic
 	// of an object type which will tell us what the appropriate action
 	// is to take as a result of the collision. If there is no collision,
-	// the returned object type will be "-1".  
+	// the returned object type will be "NULL".  
 	Drawable* checkLeft();
 	//---------------------------------------------------------
 
@@ -54,18 +54,18 @@ public:
 	//  the object. Returns a drawable which has the characteristic
 	// of an object type which will tell us what the appropriate action
 	// is to take as a result of the collision. If there is no collision,
-	// the returned object type will be "-1".    
-	Drawable* checkBelow();
+	// the returned object type will be "NULL".    
+	Drawable* checkBottom();
 	//---------------------------------------------------------
 
     // returns a drawable object that is causing a collision above
 	//  the object. Returns a drawable which has the characteristic
 	// of an object type which will tell us what the appropriate action
 	// is to take as a result of the collision. If there is no collision,
-	// the returned object type will be "-1". 
-	Drawable* checkAbove();
+	// the returned object type will be "NULL". 
+	Drawable* checkTop();
 	//---------------------------------------------------------
-
+    
     // getters for velocity. might remove since I'm not sure it's
 	// neccessary to get any velocities, as all velocities in the
 	// system will be constant, which means we will always know them.
@@ -82,8 +82,18 @@ public:
 	//---------------------------------------------------------
     
 private:
-    // instance vars
     
+    // private helper methods
+    Drawable* collisionBottom();
+    Drawable* collisionTop();
+    Drawable* collisionLeft();
+    Drawable* collisionRight();
+    Drawable* paddedRight();
+    Drawable* paddedLeft();
+    Drawable* paddedTop();
+    Drawable* paddedBottom();
+    
+    // instance vars
     // direction of object; horizontal/vertical velocity
     double horizontalVelocity_;
     double verticalVelocity_;
