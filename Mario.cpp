@@ -17,12 +17,6 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
-#include <string>
-#include <sstream>
-
-
-GLuint textureMario[10];
-int texturePos = 0;
 
 using namespace std;
 
