@@ -48,7 +48,12 @@ Level::~Level()
 //------------------------------------------------------------
 void Level::makeLevel(int levelNumber)
 {
-    // Mac environment variable for home directory
+    //if the level already exists delete it
+	if ((activeDrawable_.first() != NULL) || (activeMovable_.first() != NULL) || (activeBlocks_.first() != NULL)){
+		resetLevel();
+	}
+	
+	// Mac environment variable for home directory
     char *cHomeDir = NULL;
     
     cHomeDir = getenv("HOME");
@@ -147,7 +152,7 @@ void Level::makeLevel(int levelNumber)
 				levelDrawable_.append(coin);
 			}
 		}
-		else if (object== 'g'){
+		/*else if (object== 'g'){
 			//create goomba
 			Goomba *goomba = new Goomba;
 			goomba->setTop(ycoord  + 16);
@@ -176,7 +181,13 @@ void Level::makeLevel(int levelNumber)
 			else {
 				levelMovable_.append(koopa);
 			}
+		}*/
+		else if (object == 's'){
+			//creates the coordinates for marios starting point
+			leftStart_ = xcoord;
+			bottomStart_ = ycoord;
 		}
+
 		if (ycoord < 224){
 			ycoord += 16;
 		}
