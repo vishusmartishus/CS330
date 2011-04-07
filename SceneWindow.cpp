@@ -106,15 +106,12 @@ void SceneWindow::loadLevel()
 
 
 
-
 	mario = new Mario();
     
     mario->setLeft(16);
     mario->setRight(16+16);
     mario->setBottom(32);
-
     mario->setTop(32+16);
-
     
 }
 
