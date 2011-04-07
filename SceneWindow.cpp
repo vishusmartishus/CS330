@@ -96,13 +96,25 @@ void SceneWindow::loadLevel()
 	//called from start game
 	//loads in current level from set checkpoint
 	Level *level_ = Level::sharedLevel();
-	level_->makeLevel(1);
+	level_->makeLevel();
+	// initialize orthographic viewing projections
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, 512, 0, 224);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+
+
+
 	mario = new Mario();
     
     mario->setLeft(16);
     mario->setRight(16+16);
     mario->setBottom(32);
-    mario->setTop(16+32);
+
+    mario->setTop(32+16);
+
     
 }
 
@@ -144,22 +156,7 @@ void SceneWindow::displayCB()
 	//----------------------------
 	//show grid on screen
 	
-	glColor3f(0,0,0);
-	int i;
-	for(i=0;i<14;++i){
-		glBegin(GL_LINES);
-		glVertex2d(0,(i*16));
-		glVertex2d(256,(i*16));
-		glEnd();
-	}
 	
-	int j;
-	for(j=0;j<16;++j){
-		glBegin(GL_LINES);
-		glVertex2d((j*16),0);
-		glVertex2d((j*16), 224);
-		glEnd();
-	}
 	//---------------------------
 	Level *level_ = Level::sharedLevel();
 	LList movable = level_->getActiveMovable();
@@ -201,8 +198,11 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
     if (key == 'q') {
         exit(0);
 	}
-	else if (key == 'p') {
-        //pause
+	else if (key == 'r') {
+        // reset level
+		viewportLeftX_ = 0;
+		viewportRightX_ = viewportLeftX_ + viewportWidth_;
+		sw->loadLevel();
 	}
 	else
 	{
