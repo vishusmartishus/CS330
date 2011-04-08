@@ -13,6 +13,9 @@
 #include "Level.h"
 #include "LListIterator.h"
 
+#include <iostream>
+using namespace std;
+
 //---------------------------------------------------------
 
 AllMovable::AllMovable()
@@ -262,6 +265,9 @@ Drawable* AllMovable::checkTop()
 
 Drawable* AllMovable::checkBottom()
 {
+    if (this->objectType() == mario_ && this->getYVelocity() > 0) {
+        return NULL;
+    }
     // get instance of level
 	Level* level = Level::sharedLevel();
     
