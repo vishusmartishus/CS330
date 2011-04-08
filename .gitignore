@@ -5,3 +5,6 @@ build/
 project.xcworkspace/
 xcuserdata/
 
+sprites/mario0.png
+sprites/mario01.png
+sprites/mario02.png

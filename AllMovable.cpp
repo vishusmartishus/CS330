@@ -13,6 +13,9 @@
 #include "Level.h"
 #include "LListIterator.h"
 
+#include <iostream>
+using namespace std;
+
 //---------------------------------------------------------
 
 AllMovable::AllMovable()
@@ -32,31 +35,154 @@ AllMovable::~AllMovable()
 
 Drawable* AllMovable::checkRight()
 {
-	Drawable* dRight = this->collisionRight();
-    Drawable* dTop = this->paddedTop();
-    Drawable* dBottom = this->paddedBottom();
+    // get instance of level
+	Level* level = Level::sharedLevel();
     
-    if (dTop == NULL && dBottom == NULL && dRight != NULL)
-    {
-        return dRight;
-    }
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
     
-    return NULL;
+    Drawable *item;
+    int thisRight, thisTop, thisBottom, objLeft, objRight, objTop, objBottom;
+    
+	// get right value of object
+	thisRight = this->right();
+    thisTop = this->top();
+    thisBottom = this->bottom();
+    
+	// iterate through active Blocks list
+	while ((item = liBlocks.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+        objTop = item->top();
+        objBottom = item->bottom();
+        
+		// if the right is in between objects left & right boundaries
+		if (thisRight >= objLeft && thisRight <= objRight)
+		{
+			// check if between top and bottom
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+        
+		// if the right is in between objects left & right boundaries
+		if (thisRight >= objLeft && thisRight <= objRight)
+		{
+			// check if between top and bottom
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+        
+		// if the right is in between objects left & right boundaries
+		if (thisRight >= objLeft && thisRight <= objRight)
+		{
+			// check if between top and bottom
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
+                return item;
+            }
+		}
+	}
+    
+	return NULL;
 }
+
 //---------------------------------------------------------
 
 Drawable* AllMovable::checkLeft()
 {
-    Drawable* dLeft = this->collisionLeft();
-    Drawable* dTop = this->paddedTop();
-    Drawable* dBottom = this->paddedBottom();
+    // get instance of level
+	Level* level = Level::sharedLevel();
     
-    if (dTop == NULL && dBottom == NULL && dLeft != NULL)
-    {
-        return dLeft;
-    }
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
     
-    return NULL;
+    Drawable *item;
+    int thisLeft, thisTop, thisBottom, objLeft, objRight, objTop, objBottom;
+    
+	// get right value of object
+	thisLeft = this->left();
+    thisTop = this->top();
+    thisBottom = this->bottom();
+    
+	// iterate through active Block list
+	while ((item = liBlocks.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+        objTop = item->top();
+        objBottom = item->bottom();
+        
+		// if the right is in between objects left & right boundaries
+		if (thisLeft >= objLeft && thisLeft <= objRight)
+		{
+			// check if between top and bottom
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+        
+		// if the right is in between objects left & right boundaries
+		if (thisLeft >= objLeft && thisLeft <= objRight)
+		{
+			// check if between top and bottom
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
+	{
+		//get left, right, top and bottom of block
+		objLeft = item->left();
+		objRight = item->right();
+        
+		// if the right is in between objects left & right boundaries
+		if (thisLeft >= objLeft && thisLeft <= objRight)
+		{
+			// check if between top and bottom
+            if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
+                return item;
+            }
+		}
+	}
+    
+	return NULL;
 
 }
 
@@ -64,16 +190,74 @@ Drawable* AllMovable::checkLeft()
 
 Drawable* AllMovable::checkTop()
 {
-    Drawable* dTop = this->collisionTop();
-    Drawable* dLeft = this->paddedLeft();
-    Drawable* dRight = this->paddedRight();
+    // get instance of level
+	Level* level = Level::sharedLevel();
     
-    if(dLeft == NULL && dRight == NULL && dTop != NULL)
-    {
-        return dTop;
-    }
+	// initialize iterators
+	LListIterator liBlocks, liMovable, liDrawable;
+	liBlocks.init(level->getActiveBlocks());
+	liMovable.init(level->getActiveMovable());
+	liDrawable.init(level->getActiveDrawable());
     
-    return NULL;
+    Drawable *item;
+    int thisTop, thisLeft, thisRight, objTop, objBottom, objLeft, objRight;
+    
+	// get right value of object
+	thisTop = this->top();
+    thisLeft = this->left();
+    thisRight = this->right();
+    
+	// iterate through active Blocks list
+	while ((item = liBlocks.next())) 
+	{
+		//get left, right, top and bottom of block
+		objTop = item->top();
+		objBottom = item->bottom();
+        objLeft = item->left();
+        objRight = item->right();
+        
+		// if the top is in between objects top & bottom boundaries
+		if (thisTop >= objBottom && thisTop <= objTop)
+		{
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
+	{
+		//get left, right, top and bottom of block
+		objTop = item->top();
+		objBottom = item->bottom();
+        
+		// if the top is in between objects top & bottom boundaries
+		if (thisTop >= objBottom && thisTop <= objTop)
+		{
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Drawable list
+	while ((item = liDrawable.next())) 
+	{
+		//get left, right, top and bottom of block
+		objTop = item->top();
+		objBottom = item->bottom();
+        
+		// if the top is in between objects top & bottom boundaries
+		if (thisTop >= objBottom && thisTop <= objTop)
+		{
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
+                return item;
+            }
+		}
+	}
+    
+	return NULL;    
 
 }
 
@@ -81,22 +265,9 @@ Drawable* AllMovable::checkTop()
 
 Drawable* AllMovable::checkBottom()
 {
-    Drawable* dBottom = this->collisionBottom();
-    Drawable* dLeft = this->paddedLeft();
-    Drawable* dRight = this->paddedRight();
-    
-    if(dLeft == NULL && dRight == NULL && dBottom != NULL)
-    {
-        return dBottom;
+    if (this->objectType() == mario_ && this->getYVelocity() > 0) {
+        return NULL;
     }
-    
-    return NULL;
-}
-
-//---------------------------------------------------------
-
-Drawable* AllMovable::collisionBottom()
-{
     // get instance of level
 	Level* level = Level::sharedLevel();
     
@@ -107,13 +278,33 @@ Drawable* AllMovable::collisionBottom()
 	liDrawable.init(level->getActiveDrawable());
     
     Drawable *item;
-    int thisBottom, objTop, objBottom;
+    int thisBottom, thisLeft, thisRight, objTop, objBottom, objLeft, objRight;
     
 	// get right value of object
 	thisBottom = this->bottom();
+    thisLeft = this->left();
+    thisRight = this->right();
     
 	// iterate through active Blocks list
 	while ((item = liBlocks.next())) 
+	{
+		//get left, right, top and bottom of block
+		objTop = item->top();
+		objBottom = item->bottom();
+        objLeft = item->left();
+        objRight = item->right();
+        
+		// if the top is in between objects top & bottom boundaries
+		if (thisBottom >= objBottom && thisBottom <= objTop)
+		{
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
+                return item;
+            }
+		}
+	}
+    
+	// iterate through active Movable list
+	while ((item = liMovable.next())) 
 	{
 		//get left, right, top and bottom of block
 		objTop = item->top();
@@ -122,23 +313,9 @@ Drawable* AllMovable::collisionBottom()
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if (thisBottom >= objBottom && thisBottom <= objTop)
-		{
-			// return that object
-			return item;
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
+                return item;
+            }
 		}
 	}
     
@@ -152,479 +329,15 @@ Drawable* AllMovable::collisionBottom()
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
-			// return that object
-			return item;
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
+                return item;
+            }
 		}
 	}
     
 	return NULL;
-}
-
-//---------------------------------------------------------
-
-Drawable* AllMovable::collisionTop()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisTop, objTop, objBottom;
-    
-	// get right value of object
-	thisTop = this->top();
-    
-	// iterate through active Blocks list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if (thisTop >= objBottom && thisTop <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if (thisTop >= objBottom && thisTop <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if (thisTop >= objBottom && thisTop <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-
     
 }
-
-//---------------------------------------------------------
-
-Drawable* AllMovable::collisionLeft()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisLeft, objLeft, objRight;
-    
-	// get right value of object
-	thisLeft = this->left();
-    
-	// iterate through active Block list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if (thisLeft >= objLeft && thisLeft <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if (thisLeft >= objLeft && thisLeft <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if (thisLeft >= objLeft && thisLeft <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-
-}
-
-//---------------------------------------------------------
-
-Drawable* AllMovable::collisionRight()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisRight, objLeft, objRight;
-    
-	// get right value of object
-	thisRight = this->right();
-    
-	// iterate through active Blocks list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if (thisRight >= objLeft && thisRight <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if (thisRight >= objLeft && thisRight <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if (thisRight >= objLeft && thisRight <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-}
-
-Drawable* AllMovable::paddedRight()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisRight, objLeft, objRight;
-    
-	// get right value of object
-	thisRight = this->right();
-    
-	// iterate through active Blocks list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if ((thisRight - 1) >= objLeft && (thisRight - 1) <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if ((thisRight - 1) >= objLeft && (thisRight - 1) <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if ((thisRight - 1) >= objLeft && (thisRight - 1) <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-}
-
-Drawable* AllMovable::paddedLeft()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisLeft, objLeft, objRight;
-    
-	// get right value of object
-	thisLeft = this->left();
-    
-	// iterate through active Block list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if ((thisLeft + 1) >= objLeft && (thisLeft + 1) <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if ((thisLeft + 1) >= objLeft && (thisLeft + 1) <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objLeft = item->left();
-		objRight = item->right();
-        
-		// if the right is in between objects left & right boundaries
-		if ((thisLeft + 1) >= objLeft && (thisLeft + 1) <= objRight)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-
-}
-
-Drawable* AllMovable::paddedTop()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisTop, objTop, objBottom;
-    
-	// get right value of object
-	thisTop = this->top();
-    
-	// iterate through active Blocks list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if ((thisTop - 1) >= objBottom && (thisTop - 1) <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if ((thisTop - 1) >= objBottom && (thisTop - 1) <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if ((thisTop - 1) >= objBottom && (thisTop - 1) <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-}
-
-Drawable* AllMovable::paddedBottom()
-{
-    // get instance of level
-	Level* level = Level::sharedLevel();
-    
-	// initialize iterators
-	LListIterator liBlocks, liMovable, liDrawable;
-	liBlocks.init(level->getActiveBlocks());
-	liMovable.init(level->getActiveMovable());
-	liDrawable.init(level->getActiveDrawable());
-    
-    Drawable *item;
-    int thisBottom, objTop, objBottom;
-    
-	// get right value of object
-	thisBottom = this->bottom();
-    
-	// iterate through active Blocks list
-	while ((item = liBlocks.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if ((thisBottom + 1) >= objBottom && (thisBottom + 1) <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Movable list
-	while ((item = liMovable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if ((thisBottom + 1) >= objBottom && (thisBottom + 1) <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	// iterate through active Drawable list
-	while ((item = liDrawable.next())) 
-	{
-		//get left, right, top and bottom of block
-		objTop = item->top();
-		objBottom = item->bottom();
-        
-		// if the top is in between objects top & bottom boundaries
-		if ((thisBottom + 1) >= objBottom && (thisBottom + 1) <= objTop)
-		{
-			// return that object
-			return item;
-		}
-	}
-    
-	return NULL;
-}
-
 
 //---------------------------------------------------------
 
