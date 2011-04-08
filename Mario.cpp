@@ -14,55 +14,68 @@
 #include "Level.h"
 #include "Breakable.h"
 #include "Nonbreakable.h"
+#include <stdio.h>
+#include <cstdlib>
 #include <iostream>
+#include <string>
+#include <sstream>
 using namespace std;
+
+GLuint textureMario[10];
+int textureMarioPos = 0;
 
 //------------------------------------------------------------
 void Mario::draw()
 {
-    int pattern[256] = {0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,
-                0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,
-                0,0,2,2,2,3,3,2,3,0,0,0,0,0,0,0,
-                0,2,3,2,3,3,3,2,3,3,3,0,0,0,0,0,
-                0,2,3,2,2,3,3,3,2,3,3,3,0,0,0,0,
-                0,2,2,3,3,3,3,2,2,2,2,0,0,0,0,0,
-                0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0,
-                0,0,2,2,1,2,2,2,0,0,0,0,0,0,0,0,
-                0,2,2,2,1,2,2,1,2,2,2,0,0,0,0,0,
-                2,2,2,2,1,1,1,1,2,2,2,2,0,0,0,0,
-                3,3,2,1,3,1,1,3,1,2,3,3,0,0,0,0,
-                3,3,3,1,1,1,1,1,1,3,3,3,0,0,0,0,
-                3,3,1,1,1,1,1,1,1,1,3,3,0,0,0,0,
-                0,0,1,1,1,0,0,1,1,1,0,0,0,0,0,0,
-                0,2,2,2,0,0,0,0,2,2,2,0,0,0,0,0,
-                2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0};
     
-    int current;
-    
-    for (int i = 0; i<16; ++i) {
-        for (int j = 0; j<16; ++j) {
-            current = pattern[(i*16)+j];
-            
-            if (current == 1) {
-                glColor3ub(255, 0, 0);
-            }
-            else if (current == 2){
-                glColor3ub(153, 102, 0);
-            }
-            else{
-                glColor3ub(255, 255, 102);
-            }
-            
-            if (current > 0) {
-                glBegin(GL_POLYGON);
-                glVertex2d(left()+j, top()-i-1);
-                glVertex2d(left()+j+1, top()-i-1);
-                glVertex2d(left()+j+1, top()-i);
-                glVertex2d(left()+j, top()-i);
-                glEnd();
-            }
+    if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
+        textureMarioPos = 3;
+    }
+    else if (this->getYVelocity() != 0.0 && this->getXVelocity() < 0.0){
+        textureMarioPos = 7;
+    }
+    else if (this->getXVelocity() > 0.0){
+        if (textureMarioPos == 1) {
+            textureMarioPos = 2;
+        }
+        else{
+            textureMarioPos = 1;
         }
     }
+    else if (this->getXVelocity() < 0.0){
+        if (textureMarioPos == 5) {
+            textureMarioPos = 6;
+        }
+        else {
+            textureMarioPos = 5;
+        }
+    }
+    else if (textureMarioPos < 4){
+        textureMarioPos = 0;
+    }
+    else{
+        textureMarioPos = 4;
+    }
+
+    
+     
+             
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glEnable( GL_TEXTURE_2D );
+    glBindTexture( GL_TEXTURE_2D, textureMario[textureMarioPos]);
+    
+    
+    glColor4f(0.7f,0.9f,1.0f,1.0f);
+    glBegin( GL_QUADS );
+    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    glEnd();
+    
+    glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
 }
 //------------------------------------------------------------
 //constructor for Mario Class
@@ -85,7 +98,61 @@ Mario::Mario()
     //Set X and Y velocity
     this->setXVelocity(0.0);
     this->setYVelocity(0.0);
+    
+    
+    // Mac environment variable for home directory
+    char *cHomeDir = NULL;
+    
+    cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (!cHomeDir) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    string iName;
+    homeDir += "/CS330/sprites/mario";
+    
+    string pos;
+    stringstream out;
+    
+    for (int i = 0; i<8; ++i) {
+        stringstream out;
+        //Generates Filename
+        iName = homeDir;
+        out<<i;
+        pos = out.str();
+        iName += pos;
+        iName += ".tex";
+        cout<<iName<<endl;
+        
+        FILE *fp = fopen(iName.c_str(), "r");
+        unsigned char *texture = new unsigned char[4 * 256 * 256];
+        if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
+            != 4* 256 *256) {
+            fprintf(stderr, "error reading %s", iName.c_str());
+        }
+        fclose(fp);
+        
+        glGenTextures(1, &textureMario[i]);
+        glBindTexture(GL_TEXTURE_2D, textureMario[i]);
+        
+        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                        GL_LINEAR_MIPMAP_NEAREST );
+        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                        GL_LINEAR );        
+        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+                        GL_CLAMP );
+        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+                        GL_CLAMP );
+        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
+                          GL_UNSIGNED_BYTE, texture);
+        delete [] texture;
 
+    }
+    
+   
 }
 //------------------------------------------------------------
 //updates Mario's movement info when a button is pushed

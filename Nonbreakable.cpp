@@ -9,13 +9,12 @@
 //------------------------------------------------------------
 void Nonbreakable::draw()
 {
-    int j;
 	
     if (reward_== 0) {
         glColor3ub(199, 133, 64);
     }
 	else{
-        glColor3ub(255,255,51);
+        glColor3ub(255,204,0);
     }
 	
 	
@@ -27,22 +26,7 @@ void Nonbreakable::draw()
     glEnd();
 	
     
-    if (reward_ == 0) {
-        
-        glColor3ub(0, 0, 0);
-        
-        glPointSize(2.0);
-        
-        glBegin(GL_POINTS);
-        glVertex2d(left()+2, bottom()+2);
-        glVertex2d(left()+2, top()-2);
-        glVertex2d(right()-2, bottom()+2);
-        glVertex2d(right()-2, top()-2);
-        glEnd();
-        
-
-    }
-    else{
+    if (reward_ != 0) {
         
         glColor3ub(255, 0, 0);
         
@@ -61,6 +45,17 @@ void Nonbreakable::draw()
         glEnd();
         
     }
+    
+    
+    glColor3ub(0, 0, 0);
+    glPointSize(2.0);
+    
+    glBegin(GL_POINTS);
+    glVertex2d(left()+2, bottom()+2);
+    glVertex2d(left()+2, top()-2);
+    glVertex2d(right()-2, bottom()+2);
+    glVertex2d(right()-2, top()-2);
+    glEnd();
     
     glColor3ub(0, 0, 0);
     glBegin(GL_LINE_LOOP);
