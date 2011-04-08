@@ -488,7 +488,7 @@ bool Mario::check()
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
-    if (!objb && jumpCount_ == 0) {
+    if (!objb && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
     //mario jumps into something
@@ -593,7 +593,8 @@ bool Mario::check()
         else if (objl->objectType() == breakable_ || objl->objectType() == regular_ || objl->objectType() == question_){
             this->setXVelocity(0.0);
         }
-        else if (objl->objectType() == mushroom_ || objl->objectType() == star_ || objl->objectType() == fireflower_ || objl->objectType() == coin_){
+        else if (objl->objectType() == mushroom_ || objl->objectType() == star_ || objl->objectType() == fireflower_ || 
+                 objl->objectType() == coin_){
             if (objl->objectType() == mushroom_) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -618,6 +619,8 @@ bool Mario::check()
             }
         }
         
+    } else if (!objl && leftKey_) {
+        this->setXVelocity(-1.0);
     }
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
@@ -660,6 +663,8 @@ bool Mario::check()
                 //Mario get some points
             }
         }
+    } else if (!objr && rightKey_) {
+        this->setXVelocity(1.0);
     }
     return true;
 }
