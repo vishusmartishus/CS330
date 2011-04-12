@@ -31,26 +31,44 @@ Movable::~Movable()
 bool Movable::canMove()
 {
     // call checkRight and checkLeft methods
-    Drawable *dRight = checkLeft();
-    Drawable *dLeft = checkRight();
+    Drawable *dRight = checkRight();
+    Drawable *dLeft = checkLeft();
     Drawable *dBottom = checkBottom();
     
-    // if check is NULL, nothing in the way, can move
-    if (dRight == NULL || dLeft == NULL) {
-        // check if goomba, mushroom, shell, can fall off edge
-        if ((this->objectType() == GOOMBA || this->objectType() == MUSHROOM || this->objectType() == SHELL) && dBottom == NULL) {
-            // can fall
-            this->setYVelocity(2.0);
+	bool keepGoing = true;
+    
+    // if nothing underneath
+	if (dBottom == NULL) {
+        if (this->objectType() == TURTLE){
+            keepGoing = false;
         }
-        // going to hit ground, stop motion in y direction
-        else {
-            this->setYVelocity(0.0);
+		// check if goomba, mushroom, shell, can fall off edge
+		else {
+			this->setYVelocity(-2.0);
+		}
+	}
+    
+    // if a block type is underneath
+	else {
+		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION) {
+			this->setYVelocity(0.0);
+		}
+	}
+
+    // if nothing to the right or left
+    if (dRight != NULL) {
+        if (dRight->objectType() == REGULAR || dRight->objectType() == BREAKABLE || dRight->objectType() == QUESTION) {
+            keepGoing = false;
         }
-        return true;
     }
-    else {
-        return false;
+    
+    if (dLeft != NULL) {
+        if (dLeft->objectType() == REGULAR || dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION) {
+            keepGoing = false;
+        }
     }
+
+	return keepGoing;
 }
 
 
@@ -79,7 +97,7 @@ void Movable::updateScene()
     b = canMove();
     
     // if b is false, can't move that direction, reverse x direction
-    // if b is true, movement can stay
+	// if b is true, movement can stay
     if (b == false) {
         // undo potential move
         updatedLeft = this->left() - currentXVelocity;
@@ -93,6 +111,7 @@ void Movable::updateScene()
         
         // reverse x
         currentXVelocity = (-1) * currentXVelocity;
+        this->setXVelocity(currentXVelocity);
         updatedLeft = this->left() + currentXVelocity;
         this->setLeft(updatedLeft);
         updatedRight = this->right() + currentXVelocity;
