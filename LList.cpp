@@ -129,7 +129,7 @@ void LList::insertInSortedOrder(Drawable *item) {
     int x, i;
     for (i = 0; i < (this->size_); ++i) {
         x = node->item_->left();
-        if (x <= item->left()) {
+        if (item->left() <= x) {
             break;
         }
         temp = node;
@@ -137,14 +137,18 @@ void LList::insertInSortedOrder(Drawable *item) {
     }
     if (i == 0){
         this->head_ = newNode;
-        newNode->next_ = node;
+        if (this->size() == 0) {
+            this->tail_ = newNode;
+        } else {
+            newNode->next_ = node;
+        }
+        this->size_++;
     }
     else if (!node) {
-        this->tail_->next_ = newNode;
-        this->tail_ = newNode;
+        this->append(item);
     } else {
         temp->next_ = newNode;
         newNode->next_ = node;
+        this->size_++;
     }
-    this->size_++;
 }
