@@ -17,7 +17,7 @@
 
 using namespace std;
 
-GLuint textureShell;
+
 
 //---------------------------------------------------------
 
@@ -42,7 +42,7 @@ Shell::Shell()
     }
     string homeDir = cHomeDir;
 
-    homeDir += "/CS330/sprites/shell0.tes";
+    homeDir += "/CS330/sprites/shell0.tex";
     
 
         
