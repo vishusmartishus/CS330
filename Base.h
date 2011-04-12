@@ -41,21 +41,21 @@ public:
     //Sets the isMovable to false
     virtual bool isMovable() const { return false; }
     // Getters for the left coordinate, right coordinate, top coordinate, and bottom coordinate
-    int left() const { return left_; }
-    int right() const { return right_; }
-    int top() const { return top_; }
-    int bottom() const { return bottom_; }
+    double left() const { return left_; }
+    double right() const { return right_; }
+    double top() const { return top_; }
+    double bottom() const { return bottom_; }
     // Setters for the left coordinate, right coordinate, top coordinate, and bottom coordinate
-    void setLeft(int left);
-    void setRight(int right);
-    void setTop(int top);
-    void setBottom(int bottom);
+    void setLeft(double left);
+    void setRight(double right);
+    void setTop(double top);
+    void setBottom(double bottom);
 
 //------------------------------------------------------------
 
 private:
     // Private variables for the left coordinate, right coordinate, top coordinate, and bottom coordinate
-    int left_, right_, bottom_, top_;
+    double left_, right_, bottom_, top_;
 };
 
 //------------------------------------------------------------
@@ -72,26 +72,26 @@ inline int Base::objectType()
 //------------------------------------------------------------
 
 // set left_
-inline void Base::setLeft(int left)
+inline void Base::setLeft(double left)
 {
     left_ = left;
 }
  
  //------------------------------------------------------------
  // set right_
- inline void Base::setRight(int right)
+ inline void Base::setRight(double right)
  {
  right_ = right;
  }
  //------------------------------------------------------------
  // set top_
- inline void Base::setTop(int top)
+ inline void Base::setTop(double top)
  {
  top_ = top;
  }
  //------------------------------------------------------------
  // set botttom_
- inline void Base::setBottom(int bottom)
+ inline void Base::setBottom(double bottom)
  {
  bottom_ = bottom;
  }
