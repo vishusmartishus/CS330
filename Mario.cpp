@@ -86,6 +86,7 @@ Mario::Mario()
     jumpCount_ = 0;
     starCount_ = 0;
     
+    isDead_ = false;
     isInvincible_ = false;
     
     //init the keys
@@ -286,6 +287,7 @@ void Mario::updateScene()
         move();
     } else {
         //Mario Dies
+        isDead_ = true;
         
     }
 }
@@ -727,8 +729,20 @@ bool Mario::check()
                 //Mario get some points
             }
         }
-    } else if (!objr && rightKey_) {
+    } 
+    else if (!objr && rightKey_) {
         this->setXVelocity(1.0);
+    }
+    //Mario Falls off the screen
+    if (this->top() <= 0)
+    {
+        isDead_ = true;
+        return false;
+    }
+    //Mario's left bound so he cant move left past screen
+    if (this->left() < leftBound_ && this->getXVelocity() < 0)
+    {
+        this->setXVelocity(0.0);
     }
     return true;
 }
@@ -737,4 +751,9 @@ bool Mario::check()
 bool Mario::fireball()
 {
 	return false;
+}
+//------------------------------------------------------------
+void Mario::setLeftBound(int leftBound)
+{
+    leftBound_ = leftBound;
 }
