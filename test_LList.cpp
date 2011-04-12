@@ -91,11 +91,11 @@ int main()
     cout << "First test passes" << endl;
     
 	// Checks to make sure that the first object is a coin in llist
-    assert(llist.first()->objectType() == coin_);
+    assert(llist.first()->objectType() == COIN);
     cout << "First test 2 passes" << endl;
     
     // Checks to make sure that the first object is a coin in llist2
-    assert(llist2.first()->objectType() == coin_);
+    assert(llist2.first()->objectType() == COIN);
     cout << "First test 3 passes" << endl;
 
     //------------------------------------------------------------

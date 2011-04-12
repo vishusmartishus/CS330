@@ -265,7 +265,7 @@ Drawable* AllMovable::checkTop()
 
 Drawable* AllMovable::checkBottom()
 {
-    if (this->objectType() == mario_ && this->getYVelocity() > 0) {
+    if (this->objectType() == MARIO && this->getYVelocity() > 0) {
         return NULL;
     }
     // get instance of level

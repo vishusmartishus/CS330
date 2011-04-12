@@ -32,7 +32,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return turtle_; }
+    int objectType() { return TURTLE; }
     
 };
 
