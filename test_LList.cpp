@@ -32,75 +32,66 @@ int main()
     coin2->setLeft(16);
     coin3->setLeft(48);
     coin4->setLeft(32);
+    //------------------------------------------------------------
+    // Test size() and append()
     
-	// Checks the initial size of LList
+	// Checks the initial size of llist
 	assert(llist.size() == 0);
-	cout << "Size test passes" << endl;
 
-	// Appends a coin to LList
+	// Appends a coin to llist and checks that the size = 1
 	llist.append(coin);
-	// Checks the size after the append
-	assert(llist.size() == 1);
-	cout << "Append test passes" << endl;
+    assert(llist.size() == 1);
 
-	// Removes the coin from LList and checks the size
+	// Removes the coin from llist and checks the size = 0
 	llist.removeDrawable(coin);
 	assert(llist.size() == 0);
-	cout << "Remove test passes" << endl;
 
-	// Adds two coins to LList and checks the size
+	// Adds two coins to llist and checks the size = 2
 	llist.append(coin);
 	llist.append(coin2);
 	assert(llist.size() == 2);
-	cout << "Append test 2 passes" << endl;
 
     //------------------------------------------------------------
     // Test removeFirst()
 
-	// Removes the first coin in the list and checks the size
+	// Removes the first coin in the list and checks the size = 1
 	llist.removeFirst();
 	assert(llist.size() == 1);
-	cout << "Remove first test passes" << endl;
 
     //------------------------------------------------------------
     // Test copy constructor
 
-    // Copies LList into LList2 and checks LList2 size
+    // Copies llist into llist2 and checks llist2 size = 1
     llist2 = llist;
     assert(llist2.size() == 1);
-    cout << "Copy constructer passes test - fixed error" << endl;
     
     // Test that the elements from llist was copied to llist2
     assert(llist2.first() == llist.first());
-    cout << "Copying elements test passes" << endl;
     
     //------------------------------------------------------------
-    // Test append again
+    // Test append again with copied list
 
-	// Appends a coin to LList2 and checks the size of both LLists
+	// Appends a coin to llist2 and checks the size of both lists
     llist2.append(coin2);
     assert (llist.size() == 1);
     assert(llist2.size() == 2);
-    cout << "Correctly appends to second list - pass" << endl;
     
     //------------------------------------------------------------
     // Test first()
     
 	// Checks to see if the first items in each LList are the same
     assert((llist.first() == llist2.first()));
-    cout << "First test passes" << endl;
     
 	// Checks to make sure that the first object is a coin in llist
     assert(llist.first()->objectType() == COIN);
-    cout << "First test 2 passes" << endl;
     
     // Checks to make sure that the first object is a coin in llist2
     assert(llist2.first()->objectType() == COIN);
-    cout << "First test 3 passes" << endl;
 
     //------------------------------------------------------------
-    // Tests the iterator and insertInSortedOrder
-    // Appends a coin to LList and inserts another coin in sorted order according to coordinates
+    // Tests the iterator and insertInSortedOrder()
+    
+    // Appends a coin to llist and inserts another coin in sorted order according to coordinates
     llist3.append(coin);
     llist3.append(coin2);
 	llist3.append(coin3);
@@ -112,7 +103,7 @@ int main()
     LListIterator li;
     li.init(llist3);
 	Drawable *item;
-	// Array of coins for testing in sorted order
+	// Array of coins for testing insertInSortedOrder
 	Coin *a[4];
 	a[0] = coin;
 	a[1] = coin2;
@@ -120,16 +111,12 @@ int main()
 	a[3] = coin3;
 	// Checks if the order of coins is correct after calling in sorted order and the list itterator
     int i = 0;
-    cout << "Testing append with last insertInSortedOrder" << endl;
 	while ((item = li.next())) {
-		assert(item == a[i]);
-        cout << "SortedOrder test for position " << i << "is correct" << endl;
-         
+		assert(item == a[i]);         
 		i++;
 	}
     
     LList llist4 = LList();
-
     llist4.append(coin);
     llist4.append(coin2);
     llist4.append(coin4);
@@ -138,17 +125,13 @@ int main()
     LListIterator li2;
     li2.init(llist4);
     i = 0;
-    cout << "Testing appends." << endl;
     while ((item = li2.next())) {
-		assert(item == a[i]);
-        cout << "SortedOrder test for position " << i << " is correct" << endl;
-        
+		assert(item == a[i]);        
 		i++;
 	}
     
     
     LList llist5 = LList();
-    
     llist5.insertInSortedOrder(coin);
     llist5.insertInSortedOrder(coin2);
     llist5.insertInSortedOrder(coin3);
@@ -157,13 +140,12 @@ int main()
     LListIterator li3;
     li3.init(llist5);
     i = 0;
-    cout << "Testing insertInSortedOrder." << endl;
     while ((item = li3.next())) {
-		assert(item == a[i]);
-        cout << "SortedOrder test for position " << i << " is correct" << endl;
-        
+		assert(item == a[i]);        
 		i++;
 	}
+    
+    cout << "tests successfully completed" << endl;
 	return 0;
 }
 //------------------------------------------------------------
