@@ -32,7 +32,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return shell_; }
+    int objectType() { return SHELL; }
     
 };
 

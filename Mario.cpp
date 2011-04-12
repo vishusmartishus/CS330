@@ -326,7 +326,7 @@ bool Mario::check()
         if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
         {
             //if Mario runs into an enemy
-            if (object->objectType() == goomba_ || object->objectType() == plant_ || object->objectType() == shell_ || object->objectType() == turtle_ || object->objectType() == enemyfireball_)
+            if (object->objectType() == GOOMBA || object->objectType() == PLANT || object->objectType() == SHELL || object->objectType() == TURTLE || object->objectType() == ENEMYFIREBALL)
             {
                 //Mario dies from the right
                 //go through the changes of Mario's state based on current state
@@ -353,10 +353,10 @@ bool Mario::check()
                 
             }
             //if Mario runs into a Movable Reward
-            else if (object->objectType() == mushroom_ || object->objectType() == star_)
+            else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
             {
                 //update Mario's State
-                if (object->objectType() == mushroom_) 
+                if (object->objectType() == MUSHROOM) 
                 {
                     if (this->state_ == SMALL_STATE)
                     {
@@ -368,7 +368,7 @@ bool Mario::check()
                     }
                     
                 }
-                else if (object->objectType() == star_)
+                else if (object->objectType() == STAR)
                 {
                     //Mario is invincible 
                     isInvincible_ = true;
@@ -383,7 +383,7 @@ bool Mario::check()
          if ((this->top() == object->bottom()) && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right())))
          {
              //if an enemy lands on top of Mario
-             if (object->objectType() == goomba_ || object->objectType() == shell_ || object->objectType() == turtle_ || object->objectType() == enemyfireball_)
+             if (object->objectType() == GOOMBA || object->objectType() == SHELL || object->objectType() == TURTLE || object->objectType() == ENEMYFIREBALL)
              {
                  if (isInvincible_)
                  {
@@ -396,10 +396,10 @@ bool Mario::check()
                  }
              }
              //if a reward lands on top of Mario
-             else if (object->objectType() == mushroom_ || object->objectType() == star_)
+             else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
              {
                  //update Mario's State
-                 if (object->objectType() == mushroom_) 
+                 if (object->objectType() == MUSHROOM) 
                  {
                      if (this->state_ == SMALL_STATE)
                      {
@@ -411,7 +411,7 @@ bool Mario::check()
                      }
                      
                  }
-                 else if (object->objectType() == star_)
+                 else if (object->objectType() == STAR)
                  {
                      //Mario is invincible 
                      isInvincible_ = true;
@@ -426,16 +426,16 @@ bool Mario::check()
         if ((this->bottom() == object->top()) && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right()))) 
         {
             //if Mario lands on top of an enemy
-            if (object->objectType() == goomba_ || object->objectType() == shell_ || object->objectType() == turtle_)
+            if (object->objectType() == GOOMBA || object->objectType() == SHELL || object->objectType() == TURTLE)
             {
                 //enemy dies
                 //Mario's jumpcount reset? (Mario will jump higher (bounce))
             }
             //if Mario lands on a reward
-            else if (object->objectType() == mushroom_ || object->objectType() == star_)
+            else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
             {
                 //update Mario's State
-                if (object->objectType() == mushroom_) 
+                if (object->objectType() == MUSHROOM) 
                 {
                     if (this->state_ == SMALL_STATE)
                     {
@@ -447,7 +447,7 @@ bool Mario::check()
                     }
                     
                 }
-                else if (object->objectType() == star_)
+                else if (object->objectType() == STAR)
                 {
                     //Mario is invincible 
                     isInvincible_ = true;
@@ -456,7 +456,7 @@ bool Mario::check()
                 }
             }
             //if Mario lands on an enemy that can't be killed
-            else if (object->objectType() == plant_ || object->objectType() == enemyfireball_)
+            else if (object->objectType() == PLANT || object->objectType() == ENEMYFIREBALL)
             {
                 //go through the changes of Mario's state based on current state
                 //and him getting hit by an enemy
@@ -483,11 +483,11 @@ bool Mario::check()
     {
         if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top())) 
         {
-            if (object->objectType() == flag_) 
+            if (object->objectType() == FLAG) 
             {
                 //end game
             }
-            else if (object->objectType() == fireflower_) 
+            else if (object->objectType() == FIREFLOWER) 
             {
                 //update Mario's State
                 if (this->state_ == FIRE_STATE)
@@ -500,7 +500,7 @@ bool Mario::check()
                 }
                     
             }
-            else if(object->objectType() == coin_) 
+            else if(object->objectType() == COIN) 
             {
                 //update Mario's Points
             }
@@ -516,13 +516,13 @@ bool Mario::check()
         {
             this->jumpCount_ = 0;
             this->setYVelocity(-2.0);
-            if (this->state_ == BIG_STATE && object->objectType() == breakable_) {
+            if (this->state_ == BIG_STATE && object->objectType() == BREAKABLE) {
                 //break block
             }
             else 
             {
                 //stop moving
-                if (object->objectType() == question_)
+                if (object->objectType() == QUESTION)
                 {
                     //generate reward
                 }
@@ -557,14 +557,14 @@ bool Mario::check()
     }
     //mario jumps into something
     if (objt) {
-        if (objt->objectType() == question_) {
+        if (objt->objectType() == QUESTION) {
             Nonbreakable *temp = (Nonbreakable*)objt;
             temp->generateReward(this->getState() != SMALL_STATE);
-        } else if (objt->objectType() == breakable_) {
+        } else if (objt->objectType() == BREAKABLE) {
             Breakable *temp = (Breakable*)objt;
             temp->breakBlock(this->getState() != SMALL_STATE);
         }
-        else if (objt->objectType() == goomba_ || objt->objectType() == shell_ || objt->objectType() == turtle_ || objt->objectType() == enemyfireball_) {
+        else if (objt->objectType() == GOOMBA || objt->objectType() == SHELL || objt->objectType() == TURTLE || objt->objectType() == ENEMYFIREBALL) {
             if (starCount_ > 0) {
                 //kill enemy
             }
@@ -572,9 +572,9 @@ bool Mario::check()
                 return false;
             }
         }
-        else if (objt->objectType() == mushroom_ || objt->objectType() == star_ || objt->objectType() == fireflower_ || objt->objectType() == coin_) {
+        else if (objt->objectType() == MUSHROOM || objt->objectType() == STAR || objt->objectType() == FIREFLOWER || objt->objectType() == COIN) {
             //update state
-            if (objt->objectType() == mushroom_) {
+            if (objt->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -582,7 +582,7 @@ bool Mario::check()
                     //add points
                 }
             }
-            else if (objt->objectType() == fireflower_) {
+            else if (objt->objectType() == FIREFLOWER) {
                 if (this->getState() == FIRE_STATE) {
                     //add points
                 }
@@ -601,15 +601,15 @@ bool Mario::check()
     //mario falls on something
     if (objb && this->getYVelocity() < 0) {
         this->setYVelocity(0.0);
-        if (objb->objectType() == goomba_ || objb->objectType() == shell_ || objb->objectType() == turtle_ || objb->objectType() == enemyfireball_ || objb->objectType() == plant_) {
+        if (objb->objectType() == GOOMBA || objb->objectType() == SHELL || objb->objectType() == TURTLE || objb->objectType() == ENEMYFIREBALL || objb->objectType() == PLANT) {
             if (starCount_ > 0) {
                 //kill enemy
             }
             else {
-                if (objb->objectType() == turtle_) {
+                if (objb->objectType() == TURTLE) {
                     //turn turtle into shell
                 }
-                else if (objb->objectType() == enemyfireball_ || objb->objectType() == plant_){
+                else if (objb->objectType() == ENEMYFIREBALL || objb->objectType() == PLANT){
                     //Mario Dies
                     return false;
                 }
@@ -618,13 +618,13 @@ bool Mario::check()
                 }
             }
         }
-        else if (objb->objectType() == mushroom_ || objb->objectType() == star_ || objb->objectType() == fireflower_) {
+        else if (objb->objectType() == MUSHROOM || objb->objectType() == STAR || objb->objectType() == FIREFLOWER) {
             //update state
-            if (objb->objectType() == mushroom_) {
+            if (objb->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
-                else if (objb->objectType() == fireflower_) {
+                else if (objb->objectType() == FIREFLOWER) {
                     this->state_ = FIRE_STATE;
                 }
                 else {
@@ -635,7 +635,7 @@ bool Mario::check()
                 starCount_ = 50;
             }
         }
-        else if (objb->objectType() == breakable_ || objb->objectType() == regular_ || objb->objectType() == question_) {
+        else if (objb->objectType() == BREAKABLE || objb->objectType() == REGULAR || objb->objectType() == QUESTION) {
             jumpCount_ = 0;
             this->setYVelocity(0.0);
         }
@@ -643,7 +643,7 @@ bool Mario::check()
     //Mario moves to the left
     if (objl && this->getXVelocity() < 0) {
         this->setXVelocity(0.0);
-        if (objl->objectType() == goomba_ || objl->objectType() == shell_ || objl->objectType() == turtle_ || objl->objectType() == enemyfireball_){
+        if (objl->objectType() == GOOMBA || objl->objectType() == SHELL || objl->objectType() == TURTLE || objl->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
             }
@@ -654,12 +654,12 @@ bool Mario::check()
                 return false;
             }
         }
-        else if (objl->objectType() == breakable_ || objl->objectType() == regular_ || objl->objectType() == question_){
+        else if (objl->objectType() == BREAKABLE || objl->objectType() == REGULAR || objl->objectType() == QUESTION){
             this->setXVelocity(0.0);
         }
-        else if (objl->objectType() == mushroom_ || objl->objectType() == star_ || objl->objectType() == fireflower_ || 
-                 objl->objectType() == coin_){
-            if (objl->objectType() == mushroom_) {
+        else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || 
+                 objl->objectType() == COIN){
+            if (objl->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -667,7 +667,7 @@ bool Mario::check()
                     //mario gets points
                 }
             }
-            else if (objl->objectType() == fireflower_){
+            else if (objl->objectType() == FIREFLOWER){
                 if (this->getState() == FIRE_STATE) {
                     //mario gets some points
                 }
@@ -675,7 +675,7 @@ bool Mario::check()
                     this->state_ = FIRE_STATE;
                 }
             }
-            else if (objl->objectType() == star_){
+            else if (objl->objectType() == STAR){
                 starCount_ = 50;
             }
             else{
@@ -689,7 +689,7 @@ bool Mario::check()
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
         this->setXVelocity(0.0);
-        if (objr->objectType() == goomba_ || objr->objectType() == shell_ || objr->objectType() == turtle_ || objr->objectType() == enemyfireball_){
+        if (objr->objectType() == GOOMBA || objr->objectType() == SHELL || objr->objectType() == TURTLE || objr->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
             }
@@ -700,11 +700,11 @@ bool Mario::check()
                 return false;
             }
         }
-        else if (objr->objectType() == breakable_ || objr->objectType() == regular_ || objr->objectType() == question_){
+        else if (objr->objectType() == BREAKABLE || objr->objectType() == REGULAR || objr->objectType() == QUESTION){
             this->setXVelocity(0.0);
         }
-        else if (objr->objectType() == mushroom_ || objr->objectType() == star_ || objr->objectType() == fireflower_ || objr->objectType() == coin_){
-            if (objr->objectType() == mushroom_) {
+        else if (objr->objectType() == MUSHROOM || objr->objectType() == STAR || objr->objectType() == FIREFLOWER || objr->objectType() == COIN){
+            if (objr->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -712,7 +712,7 @@ bool Mario::check()
                     //mario gets points
                 }
             }
-            else if (objr->objectType() == fireflower_){
+            else if (objr->objectType() == FIREFLOWER){
                 if (this->getState() == FIRE_STATE) {
                     //mario gets some points
                 }
@@ -720,7 +720,7 @@ bool Mario::check()
                     this->state_ = FIRE_STATE;
                 }
             }
-            else if (objr->objectType() == star_){
+            else if (objr->objectType() == STAR){
                 starCount_ = 50;
             }
             else{

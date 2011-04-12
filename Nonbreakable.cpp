@@ -78,7 +78,7 @@ void Nonbreakable::generateReward(bool isLarge)
      Mushroom (small Mario) / Fireflower (large Mario) - 2
      Star - 3
      */
-    if (type_ == question_) {
+    if (type_ == QUESTION) {
         
         if (reward_ == 1) {
             // Create a coin
@@ -98,9 +98,9 @@ void Nonbreakable::generateReward(bool isLarge)
             // Create a star
             Star *star = new Star();
         }
-        /* Change the type from a question block to a regular block 
+        /* Change the type from a question block to a REGULAR block 
          once the reward has been generated
          */
-        type_ = regular_;
+        type_ = REGULAR;
     }
 }   
