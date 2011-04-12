@@ -72,7 +72,7 @@ int main()
     
     // Test that the elements from llist was copied to llist2
     assert(llist2.first() == llist.first());
-    cout << "Copying elements test fails currently" << endl;
+    cout << "Copying elements test passes" << endl;
     
     //------------------------------------------------------------
     // Test append again
@@ -120,13 +120,11 @@ int main()
 	a[3] = coin3;
 	// Checks if the order of coins is correct after calling in sorted order and the list itterator
     int i = 0;
-    cout << "test append with last insertInSortedOrder" << endl;
+    cout << "Testing append with last insertInSortedOrder" << endl;
 	while ((item = li.next())) {
-		// do something with item
-        cout << "a[i] "  << a[i] << " item " << item << " " << i << endl; 
-		/*assert(item == a[i]);
+		assert(item == a[i]);
         cout << "SortedOrder test for position " << i << "is correct" << endl;
-         */
+         
 		i++;
 	}
     
@@ -140,13 +138,11 @@ int main()
     LListIterator li2;
     li2.init(llist4);
     i = 0;
-    cout << "Just test appends." << endl;
+    cout << "Testing appends." << endl;
     while ((item = li2.next())) {
-		// do something with item
-        cout << "a[i] "  << a[i] << " item " << item << " " << i << endl; 
-		/*assert(item == a[i]);
-         cout << "SortedOrder test for position " << i << "is correct" << endl;
-         */
+		assert(item == a[i]);
+        cout << "SortedOrder test for position " << i << " is correct" << endl;
+        
 		i++;
 	}
     
@@ -161,13 +157,11 @@ int main()
     LListIterator li3;
     li3.init(llist5);
     i = 0;
-    cout << "Just test insertInSortedOrder." << endl;
+    cout << "Testing insertInSortedOrder." << endl;
     while ((item = li3.next())) {
-		// do something with item
-        cout << "a[i] "  << a[i] << " item " << item << " " << i << endl; 
-		/*assert(item == a[i]);
-         cout << "SortedOrder test for position " << i << "is correct" << endl;
-         */
+		assert(item == a[i]);
+        cout << "SortedOrder test for position " << i << " is correct" << endl;
+        
 		i++;
 	}
 	return 0;
