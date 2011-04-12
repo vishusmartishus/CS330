@@ -18,6 +18,8 @@
 extern SceneWindow *sw;
 Mario *mario;
 static int p;
+const int WINDOWWIDTH = 512;
+const int WINDOWHEIGHT = 448;
 
 using namespace std;
 
@@ -26,7 +28,7 @@ SceneWindow::SceneWindow(int argc, char **argv)
 	// create window
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(512, 448);
+    glutInitWindowSize(WINDOWWIDTH, WINDOWHEIGHT);
     glutInitWindowPosition(30, 100);
     glutCreateWindow("Mario");
 	
@@ -42,13 +44,13 @@ SceneWindow::SceneWindow(int argc, char **argv)
     // initialize orthographic viewing projections
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, 512, 0, 224);
+    gluOrtho2D(0, WINDOWWIDTH, 0, WINDOWHEIGHT/2);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
 	// view port initializer
-	viewportWidth_ = 256;
-	viewportHeight_ = 224;
+	viewportWidth_ = WINDOWWIDTH/2;
+	viewportHeight_ = WINDOWHEIGHT/2;
 	viewportLeftX_ = 0;
 	viewportRightX_ = viewportLeftX_ + viewportWidth_;
 	glViewport(0, 0, viewportWidth_, viewportHeight_);
@@ -71,23 +73,6 @@ void SceneWindow::mainLoop()
 
 void SceneWindow::startGame()
 {
-	
-	//set intial variables
-
-	//PONG
-    // initial ball position
-    //ballPosition_.set(width_ - 10, height_ / 2);
-    //
-    //// get a random number from -1.25 to 1.25
-    //float y = (random() % 11 - 5) / 4.0;
-    //// use it to initialize ball velocity
-    //ballVelocity_.set(-2, y);
-    //ballVelocity_.normalize();
-    //// make velocity vector have magnitude 3
-    //ballVelocity_ = 3.0 * ballVelocity_;
-
-    //// start playing
-    //playing_ = true;
 	sw->loadLevel();
     glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 }
@@ -103,7 +88,7 @@ void SceneWindow::loadLevel()
 	// initialize orthographic viewing projections
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, 512, 0, 224);
+    gluOrtho2D(0, WINDOWWIDTH, 0, WINDOWHEIGHT/2);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
@@ -152,12 +137,7 @@ void SceneWindow::displayCB()
 {    
     // clear window
     glClear(GL_COLOR_BUFFER_BIT);
-	
-	//----------------------------
-	//show grid on screen
-	
-	
-	//---------------------------
+	// gets lists of the active objects to draw them
 	Level *level_ = Level::sharedLevel();
 	LList movable = level_->getActiveMovable();
 	LList drawable = level_->getActiveDrawable();
@@ -180,7 +160,7 @@ void SceneWindow::displayCB()
 	while ((item = li.next())) {
 		item->draw();
 	}
-    
+    // mario isn't in any of the lists, so must be drawn seperately
     mario->draw();
 	 
 	
@@ -195,9 +175,11 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 {
 	//need to figure out multiple key presses
 	
+	// quit = q
     if (key == 'q') {
         exit(0);
 	}
+	// pause = p, hit again to unpause
 	else if (key == 'p') {
 		if (p==0){
 			p=1;
@@ -210,6 +192,7 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 		}
 		
 	}
+
 	else if (key == 'r') {
         // reset level
 		viewportLeftX_ = 0;
@@ -251,10 +234,9 @@ void SceneWindow::timerCB(int value)
 		movableItem = (Movable*)item;
 		movableItem->updateScene();
 	}
-	mario->updateScene();
+
+	mario ->updateScene();
 	// check if screen needs to be moved
-    
-    
 	int viewportMid_;
 	viewportMid_ = (viewportLeftX_ + viewportRightX_)/2;
 	if (mario->right() > viewportMid_)
@@ -262,12 +244,13 @@ void SceneWindow::timerCB(int value)
 		viewportRightX_ = mario->right() + viewportWidth_/2;
 		viewportLeftX_ = mario->right() - viewportWidth_/2;
 		level_->updateExtents(viewportLeftX_, viewportRightX_);
+		mario->setLeftBound(viewportLeftX_);
 	}
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(viewportLeftX_, viewportRightX_, 0, 224);
+	gluOrtho2D(viewportLeftX_, viewportRightX_, 0, WINDOWHEIGHT/2);
 
-    //std::cout << viewportLeftX_ << " " << viewportRightX_ << std::endl;
 	glutPostRedisplay();
 	if (p==0) {
 		glutTimerFunc(10, &SceneWindow::timerFunc, 0);
