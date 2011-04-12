@@ -6,9 +6,9 @@ Feb. 02 2011*/
 
 Game::Game()
 {
-    pointsTotal_=0;
-    coinsTotal_=0;
-    livesTotal_=3;
+    pointsTotal_ = 0;
+    coinsTotal_ = 0;
+    livesTotal_ = 3;
 }
 
 //------------------------------------------------------------
@@ -37,9 +37,9 @@ int Game::getLives()
 void Game::addCoin()
 {
     coinsTotal_++;
-    if (coinsTotal_==100) { //100 coins to life transition
+    if (coinsTotal_ == 100) { //100 coins to life transition
         addLife();
-        coinsTotal_=0;
+        coinsTotal_ = 0;
     }
 }
 
