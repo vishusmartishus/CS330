@@ -27,7 +27,7 @@ public:
 	}
 	virtual void draw();
 	// Returns object type
-	virtual int objectType() { return breakable_; }
+	virtual int objectType() { return BREAKABLE; }
     // breakBlock method that destroys blocks
 	// Mario calls when he hits a block
     // isLarge is bool that tells if Mario is big or small

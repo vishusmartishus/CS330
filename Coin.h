@@ -28,7 +28,7 @@ public:
 	}
 	virtual void draw();
 	// Returns object type
-	int objectType() { return coin_; }
+	int objectType() { return COIN; }
 };
 
 #endif
