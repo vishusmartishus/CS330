@@ -38,7 +38,7 @@ bool Movable::canMove()
     // if check is NULL, nothing in the way, can move
     if (dRight == NULL || dLeft == NULL) {
         // check if goomba, mushroom, shell, can fall off edge
-        if ((this->objectType() == goomba_ || this->objectType() == mushroom_ || this->objectType() == shell_) && dBottom == NULL) {
+        if ((this->objectType() == GOOMBA || this->objectType() == MUSHROOM || this->objectType() == SHELL) && dBottom == NULL) {
             // can fall
             this->setYVelocity(2.0);
         }

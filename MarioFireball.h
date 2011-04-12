@@ -30,7 +30,7 @@ public:
     // methods
     
     // object type
-    int objectType() { return mariofireball_; }
+    int objectType() { return MARIOFIREBALL; }
     
 };
 

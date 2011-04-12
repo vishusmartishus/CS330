@@ -5,21 +5,21 @@
 #define _BASE_H
 //------------------------------------------------------------
 // object types
-const int flag_ = 1;
-const int breakable_ = 2;
-const int question_ = 3;
-const int fireflower_ = 4;
-const int coin_ = 5;
-const int mario_ = 6;
-const int goomba_ = 7;
-const int mushroom_ = 8;
-const int plant_ = 9;
-const int shell_ = 10;
-const int star_ = 11;
-const int turtle_ = 12;
-const int enemyfireball_ = 13;
-const int mariofireball_ = 14;
-const int regular_ = 15;
+const int FLAG = 1;
+const int BREAKABLE = 2;
+const int QUESTION = 3;
+const int FIREFLOWER = 4;
+const int COIN = 5;
+const int MARIO = 6;
+const int GOOMBA = 7;
+const int MUSHROOM = 8;
+const int PLANT = 9;
+const int SHELL = 10;
+const int STAR = 11;
+const int TURTLE = 12;
+const int ENEMYFIREBALL = 13;
+const int MARIOFIREBALL = 14;
+const int REGULAR = 15;
 // Base class
 class Base {
 //------------------------------------------------------------ 
