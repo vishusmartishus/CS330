@@ -285,11 +285,6 @@ void Mario::updateScene()
         jump();
         move();
     } else {
-        //Mario Dies
-        this->setLeft(16);
-        this->setRight(16+16);
-        this->setBottom(16);
-        this->setTop(16+16);
     }
 }
 //------------------------------------------------------------
