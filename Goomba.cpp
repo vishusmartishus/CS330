@@ -31,7 +31,7 @@ Goomba::Goomba()
 	setKillsSide(true);
 	setKillsTop(false);
 	setPoints(0);
-	setXVelocity(2.0);
+	setXVelocity(-1.0);
 	setYVelocity(0.0);
     
     // Mac environment variable for home directory
@@ -92,7 +92,6 @@ Goomba::Goomba()
 
 Goomba::~Goomba()
 {
-    
 }
 
 //---------------------------------------------------------

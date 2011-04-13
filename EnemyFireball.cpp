@@ -19,15 +19,14 @@ EnemyFireball::EnemyFireball()
 	setKillsSide(true);
 	setKillsTop(true);
 	setPoints(0);
-	setXVelocity(0);
-	setYVelocity(0);
+	setXVelocity(0.0);
+	setYVelocity(0.0);
 }
 
 //---------------------------------------------------------
 
 EnemyFireball::~EnemyFireball()
 {
-    
 }
 
 //---------------------------------------------------------
