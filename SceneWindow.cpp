@@ -250,6 +250,13 @@ void SceneWindow::timerCB(int value)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(viewportLeftX_, viewportRightX_, 0, WINDOWHEIGHT/2);
+    
+    if (mario->isDead()) {
+        // reset level
+		viewportLeftX_ = 0;
+		viewportRightX_ = viewportLeftX_ + viewportWidth_;
+		sw->loadLevel();
+    }
 
 	glutPostRedisplay();
 	if (p==0) {
