@@ -8,27 +8,24 @@
  *
  */
 
+//---------------------------------------------------------
 
 #include "AllMovable.h"
 #include "Level.h"
 #include "LListIterator.h"
 
-#include <iostream>
-using namespace std;
-
 //---------------------------------------------------------
 
 AllMovable::AllMovable()
 {
-    horizontalVelocity_ = 0;
-    verticalVelocity_ = 0;
+    horizontalVelocity_ = 0.0;
+    verticalVelocity_ = 0.0;
 }
 
 //---------------------------------------------------------
 
 AllMovable::~AllMovable()
 {
-    
 }
 
 //---------------------------------------------------------
@@ -183,7 +180,6 @@ Drawable* AllMovable::checkLeft()
 	}
     
 	return NULL;
-
 }
 
 //---------------------------------------------------------
@@ -258,7 +254,6 @@ Drawable* AllMovable::checkTop()
 	}
     
 	return NULL;    
-
 }
 
 //---------------------------------------------------------
@@ -268,6 +263,7 @@ Drawable* AllMovable::checkBottom()
     if (this->objectType() == MARIO && this->getYVelocity() > 0) {
         return NULL;
     }
+    
     // get instance of level
 	Level* level = Level::sharedLevel();
     
@@ -336,7 +332,6 @@ Drawable* AllMovable::checkBottom()
 	}
     
 	return NULL;
-    
 }
 
 //---------------------------------------------------------
@@ -367,4 +362,3 @@ double AllMovable::getYVelocity()
     return verticalVelocity_;
 }
 //---------------------------------------------------------
-
