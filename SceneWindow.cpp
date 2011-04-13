@@ -74,7 +74,9 @@ void SceneWindow::mainLoop()
 void SceneWindow::startGame()
 {
 	sw->loadLevel();
+	pause_ = false;
     glutTimerFunc(10, &SceneWindow::timerFunc, 0);
+	
 }
 
 //----------------------------------------------------------------------
@@ -181,12 +183,12 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 	}
 	// pause = p, hit again to unpause
 	else if (key == 'p') {
-		if (p==0){
-			p=1;
+		if (pause_==false){
+			pause_=true;
 			cout << "pause";
 		}
-		else if (p==1){
-			p=0;
+		else if (pause_==true){
+			pause_=false;
 			timerFunc(0);
 			cout << "unpause";
 		}
@@ -259,7 +261,7 @@ void SceneWindow::timerCB(int value)
     }
 
 	glutPostRedisplay();
-	if (p==0) {
+	if (pause_==false) {
 		glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 	}
 }
