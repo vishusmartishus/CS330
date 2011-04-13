@@ -21,7 +21,7 @@ Mushroom::Mushroom()
 	setKillsSide(false);
 	setKillsTop(false);
 	setPoints(0);
-	setXVelocity(2.0);
+	setXVelocity(1.0);
 	setYVelocity(0.0);
 }
 
@@ -29,7 +29,6 @@ Mushroom::Mushroom()
 
 Mushroom::~Mushroom()
 {
-    
 }
 
 //---------------------------------------------------------
