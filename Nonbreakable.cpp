@@ -7,6 +7,7 @@
 #include "FireFlower.h"
 #include "Coin.h"
 #include "Level.h"
+#include "Pipe.h"
 
 //------------------------------------------------------------
 
