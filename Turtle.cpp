@@ -25,7 +25,7 @@ Turtle::Turtle()
 	setKillsSide(true);
 	setKillsTop(false);
 	setPoints(0);
-	setXVelocity(-1.0);
+	setXVelocity(-0.5);
 	setYVelocity(0.0);
     
     texturePos_ = 0;
