@@ -32,6 +32,7 @@ private:
 	// viewport size
 	int viewportWidth_, viewportHeight_;
 	int viewportLeftX_, viewportRightX_;
+	bool pause_;
 };
 
 //----------------------------------------------------------------------

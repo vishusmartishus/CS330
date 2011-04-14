@@ -19,7 +19,9 @@
 //---------------------------------------------------------
 
 class Goomba: public Movable {
-    
+private:
+    GLuint texture_[2];
+    int texturePos;
 public:
 	// openGL draw method
     virtual void draw();
