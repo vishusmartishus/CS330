@@ -176,8 +176,8 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 {
 	//need to figure out multiple key presses
 	
-	// quit = q
-    if (key == 'q') {
+	// quit = escape(ASCII code 27)
+    if (key == 27) {
         exit(0);
 	}
 	// pause = p, hit again to unpause
