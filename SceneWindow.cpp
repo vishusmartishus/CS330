@@ -147,17 +147,17 @@ void SceneWindow::displayCB()
 	
 	Drawable *item;
     
-	li.init(movable);
+    li.init(drawable);
 	while ((item = li.next())) {
 		item->draw();
 	}
     
-	li.init(drawable);
+    li.init(blocks);
 	while ((item = li.next())) {
 		item->draw();
 	}
-	 
-	li.init(blocks);
+    
+	li.init(movable);
 	while ((item = li.next())) {
 		item->draw();
 	}
