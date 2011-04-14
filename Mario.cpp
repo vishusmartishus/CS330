@@ -57,8 +57,9 @@ void Mario::draw()
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
     
-    glColor4f(0.7f,0.9f,1.0f,1.0f);
+
     glBegin( GL_QUADS );
+    glColor4f(0.7f,0.9f,1.0f,1.0f);
     if (this->getXVelocity() >= 0) {
         glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
         glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
@@ -761,7 +762,7 @@ void Mario::sprite()
             glGenTextures(1, &texture_[j][i]);
             glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
             
-            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                             GL_LINEAR_MIPMAP_NEAREST );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,

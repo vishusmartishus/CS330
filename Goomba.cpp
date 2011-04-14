@@ -111,7 +111,7 @@ void Goomba::sprite()
         glGenTextures(1, &texture_[i]);
         glBindTexture(GL_TEXTURE_2D, texture_[i]);
         
-        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                         GL_LINEAR_MIPMAP_NEAREST );
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
