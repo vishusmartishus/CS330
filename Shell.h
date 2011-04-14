@@ -21,6 +21,7 @@
 class Shell: public Movable {
 private:    
     GLuint textureShell;
+    void sprite();
 public:
 	// openGL draw method
     virtual void draw();

@@ -17,7 +17,6 @@
 
 extern SceneWindow *sw;
 Mario *mario;
-static int p;
 const int WINDOWWIDTH = 512;
 const int WINDOWHEIGHT = 448;
 
@@ -148,17 +147,17 @@ void SceneWindow::displayCB()
 	
 	Drawable *item;
     
-	li.init(movable);
+    li.init(drawable);
 	while ((item = li.next())) {
 		item->draw();
 	}
     
-	li.init(drawable);
+    li.init(blocks);
 	while ((item = li.next())) {
 		item->draw();
 	}
-	 
-	li.init(blocks);
+    
+	li.init(movable);
 	while ((item = li.next())) {
 		item->draw();
 	}
@@ -177,8 +176,8 @@ void SceneWindow::keyboardCB(unsigned char key, int x, int y)
 {
 	//need to figure out multiple key presses
 	
-	// quit = q
-    if (key == 'q') {
+	// quit = escape(ASCII code 27)
+    if (key == 27) {
         exit(0);
 	}
 	// pause = p, hit again to unpause
