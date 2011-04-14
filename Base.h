@@ -22,6 +22,7 @@ const int TURTLE = 12;
 const int ENEMYFIREBALL = 13;
 const int MARIOFIREBALL = 14;
 const int REGULAR = 15;
+const int PIPE = 16;
 
 class Base {
 

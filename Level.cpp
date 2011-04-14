@@ -13,6 +13,8 @@
 #include "Goomba.h"
 #include "Turtle.h"
 #include "Breakable.h"
+#include "Pipe.h"
+#include "Flag.h"
 
 using namespace std;
 
@@ -155,8 +157,54 @@ void Level::makeLevel(int levelNumber)
 				levelDrawable_.append(coin);
 			}
 		}
-		else if (object == 'g') {
-			
+		else if (object== 'f'){
+			//create flag pole
+			Flag *flag = new Flag;
+			flag->setTop(ycoord  + 16);
+			flag->setBottom(ycoord);
+			flag->setLeft(xcoord+6);
+			flag->setRight(xcoord + 10);
+			//place in correct list
+			if (xcoord<256){
+				activeBlocks_.append(flag);
+			}
+			else {
+				levelBlocks_.append(flag);
+			}
+		}
+		else if (object== 'P'){
+			//create Pipe top
+			Pipe *pipe = new Pipe;
+			pipe->setType(0);
+			pipe->setTop(ycoord  + 16);
+			pipe->setBottom(ycoord);
+			pipe->setLeft(xcoord);
+			pipe->setRight(xcoord + 32);
+			//place in correct list
+			if (xcoord<256){
+				activeBlocks_.append(pipe);
+			}
+			else {
+				levelBlocks_.append(pipe);
+			}
+		}
+		else if (object== 'p'){
+			//create Pipe body
+			Pipe *pipe = new Pipe;
+			pipe->setType(1);
+			pipe->setTop(ycoord  + 16);
+			pipe->setBottom(ycoord);
+			pipe->setLeft(xcoord);
+			pipe->setRight(xcoord + 32);
+			//place in correct list
+			if (xcoord<256){
+				activeBlocks_.append(pipe);
+			}
+			else {
+				levelBlocks_.append(pipe);
+			}
+		}
+		else if (object== 'g'){
 			//create goomba
 			Goomba *goomba = new Goomba;
 			goomba->setTop(ycoord  + 16);

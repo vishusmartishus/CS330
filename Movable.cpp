@@ -76,7 +76,7 @@ void Movable::updateScene()
 {
     bool b;
     double currentXVelocity, currentYVelocity;
-    int updatedLeft, updatedRight, updatedTop, updatedBottom;
+    double updatedLeft, updatedRight, updatedTop, updatedBottom;
     
     // get velocities
     currentXVelocity = this->getXVelocity();
