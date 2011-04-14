@@ -19,7 +19,9 @@
 //---------------------------------------------------------
 
 class Turtle: public Movable {
-    
+private:
+    GLuint texture_[4];
+    int texturePos_;
 public:
 	// openGL draw method
     virtual void draw();

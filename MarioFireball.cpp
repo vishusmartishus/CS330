@@ -19,15 +19,14 @@ MarioFireball::MarioFireball()
 	setKillsSide(false);
 	setKillsTop(false);
 	setPoints(0);
-	setXVelocity(0);
-	setYVelocity(0);
+	setXVelocity(0.0);
+	setYVelocity(0.0);
 }
 
 //---------------------------------------------------------
 
 MarioFireball::~MarioFireball()
 {
-    
 }
 
 //---------------------------------------------------------

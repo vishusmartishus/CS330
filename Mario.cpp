@@ -21,40 +21,38 @@
 #include <sstream>
 using namespace std;
 
-GLuint textureMario[10];
-int textureMarioPos = 0;
 
 //------------------------------------------------------------
 void Mario::draw()
 {
     
     if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
-        textureMarioPos = 3;
+        texturePos = 3;
     }
     else if (this->getYVelocity() != 0.0 && this->getXVelocity() < 0.0){
-        textureMarioPos = 7;
+        texturePos = 7;
     }
     else if (this->getXVelocity() > 0.0){
-        if (textureMarioPos == 1) {
-            textureMarioPos = 2;
+        if (texturePos == 1) {
+            texturePos = 2;
         }
         else{
-            textureMarioPos = 1;
+            texturePos = 1;
         }
     }
     else if (this->getXVelocity() < 0.0){
-        if (textureMarioPos == 5) {
-            textureMarioPos = 6;
+        if (texturePos == 5) {
+            texturePos = 6;
         }
         else {
-            textureMarioPos = 5;
+            texturePos = 5;
         }
     }
-    else if (textureMarioPos < 4){
-        textureMarioPos = 0;
+    else if (texturePos < 4){
+        texturePos = 0;
     }
     else{
-        textureMarioPos = 4;
+        texturePos = 4;
     }
 
     
@@ -63,7 +61,7 @@ void Mario::draw()
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, textureMario[textureMarioPos]);
+    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
     
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
@@ -100,6 +98,7 @@ Mario::Mario()
     this->setXVelocity(0.0);
     this->setYVelocity(0.0);
     
+    texturePos = 0;
     
     // Mac environment variable for home directory
     char *cHomeDir = NULL;
@@ -125,7 +124,6 @@ Mario::Mario()
         pos = out.str();
         iName += pos;
         iName += ".tex";
-        cout<<iName<<endl;
         
         FILE *fp = fopen(iName.c_str(), "r");
         unsigned char *texture = new unsigned char[4 * 256 * 256];
@@ -135,8 +133,8 @@ Mario::Mario()
         }
         fclose(fp);
         
-        glGenTextures(1, &textureMario[i]);
-        glBindTexture(GL_TEXTURE_2D, textureMario[i]);
+        glGenTextures(1, &texture_[i]);
+        glBindTexture(GL_TEXTURE_2D, texture_[i]);
         
         glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
@@ -554,6 +552,11 @@ bool Mario::check()
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
+    
+    cout << objt << " top" << endl;
+    cout << objl << " left" << endl;
+    cout << objr << " right" << endl;
+    
     if (!objb && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
@@ -571,7 +574,16 @@ bool Mario::check()
                 //kill enemy
             }
             else {
-                return false;
+                if (this->getState() == BIG_STATE) {
+                    this->state_ = SMALL_STATE;
+                    this->setTop(this->top()-16);
+                }
+                else if (this->getState() == FIRE_STATE) {
+                    this->state_ = BIG_STATE;
+                }
+                else {
+                    return false;
+                }
             }
         }
         else if (objt->objectType() == MUSHROOM || objt->objectType() == STAR || objt->objectType() == FIREFLOWER || objt->objectType() == COIN) {
@@ -579,6 +591,7 @@ bool Mario::check()
             if (objt->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else {
                     //add points
@@ -589,6 +602,9 @@ bool Mario::check()
                     //add points
                 }
                 else {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
             }
@@ -622,11 +638,16 @@ bool Mario::check()
         }
         else if (objb->objectType() == MUSHROOM || objb->objectType() == STAR || objb->objectType() == FIREFLOWER) {
             //update state
+            cout << objt->objectType() << endl;
             if (objb->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else if (objb->objectType() == FIREFLOWER) {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
                 else {
@@ -650,6 +671,9 @@ bool Mario::check()
                 //enemy dies
             }
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
+                if (this->getState() == BIG_STATE) {
+                    this->setTop(this->top()-16);
+                }
                 this->state_--;
             }
             else{
@@ -659,11 +683,12 @@ bool Mario::check()
         else if (objl->objectType() == BREAKABLE || objl->objectType() == REGULAR || objl->objectType() == QUESTION){
             this->setXVelocity(0.0);
         }
-        else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || 
-                 objl->objectType() == COIN){
+        else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || objl->objectType() == COIN) {
+            cout << objt->objectType() << endl;
             if (objl->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else{
                     //mario gets points
@@ -674,6 +699,9 @@ bool Mario::check()
                     //mario gets some points
                 }
                 else {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
             }
@@ -696,6 +724,9 @@ bool Mario::check()
                 //enemy dies
             }
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
+                if (this->getState() == BIG_STATE) {
+                    this->setTop(this->top()-16);
+                }
                 this->state_--;
             }
             else{
@@ -706,9 +737,11 @@ bool Mario::check()
             this->setXVelocity(0.0);
         }
         else if (objr->objectType() == MUSHROOM || objr->objectType() == STAR || objr->objectType() == FIREFLOWER || objr->objectType() == COIN){
+            cout << objt->objectType() << endl;
             if (objr->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else{
                     //mario gets points
@@ -719,6 +752,9 @@ bool Mario::check()
                     //mario gets some points
                 }
                 else {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
             }
