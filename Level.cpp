@@ -211,6 +211,9 @@ void Level::makeLevel(int levelNumber)
 //------------------------------------------------------------
 void Level::updateExtents(int leftBound, int rightBound)
 {
+	//increases the active range for blocks to prevent an issue with goombas falling off the level
+	int blockRight = rightBound + 96;
+
 	//removes from the levelDrawable_ llist and adds onto the end of the active list
 	while (levelDrawable_.first() != NULL) {
 		if (levelDrawable_.first()->left() < rightBound) {
@@ -257,7 +260,7 @@ void Level::updateExtents(int leftBound, int rightBound)
 	
 	//removes from the levelBlocks_ llist and appends to the active list
 	while (levelBlocks_.first() != NULL) {
-		if (levelBlocks_.first()->left() < rightBound) {
+		if (levelBlocks_.first()->left() < blockRight) {
 			Drawable *obj = levelBlocks_.removeFirst();
 			activeBlocks_.append(obj);
 		}
