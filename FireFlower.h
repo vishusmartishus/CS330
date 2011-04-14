@@ -7,8 +7,6 @@
 //------------------------------------------------------------
 // Includes the Drawable.h file
 #include "Drawable.h"
-#include <string>
-#include <sstream>
 //------------------------------------------------------------
 // Class FireFlower that inherits from Drawable
 class FireFlower:public Drawable{

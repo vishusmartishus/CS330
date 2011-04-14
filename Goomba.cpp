@@ -12,12 +12,9 @@
 //---------------------------------------------------------
 
 #include "Goomba.h"
-#include <stdio.h>
-#include <cstdlib>
-#include <iostream>
 #include <string>
 #include <sstream>
-using namespace std;
+
 
 
 
@@ -87,15 +84,15 @@ void Goomba::sprite()
     if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
-    string homeDir = cHomeDir;
-    string iName;
+    std::string homeDir = cHomeDir;
+    std::string iName;
     homeDir += "/CS330/sprites/goomba";
     
-    string pos;
-    stringstream out;
+    std::string pos;
+    std::stringstream out;
     
     for (int i = 0; i<2; ++i) {
-        stringstream out;
+        std::stringstream out;
         //Generates Filename
         iName = homeDir;
         out<<i;

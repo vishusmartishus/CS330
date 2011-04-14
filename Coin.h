@@ -7,8 +7,7 @@
 //------------------------------------------------------------
 
 #include "Drawable.h"
-#include <string>
-#include <sstream>
+
 //------------------------------------------------------------
 
 class Coin:public Drawable{

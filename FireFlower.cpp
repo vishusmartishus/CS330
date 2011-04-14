@@ -5,6 +5,8 @@
 #include "FireFlower.h"
 // include header file Scene.h
 #include "Level.h"
+#include <string>
+#include <sstream>
 //------------------------------------------------------------
 void FireFlower::draw()
 {
