@@ -725,7 +725,7 @@ void Mario::sprite()
     string pos;
     int height = 256;
     
-    for (int j = 0; j<=1; ++j) {
+    for (int j = 0; j<=2; ++j) {
         stringstream out0;
         //Generates Filename
         jName = homeDir;
