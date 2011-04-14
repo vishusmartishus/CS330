@@ -19,7 +19,9 @@
 //---------------------------------------------------------
 
 class Star: public Movable {
-    
+private:
+    GLuint texture_[4];
+    int texturePos;
 public:
 	// openGL draw method
     virtual void draw();

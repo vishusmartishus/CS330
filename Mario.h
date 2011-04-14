@@ -25,19 +25,24 @@ public:
 	//Gets called when key is let up
 	void updateKeyUp(unsigned char button);
 	//Returns State of Mario
-	inline int getState() {return state_;}
-    
+	int getState();
+    //Returns whether or not Mario is dead
+    bool isDead();
     //updates Mario 
     void updateScene();
-    
+    //left bound of the windo
+    void setLeftBound(int leftBound);
     //returns the object type of Mario
-    virtual int objectType() { return 6; }
+    virtual int objectType() { return MARIO; }
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
 	int state_, jumpCount_, starCount_; 
-	bool isInvincible_;
+	bool isInvincible_, isDead_;
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
+    int leftBound_;
+    GLuint texture_[10];
+    int texturePos;
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
@@ -49,5 +54,10 @@ private:
     void jump();
 	
 };
+
+//inline getter for state_
+inline int Mario::getState() {return state_;}
+//inline getter for isDead_
+inline bool Mario::isDead() {return isDead_;}
 
 #endif

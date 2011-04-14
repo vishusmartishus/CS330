@@ -1,21 +1,20 @@
 //Jay Bondzeleske, John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
-// include header file
+
 #include "Nonbreakable.h"
 #include "Star.h"
 #include "Mushroom.h"
 #include "FireFlower.h"
 #include "Coin.h"
+#include "Level.h"
+
 //------------------------------------------------------------
+
 void Nonbreakable::draw()
 {
 	
-    if (reward_== 0) {
-        glColor3ub(199, 133, 64);
-    }
-	else{
-        glColor3ub(255,204,0);
-    }
+    glColor3ub(255,204,0);
+    
 	
 	
     glBegin(GL_POLYGON);
@@ -26,7 +25,7 @@ void Nonbreakable::draw()
     glEnd();
 	
     
-    if (reward_ != 0) {
+    if (type_ != REGULAR) {
         
         glColor3ub(255, 0, 0);
         
@@ -68,39 +67,54 @@ void Nonbreakable::draw()
     
   
 }
+
 //------------------------------------------------------------
+
 //generateReward function
 void Nonbreakable::generateReward(bool isLarge)
 {
-	/* As long as it is a Question block 
-     Rewards: 
-     Coin - 1
-     Mushroom (small Mario) / Fireflower (large Mario) - 2
-     Star - 3
-     */
+	// if it is a question block decide which reward to give to mario
     if (type_ == QUESTION) {
         
-        if (reward_ == 1) {
-            // Create a coin
+        if (reward_ == COIN) {
+            // Create a coin above block it was in and adds drawable coin to the level
             Coin *coin = new Coin();
+			coin->setLeft(this->left());
+			coin->setRight(this->right());
+			coin->setTop(this->top()+16);
+			coin->setBottom(this->top());
+			Level::sharedLevel()->addDrawable(coin);
         }
-        else if (reward_ == 2) {
+        else if (reward_ == MUSHROOM) {
             if (isLarge != true) {
-                // Create a mushroom
+                // Create a mushroom above block it was in and adds drawable coin to the level
                 Mushroom *mushroom = new Mushroom();
+				mushroom->setLeft(this->left());
+				mushroom->setRight(this->right());
+				mushroom->setTop(this->top()+16);
+				mushroom->setBottom(this->top());
+				Level::sharedLevel()->addMovable(mushroom);
             }	
             else {
-                // Create a fireflower
+                // Create a fireflower above block it was in and adds drawable coin to the level
                 FireFlower *fireFlower = new FireFlower();
+				fireFlower->setLeft(this->left());
+				fireFlower->setRight(this->right());
+				fireFlower->setTop(this->top()+16);
+				fireFlower->setBottom(this->top());
+				Level::sharedLevel()->addDrawable(fireFlower);
             }	
         }
         else {
-            // Create a star
+            // Create a star above block it was in and adds drawable coin to the level
             Star *star = new Star();
+			star->setLeft(this->left());
+			star->setRight(this->right());
+			star->setTop(this->top()+16);
+			star->setBottom(this->top());
+			Level::sharedLevel()->addDrawable(star);
         }
-        /* Change the type from a question block to a REGULAR block 
-         once the reward has been generated
-         */
+        // once the block has been hit by mario and the reward generated change type to regular from question
         type_ = REGULAR;
     }
 }   
