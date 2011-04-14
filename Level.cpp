@@ -13,6 +13,8 @@
 #include "Goomba.h"
 #include "Turtle.h"
 #include "Breakable.h"
+#include "Pipe.h"
+#include "Flag.h"
 
 using namespace std;
 
@@ -43,13 +45,13 @@ Level::Level()
 //------------------------------------------------------------
 Level::~Level()
 {
-	instanceFlag =false;
+	instanceFlag = false;
 }
 //------------------------------------------------------------
 void Level::makeLevel(int levelNumber)
 {
     //if the level already exists delete it
-	if ((activeDrawable_.first() != NULL) || (activeMovable_.first() != NULL) || (activeBlocks_.first() != NULL)){
+	if ((activeDrawable_.first() != NULL) || (activeMovable_.first() != NULL) || (activeBlocks_.first() != NULL)) {
 		resetLevel();
 	}
 	
@@ -68,11 +70,11 @@ void Level::makeLevel(int levelNumber)
     cout << "home: " << homeDir << endl;
     
 	ifstream inFile;
-	if (levelNumber== 1){
+	if (levelNumber== 1) {
         fname = homeDir + "levelfiles/level1.txt";
 		inFile.open(fname.c_str());
 	}
-	else if (levelNumber== 2){
+	else if (levelNumber== 2) {
         fname = homeDir + "levelfiles/level3.txt";
 		inFile.open(fname.c_str());
 	}
@@ -105,21 +107,21 @@ void Level::makeLevel(int levelNumber)
 		else if (object== 'B' || object=='M' || object=='C' || object=='S'){
 			// sets the type and reward based off the letter passed and creates the block
 			
-			if (object == 'B'){
-				type = 15;
+			if (object == 'B') {
+				type = REGULAR;
 				reward = 0;
 			}
 			else if (object == 'M'){
-				type = 3;
-				reward = 2;
+				type = QUESTION;
+				reward = MUSHROOM;
 			}
 			else if (object == 'S'){
-				type = 3;
-				reward = 1;
+				type = QUESTION;
+				reward = STAR;
 			}
 			else if (object == 'C'){
-				type = 3;
-				reward = 1;
+				type = QUESTION;
+				reward = COIN;
 			}
 			
 			Nonbreakable *nBlock = new Nonbreakable(type, reward);
@@ -128,8 +130,9 @@ void Level::makeLevel(int levelNumber)
 			nBlock->setBottom(ycoord);
 			nBlock->setLeft(xcoord);
 			nBlock->setRight(xcoord + 16);
+			
 			//place in correct list
-			if (xcoord<256){
+			if (xcoord<256) {
 				activeBlocks_.append(nBlock);
 			}
 			else {
@@ -137,19 +140,68 @@ void Level::makeLevel(int levelNumber)
 			}
 
 		}
-		else if (object== 'c'){
+		else if (object == 'c') {
+			
 			//create coin
 			Coin *coin = new Coin;
 			coin->setTop(ycoord  + 16);
 			coin->setBottom(ycoord);
 			coin->setLeft(xcoord);
 			coin->setRight(xcoord + 16);
+			
 			//place in correct list
-			if (xcoord<256){
+			if (xcoord<256) {
 				activeDrawable_.append(coin);
 			}
 			else {
 				levelDrawable_.append(coin);
+			}
+		}
+		else if (object== 'f'){
+			//create flag pole
+			Flag *flag = new Flag;
+			flag->setTop(ycoord  + 16);
+			flag->setBottom(ycoord);
+			flag->setLeft(xcoord+6);
+			flag->setRight(xcoord + 10);
+			//place in correct list
+			if (xcoord<256){
+				activeBlocks_.append(flag);
+			}
+			else {
+				levelBlocks_.append(flag);
+			}
+		}
+		else if (object== 'P'){
+			//create Pipe top
+			Pipe *pipe = new Pipe;
+			pipe->setType(0);
+			pipe->setTop(ycoord  + 16);
+			pipe->setBottom(ycoord);
+			pipe->setLeft(xcoord);
+			pipe->setRight(xcoord + 32);
+			//place in correct list
+			if (xcoord<256){
+				activeBlocks_.append(pipe);
+			}
+			else {
+				levelBlocks_.append(pipe);
+			}
+		}
+		else if (object== 'p'){
+			//create Pipe body
+			Pipe *pipe = new Pipe;
+			pipe->setType(1);
+			pipe->setTop(ycoord  + 16);
+			pipe->setBottom(ycoord);
+			pipe->setLeft(xcoord);
+			pipe->setRight(xcoord + 32);
+			//place in correct list
+			if (xcoord<256){
+				activeBlocks_.append(pipe);
+			}
+			else {
+				levelBlocks_.append(pipe);
 			}
 		}
 		else if (object== 'g'){
@@ -159,36 +211,40 @@ void Level::makeLevel(int levelNumber)
 			goomba->setBottom(ycoord);
 			goomba->setLeft(xcoord);
 			goomba->setRight(xcoord + 16);
+			
 			//place in correct list
-			if (xcoord<256){
+			if (xcoord<256) {
 				activeMovable_.append(goomba);
 			}
 			else {
 				levelMovable_.append(goomba);
 			}
 		}
-		else if (object== 'k'){
+		else if (object == 'k') {
+			
 			//create koopa
 			Turtle *koopa = new Turtle;
-			koopa->setTop(ycoord  + 16);
+			koopa->setTop(ycoord  + 24);
 			koopa->setBottom(ycoord);
 			koopa->setLeft(xcoord);
 			koopa->setRight(xcoord + 16);
+			
 			//place in correct list
-			if (xcoord<256){
+			if (xcoord<256) {
 				activeMovable_.append(koopa);
 			}
 			else {
 				levelMovable_.append(koopa);
 			}
 		}
-		else if (object == 's'){
+		else if (object == 's') {
+			
 			//creates the coordinates for marios starting point
 			leftStart_ = xcoord;
 			bottomStart_ = ycoord;
 		}
 
-		if (ycoord < 224){
+		if (ycoord < 224) {
 			ycoord += 16;
 		}
 		else if (ycoord == 224) {
@@ -203,9 +259,12 @@ void Level::makeLevel(int levelNumber)
 //------------------------------------------------------------
 void Level::updateExtents(int leftBound, int rightBound)
 {
+	//increases the active range for blocks to prevent an issue with goombas falling off the level
+	int blockRight = rightBound + 96;
+
 	//removes from the levelDrawable_ llist and adds onto the end of the active list
-	while (levelDrawable_.first() != NULL){
-		if (levelDrawable_.first()->left() < rightBound){
+	while (levelDrawable_.first() != NULL) {
+		if (levelDrawable_.first()->left() < rightBound) {
 			Drawable *obj = levelDrawable_.removeFirst();
 			activeDrawable_.append(obj);
 		}
@@ -215,8 +274,8 @@ void Level::updateExtents(int leftBound, int rightBound)
 	}
 	
 	//removes from the active list when and deleted the object when the right end of an object falls off the left bound
-	while (activeDrawable_.first() != NULL){
-		if (activeDrawable_.first()->right() < leftBound){
+	while (activeDrawable_.first() != NULL) {
+		if (activeDrawable_.first()->right() < leftBound) {
 			Drawable *obj = activeDrawable_.removeFirst();
 			delete obj;
 		}
@@ -226,8 +285,8 @@ void Level::updateExtents(int leftBound, int rightBound)
 	}
 	
 	//removes from the levelMovable_ llist and appends to the active list
-	while (levelMovable_.first() != NULL){
-		if (levelMovable_.first()->left() < rightBound){
+	while (levelMovable_.first() != NULL) {
+		if (levelMovable_.first()->left() < rightBound) {
 			Drawable *obj = levelMovable_.removeFirst();
 			activeMovable_.append(obj);
 		}
@@ -237,8 +296,8 @@ void Level::updateExtents(int leftBound, int rightBound)
 	}
 	
 	//removes from the activeMovable_ llist and deletes the object
-	while (activeMovable_.first() != NULL){
-		if (activeMovable_.first()->right() < leftBound){
+	while (activeMovable_.first() != NULL) {
+		if (activeMovable_.first()->right() < leftBound) {
 			Drawable *obj = activeMovable_.removeFirst();
 			delete obj;
 		}
@@ -248,8 +307,8 @@ void Level::updateExtents(int leftBound, int rightBound)
 	}
 	
 	//removes from the levelBlocks_ llist and appends to the active list
-	while (levelBlocks_.first() != NULL){
-		if (levelBlocks_.first()->left() < rightBound){
+	while (levelBlocks_.first() != NULL) {
+		if (levelBlocks_.first()->left() < blockRight) {
 			Drawable *obj = levelBlocks_.removeFirst();
 			activeBlocks_.append(obj);
 		}
@@ -259,8 +318,8 @@ void Level::updateExtents(int leftBound, int rightBound)
 	}
 	
 	//removes from the activeBlocks_ llist and deletes the object
-	while (activeBlocks_.first() != NULL){
-		if (activeBlocks_.first()->right() < leftBound){
+	while (activeBlocks_.first() != NULL) {
+		if (activeBlocks_.first()->right() < leftBound) {
 			Drawable *obj = activeBlocks_.removeFirst();
 			delete obj;
 		}
@@ -276,12 +335,15 @@ void Level::removeDrawable(Drawable *obj)
 	
 	//checks the object type and calls remove on the correct list
 	type = obj->objectType();
-	if ((type = 1) || (type = 4) || (type = 5)){
+
+	if ((type = FLAG) || (type = FIREFLOWER) || (type = COIN)) {
 		activeDrawable_.removeDrawable(obj);
 	}
-	else if ((type = 2) || (type = 3) || (type = 15)){
+
+	else if ((type = BREAKABLE) || (type = QUESTION) || (type = REGULAR)) {
 		activeBlocks_.removeDrawable(obj);
 	}
+
 	else {
 		activeMovable_.removeDrawable(obj);
 	}
@@ -292,8 +354,8 @@ void Level::loadTestLevel()
 	int left, bottom, i;
 	bottom = 0;
 	left = 0;
-	for (i=0; i<10; ++i){
-		Nonbreakable *block = new Nonbreakable(15,0);
+	for (i=0; i<10; ++i) {
+		Nonbreakable *block = new Nonbreakable(REGULAR);
 		block->setTop(bottom  + 16);
 		block->setBottom(bottom);
 		block->setLeft(left);
@@ -303,8 +365,8 @@ void Level::loadTestLevel()
 	}
     bottom = 64;
     left = 32;
-    for (i=0; i<4; ++i){
-		Nonbreakable *block = new Nonbreakable(15,0);
+    for (i=0; i<4; ++i) {
+		Nonbreakable *block = new Nonbreakable(REGULAR);
 		block->setTop(bottom  + 16);
 		block->setBottom(bottom);
 		block->setLeft(left);
@@ -330,29 +392,29 @@ void Level::addMovable(Drawable *obj)
 void Level::resetLevel()
 {
 	//empties the active lists
-	while (activeMovable_.first() != NULL){
+	while (activeMovable_.first() != NULL) {
 		Drawable *obj = activeMovable_.removeFirst();
 		delete obj;
 	}
-	while (activeDrawable_.first() != NULL){
+	while (activeDrawable_.first() != NULL) {
 		Drawable *obj = activeDrawable_.removeFirst();
 		delete obj;
 	}
-	while (activeBlocks_.first() != NULL){
+	while (activeBlocks_.first() != NULL) {
 		Drawable *obj = activeBlocks_.removeFirst();
 		delete obj;
 	}
 
 	//empties the level Lists
-	while (levelMovable_.first() != NULL){
+	while (levelMovable_.first() != NULL) {
 		Drawable *obj = levelMovable_.removeFirst();
 		delete obj;
 	}
-	while (levelDrawable_.first() != NULL){
+	while (levelDrawable_.first() != NULL) {
 		Drawable *obj = levelDrawable_.removeFirst();
 		delete obj;
 	}
-	while (levelBlocks_.first() != NULL){
+	while (levelBlocks_.first() != NULL) {
 		Drawable *obj = levelBlocks_.removeFirst();
 		delete obj;
 	}

@@ -7,18 +7,15 @@
 #include "FireFlower.h"
 #include "Coin.h"
 #include "Level.h"
+#include "Pipe.h"
 
 //------------------------------------------------------------
 
 void Nonbreakable::draw()
 {
 	
-    if (reward_== 0) {
-        glColor3ub(199, 133, 64);
-    }
-	else{
-        glColor3ub(255,204,0);
-    }
+    glColor3ub(255,204,0);
+    
 	
 	
     glBegin(GL_POLYGON);
@@ -29,7 +26,7 @@ void Nonbreakable::draw()
     glEnd();
 	
     
-    if (reward_ != 0) {
+    if (type_ != REGULAR) {
         
         glColor3ub(255, 0, 0);
         
@@ -97,7 +94,7 @@ void Nonbreakable::generateReward(bool isLarge)
 				mushroom->setRight(this->right());
 				mushroom->setTop(this->top()+16);
 				mushroom->setBottom(this->top());
-				Level::sharedLevel()->addDrawable(mushroom);
+				Level::sharedLevel()->addMovable(mushroom);
             }	
             else {
                 // Create a fireflower above block it was in and adds drawable coin to the level
