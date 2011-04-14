@@ -25,14 +25,21 @@ using namespace std;
 //------------------------------------------------------------
 void Mario::draw()
 {
+    //Determine power up
+    int dState= 0;
     
-    if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
+    if (this->state_ == BIG_STATE) {
+        dState = 1;
+    }
+    else if ( this->state_ == FIRE_STATE){
+        dState = 2;
+    }
+    
+    
+    if (this->getYVelocity() != 0.0) {
         texturePos = 3;
     }
-    else if (this->getYVelocity() != 0.0 && this->getXVelocity() < 0.0){
-        texturePos = 7;
-    }
-    else if (this->getXVelocity() > 0.0){
+    else if (this->getXVelocity() != 0.0){
         if (texturePos == 1) {
             texturePos = 2;
         }
@@ -40,36 +47,30 @@ void Mario::draw()
             texturePos = 1;
         }
     }
-    else if (this->getXVelocity() < 0.0){
-        if (texturePos == 5) {
-            texturePos = 6;
-        }
-        else {
-            texturePos = 5;
-        }
-    }
-    else if (texturePos < 4){
+    else{
         texturePos = 0;
     }
-    else{
-        texturePos = 4;
-    }
 
-    
-     
              
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
-    
+    glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
-    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
-    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
-    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    if (this->getXVelocity() >= 0) {
+        glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    }
+    else{
+        glTexCoord2d(0.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(left(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(right(),top());
+    }
     glEnd();
     
     glDisable(GL_BLEND);
@@ -98,60 +99,8 @@ Mario::Mario()
     this->setXVelocity(0.0);
     this->setYVelocity(0.0);
     
-    texturePos = 0;
-    
-    // Mac environment variable for home directory
-    char *cHomeDir = NULL;
-    
-    cHomeDir = getenv("HOME");
-    
-    // I think Windows uses HOMEPATH
-    if (!cHomeDir) {
-        cHomeDir = getenv("HOMEPATH");
-    }
-    string homeDir = cHomeDir;
-    string iName;
-    homeDir += "/CS330/sprites/mario";
-    
-    string pos;
-    stringstream out;
-    
-    for (int i = 0; i<8; ++i) {
-        stringstream out;
-        //Generates Filename
-        iName = homeDir;
-        out<<i;
-        pos = out.str();
-        iName += pos;
-        iName += ".tex";
         
-        FILE *fp = fopen(iName.c_str(), "r");
-        unsigned char *texture = new unsigned char[4 * 256 * 256];
-        if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
-            != 4* 256 *256) {
-            fprintf(stderr, "error reading %s", iName.c_str());
-        }
-        fclose(fp);
-        
-        glGenTextures(1, &texture_[i]);
-        glBindTexture(GL_TEXTURE_2D, texture_[i]);
-        
-        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                        GL_LINEAR_MIPMAP_NEAREST );
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                        GL_LINEAR );        
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                        GL_CLAMP );
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                        GL_CLAMP );
-        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
-                          GL_UNSIGNED_BYTE, texture);
-        delete [] texture;
-
-    }
-    
-   
+    sprite();
 }
 //------------------------------------------------------------
 //updates Mario's movement info when a button is pushed
@@ -754,4 +703,79 @@ bool Mario::fireball()
 void Mario::setLeftBound(int leftBound)
 {
     leftBound_ = leftBound;
+}
+//------------------------------------------------------------
+void Mario::sprite()
+{
+    texturePos = 0;
+    
+    // Mac environment variable for home directory
+    char *cHomeDir = NULL;
+    
+    cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (!cHomeDir) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    string iName, jName;
+    homeDir += "/CS330/sprites/";
+    
+    string pos;
+    int height = 256;
+    
+    for (int j = 0; j<=2; ++j) {
+        stringstream out0;
+        //Generates Filename
+        jName = homeDir;
+        out0<<j;
+        pos = out0.str();
+        jName+=pos;
+        jName+="mario";
+        
+        if (j != 0) {
+            height = 512;
+        }
+        
+        
+        
+        for (int i = 0; i<=3; ++i) {
+            stringstream out1;
+            //Generates Filename
+            iName = jName;
+            out1<<i;
+            pos = out1.str();
+            iName += pos;
+            iName += ".tex";
+            
+            
+            FILE *fp = fopen(iName.c_str(), "r");
+            unsigned char *texture = new unsigned char[4 * 256 * height];
+            if (fread(texture, sizeof(unsigned char), 4 * 256 * height, fp)
+                != 4* 256 *height) {
+                fprintf(stderr, "error reading %s", iName.c_str());
+            }
+            fclose(fp);
+            
+            glGenTextures(1, &texture_[j][i]);
+            glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
+            
+            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                            GL_LINEAR_MIPMAP_NEAREST );
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                            GL_LINEAR );        
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+                            GL_CLAMP );
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+                            GL_CLAMP );
+            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, height, GL_RGBA,
+                              GL_UNSIGNED_BYTE, texture);
+            delete [] texture;
+            
+        }
+    }
+
+    
 }

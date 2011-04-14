@@ -15,8 +15,6 @@
 #include <string>
 #include <sstream>
 
-using namespace std;
-
 //---------------------------------------------------------
 
 Turtle::Turtle()
@@ -28,6 +26,60 @@ Turtle::Turtle()
 	setXVelocity(-1.0);
 	setYVelocity(0.0);
     
+    sprite();
+    
+    }
+
+//---------------------------------------------------------
+
+Turtle::~Turtle()
+{
+}
+
+//---------------------------------------------------------
+
+void Turtle::draw()
+{
+    
+    if (texturePos_ == 0) {
+        texturePos_ = 1;
+    }
+    else{
+        texturePos_ = 0;
+    }
+    
+    
+    
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glEnable( GL_TEXTURE_2D );
+    glBindTexture( GL_TEXTURE_2D, texture_[texturePos_]);
+    
+    glColor4f(0.7f,0.9f,1.0f,1.0f);
+    glBegin( GL_QUADS );
+    if (this->getXVelocity() <=0) {
+        glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    }
+    else{
+        glTexCoord2d(0.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(left(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(right(),top());
+    }
+    glEnd();
+    
+    glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
+    
+}
+
+//---------------------------------------------------------
+
+void Turtle::sprite()
+{
     texturePos_ = 0;
     
     // Mac environment variable for home directory
@@ -39,15 +91,15 @@ Turtle::Turtle()
     if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
-    string homeDir = cHomeDir;
-    string iName;
+    std::string homeDir = cHomeDir;
+    std::string iName;
     homeDir += "/CS330/sprites/koopa";
     
-    string pos;
-    stringstream out;
+    std::string pos;
+    std::stringstream out;
     
-    for (int i = 0; i<4; ++i) {
-        stringstream out;
+    for (int i = 0; i<=1; ++i) {
+        std::stringstream out;
         //Generates Filename
         iName = homeDir;
         out<<i;
@@ -80,63 +132,5 @@ Turtle::Turtle()
         delete [] texture;
         
     }
+
 }
-
-//---------------------------------------------------------
-
-Turtle::~Turtle()
-{
-}
-
-//---------------------------------------------------------
-
-void Turtle::draw()
-{
-    if (getXVelocity()<0) {
-        if (texturePos_ == 0) {
-            texturePos_ = 1;
-        }
-        else{
-            texturePos_ = 0;
-        }
-    }
-    else{
-        if (texturePos_ == 2) {
-            texturePos_ = 3;
-        }
-        else{
-            texturePos_ = 2;
-        }
-    }
-    
-    
-    
-    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_BLEND);
-    glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, texture_[texturePos_]);
-    
-    glColor4f(0.7f,0.9f,1.0f,1.0f);
-    glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
-    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
-    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
-    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
-    glEnd();
-    
-    glDisable(GL_BLEND);
-    glDisable(GL_TEXTURE_2D);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-//---------------------------------------------------------

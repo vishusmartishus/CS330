@@ -11,10 +11,14 @@
 // Class FireFlower that inherits from Drawable
 class FireFlower:public Drawable{
 //------------------------------------------------------------
+private:
+    GLuint texture_;
+    void sprite();
 public:
 	// Constructor for FireFlower
 	FireFlower()
     {
+        sprite();
 
 
 
