@@ -36,14 +36,10 @@ void Mario::draw()
     }
     
     
-    //Determine Direction
-    if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
+    if (this->getYVelocity() != 0.0) {
         texturePos = 3;
     }
-    else if (this->getYVelocity() != 0.0 && this->getXVelocity() < 0.0){
-        texturePos = 7;
-    }
-    else if (this->getXVelocity() > 0.0){
+    else if (this->getXVelocity() != 0.0){
         if (texturePos == 1) {
             texturePos = 2;
         }
@@ -51,19 +47,8 @@ void Mario::draw()
             texturePos = 1;
         }
     }
-    else if (this->getXVelocity() < 0.0){
-        if (texturePos == 5) {
-            texturePos = 6;
-        }
-        else {
-            texturePos = 5;
-        }
-    }
-    else if (texturePos < 4){
-        texturePos = 0;
-    }
     else{
-        texturePos = 4;
+        texturePos = 0;
     }
 
              
@@ -72,13 +57,20 @@ void Mario::draw()
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
     
-    
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
-    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
-    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
-    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    if (this->getXVelocity() >= 0) {
+        glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    }
+    else{
+        glTexCoord2d(0.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(left(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(right(),top());
+    }
     glEnd();
     
     glDisable(GL_BLEND);
@@ -748,7 +740,7 @@ void Mario::sprite()
         
         
         
-        for (int i = 0; i<=7; ++i) {
+        for (int i = 0; i<=3; ++i) {
             stringstream out1;
             //Generates Filename
             iName = jName;
