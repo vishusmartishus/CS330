@@ -1,13 +1,13 @@
-// FireFlower.cpp
 // John (Jack) Johnson, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
-// include header file FireFlower.h
+
 #include "FireFlower.h"
-// include header file Scene.h
 #include "Level.h"
 #include <string>
 #include <sstream>
+
 //------------------------------------------------------------
+
 void FireFlower::draw()
 {
 	
