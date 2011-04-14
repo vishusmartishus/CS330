@@ -279,14 +279,10 @@ void Mario::updateScene()
     //call the check methods to check to see if Mario is running into things
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
+    testSwitch();
+    jump();
+    move();
     
-    if (check()) {
-        jump();
-        move();
-    } else {
-        //Mario Dies
-        isDead_ = true;
-    }
 }
 //------------------------------------------------------------
 //method that calculate the intersections of Mario and objects
@@ -547,6 +543,9 @@ bool Mario::check()
         return false;
     */
     Drawable *objb, *objt, *objl, *objr;
+    //Level* level = Level::sharedLevel();
+    //LList* liMoveable = &level->getActiveDrawable();
+    
     objb = this->checkBottom();
     objt = this->checkTop();
     objl = this->checkLeft();
@@ -563,7 +562,7 @@ bool Mario::check()
             Breakable *temp = (Breakable*)objt;
             temp->breakBlock(this->getState() != SMALL_STATE);
         }
-        else if (objt->objectType() == GOOMBA || objt->objectType() == SHELL || objt->objectType() == TURTLE || objt->objectType() == ENEMYFIREBALL) {
+        if (objt->objectType() == GOOMBA || objt->objectType() == SHELL || objt->objectType() == TURTLE || objt->objectType() == ENEMYFIREBALL) {
             if (starCount_ > 0) {
                 //kill enemy
             }
@@ -571,9 +570,12 @@ bool Mario::check()
                 return false;
             }
         }
-        else if (objt->objectType() == MUSHROOM || objt->objectType() == STAR || objt->objectType() == FIREFLOWER || objt->objectType() == COIN) {
+        if (objt->objectType() == MUSHROOM || objt->objectType() == STAR || objt->objectType() == FIREFLOWER || objt->objectType() == COIN) {
             //update state
             if (objt->objectType() == MUSHROOM) {
+                Level::sharedLevel()->getActiveMovable().removeDrawable(objt);
+                cout << "mushroom";
+                //liMoveable->removeDrawable(objt);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -620,6 +622,8 @@ bool Mario::check()
         else if (objb->objectType() == MUSHROOM || objb->objectType() == STAR || objb->objectType() == FIREFLOWER) {
             //update state
             if (objb->objectType() == MUSHROOM) {
+                Level::sharedLevel()->getActiveMovable().removeDrawable(objb);
+                cout << "mushroom";
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -659,6 +663,8 @@ bool Mario::check()
         else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || 
                  objl->objectType() == COIN){
             if (objl->objectType() == MUSHROOM) {
+                Level::sharedLevel()->getActiveMovable().removeDrawable(objl);
+                cout << "mushroom";
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -688,6 +694,7 @@ bool Mario::check()
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
         this->setXVelocity(0.0);
+        cout << "mushroom";
         if (objr->objectType() == GOOMBA || objr->objectType() == SHELL || objr->objectType() == TURTLE || objr->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
@@ -704,6 +711,8 @@ bool Mario::check()
         }
         else if (objr->objectType() == MUSHROOM || objr->objectType() == STAR || objr->objectType() == FIREFLOWER || objr->objectType() == COIN){
             if (objr->objectType() == MUSHROOM) {
+                Level::sharedLevel()->getActiveMovable().removeDrawable(objr);
+                cout << "mushroom";
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                 }
@@ -756,4 +765,154 @@ bool Mario::fireball()
 void Mario::setLeftBound(int leftBound)
 {
     leftBound_ = leftBound;
+}
+//-------------------------------------------------------------
+void Mario::testSwitch() {
+    Drawable *objb, *objt, *objl, *objr;
+    
+    objb = this->checkBottom();
+    objt = this->checkTop();
+    objl = this->checkLeft();
+    objr = this->checkRight();
+    
+    //All items that can hit Mario from the top
+    if (objt)
+        switch (objt->objectType()) {
+            case REGULAR:
+                if (this->getYVelocity() > 0) {
+                    this->setXVelocity(0.0);
+                    this->jumpCount_ = 0;
+                }
+                break;
+            case QUESTION:
+                if (this->getYVelocity() > 0) {
+                    this->setXVelocity(0.0);
+                    this->jumpCount_ = 0;
+                }
+                ((Nonbreakable*)objt)->generateReward(this->getState() != SMALL_STATE);
+                break;
+            case BREAKABLE:
+                if (this->getYVelocity() > 0) {
+                    this->setXVelocity(0.0);
+                    this->jumpCount_ = 0;
+                }
+                ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
+                break;
+            case GOOMBA:
+            case SHELL:
+            case ENEMYFIREBALL:
+            case TURTLE:
+                //die
+                break;
+            case MUSHROOM:
+                break;
+            case STAR:
+                break;
+            case FIREFLOWER:
+                break;
+            case COIN:
+                break;
+                
+        }
+    //All objects that can hit Mario from the bottom
+    if (objb) {
+        switch (objb->objectType()) {
+            case BREAKABLE:
+            case REGULAR:
+            case QUESTION:
+                if (this->getYVelocity() < 0) {
+                    this->setYVelocity(0.0);
+                }
+                break;
+            case GOOMBA:
+            case SHELL:
+            case ENEMYFIREBALL:
+            case TURTLE:
+                //kill enemy
+                break;
+            case MUSHROOM:
+                break;
+            case STAR:
+                break;
+            case FIREFLOWER:
+                break;
+            case COIN:
+                break;
+        }
+    } else {
+        if (this->getYVelocity() == 0.0) {
+            this->setYVelocity(-2.0);
+        }
+    }
+    //All objects that can hit Mario from the left
+    if (objl) {
+        switch (objl->objectType()) {
+            case BREAKABLE:
+            case REGULAR:
+            case QUESTION:
+                if (this->getXVelocity() < 0) {
+                    this->setXVelocity(0.0);
+                }
+                break;
+            case GOOMBA:
+            case SHELL:
+            case ENEMYFIREBALL:
+            case TURTLE:
+                //kill enemy
+                break;
+            case MUSHROOM:
+                break;
+            case STAR:
+                break;
+            case FIREFLOWER:
+                break;
+            case COIN:
+                break;
+                
+        }
+    } else if (rightKey_) {
+        if (sprintKey_) {
+            this->setXVelocity(1.2);
+        } else {
+            this->setXVelocity(1.0);
+        }
+    }
+    //All objects that can hit Mario from the right
+    if (objr) {
+        switch (objr->objectType()) {
+            case BREAKABLE:
+            case REGULAR:
+            case QUESTION:
+                if (this->getXVelocity() > 0) {
+                    this->setXVelocity(0.0);
+                }
+                break;
+            case GOOMBA:
+            case SHELL:
+            case ENEMYFIREBALL:
+            case TURTLE:
+                //kill enemy
+                break;
+            case MUSHROOM:
+                break;
+            case STAR:
+                break;
+            case FIREFLOWER:
+                break;
+            case COIN:
+                break;
+                
+        }
+    } else if (leftKey_) {
+        if (sprintKey_) {
+            this->setXVelocity(-1.2);
+        } else {
+            this->setXVelocity(-1.0);
+        }
+    }
+    //stops Mario moving out of the left bound
+    if (this->left() < leftBound_ && this->getXVelocity() < 0)
+    {
+        this->setXVelocity(0.0);
+    }
 }

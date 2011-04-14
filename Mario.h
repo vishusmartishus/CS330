@@ -34,6 +34,7 @@ public:
     void setLeftBound(int leftBound);
     //returns the object type of Mario
     virtual int objectType() { return MARIO; }
+    void testSwitch();
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
