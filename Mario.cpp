@@ -25,6 +25,14 @@ using namespace std;
 //------------------------------------------------------------
 void Mario::draw()
 {
+    int dState= 0;
+    
+    if (this->state_ == BIG_STATE) {
+        dState = 1;
+    }
+    else if ( this->state_ == FIRE_STATE){
+        dState = 2;
+    }
     
     if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
         texturePos = 3;
@@ -61,7 +69,7 @@ void Mario::draw()
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
+    glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
     
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
@@ -80,7 +88,7 @@ void Mario::draw()
 Mario::Mario()
 {
     //init the private instance variables to default value
-    state_ = SMALL_STATE;
+    state_ = BIG_STATE;
     jumpCount_ = 0;
     starCount_ = 0;
     
@@ -110,45 +118,61 @@ Mario::Mario()
         cHomeDir = getenv("HOMEPATH");
     }
     string homeDir = cHomeDir;
-    string iName;
-    homeDir += "/CS330/sprites/mario";
+    string iName, jName;
+    homeDir += "/CS330/sprites/";
     
     string pos;
-    stringstream out;
+    int height = 256;
     
-    for (int i = 0; i<8; ++i) {
-        stringstream out;
+    for (int j = 0; j<2; ++j) {
+        stringstream out0;
         //Generates Filename
-        iName = homeDir;
-        out<<i;
-        pos = out.str();
-        iName += pos;
-        iName += ".tex";
+        jName = homeDir;
+        out0<<j;
+        pos = out0.str();
+        jName+=pos;
+        jName+="mario";
         
-        FILE *fp = fopen(iName.c_str(), "r");
-        unsigned char *texture = new unsigned char[4 * 256 * 256];
-        if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
-            != 4* 256 *256) {
-            fprintf(stderr, "error reading %s", iName.c_str());
+        if (j != 0) {
+            height = 512;
         }
-        fclose(fp);
         
-        glGenTextures(1, &texture_[i]);
-        glBindTexture(GL_TEXTURE_2D, texture_[i]);
+    
+    
+        for (int i = 0; i<8; ++i) {
+            stringstream out1;
+            //Generates Filename
+            iName = jName;
+            out1<<i;
+            pos = out1.str();
+            iName += pos;
+            iName += ".tex";
         
-        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                        GL_LINEAR_MIPMAP_NEAREST );
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                        GL_LINEAR );        
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                        GL_CLAMP );
-        glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                        GL_CLAMP );
-        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
-                          GL_UNSIGNED_BYTE, texture);
-        delete [] texture;
+            FILE *fp = fopen(iName.c_str(), "r");
+            unsigned char *texture = new unsigned char[4 * 256 * height];
+            if (fread(texture, sizeof(unsigned char), 4 * 256 * height, fp)
+                != 4* 256 *height) {
+                fprintf(stderr, "error reading %s", iName.c_str());
+            }
+            fclose(fp);
+        
+            glGenTextures(1, &texture_[j][i]);
+            glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
+        
+            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                            GL_LINEAR_MIPMAP_NEAREST );
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                            GL_LINEAR );        
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+                            GL_CLAMP );
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+                            GL_CLAMP );
+            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, height, GL_RGBA,
+                            GL_UNSIGNED_BYTE, texture);
+            delete [] texture;
 
+        }
     }
     
    
