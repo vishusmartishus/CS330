@@ -1,9 +1,11 @@
 // John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
 //------------------------------------------------------------
-// include header file Breakable
+
 #include "Breakable.h"
 #include "Level.h"
+
 //------------------------------------------------------------
+
 void Breakable::draw()
 {
     int j;
@@ -44,16 +46,13 @@ void Breakable::draw()
     }
 	
 }
+
 //------------------------------------------------------------
-// destroy block
+
+// Method that destroys a block if Mario is big (has a mushroom or fireflower)
 void Breakable::breakBlock(bool isLarge)
 {
 	if (isLarge == true) {
         Level::sharedLevel()->removeDrawable(this);
 	}
-
-
-
-
-
 }
