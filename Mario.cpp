@@ -21,40 +21,38 @@
 #include <sstream>
 using namespace std;
 
-GLuint textureMario[10];
-int textureMarioPos = 0;
 
 //------------------------------------------------------------
 void Mario::draw()
 {
     
     if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
-        textureMarioPos = 3;
+        texturePos = 3;
     }
     else if (this->getYVelocity() != 0.0 && this->getXVelocity() < 0.0){
-        textureMarioPos = 7;
+        texturePos = 7;
     }
     else if (this->getXVelocity() > 0.0){
-        if (textureMarioPos == 1) {
-            textureMarioPos = 2;
+        if (texturePos == 1) {
+            texturePos = 2;
         }
         else{
-            textureMarioPos = 1;
+            texturePos = 1;
         }
     }
     else if (this->getXVelocity() < 0.0){
-        if (textureMarioPos == 5) {
-            textureMarioPos = 6;
+        if (texturePos == 5) {
+            texturePos = 6;
         }
         else {
-            textureMarioPos = 5;
+            texturePos = 5;
         }
     }
-    else if (textureMarioPos < 4){
-        textureMarioPos = 0;
+    else if (texturePos < 4){
+        texturePos = 0;
     }
     else{
-        textureMarioPos = 4;
+        texturePos = 4;
     }
 
     
@@ -63,7 +61,7 @@ void Mario::draw()
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, textureMario[textureMarioPos]);
+    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
     
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
@@ -100,6 +98,7 @@ Mario::Mario()
     this->setXVelocity(0.0);
     this->setYVelocity(0.0);
     
+    texturePos = 0;
     
     // Mac environment variable for home directory
     char *cHomeDir = NULL;
@@ -125,7 +124,6 @@ Mario::Mario()
         pos = out.str();
         iName += pos;
         iName += ".tex";
-        cout<<iName<<endl;
         
         FILE *fp = fopen(iName.c_str(), "r");
         unsigned char *texture = new unsigned char[4 * 256 * 256];
@@ -135,8 +133,8 @@ Mario::Mario()
         }
         fclose(fp);
         
-        glGenTextures(1, &textureMario[i]);
-        glBindTexture(GL_TEXTURE_2D, textureMario[i]);
+        glGenTextures(1, &texture_[i]);
+        glBindTexture(GL_TEXTURE_2D, texture_[i]);
         
         glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,

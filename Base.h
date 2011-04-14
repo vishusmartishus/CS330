@@ -1,8 +1,11 @@
 // Jamie Veals, Jay Bondzeleske, John (Jack) Johnson
 //------------------------------------------------------------
+
 #ifndef _BASE_H
 #define _BASE_H
+
 //------------------------------------------------------------
+
 // Constant object types that other groups will use to create items and enemies
 const int FLAG = 1;
 const int BREAKABLE = 2;
@@ -21,7 +24,9 @@ const int MARIOFIREBALL = 14;
 const int REGULAR = 15;
 
 class Base {
+
 //------------------------------------------------------------ 
+
 public:
 
     Base()
@@ -33,6 +38,7 @@ public:
 	{
 
 	}
+
 	// Returns an integer to indicate which object it is
 	// Called by movable and drawable classes to determine which object is in that spot: a reward, enemy, or block
 	virtual int objectType();
@@ -63,7 +69,7 @@ private:
 // Inline methods
 //------------------------------------------------------------
 
-// set the object type to 0
+// Sets the object type to 0
 inline int Base::objectType()
 {
     return 0;
@@ -71,29 +77,36 @@ inline int Base::objectType()
 
 //------------------------------------------------------------
 
-// set left_
+// Sets left_ to the left coordinate given
 inline void Base::setLeft(double left)
 {
     left_ = left;
 }
  
  //------------------------------------------------------------
- // set right_
+
+ // Sets right_ to the right coordinate given
  inline void Base::setRight(double right)
  {
  right_ = right;
  }
+
  //------------------------------------------------------------
- // set top_
+
+ // Sets top_ to the top coordinate given
  inline void Base::setTop(double top)
  {
  top_ = top;
  }
+
  //------------------------------------------------------------
- // set botttom_
+
+ // Sets botttom_ to the bottom coordinate given
  inline void Base::setBottom(double bottom)
  {
  bottom_ = bottom;
  }
+
 //------------------------------------------------------------
+
 #endif

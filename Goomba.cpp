@@ -20,8 +20,6 @@
 using namespace std;
 
 
-GLuint textureGoomba[2];
-int textureGoombaPos=0;
 
 //---------------------------------------------------------
 
@@ -33,6 +31,8 @@ Goomba::Goomba()
 	setPoints(0);
 	setXVelocity(-1.0);
 	setYVelocity(0.0);
+    
+    texturePos = 0;
     
     // Mac environment variable for home directory
     char *cHomeDir = NULL;
@@ -67,8 +67,8 @@ Goomba::Goomba()
         }
         fclose(fp);
         
-        glGenTextures(1, &textureGoomba[i]);
-        glBindTexture(GL_TEXTURE_2D, textureGoomba[i]);
+        glGenTextures(1, &texture_[i]);
+        glBindTexture(GL_TEXTURE_2D, texture_[i]);
         
         glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
@@ -99,17 +99,17 @@ Goomba::~Goomba()
 void Goomba::draw()
 {
     
-    if (textureGoombaPos == 0) {
-        textureGoombaPos = 1;
+    if (texturePos == 0) {
+        texturePos = 1;
     }
     else{
-        textureGoombaPos = 0;
+        texturePos = 0;
     }
 	
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, textureGoomba[textureGoombaPos]);
+    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     glBegin( GL_QUADS );
