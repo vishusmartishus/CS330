@@ -15,8 +15,6 @@
 #include <string>
 #include <sstream>
 
-using namespace std;
-
 //---------------------------------------------------------
 
 Turtle::Turtle()
@@ -27,6 +25,8 @@ Turtle::Turtle()
 	setPoints(0);
 	setXVelocity(-1.0);
 	setYVelocity(0.0);
+    
+    sprite();
     
     }
 
@@ -57,7 +57,7 @@ void Turtle::draw()
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     glBegin( GL_QUADS );
-    if (this->getXVelocity() >=0) {
+    if (this->getXVelocity() <=0) {
         glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
         glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
         glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
@@ -73,7 +73,7 @@ void Turtle::draw()
     
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
-   
+    
 }
 
 //---------------------------------------------------------
@@ -91,15 +91,15 @@ void Turtle::sprite()
     if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
-    string homeDir = cHomeDir;
-    string iName;
+    std::string homeDir = cHomeDir;
+    std::string iName;
     homeDir += "/CS330/sprites/koopa";
     
-    string pos;
-    stringstream out;
+    std::string pos;
+    std::stringstream out;
     
     for (int i = 0; i<=1; ++i) {
-        stringstream out;
+        std::stringstream out;
         //Generates Filename
         iName = homeDir;
         out<<i;
