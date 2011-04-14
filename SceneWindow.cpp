@@ -17,7 +17,6 @@
 
 extern SceneWindow *sw;
 Mario *mario;
-static int p;
 const int WINDOWWIDTH = 512;
 const int WINDOWHEIGHT = 448;
 
