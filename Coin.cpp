@@ -1,13 +1,13 @@
-// Coin.cpp
 // John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
-// include header file Coin.h
+
 #include "Coin.h"
-// include header file Scene.h
 #include "Level.h"
 #include <string>
 #include <sstream>
+
 //------------------------------------------------------------
+
 void Coin::draw()
 {
 	
@@ -40,6 +40,7 @@ void Coin::sprite()
     if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
+
     std::string homeDir = cHomeDir;
     
     homeDir += "/CS330/sprites/coin0.tex";
@@ -52,6 +53,7 @@ void Coin::sprite()
         != 4* 256 *256) {
         fprintf(stderr, "error reading %s", homeDir.c_str());
     }
+
     fclose(fp);
     
     glGenTextures(1, &texture_);

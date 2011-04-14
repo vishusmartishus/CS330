@@ -48,20 +48,20 @@ bool Movable::canMove()
     
     // if a block type is underneath
 	else {
-		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION) {
+		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE) {
 			this->setYVelocity(0.0);
 		}
 	}
 
     // if nothing to the right or left
     if (dRight != NULL) {
-        if (dRight->objectType() == REGULAR || dRight->objectType() == BREAKABLE || dRight->objectType() == QUESTION) {
+        if (dRight->objectType() == REGULAR || dRight->objectType() == BREAKABLE || dRight->objectType() == QUESTION || dRight->objectType() == PIPE) {
             keepGoing = false;
         }
     }
     
     if (dLeft != NULL) {
-        if (dLeft->objectType() == REGULAR || dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION) {
+        if (dLeft->objectType() == REGULAR || dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION || dLeft->objectType() == PIPE) {
             keepGoing = false;
         }
     }
@@ -76,7 +76,7 @@ void Movable::updateScene()
 {
     bool b;
     double currentXVelocity, currentYVelocity;
-    int updatedLeft, updatedRight, updatedTop, updatedBottom;
+    double updatedLeft, updatedRight, updatedTop, updatedBottom;
     
     // get velocities
     currentXVelocity = this->getXVelocity();
