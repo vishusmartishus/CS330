@@ -19,7 +19,8 @@
 //---------------------------------------------------------
 
 class Mushroom: public Movable {
-    
+private:
+    GLuint texture_;
 public:
 	// openGL draw method
     virtual void draw();

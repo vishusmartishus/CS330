@@ -110,16 +110,16 @@ void Level::makeLevel(int levelNumber)
 				reward = 0;
 			}
 			else if (object == 'M'){
-				type = 3;
-				reward = 2;
+				type = QUESTION;
+				reward = MUSHROOM;
 			}
 			else if (object == 'S'){
-				type = 3;
-				reward = 1;
+				type = QUESTION;
+				reward = STAR;
 			}
 			else if (object == 'C'){
-				type = 3;
-				reward = 1;
+				type = QUESTION;
+				reward = COIN;
 			}
 			
 			Nonbreakable *nBlock = new Nonbreakable(type, reward);
@@ -170,7 +170,7 @@ void Level::makeLevel(int levelNumber)
 		else if (object== 'k'){
 			//create koopa
 			Turtle *koopa = new Turtle;
-			koopa->setTop(ycoord  + 16);
+			koopa->setTop(ycoord  + 24);
 			koopa->setBottom(ycoord);
 			koopa->setLeft(xcoord);
 			koopa->setRight(xcoord + 16);
