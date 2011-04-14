@@ -552,6 +552,11 @@ bool Mario::check()
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
+    
+    cout << objt << " top" << endl;
+    cout << objl << " left" << endl;
+    cout << objr << " right" << endl;
+    
     if (!objb && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
@@ -569,7 +574,16 @@ bool Mario::check()
                 //kill enemy
             }
             else {
-                return false;
+                if (this->getState() == BIG_STATE) {
+                    this->state_ = SMALL_STATE;
+                    this->setTop(this->top()-16);
+                }
+                else if (this->getState() == FIRE_STATE) {
+                    this->state_ = BIG_STATE;
+                }
+                else {
+                    return false;
+                }
             }
         }
         else if (objt->objectType() == MUSHROOM || objt->objectType() == STAR || objt->objectType() == FIREFLOWER || objt->objectType() == COIN) {
@@ -577,6 +591,7 @@ bool Mario::check()
             if (objt->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else {
                     //add points
@@ -587,6 +602,9 @@ bool Mario::check()
                     //add points
                 }
                 else {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
             }
@@ -620,11 +638,16 @@ bool Mario::check()
         }
         else if (objb->objectType() == MUSHROOM || objb->objectType() == STAR || objb->objectType() == FIREFLOWER) {
             //update state
+            cout << objt->objectType() << endl;
             if (objb->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else if (objb->objectType() == FIREFLOWER) {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
                 else {
@@ -648,6 +671,9 @@ bool Mario::check()
                 //enemy dies
             }
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
+                if (this->getState() == BIG_STATE) {
+                    this->setTop(this->top()-16);
+                }
                 this->state_--;
             }
             else{
@@ -657,11 +683,12 @@ bool Mario::check()
         else if (objl->objectType() == BREAKABLE || objl->objectType() == REGULAR || objl->objectType() == QUESTION){
             this->setXVelocity(0.0);
         }
-        else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || 
-                 objl->objectType() == COIN){
+        else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || objl->objectType() == COIN) {
+            cout << objt->objectType() << endl;
             if (objl->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else{
                     //mario gets points
@@ -672,6 +699,9 @@ bool Mario::check()
                     //mario gets some points
                 }
                 else {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
             }
@@ -694,6 +724,9 @@ bool Mario::check()
                 //enemy dies
             }
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
+                if (this->getState() == BIG_STATE) {
+                    this->setTop(this->top()-16);
+                }
                 this->state_--;
             }
             else{
@@ -704,9 +737,11 @@ bool Mario::check()
             this->setXVelocity(0.0);
         }
         else if (objr->objectType() == MUSHROOM || objr->objectType() == STAR || objr->objectType() == FIREFLOWER || objr->objectType() == COIN){
+            cout << objt->objectType() << endl;
             if (objr->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top()+16);
                 }
                 else{
                     //mario gets points
@@ -717,6 +752,9 @@ bool Mario::check()
                     //mario gets some points
                 }
                 else {
+                    if (this->getState() == SMALL_STATE) {
+                        this->setTop(this->top()+16);
+                    }
                     this->state_ = FIRE_STATE;
                 }
             }
