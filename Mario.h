@@ -52,6 +52,8 @@ private:
 	bool fireball();
     //Handels all jump cases
     void jump();
+    //Loads Sprite
+    void sprite();
 	
 };
 

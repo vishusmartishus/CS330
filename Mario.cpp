@@ -25,6 +25,7 @@ using namespace std;
 //------------------------------------------------------------
 void Mario::draw()
 {
+    //Determine power up
     int dState= 0;
     
     if (this->state_ == BIG_STATE) {
@@ -34,6 +35,8 @@ void Mario::draw()
         dState = 2;
     }
     
+    
+    //Determine Direction
     if (this->getYVelocity() != 0.0 && this->getXVelocity() >= 0.0) {
         texturePos = 3;
     }
@@ -63,8 +66,6 @@ void Mario::draw()
         texturePos = 4;
     }
 
-    
-     
              
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
@@ -88,7 +89,7 @@ void Mario::draw()
 Mario::Mario()
 {
     //init the private instance variables to default value
-    state_ = BIG_STATE;
+    state_ = SMALL_STATE;
     jumpCount_ = 0;
     starCount_ = 0;
     
@@ -106,76 +107,8 @@ Mario::Mario()
     this->setXVelocity(0.0);
     this->setYVelocity(0.0);
     
-    texturePos = 0;
-    
-    // Mac environment variable for home directory
-    char *cHomeDir = NULL;
-    
-    cHomeDir = getenv("HOME");
-    
-    // I think Windows uses HOMEPATH
-    if (!cHomeDir) {
-        cHomeDir = getenv("HOMEPATH");
-    }
-    string homeDir = cHomeDir;
-    string iName, jName;
-    homeDir += "/CS330/sprites/";
-    
-    string pos;
-    int height = 256;
-    
-    for (int j = 0; j<2; ++j) {
-        stringstream out0;
-        //Generates Filename
-        jName = homeDir;
-        out0<<j;
-        pos = out0.str();
-        jName+=pos;
-        jName+="mario";
         
-        if (j != 0) {
-            height = 512;
-        }
-        
-    
-    
-        for (int i = 0; i<8; ++i) {
-            stringstream out1;
-            //Generates Filename
-            iName = jName;
-            out1<<i;
-            pos = out1.str();
-            iName += pos;
-            iName += ".tex";
-        
-            FILE *fp = fopen(iName.c_str(), "r");
-            unsigned char *texture = new unsigned char[4 * 256 * height];
-            if (fread(texture, sizeof(unsigned char), 4 * 256 * height, fp)
-                != 4* 256 *height) {
-                fprintf(stderr, "error reading %s", iName.c_str());
-            }
-            fclose(fp);
-        
-            glGenTextures(1, &texture_[j][i]);
-            glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
-        
-            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
-            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                            GL_LINEAR_MIPMAP_NEAREST );
-            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                            GL_LINEAR );        
-            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                            GL_CLAMP );
-            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                            GL_CLAMP );
-            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, height, GL_RGBA,
-                            GL_UNSIGNED_BYTE, texture);
-            delete [] texture;
-
-        }
-    }
-    
-   
+    sprite();
 }
 //------------------------------------------------------------
 //updates Mario's movement info when a button is pushed
@@ -778,4 +711,79 @@ bool Mario::fireball()
 void Mario::setLeftBound(int leftBound)
 {
     leftBound_ = leftBound;
+}
+//------------------------------------------------------------
+void Mario::sprite()
+{
+    texturePos = 0;
+    
+    // Mac environment variable for home directory
+    char *cHomeDir = NULL;
+    
+    cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (!cHomeDir) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    string iName, jName;
+    homeDir += "/CS330/sprites/";
+    
+    string pos;
+    int height = 256;
+    
+    for (int j = 0; j<=1; ++j) {
+        stringstream out0;
+        //Generates Filename
+        jName = homeDir;
+        out0<<j;
+        pos = out0.str();
+        jName+=pos;
+        jName+="mario";
+        
+        if (j != 0) {
+            height = 512;
+        }
+        
+        
+        
+        for (int i = 0; i<=7; ++i) {
+            stringstream out1;
+            //Generates Filename
+            iName = jName;
+            out1<<i;
+            pos = out1.str();
+            iName += pos;
+            iName += ".tex";
+            
+            
+            FILE *fp = fopen(iName.c_str(), "r");
+            unsigned char *texture = new unsigned char[4 * 256 * height];
+            if (fread(texture, sizeof(unsigned char), 4 * 256 * height, fp)
+                != 4* 256 *height) {
+                fprintf(stderr, "error reading %s", iName.c_str());
+            }
+            fclose(fp);
+            
+            glGenTextures(1, &texture_[j][i]);
+            glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
+            
+            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                            GL_LINEAR_MIPMAP_NEAREST );
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                            GL_LINEAR );        
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+                            GL_CLAMP );
+            glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+                            GL_CLAMP );
+            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, height, GL_RGBA,
+                              GL_UNSIGNED_BYTE, texture);
+            delete [] texture;
+            
+        }
+    }
+
+    
 }
