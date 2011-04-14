@@ -83,6 +83,7 @@
     <ClInclude Include="Movable.h" />
     <ClInclude Include="Mushroom.h" />
     <ClInclude Include="Nonbreakable.h" />
+    <ClInclude Include="Pipe.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="SceneWindow.h" />
     <ClInclude Include="Shell.h" />
@@ -108,6 +109,7 @@
     <ClCompile Include="Movable.cpp" />
     <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="Nonbreakable.cpp" />
+    <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="SceneWindow.cpp" />
     <ClCompile Include="Shell.cpp" />
