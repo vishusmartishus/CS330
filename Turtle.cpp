@@ -40,21 +40,12 @@ Turtle::~Turtle()
 
 void Turtle::draw()
 {
-    if (getXVelocity()<0) {
-        if (texturePos_ == 0) {
-            texturePos_ = 1;
-        }
-        else{
-            texturePos_ = 0;
-        }
+    
+    if (texturePos_ == 0) {
+        texturePos_ = 1;
     }
     else{
-        if (texturePos_ == 2) {
-            texturePos_ = 3;
-        }
-        else{
-            texturePos_ = 2;
-        }
+        texturePos_ = 0;
     }
     
     
@@ -66,25 +57,23 @@ void Turtle::draw()
     
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
-    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
-    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
-    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    if (this->getXVelocity() >=0) {
+        glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    }
+    else{
+        glTexCoord2d(0.0,0.0); glVertex2d(right(),bottom());
+        glTexCoord2d(1.0,0.0); glVertex2d(left(),bottom());
+        glTexCoord2d(1.0,1.0); glVertex2d(left(),top());
+        glTexCoord2d(0.0,1.0); glVertex2d(right(),top());
+    }
     glEnd();
     
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
 }
 
 //---------------------------------------------------------
@@ -109,7 +98,7 @@ void Turtle::sprite()
     string pos;
     stringstream out;
     
-    for (int i = 0; i<4; ++i) {
+    for (int i = 0; i<=1; ++i) {
         stringstream out;
         //Generates Filename
         iName = homeDir;
