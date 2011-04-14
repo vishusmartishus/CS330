@@ -726,7 +726,11 @@ bool Mario::check()
             }
         }
     } else if (!objr && rightKey_) {
-        this->setXVelocity(1.0);
+        if (sprintKey_) {
+            this->setXVelocity(2.0);
+        } else {
+            this->setXVelocity(1.0);
+        }
     }
     return true;
 }
