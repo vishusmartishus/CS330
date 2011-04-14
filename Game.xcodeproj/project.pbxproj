@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */; };
 		03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */; };
+		03739E79135759580001C080 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03739E77135759580001C080 /* Pipe.cpp */; };
 		037608EF1342470000A50E9A /* test_LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037608EE1342470000A50E9A /* test_LList.cpp */; };
 		037608F01342471000A50E9A /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
 		037608F11342472700A50E9A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
@@ -84,6 +85,8 @@
 		03462EDC130AFC4A004BBAE6 /* EnemyFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFireball.h; sourceTree = "<group>"; };
 		03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarioFireball.cpp; sourceTree = "<group>"; };
 		03462EDE130AFC4A004BBAE6 /* MarioFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarioFireball.h; sourceTree = "<group>"; };
+		03739E77135759580001C080 /* Pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
+		03739E78135759580001C080 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		037608E8134246D700A50E9A /* test_LList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_LList; sourceTree = BUILT_PRODUCTS_DIR; };
 		037608EE1342470000A50E9A /* test_LList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_LList.cpp; sourceTree = "<group>"; };
 		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		037A375C1302C1BA00788A82 /* Drawable */ = {
 			isa = PBXGroup;
 			children = (
+				03739E77135759580001C080 /* Pipe.cpp */,
+				03739E78135759580001C080 /* Pipe.h */,
 				037A37201302C10100788A82 /* Base.h */,
 				037A371F1302C10100788A82 /* Base.cpp */,
 				037A37241302C10100788A82 /* Drawable.h */,
@@ -362,7 +367,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -450,6 +454,7 @@
 				03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */,
 				03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */,
 				DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */,
+				03739E79135759580001C080 /* Pipe.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
