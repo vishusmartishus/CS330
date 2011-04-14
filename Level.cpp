@@ -67,7 +67,6 @@ void Level::makeLevel(int levelNumber)
     string homeDir = cHomeDir;
     homeDir += "/CS330/";
     string fname;
-    cout << "home: " << homeDir << endl;
     
 	ifstream inFile;
 	if (levelNumber== 1) {
