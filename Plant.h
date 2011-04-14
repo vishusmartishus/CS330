@@ -15,11 +15,16 @@
 //---------------------------------------------------------
 
 #include "Movable.h"
+#include <string>
+#include <sstream>
 
 //---------------------------------------------------------
 
 class Plant: public Movable {
-    
+private:
+    GLuint texture_[2];
+    int texturePos;
+    void sprite();
 public:
 	// openGL draw method
     virtual void draw();

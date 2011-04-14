@@ -32,6 +32,50 @@ Goomba::Goomba()
 	setXVelocity(-1.0);
 	setYVelocity(0.0);
     
+    sprite();   
+
+}
+
+//---------------------------------------------------------
+
+Goomba::~Goomba()
+{
+}
+
+//---------------------------------------------------------
+
+void Goomba::draw()
+{
+    
+    if (texturePos == 0) {
+        texturePos = 1;
+    }
+    else{
+        texturePos = 0;
+    }
+	
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glEnable( GL_TEXTURE_2D );
+    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
+    
+    glColor4f(0.7f,0.9f,1.0f,1.0f);
+    glBegin( GL_QUADS );
+    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
+    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
+    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
+    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
+    glEnd();
+  
+    glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
+    
+}
+
+//---------------------------------------------------------
+
+void Goomba::sprite()
+{
     texturePos = 0;
     
     // Mac environment variable for home directory
@@ -84,44 +128,5 @@ Goomba::Goomba()
         delete [] texture;
         
     }
-   
-
+ 
 }
-
-//---------------------------------------------------------
-
-Goomba::~Goomba()
-{
-}
-
-//---------------------------------------------------------
-
-void Goomba::draw()
-{
-    
-    if (texturePos == 0) {
-        texturePos = 1;
-    }
-    else{
-        texturePos = 0;
-    }
-	
-    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_BLEND);
-    glEnable( GL_TEXTURE_2D );
-    glBindTexture( GL_TEXTURE_2D, texture_[texturePos]);
-    
-    glColor4f(0.7f,0.9f,1.0f,1.0f);
-    glBegin( GL_QUADS );
-    glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
-    glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
-    glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
-    glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
-    glEnd();
-  
-    glDisable(GL_BLEND);
-    glDisable(GL_TEXTURE_2D);
-    
-}
-
-//---------------------------------------------------------
