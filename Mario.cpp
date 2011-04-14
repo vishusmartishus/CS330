@@ -284,12 +284,8 @@ void Mario::updateScene()
         jump();
         move();
     } else {
-<<<<<<< HEAD
-=======
         //Mario Dies
         isDead_ = true;
-        
->>>>>>> dreed/master
     }
 }
 //------------------------------------------------------------
