@@ -20,7 +20,7 @@ void Flag::draw()
 
 //------------------------------------------------------------
 
-// returns the points based on where flag is touched
+// returns the points based on where the flag is touched
 int Flag::flagPoints(int touched)
 {
 	if (touched = 1) {
