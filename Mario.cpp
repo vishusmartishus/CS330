@@ -724,7 +724,7 @@ void Mario::sprite()
     homeDir += "/CS330/sprites/";
     
     string pos;
-    int height = 256;
+    int height = 32;
     
     for (int j = 0; j<=2; ++j) {
         stringstream out0;
@@ -736,7 +736,7 @@ void Mario::sprite()
         jName+="mario";
         
         if (j != 0) {
-            height = 512;
+            height = 64;
         }
         
         
@@ -752,9 +752,9 @@ void Mario::sprite()
             
             
             FILE *fp = fopen(iName.c_str(), "r");
-            unsigned char *texture = new unsigned char[4 * 256 * height];
-            if (fread(texture, sizeof(unsigned char), 4 * 256 * height, fp)
-                != 4* 256 *height) {
+            unsigned char *texture = new unsigned char[4 * 32 * height];
+            if (fread(texture, sizeof(unsigned char), 4 * 32 * height, fp)
+                != 4* 32 *height) {
                 fprintf(stderr, "error reading %s", iName.c_str());
             }
             fclose(fp);
@@ -771,7 +771,7 @@ void Mario::sprite()
                             GL_CLAMP );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                             GL_CLAMP );
-            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, height, GL_RGBA,
+            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, height, GL_RGBA,
                               GL_UNSIGNED_BYTE, texture);
             delete [] texture;
             
