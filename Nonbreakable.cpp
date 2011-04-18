@@ -7,66 +7,98 @@
 #include "FireFlower.h"
 #include "Coin.h"
 #include "Level.h"
+#include "Pipe.h"
 
 //------------------------------------------------------------
 
 void Nonbreakable::draw()
 {
-	
-    if (reward_== 0) {
-        glColor3ub(199, 133, 64);
-    }
-	else{
+
+	if (type_ != REGULAR){
         glColor3ub(255,204,0);
-    }
-	
-	
-    glBegin(GL_POLYGON);
-    glVertex2d(left(),bottom());
-    glVertex2d(right(),bottom());
-    glVertex2d(right(),top());
-    glVertex2d(left(),top());
-    glEnd();
-	
-    
-    if (reward_ != 0) {
-        
-        glColor3ub(255, 0, 0);
-        
         glBegin(GL_POLYGON);
-        glVertex2d(left()+6, bottom()+6);
-        glVertex2d(left()+10, bottom()+6);
-        glVertex2d(left()+10, bottom()+14);
-        glVertex2d(left()+6, bottom()+14);
+        glVertex2d(left(),bottom());
+        glVertex2d(right(),bottom());
+        glVertex2d(right(),top());
+        glVertex2d(left(),top());
+        glEnd();
+	
+        if (type_ == QUESTION) {
+        
+            glColor3ub(255, 0, 0);
+            
+            glBegin(GL_POLYGON);
+            glVertex2d(left()+6, bottom()+6);
+            glVertex2d(left()+10, bottom()+6);
+            glVertex2d(left()+10, bottom()+14);
+            glVertex2d(left()+6, bottom()+14);
+            glEnd();
+        
+            glBegin(GL_POLYGON);
+            glVertex2d(left()+6, bottom()+2);
+            glVertex2d(left()+10, bottom()+2);
+            glVertex2d(left()+10, bottom()+4);
+            glVertex2d(left()+6, bottom()+4);
+            glEnd();
+        
+        }
+    
+    
+        glColor3ub(0, 0, 0);
+        glPointSize(2.0);
+    
+        glBegin(GL_POINTS);
+        glVertex2d(left()+2, bottom()+2);
+        glVertex2d(left()+2, top()-2);
+        glVertex2d(right()-2, bottom()+2);
+        glVertex2d(right()-2, top()-2);
+        glEnd();
+    
+        glColor3ub(0, 0, 0);
+        glBegin(GL_LINE_LOOP);
+        glVertex2d(left(), bottom());
+        glVertex2d(left(), top());
+        glVertex2d(right(), top());
+        glVertex2d(right(), bottom());
+        glEnd();
+    }
+    else{
+        
+        glColor3ub(0, 0, 0);
+        glBegin(GL_POLYGON);
+        glVertex2d(left(), bottom());
+        glVertex2d(right(), bottom());
+        glVertex2d(right(), top());
+        glEnd();
+        
+        glColor3ub(199, 133, 120);    
+        glBegin(GL_POLYGON);
+        glVertex2d(right(), top());
+        glVertex2d(left(), top());
+        glVertex2d(left(), bottom());
+        glEnd();
+
+        glColor3b(0, 0, 0);
+        glBegin(GL_LINES);
+        glVertex2d(left(), bottom());
+        glVertex2d(right(), top());
+        glEnd();
+        
+        glColor3ub(199, 133, 64);
+        glBegin(GL_LINES);
+        glVertex2d(left(), bottom());
+        glVertex2d(right(), top());
         glEnd();
         
         glBegin(GL_POLYGON);
-        glVertex2d(left()+6, bottom()+2);
-        glVertex2d(left()+10, bottom()+2);
-        glVertex2d(left()+10, bottom()+4);
-        glVertex2d(left()+6, bottom()+4);
+        glVertex2d(left()+4, bottom()+4);
+        glVertex2d(left()+4, top()-4);
+        glVertex2d(right()-4, top()-4);
+        glVertex2d(right()-4, bottom()+4);
         glEnd();
         
+        
     }
-    
-    
-    glColor3ub(0, 0, 0);
-    glPointSize(2.0);
-    
-    glBegin(GL_POINTS);
-    glVertex2d(left()+2, bottom()+2);
-    glVertex2d(left()+2, top()-2);
-    glVertex2d(right()-2, bottom()+2);
-    glVertex2d(right()-2, top()-2);
-    glEnd();
-    
-    glColor3ub(0, 0, 0);
-    glBegin(GL_LINE_LOOP);
-    glVertex2d(left(), bottom());
-    glVertex2d(left(), top());
-    glVertex2d(right(), top());
-    glVertex2d(right(), bottom());
-    glEnd();
          
     
   
@@ -97,7 +129,7 @@ void Nonbreakable::generateReward(bool isLarge)
 				mushroom->setRight(this->right());
 				mushroom->setTop(this->top()+16);
 				mushroom->setBottom(this->top());
-				Level::sharedLevel()->addDrawable(mushroom);
+				Level::sharedLevel()->addMovable(mushroom);
             }	
             else {
                 // Create a fireflower above block it was in and adds drawable coin to the level
@@ -119,6 +151,6 @@ void Nonbreakable::generateReward(bool isLarge)
 			Level::sharedLevel()->addDrawable(star);
         }
         // once the block has been hit by mario and the reward generated change type to regular from question
-        type_ = REGULAR;
+        type_ = OFFQUESTION;
     }
 }   

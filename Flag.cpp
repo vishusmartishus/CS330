@@ -1,8 +1,10 @@
 // John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
 //------------------------------------------------------------
-// include header file
+
 #include "Flag.h"
+
 //------------------------------------------------------------
+
 void Flag::draw()
 {
 	
@@ -15,8 +17,10 @@ void Flag::draw()
     glEnd();
 	
 }
+
 //------------------------------------------------------------
-// returns the points based on where flag is touched
+
+// returns the points based on where the flag is touched
 int Flag::flagPoints(int touched)
 {
 	if (touched = 1) {

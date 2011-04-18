@@ -1,35 +1,36 @@
 // John (Jack) Johnson, Alex Martishius, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
-// If Drawable.h is not defined, defines it
+
 #ifndef _FLAG_H
 #define _FLAG_H
+
 //------------------------------------------------------------
-// Includes the Drawable.h file
+
 #include "Drawable.h"
+
 //------------------------------------------------------------
-// Class Flag that inherits from Drawable
+
 class Flag:public Drawable{
+
 //------------------------------------------------------------
+
 public:
-    // Flag constructor
+
     Flag()
     {
 
-
-
-
-
-
     }
-	// Flag destructor
+
 	virtual ~Flag()
 	{
+
 	}
+
+	// OpenGL abstract method to draw object
 	virtual void draw();
-	// Returns object type
+	// Returns object type FLAG
 	virtual int objectType() { return FLAG; }
-    // Method to decides and returns how many points awarded by touching the flag
-    // Touched is the level that the flag was touched
+    // Method to decide and return how many points are awarded by touching the flag at a certain point (touched)
     int flagPoints(int touched);
 };
 #endif

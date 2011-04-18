@@ -123,6 +123,9 @@
     <ClInclude Include="LListIterator.h">
       <Filter>Header Files\DataStructures</Filter>
     </ClInclude>
+    <ClInclude Include="Pipe.h">
+      <Filter>Header Files\Drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Base.cpp">
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="LList.cpp">
       <Filter>Source Files\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipe.cpp">
+      <Filter>Source Files\Drawable</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

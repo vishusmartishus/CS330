@@ -17,7 +17,7 @@
 
 using namespace std;
 
-GLuint textureShell;
+
 
 //---------------------------------------------------------
 
@@ -30,45 +30,8 @@ Shell::Shell()
 	setXVelocity(1.0);
 	setYVelocity(0.0);
     
-    
-    // Mac environment variable for home directory
-    char *cHomeDir = NULL;
-    
-    cHomeDir = getenv("HOME");
-    
-    // I think Windows uses HOMEPATH
-    if (!cHomeDir) {
-        cHomeDir = getenv("HOMEPATH");
-    }
-    string homeDir = cHomeDir;
+    sprite();
 
-    homeDir += "/CS330/sprites/shell0.tes";
-    
-
-        
-        FILE *fp = fopen(homeDir.c_str(), "r");
-        unsigned char *texture = new unsigned char[4 * 256 * 256];
-        if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
-            != 4* 256 *256) {
-            fprintf(stderr, "error reading %s", homeDir.c_str());
-        }
-    fclose(fp);
-        
-    glGenTextures(1, &textureShell);
-    glBindTexture(GL_TEXTURE_2D, textureShell);
-        
-    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                GL_LINEAR_MIPMAP_NEAREST );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                    GL_LINEAR );        
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-                    GL_CLAMP );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-                    GL_CLAMP );
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
-                        GL_UNSIGNED_BYTE, texture);
-    delete [] texture;
         
     
 }
@@ -105,3 +68,45 @@ void Shell::draw()
 }
 
 //---------------------------------------------------------
+
+void Shell::sprite()
+{
+    // Mac environment variable for home directory
+    char *cHomeDir = NULL;
+    
+    cHomeDir = getenv("HOME");
+    
+    // I think Windows uses HOMEPATH
+    if (!cHomeDir) {
+        cHomeDir = getenv("HOMEPATH");
+    }
+    string homeDir = cHomeDir;
+    
+    homeDir += "/CS330/sprites/shell0.tex";
+    
+    
+    
+    FILE *fp = fopen(homeDir.c_str(), "r");
+    unsigned char *texture = new unsigned char[4 * 32 * 32];
+    if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
+        != 4* 32 *32) {
+        fprintf(stderr, "error reading %s", homeDir.c_str());
+    }
+    fclose(fp);
+    
+    glGenTextures(1, &textureShell);
+    glBindTexture(GL_TEXTURE_2D, textureShell);
+    
+    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                    GL_LINEAR_MIPMAP_NEAREST );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                    GL_LINEAR );        
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+                    GL_CLAMP );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+                    GL_CLAMP );
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 32, GL_RGBA,
+                      GL_UNSIGNED_BYTE, texture);
+    delete [] texture;
+}

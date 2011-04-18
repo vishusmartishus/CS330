@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */; };
 		03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */; };
+		03739E79135759580001C080 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03739E77135759580001C080 /* Pipe.cpp */; };
 		037608EF1342470000A50E9A /* test_LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037608EE1342470000A50E9A /* test_LList.cpp */; };
 		037608F01342471000A50E9A /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
 		037608F11342472700A50E9A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
@@ -63,6 +64,7 @@
 		03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Game.1 */; };
+		B7A503E7135CC79200F72E5C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A503E5135CC79200F72E5C /* Background.cpp */; };
 		DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		03462EDC130AFC4A004BBAE6 /* EnemyFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyFireball.h; sourceTree = "<group>"; };
 		03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarioFireball.cpp; sourceTree = "<group>"; };
 		03462EDE130AFC4A004BBAE6 /* MarioFireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarioFireball.h; sourceTree = "<group>"; };
+		03739E77135759580001C080 /* Pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pipe.cpp; sourceTree = "<group>"; };
+		03739E78135759580001C080 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		037608E8134246D700A50E9A /* test_LList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_LList; sourceTree = BUILT_PRODUCTS_DIR; };
 		037608EE1342470000A50E9A /* test_LList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_LList.cpp; sourceTree = "<group>"; };
 		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 		03ECB8B81304C71700B5D298 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Game; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A503E5135CC79200F72E5C /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		B7A503E6135CC79200F72E5C /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* Game.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Game.1; sourceTree = "<group>"; };
 		DA38FB79130D9E4800C5F7A6 /* ListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNode.h; sourceTree = "<group>"; };
 		DA38FB7A130D9E5700C5F7A6 /* LList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LList.h; sourceTree = "<group>"; };
@@ -237,6 +243,8 @@
 		037A375C1302C1BA00788A82 /* Drawable */ = {
 			isa = PBXGroup;
 			children = (
+				03739E77135759580001C080 /* Pipe.cpp */,
+				03739E78135759580001C080 /* Pipe.h */,
 				037A37201302C10100788A82 /* Base.h */,
 				037A371F1302C10100788A82 /* Base.cpp */,
 				037A37241302C10100788A82 /* Drawable.h */,
@@ -251,6 +259,8 @@
 				037A37271302C10100788A82 /* FireFlower.cpp */,
 				03911FF5130CB9AB006F51B2 /* Coin.h */,
 				03911FF4130CB9AB006F51B2 /* Coin.cpp */,
+				B7A503E5135CC79200F72E5C /* Background.cpp */,
+				B7A503E6135CC79200F72E5C /* Background.h */,
 			);
 			name = Drawable;
 			sourceTree = "<group>";
@@ -450,6 +460,8 @@
 				03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */,
 				03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */,
 				DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */,
+				03739E79135759580001C080 /* Pipe.cpp in Sources */,
+				B7A503E7135CC79200F72E5C /* Background.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

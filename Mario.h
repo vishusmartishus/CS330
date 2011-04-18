@@ -41,6 +41,8 @@ private:
 	bool isInvincible_, isDead_;
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     int leftBound_;
+    GLuint texture_[3][4];
+    int texturePos;
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
@@ -50,6 +52,8 @@ private:
 	bool fireball();
     //Handels all jump cases
     void jump();
+    //Loads Sprite
+    void sprite();
 	
 };
 
