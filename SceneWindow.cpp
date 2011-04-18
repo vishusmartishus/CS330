@@ -7,6 +7,8 @@
 #endif
 
 #include <iostream>
+#include <sstream>
+#include <string>
 
 #include "SceneWindow.h"
 #include "Mario.h"
@@ -14,9 +16,14 @@
 #include "LList.h"
 #include "LListIterator.h"
 #include "Movable.h"
+#include "Game.h"
+#include "Coin.h"
 
 extern SceneWindow *sw;
 Mario *mario;
+Game *game;
+Coin *coin;
+//Game *game;
 const int WINDOWWIDTH = 512;
 const int WINDOWHEIGHT = 448;
 
@@ -54,7 +61,8 @@ SceneWindow::SceneWindow(int argc, char **argv)
 	viewportRightX_ = viewportLeftX_ + viewportWidth_;
 	glViewport(0, 0, viewportWidth_, viewportHeight_);
 	
-	glClearColor(0.7, 0.9, 1.0, 1.0);
+	glClearColor(0.4196, 0.549, 1.0, 1.0);
+	
 	
 	startGame();
 	
@@ -74,6 +82,8 @@ void SceneWindow::startGame()
 {
 	sw->loadLevel();
 	pause_ = false;
+	game = new Game();
+	coin = new Coin();
     glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 	
 }
@@ -101,6 +111,7 @@ void SceneWindow::loadLevel()
     mario->setRight(16+16);
     mario->setBottom(32);
     mario->setTop(32+16);
+		
     
 }
 
@@ -145,6 +156,7 @@ void SceneWindow::displayCB()
 	LList blocks = level_->getActiveBlocks();
 	LListIterator li;
 	
+	
 	Drawable *item;
     
     li.init(drawable);
@@ -163,7 +175,51 @@ void SceneWindow::displayCB()
 	}
     // mario isn't in any of the lists, so must be drawn seperately
     mario->draw();
-	 
+	
+	//draw top line of game information
+	string name = "MARIO                                   WORLD           LIVES";
+	glColor3f(255,255,255);
+	glRasterPos2f(viewportLeftX_ + 20, 210);
+	for (int i=0; i<name.length(); ++i){
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
+	}
+	//draw point total
+	std::stringstream points;
+	points << game->getPoints();
+	glColor3f(255,255,255);
+	glRasterPos2f(viewportLeftX_ + 20, 200);
+	for (int i=0; i<(points.str()).length(); ++i){
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, points.str()[i]);
+	}
+	//draw number of coins
+	coin->setTop(208);
+	coin->setBottom(198);
+	coin->setLeft(viewportLeftX_+70);
+	coin->setRight(viewportLeftX_ + 82);
+	coin->draw();
+	std::stringstream coins;
+	coins << game->getCoins();
+	glColor3f(255,255,255);
+	glRasterPos2f(viewportLeftX_ + 82, 200);
+	for (int i=0; i<(coins.str()).length(); ++i){
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, coins.str()[i]);
+	}
+	//draw level number
+	std::stringstream level;
+	level << game->getLevel();
+	glColor3f(255,255,255);
+	glRasterPos2f(viewportLeftX_ + 145, 200);
+	for (int i=0; i<(level.str()).length(); ++i){
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, level.str()[i]);
+	}
+	//draw lives
+	std::stringstream lives;
+	lives << game->getLives();
+	glColor3f(255,255,255);
+	glRasterPos2f(viewportLeftX_ + 201, 200);
+	for (int i=0; i<(lives.str()).length(); ++i){
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, lives.str()[i]);
+	}
 	
     // force screen update
     glFlush();
@@ -256,6 +312,7 @@ void SceneWindow::timerCB(int value)
         // reset level
 		viewportLeftX_ = 0;
 		viewportRightX_ = viewportLeftX_ + viewportWidth_;
+		game->subLife();
 		sw->loadLevel();
     }
 
