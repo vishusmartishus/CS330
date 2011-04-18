@@ -14,6 +14,7 @@
 #include "Level.h"
 #include "Breakable.h"
 #include "Nonbreakable.h"
+#include "Goomba.h"
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
@@ -229,9 +230,11 @@ void Mario::updateScene()
     //call the check methods to check to see if Mario is running into things
     //this works one frame at a time
     //if Mario jumps decrease the jumpCount_ by 1 every frame
-    testSwitch();
-    jump();
-    move();
+    if (!isDead()) {
+        testSwitch();
+        jump();
+        move();
+    }
     
 }
 //------------------------------------------------------------
@@ -728,6 +731,7 @@ void Mario::testSwitch() {
     //All items that can hit Mario from the top
     if (objt)
         switch (objt->objectType()) {
+            case OFFQUESTION:
             case REGULAR:
                 if (this->getYVelocity() > 0) {
                     this->setXVelocity(0.0);
@@ -752,13 +756,19 @@ void Mario::testSwitch() {
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                //die
+                this->isDead_ = true;
                 break;
             case MUSHROOM:
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
+                }
                 break;
             case STAR:
+                starCount_ = 50;
                 break;
             case FIREFLOWER:
+                this->state_ = FIRE_STATE;
                 break;
             case COIN:
                 break;
@@ -767,6 +777,8 @@ void Mario::testSwitch() {
     //All objects that can hit Mario from the bottom
     if (objb) {
         switch (objb->objectType()) {
+            case PIPE:
+            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -775,18 +787,25 @@ void Mario::testSwitch() {
                 }
                 break;
             case GOOMBA:
+                Level::sharedLevel()->removeDrawable(objb);
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                //kill enemy
                 break;
             case MUSHROOM:
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
+                }
                 break;
             case STAR:
+                starCount_ = 50;
                 break;
             case FIREFLOWER:
+                this->state_ = FIRE_STATE;
                 break;
             case COIN:
+                
                 break;
         }
     } else {
@@ -797,6 +816,7 @@ void Mario::testSwitch() {
     //All objects that can hit Mario from the left
     if (objl) {
         switch (objl->objectType()) {
+            case PIPE:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -805,16 +825,23 @@ void Mario::testSwitch() {
                 }
                 break;
             case GOOMBA:
+                cout << "GOOMBA";
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                //kill enemy
+                this->isDead_ = true;
                 break;
             case MUSHROOM:
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
+                }
                 break;
             case STAR:
+                starCount_ = 50;
                 break;
             case FIREFLOWER:
+                this->state_ = FIRE_STATE;
                 break;
             case COIN:
                 break;
@@ -830,6 +857,7 @@ void Mario::testSwitch() {
     //All objects that can hit Mario from the right
     if (objr) {
         switch (objr->objectType()) {
+            case PIPE:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -841,13 +869,19 @@ void Mario::testSwitch() {
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                //kill enemy
+                this->isDead_ = true;
                 break;
             case MUSHROOM:
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
+                }
                 break;
             case STAR:
+                starCount_ = 50;
                 break;
             case FIREFLOWER:
+                this->state_ = FIRE_STATE;
                 break;
             case COIN:
                 break;
