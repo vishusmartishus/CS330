@@ -108,9 +108,9 @@ void Turtle::sprite()
         iName += ".tex";
         
         FILE *fp = fopen(iName.c_str(), "r");
-        unsigned char *texture = new unsigned char[4 * 256 * 384];
-        if (fread(texture, sizeof(unsigned char), 4 * 256 * 384, fp)
-            != 4* 256 *384) {
+        unsigned char *texture = new unsigned char[4 * 32 * 48];
+        if (fread(texture, sizeof(unsigned char), 4 * 32 * 48, fp)
+            != 4* 32 *48) {
             fprintf(stderr, "error reading %s", iName.c_str());
         }
         fclose(fp);
@@ -127,7 +127,7 @@ void Turtle::sprite()
                         GL_CLAMP );
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                         GL_CLAMP );
-        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 384, GL_RGBA,
+        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 48, GL_RGBA,
                           GL_UNSIGNED_BYTE, texture);
         delete [] texture;
         
