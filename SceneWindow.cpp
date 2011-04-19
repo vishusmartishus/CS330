@@ -233,7 +233,7 @@ void SceneWindow::displayCB()
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, lives.str()[i]);
 	}
 	
-	if (pause_) {
+	if (pause_ && !mario->isDead()) {
 		string pause = "PAUSE";
 		glColor3f(255,255,255);
 		glRasterPos2f(viewportLeftX_ + 110, 110);
@@ -301,47 +301,74 @@ void SceneWindow::timerCB(int value)
 	// iterate through objects and move them
 	// redraw   
 
-	Level *level_ = Level:: sharedLevel();
-	LList movable = level_->getActiveMovable();
-	LListIterator li;
-	li.init(movable);
-	Drawable *item;
-	Movable *movableItem;
-	while ((item = li.next())) {
-		movableItem = (Movable*)item;
-		movableItem->updateScene();
-	}
+    if (!mario->isDead()){
+        Level *level_ = Level:: sharedLevel();
+        LList movable = level_->getActiveMovable();
+        LListIterator li;
+        li.init(movable);
+        Drawable *item;
+        Movable *movableItem;
+        while ((item = li.next())) {
+            movableItem = (Movable*)item;
+            movableItem->updateScene();
+        }
+        
+        mario ->updateScene();
+        // check if screen needs to be moved
+        int viewportMid_;
+        viewportMid_ = (viewportLeftX_ + viewportRightX_)/2;
+        if (mario->right() > viewportMid_)
+        {
+            viewportRightX_ = mario->right() + viewportWidth_/2;
+            viewportLeftX_ = mario->right() - viewportWidth_/2;
+            level_->updateExtents(viewportLeftX_, viewportRightX_);
+            mario->setLeftBound(viewportLeftX_);
 
-	mario ->updateScene();
-	// check if screen needs to be moved
-	int viewportMid_;
-	viewportMid_ = (viewportLeftX_ + viewportRightX_)/2;
-	if (mario->right() > viewportMid_)
-	{
-		viewportRightX_ = mario->right() + viewportWidth_/2;
-		viewportLeftX_ = mario->right() - viewportWidth_/2;
-		level_->updateExtents(viewportLeftX_, viewportRightX_);
-        mario->setLeftBound(viewportLeftX_);
-
-	}
+        }
+    }
+    else{
+        if (!pause_) {
+            pause_ = true;
+            deadups_ = true;
+            mario->setLeft(viewportLeftX_+124.0);
+            mario->setRight(viewportLeftX_+140.0);
+            mario->setBottom(136.0);
+            mario->setTop(152.0);
+            
+        }
+        else if (mario->top() > 0){
+            if (deadups_ == false) {
+                mario->setBottom(mario->bottom()-1);
+                mario->setTop(mario->top()-1);
+            }
+            else{
+                mario->setBottom(mario->bottom()+1);
+                mario->setTop(mario->top()+1);
+                if (mario->top() > 200.0) {
+                    deadups_ = false;
+                }
+            }
+            
+        }
+        else{
+            pause_ = false;
+            viewportLeftX_ = 0;
+            viewportRightX_ = viewportLeftX_ + viewportWidth_;
+            game->subLife();
+            start_=false;
+            sw->loadLevel();
+            glClearColor(0, 0, 0, 0);
+        }
+        
+    }
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(viewportLeftX_, viewportRightX_, 0, WINDOWHEIGHT/2);
     
-    if (mario->isDead()) {
-        // reset level
-		viewportLeftX_ = 0;
-		viewportRightX_ = viewportLeftX_ + viewportWidth_;
-		game->subLife();
-		start_=false;
-		sw->loadLevel();
-		glClearColor(0, 0, 0, 0);
-
-    }
 
 	glutPostRedisplay();
-	if (pause_==false) {
+	if ((pause_==false) || (pause_ && mario->isDead())) {
 		glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 	}
 }
