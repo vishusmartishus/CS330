@@ -328,11 +328,14 @@ void Mario::check() {
                     this->setYVelocity(0.0);
                 }
                 break;
+            case TURTLE:
+                
             case GOOMBA:
                 Level::sharedLevel()->removeDrawable(objb);
+                this->jumpCount_ = 25;
+                this->setYVelocity(2.0);
             case SHELL:
             case ENEMYFIREBALL:
-            case TURTLE:
                 break;
             case MUSHROOM:
                 Level::sharedLevel()->removeDrawable(objb);
@@ -436,6 +439,8 @@ void Mario::check() {
             case COIN:
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objr);
+                break;
+            case FLAG:
                 break;
                 
         }

@@ -26,7 +26,7 @@ Star::Star()
 	setKillsSide(false);
 	setKillsTop(false);
 	setPoints(0);
-	setXVelocity(1.0);
+	setXVelocity(0.75);
 	setYVelocity(0.0);
     
     sprite();        

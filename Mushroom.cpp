@@ -15,9 +15,6 @@
 #include <string>
 #include <sstream>
 
-
-using namespace std;
-
 //---------------------------------------------------------
 
 Mushroom::Mushroom()
@@ -26,7 +23,7 @@ Mushroom::Mushroom()
 	setKillsSide(false);
 	setKillsTop(false);
 	setPoints(0);
-	setXVelocity(1.0);
+	setXVelocity(0.75);
 	setYVelocity(0.0);
     
     sprite();
