@@ -37,7 +37,6 @@ public:
     void setLeftBound(int leftBound);
     //returns the object type of Mario
     virtual int objectType() { return MARIO; }
-    void testSwitch();
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
@@ -51,7 +50,7 @@ private:
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
     //checks to see if Mario runs into an object
-    bool check();
+    void check();
 	//Returns true if Mario is in the fire state
 	bool fireball();
     //Handels all jump cases
