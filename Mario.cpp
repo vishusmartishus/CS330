@@ -544,13 +544,16 @@ bool Mario::check()
                 starCount_ = 50;
             }
         }
+        if (objt->objectType() != BACKGROUND) {
+            this->jumpCount_ = 0;
+            this->setYVelocity(-2.0);
+        }
         //Up above, waiting for Drew
-        this->jumpCount_ = 0;
-        this->setYVelocity(-2.0);
+        
     }
     //mario falls on something
     if (objb && this->getYVelocity() < 0) {
-        this->setYVelocity(0.0);
+        //this->setYVelocity(0.0);
         if (objb->objectType() == GOOMBA || objb->objectType() == SHELL || objb->objectType() == TURTLE || objb->objectType() == ENEMYFIREBALL || objb->objectType() == PLANT) {
             if (starCount_ > 0) {
                 //kill enemy
@@ -585,14 +588,14 @@ bool Mario::check()
                 starCount_ = 50;
             }
         }
-        else if (objb->objectType() == BREAKABLE || objb->objectType() == REGULAR || objb->objectType() == QUESTION) {
+        else if (objb->objectType() == BREAKABLE || objb->objectType() == REGULAR || objb->objectType() == QUESTION || objb->objectType() == PIPE || objb->objectType() == OFFQUESTION) {
             jumpCount_ = 0;
             this->setYVelocity(0.0);
         }
     }
     //Mario moves to the left
     if (objl && this->getXVelocity() < 0) {
-        this->setXVelocity(0.0);
+        //this->setXVelocity(0.0);
         if (objl->objectType() == GOOMBA || objl->objectType() == SHELL || objl->objectType() == TURTLE || objl->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
@@ -604,7 +607,7 @@ bool Mario::check()
                 return false;
             }
         }
-        else if (objl->objectType() == BREAKABLE || objl->objectType() == REGULAR || objl->objectType() == QUESTION){
+        else if (objl->objectType() == BREAKABLE || objl->objectType() == REGULAR || objl->objectType() == QUESTION || objl->objectType() == PIPE || objl->objectType() == OFFQUESTION){
             this->setXVelocity(0.0);
         }
         else if (objl->objectType() == MUSHROOM || objl->objectType() == STAR || objl->objectType() == FIREFLOWER || 
@@ -633,12 +636,13 @@ bool Mario::check()
             }
         }
         
-    } else if (!objl && leftKey_) {
+    }
+    else if ((!objl && leftKey_)) {
         this->setXVelocity(-1.0);
     }
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
-        this->setXVelocity(0.0);
+        //this->setXVelocity(0.0);
         if (objr->objectType() == GOOMBA || objr->objectType() == SHELL || objr->objectType() == TURTLE || objr->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
@@ -650,7 +654,7 @@ bool Mario::check()
                 return false;
             }
         }
-        else if (objr->objectType() == BREAKABLE || objr->objectType() == REGULAR || objr->objectType() == QUESTION){
+        else if (objr->objectType() == BREAKABLE || objr->objectType() == REGULAR || objr->objectType() == QUESTION || objr->objectType() == PIPE || objr->objectType() == OFFQUESTION){
             this->setXVelocity(0.0);
         }
         else if (objr->objectType() == MUSHROOM || objr->objectType() == STAR || objr->objectType() == FIREFLOWER || objr->objectType() == COIN){
@@ -678,7 +682,7 @@ bool Mario::check()
             }
         }
     } 
-    else if (!objr && rightKey_) {
+    else if ((!objr && rightKey_)  ) {
         this->setXVelocity(1.0);
     }
     //Mario Falls off the screen
