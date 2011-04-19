@@ -1,9 +1,9 @@
-/* 
- *  Mario.cpp
- *  Mario
+/*
+ * Mario.cpp
+ * Mario
  *
- *  Created by Andrew Peddicord on 2/1/11.
- *  Copyright 2011 Capital University. All rights reserved.
+ * Created by Andrew Peddicord on 2/1/11.
+ * Copyright 2011 Capital University. All rights reserved.
  *
  * filed edited by Drew and Nate
  */
@@ -50,14 +50,14 @@ void Mario::draw()
     else{
         texturePos = 0;
     }
-
-             
+    
+    
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
     
-
+    
     glBegin( GL_QUADS );
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     if (this->getXVelocity() >= 0) {
@@ -100,7 +100,7 @@ Mario::Mario()
     this->setXVelocity(0.0);
     this->setYVelocity(0.0);
     
-        
+    
     sprite();
 }
 //------------------------------------------------------------
@@ -115,7 +115,7 @@ void Mario::updateKeyDown(unsigned char button)
         {
             this->setXVelocity(-2.0);
         }
-        else 
+        else
         {
             this->setXVelocity(-1.0);
         }
@@ -130,7 +130,7 @@ void Mario::updateKeyDown(unsigned char button)
         {
             this->setXVelocity(2.0);
         }
-        else 
+        else
         {
             this->setXVelocity(1.0);
         }
@@ -139,7 +139,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'w')
     {
         jumpKey_ = true;
-        if (jumpCount_ == 0 && this->getYVelocity() == 0.0) 
+        if (jumpCount_ == 0 && this->getYVelocity() == 0.0)
         {
             jumpCount_ = 50;
             
@@ -162,8 +162,8 @@ void Mario::updateKeyDown(unsigned char button)
 //upadates Mario's info when a button is let up
 void Mario::updateKeyUp(unsigned char button)
 {
-	if (button == 'a') {
-		leftKey_ = false;
+    if (button == 'a') {
+        leftKey_ = false;
         if (rightKey_) {
             if (this->getXVelocity() < 0) {
                 this->setXVelocity(1.0);
@@ -172,19 +172,19 @@ void Mario::updateKeyUp(unsigned char button)
         else {
             this->setXVelocity(0.0);
         }
-	}
-	if (button == 'w') {
-		jumpKey_ = false;
+    }
+    if (button == 'w') {
+        jumpKey_ = false;
         if (jumpCount_ > 15) {
             jumpCount_ = 15;
         } else {
             jumpCount_ = 0;
             this->setYVelocity(-2.0);
         }
-	}
+    }
     
-	if (button == 'd') {
-		rightKey_ = false;
+    if (button == 'd') {
+        rightKey_ = false;
         if (leftKey_) {
             if (this->getXVelocity() > 0) {
                 this->setXVelocity(-1.0);
@@ -193,13 +193,13 @@ void Mario::updateKeyUp(unsigned char button)
         else {
             this->setXVelocity(0.0);
         }
-	}
-	if (button == 'j') {
-		sprintKey_ = false;
-	}
-	if (button == 'k') {
-		fireballKey_ = false;
-	}
+    }
+    if (button == 'j') {
+        sprintKey_ = false;
+    }
+    if (button == 'k') {
+        fireballKey_ = false;
+    }
 }
 //------------------------------------------------------------
 //method to calculate Marios movement
@@ -245,258 +245,236 @@ void Mario::updateScene()
 bool Mario::check()
 {
     /*
-    //get all the values of the objects so Mario knows what to do 
-    // the object
-    //check each case for each object
-    //object list
-    //flag: 1, breakable: 2, nonbreakable: 3, Fireflower: 4, coin: 5
-    //Mario: 6, Goomba: 7, Mushroom: 8, Plant: 9, Shell: 10, Star: 11
-    //Turtle: 12, EnemyFireball: 13, MarioFireball: 14
-    
-    int count = 0;;
-    
-    //the level 
-    Level *level = Level::sharedLevel();
-    
-    //the lists of active objects
-    LList moveableList = level->getActiveMovable();
-    LList drawableList = level->getActiveDrawable();
-    LList blockList = level->getActiveBlocks();
-    
-    //instance of LListIterator
-    LListIterator iter;
-    
-    //object that will be checked for its type
-    Drawable *object;
-    
-    iter.init(moveableList);
-    
-    while ((object = iter.next())) 
-    {
-        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
-        {
-            //if Mario runs into an enemy
-            if (object->objectType() == GOOMBA || object->objectType() == PLANT || object->objectType() == SHELL || object->objectType() == TURTLE || object->objectType() == ENEMYFIREBALL)
-            {
-                //Mario dies from the right
-                //go through the changes of Mario's state based on current state
-                //and him getting hit by an enemy
-                if (isInvincible_)
-                {
-                    //Mario kills the enemy
-                }
-                
-                else if (this->state_ == FIRE_STATE)
-                {
-                  this->state_ = BIG_STATE;
-                }
-                
-                else if (this->state_ == BIG_STATE)
-                {
-                    this->state_ = SMALL_STATE;
-                }
-                
-                else {
-                    //Mario dies
-                    return false;
-                }
-                
-            }
-            //if Mario runs into a Movable Reward
-            else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
-            {
-                //update Mario's State
-                if (object->objectType() == MUSHROOM) 
-                {
-                    if (this->state_ == SMALL_STATE)
-                    {
-                        this->state_ = BIG_STATE;
-                    }
-                    else
-                    {
-                        //give Mario Points for getting mushroom
-                    }
-                    
-                }
-                else if (object->objectType() == STAR)
-                {
-                    //Mario is invincible 
-                    isInvincible_ = true;
-                    //Update invincible count
-                    starCount_ = 50;
-                }
-            }
-        }
-                
-        //possibly checking if things fall on Mario's Head
-        
-         if ((this->top() == object->bottom()) && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right())))
-         {
-             //if an enemy lands on top of Mario
-             if (object->objectType() == GOOMBA || object->objectType() == SHELL || object->objectType() == TURTLE || object->objectType() == ENEMYFIREBALL)
-             {
-                 if (isInvincible_)
-                 {
-                     //enemy dies
-                 }
-                 else 
-                 {
-                     //Mario dies
-                     return false;
-                 }
-             }
-             //if a reward lands on top of Mario
-             else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
-             {
-                 //update Mario's State
-                 if (object->objectType() == MUSHROOM) 
-                 {
-                     if (this->state_ == SMALL_STATE)
-                     {
-                         this->state_ = BIG_STATE;
-                     }
-                     else
-                     {
-                         //give Mario Points for getting mushroom
-                     }
-                     
-                 }
-                 else if (object->objectType() == STAR)
-                 {
-                     //Mario is invincible 
-                     isInvincible_ = true;
-                     //Update invicible count
-                     starCount_ = 50;
-                 }
-             }
-         }
-        
-        
-        //checks if mario lands on top of object
-        if ((this->bottom() == object->top()) && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right()))) 
-        {
-            //if Mario lands on top of an enemy
-            if (object->objectType() == GOOMBA || object->objectType() == SHELL || object->objectType() == TURTLE)
-            {
-                //enemy dies
-                //Mario's jumpcount reset? (Mario will jump higher (bounce))
-            }
-            //if Mario lands on a reward
-            else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
-            {
-                //update Mario's State
-                if (object->objectType() == MUSHROOM) 
-                {
-                    if (this->state_ == SMALL_STATE)
-                    {
-                        this->state_ = BIG_STATE;
-                    }
-                    else
-                    {
-                        //give Mario Points for getting mushroom
-                    }
-                    
-                }
-                else if (object->objectType() == STAR)
-                {
-                    //Mario is invincible 
-                    isInvincible_ = true;
-                    //Update invincible count
-                    starCount_ = 50;
-                }
-            }
-            //if Mario lands on an enemy that can't be killed
-            else if (object->objectType() == PLANT || object->objectType() == ENEMYFIREBALL)
-            {
-                //go through the changes of Mario's state based on current state
-                //and him getting hit by an enemy
-                if (this->state_ == FIRE_STATE)
-                {
-                    this->state_ = BIG_STATE;
-                }
-                else if (this->state_ == BIG_STATE)
-                {
-                    this->state_ = SMALL_STATE;
-                }
-                else {
-                    //Mario dies
-                    return false;
-                }
-            }
-        }
-    }
-
-
-    iter.init(drawableList);
-    
-    while ((object = iter.next()))
-    {
-        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top())) 
-        {
-            if (object->objectType() == FLAG) 
-            {
-                //end game
-            }
-            else if (object->objectType() == FIREFLOWER) 
-            {
-                //update Mario's State
-                if (this->state_ == FIRE_STATE)
-                {
-                    //generate points for fireflower
-                }
-                else
-                {
-                    this->state_ = FIRE_STATE;
-                }
-                    
-            }
-            else if(object->objectType() == COIN) 
-            {
-                //update Mario's Points
-            }
-        }
-    }
-    
-    iter.init(blockList);
-    
-    while ((object = iter.next()))
-    {
-        //check if Mario is jumping into a block
-        if ((this->top() >= object->bottom() && this->top() <= object->top()) && ((this->right() >= object->left() && this->right() <= object->right()) || (this->left() >= object->left() && this->left() <= object->right()))) 
-        {
-            this->jumpCount_ = 0;
-            this->setYVelocity(-2.0);
-            if (this->state_ == BIG_STATE && object->objectType() == BREAKABLE) {
-                //break block
-            }
-            else 
-            {
-                //stop moving
-                if (object->objectType() == QUESTION)
-                {
-                    //generate reward
-                }
-            }
-        }
-        //check if Mario lands on a block
-        if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top() && this->bottom() >= object->bottom()))
-        {
-            //stop falling
-            //keep moving
-            count = 1;
-            if (jumpCount_ == 0) {
-                this->setYVelocity(0.0);
-            }
-        }
-    }
-    if (count == 0 && this->getYVelocity() == 0) {
-        this->setYVelocity(-2.0);
-    }
-    if (this->bottom() > 0)
-        return true;
-    else
-        return false;
-    */
+     //get all the values of the objects so Mario knows what to do
+     // the object
+     //check each case for each object
+     //object list
+     //flag: 1, breakable: 2, nonbreakable: 3, Fireflower: 4, coin: 5
+     //Mario: 6, Goomba: 7, Mushroom: 8, Plant: 9, Shell: 10, Star: 11
+     //Turtle: 12, EnemyFireball: 13, MarioFireball: 14
+     int count = 0;;
+     //the level
+     Level *level = Level::sharedLevel();
+     //the lists of active objects
+     LList moveableList = level->getActiveMovable();
+     LList drawableList = level->getActiveDrawable();
+     LList blockList = level->getActiveBlocks();
+     //instance of LListIterator
+     LListIterator iter;
+     //object that will be checked for its type
+     Drawable *object;
+     iter.init(moveableList);
+     while ((object = iter.next()))
+     {
+     if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
+     {
+     //if Mario runs into an enemy
+     if (object->objectType() == GOOMBA || object->objectType() == PLANT || object->objectType() == SHELL || object->objectType() == TURTLE || object->objectType() == ENEMYFIREBALL)
+     {
+     //Mario dies from the right
+     //go through the changes of Mario's state based on current state
+     //and him getting hit by an enemy
+     if (isInvincible_)
+     {
+     //Mario kills the enemy
+     }
+     else if (this->state_ == FIRE_STATE)
+     {
+     this->state_ = BIG_STATE;
+     }
+     else if (this->state_ == BIG_STATE)
+     {
+     this->state_ = SMALL_STATE;
+     }
+     else {
+     //Mario dies
+     return false;
+     }
+     }
+     //if Mario runs into a Movable Reward
+     else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
+     {
+     //update Mario's State
+     if (object->objectType() == MUSHROOM)
+     {
+     if (this->state_ == SMALL_STATE)
+     {
+     this->state_ = BIG_STATE;
+     }
+     else
+     {
+     //give Mario Points for getting mushroom
+     }
+     }
+     else if (object->objectType() == STAR)
+     {
+     //Mario is invincible
+     isInvincible_ = true;
+     //Update invincible count
+     starCount_ = 50;
+     }
+     }
+     }
+     //possibly checking if things fall on Mario's Head
+     if ((this->top() == object->bottom()) && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right())))
+     {
+     //if an enemy lands on top of Mario
+     if (object->objectType() == GOOMBA || object->objectType() == SHELL || object->objectType() == TURTLE || object->objectType() == ENEMYFIREBALL)
+     {
+     if (isInvincible_)
+     {
+     //enemy dies
+     }
+     else
+     {
+     //Mario dies
+     return false;
+     }
+     }
+     //if a reward lands on top of Mario
+     else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
+     {
+     //update Mario's State
+     if (object->objectType() == MUSHROOM)
+     {
+     if (this->state_ == SMALL_STATE)
+     {
+     this->state_ = BIG_STATE;
+     }
+     else
+     {
+     //give Mario Points for getting mushroom
+     }
+     }
+     else if (object->objectType() == STAR)
+     {
+     //Mario is invincible
+     isInvincible_ = true;
+     //Update invicible count
+     starCount_ = 50;
+     }
+     }
+     }
+     //checks if mario lands on top of object
+     if ((this->bottom() == object->top()) && ((this->right() >= object->left() || this->right() <= object->right()) || (this->left() >= object->left() || this->left() <= object->right())))
+     {
+     //if Mario lands on top of an enemy
+     if (object->objectType() == GOOMBA || object->objectType() == SHELL || object->objectType() == TURTLE)
+     {
+     //enemy dies
+     //Mario's jumpcount reset? (Mario will jump higher (bounce))
+     }
+     //if Mario lands on a reward
+     else if (object->objectType() == MUSHROOM || object->objectType() == STAR)
+     {
+     //update Mario's State
+     if (object->objectType() == MUSHROOM)
+     {
+     if (this->state_ == SMALL_STATE)
+     {
+     this->state_ = BIG_STATE;
+     }
+     else
+     {
+     //give Mario Points for getting mushroom
+     }
+     }
+     else if (object->objectType() == STAR)
+     {
+     //Mario is invincible
+     isInvincible_ = true;
+     //Update invincible count
+     starCount_ = 50;
+     }
+     }
+     //if Mario lands on an enemy that can't be killed
+     else if (object->objectType() == PLANT || object->objectType() == ENEMYFIREBALL)
+     {
+     //go through the changes of Mario's state based on current state
+     //and him getting hit by an enemy
+     if (this->state_ == FIRE_STATE)
+     {
+     this->state_ = BIG_STATE;
+     }
+     else if (this->state_ == BIG_STATE)
+     {
+     this->state_ = SMALL_STATE;
+     }
+     else {
+     //Mario dies
+     return false;
+     }
+     }
+     }
+     }
+     
+     
+     iter.init(drawableList);
+     while ((object = iter.next()))
+     {
+     if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top()))
+     {
+     if (object->objectType() == FLAG)
+     {
+     //end game
+     }
+     else if (object->objectType() == FIREFLOWER)
+     {
+     //update Mario's State
+     if (this->state_ == FIRE_STATE)
+     {
+     //generate points for fireflower
+     }
+     else
+     {
+     this->state_ = FIRE_STATE;
+     }
+     }
+     else if(object->objectType() == COIN)
+     {
+     //update Mario's Points
+     }
+     }
+     }
+     iter.init(blockList);
+     while ((object = iter.next()))
+     {
+     //check if Mario is jumping into a block
+     if ((this->top() >= object->bottom() && this->top() <= object->top()) && ((this->right() >= object->left() && this->right() <= object->right()) || (this->left() >= object->left() && this->left() <= object->right())))
+     {
+     this->jumpCount_ = 0;
+     this->setYVelocity(-2.0);
+     if (this->state_ == BIG_STATE && object->objectType() == BREAKABLE) {
+     //break block
+     }
+     else
+     {
+     //stop moving
+     if (object->objectType() == QUESTION)
+     {
+     //generate reward
+     }
+     }
+     }
+     //check if Mario lands on a block
+     if (((this->right() >= object->left() && this->right() <= object->right()) || (this->left() <= object->right() && this->left() >= object->left())) && (this->bottom() <= object->top() && this->bottom() >= object->bottom()))
+     {
+     //stop falling
+     //keep moving
+     count = 1;
+     if (jumpCount_ == 0) {
+     this->setYVelocity(0.0);
+     }
+     }
+     }
+     if (count == 0 && this->getYVelocity() == 0) {
+     this->setYVelocity(-2.0);
+     }
+     if (this->bottom() > 0)
+     return true;
+     else
+     return false;
+     */
     Drawable *objb, *objt, *objl, *objr;
     objb = this->checkBottom();
     objt = this->checkTop();
@@ -510,18 +488,13 @@ bool Mario::check()
     if (!objb && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
-    if (objb) {
-        if (objb->objectType() == BACKGROUND) {
-            this->setYVelocity(-2.0);
-        }
-    }
     //mario jumps into something
     if (objt) {
         //Mario jumps into a reward block
         if (objt->objectType() == QUESTION) {
             Nonbreakable *temp = (Nonbreakable*)objt;
             temp->generateReward(this->getState() != SMALL_STATE);
-        } 
+        }
         //Mario jumps into a breakable block
         else if (objt->objectType() == BREAKABLE) {
             Breakable *temp = (Breakable*)objt;
@@ -541,7 +514,6 @@ bool Mario::check()
                 }
                 else if (this->getState() == FIRE_STATE) {
                     this->state_ = BIG_STATE;
-                    this->setTop(this->top() + 16);
                 }
                 else {
                     //Mario dies
@@ -560,27 +532,18 @@ bool Mario::check()
                 //add points
             }
         }
-        //star hits Mario from top
-        else if (objt->objectType() == STAR) {
-            starCount_ = 50;
-        }
-        //mario jumps into coin
-        else if (objt->objectType() == COIN)
-        {
-            //give Mario coins
-        }
         /*
-        else if (objt->objectType() == FIREFLOWER) {
-            if (this->getState() == FIRE_STATE) {
-                //add points
-            }
-            else {
-                if (this->getState() == SMALL_STATE) {
-                    this->setTop(this->top()+16);
-                }
-                this->state_ = FIRE_STATE;
-            }
-        }*/
+         else if (objt->objectType() == FIREFLOWER) {
+         if (this->getState() == FIRE_STATE) {
+         //add points
+         }
+         else {
+         if (this->getState() == SMALL_STATE) {
+         this->setTop(this->top()+16);
+         }
+         this->state_ = FIRE_STATE;
+         }
+         }*/
         //star hits Mario from top
         else if (objt->objectType() == STAR) {
             starCount_ = 50;
@@ -697,17 +660,16 @@ bool Mario::check()
         //runs into coin on left
         else if (objl->objectType() == COIN){
             //Mario get some points
-            }
+        }
         
         
-    }
-    else if ((!objl && leftKey_)) {
+    } else if (!objl && leftKey_) {
         this->setXVelocity(-1.0);
     }
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
         this->setXVelocity(0.0);
-        //runs into an enemy  on the right
+        //runs into an enemy on the right
         if (objr->objectType() == GOOMBA || objr->objectType() == SHELL || objr->objectType() == TURTLE || objr->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
@@ -779,7 +741,7 @@ bool Mario::check()
 //Creates a fireball
 bool Mario::fireball()
 {
-	return false;
+    return false;
 }
 //------------------------------------------------------------
 void Mario::setLeftBound(int leftBound)
@@ -843,11 +805,11 @@ void Mario::sprite()
             glGenTextures(1, &texture_[j][i]);
             glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
             
-            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
+            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                             GL_LINEAR_MIPMAP_NEAREST );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                            GL_LINEAR );        
+                            GL_LINEAR );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
                             GL_CLAMP );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
@@ -858,6 +820,6 @@ void Mario::sprite()
             
         }
     }
-
+    
     
 }
