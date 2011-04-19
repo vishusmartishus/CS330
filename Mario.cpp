@@ -494,7 +494,7 @@ bool Mario::check()
         if (objt->objectType() == QUESTION) {
             Nonbreakable *temp = (Nonbreakable*)objt;
             temp->generateReward(this->getState() != SMALL_STATE);
-        }
+        } 
         //Mario jumps into a breakable block
         else if (objt->objectType() == BREAKABLE) {
             Breakable *temp = (Breakable*)objt;
@@ -533,17 +533,17 @@ bool Mario::check()
             }
         }
         /*
-         else if (objt->objectType() == FIREFLOWER) {
-         if (this->getState() == FIRE_STATE) {
-         //add points
-         }
-         else {
-         if (this->getState() == SMALL_STATE) {
-         this->setTop(this->top()+16);
-         }
-         this->state_ = FIRE_STATE;
-         }
-         }*/
+        else if (objt->objectType() == FIREFLOWER) {
+            if (this->getState() == FIRE_STATE) {
+                //add points
+            }
+            else {
+                if (this->getState() == SMALL_STATE) {
+                    this->setTop(this->top()+16);
+                }
+                this->state_ = FIRE_STATE;
+            }
+        }*/
         //star hits Mario from top
         else if (objt->objectType() == STAR) {
             starCount_ = 50;
@@ -660,7 +660,7 @@ bool Mario::check()
         //runs into coin on left
         else if (objl->objectType() == COIN){
             //Mario get some points
-        }
+            }
         
         
     } else if (!objl && leftKey_) {
@@ -669,7 +669,7 @@ bool Mario::check()
     //Mario is moving to the right
     if (objr && this->getXVelocity() > 0) {
         this->setXVelocity(0.0);
-        //runs into an enemy on the right
+        //runs into an enemy  on the right
         if (objr->objectType() == GOOMBA || objr->objectType() == SHELL || objr->objectType() == TURTLE || objr->objectType() == ENEMYFIREBALL){
             if (this->starCount_ > 0){
                 //enemy dies
