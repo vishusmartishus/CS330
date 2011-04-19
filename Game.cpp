@@ -64,6 +64,16 @@ void Game::subLife()
     livesTotal_--;
 }
 
+//------------------------------------------------------------
+
+void Game::gameOver()
+{
+	pointsTotal_ = 0;
+    coinsTotal_ = 0;
+    livesTotal_ = 3;
+	levelNumber_ = 1;
+}
+
 
 
 
