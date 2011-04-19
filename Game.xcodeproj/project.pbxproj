@@ -22,7 +22,6 @@
 		037A374B1302C10100788A82 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
 		037A374C1302C10100788A82 /* Goomba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372D1302C10100788A82 /* Goomba.cpp */; };
 		037A374D1302C10100788A82 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372F1302C10100788A82 /* Level.cpp */; };
-		037A374E1302C10100788A82 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37311302C10100788A82 /* Mario.cpp */; };
 		037A374F1302C10100788A82 /* AllMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37331302C10100788A82 /* AllMovable.cpp */; };
 		037A37501302C10100788A82 /* Mushroom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37351302C10100788A82 /* Mushroom.cpp */; };
 		037A37511302C10100788A82 /* Nonbreakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37371302C10100788A82 /* Nonbreakable.cpp */; };
@@ -55,7 +54,6 @@
 		038B7C6B1344EB1800BFECC0 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		038B7C6E1344EB3B00BFECC0 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37291302C10100788A82 /* Flag.cpp */; };
 		038B7C6F1344EB3B00BFECC0 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
-		038B7C701344EB3B00BFECC0 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37311302C10100788A82 /* Mario.cpp */; };
 		03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		039EFB0B1344E6B50074E32E /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		039EFB171344E6DF0074E32E /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B61304C71700B5D298 /* GLUT.framework */; };
@@ -108,7 +106,6 @@
 		037A372E1302C10100788A82 /* Goomba.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goomba.h; sourceTree = "<group>"; };
 		037A372F1302C10100788A82 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		037A37301302C10100788A82 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
-		037A37311302C10100788A82 /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
 		037A37321302C10100788A82 /* Mario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mario.h; sourceTree = "<group>"; };
 		037A37331302C10100788A82 /* AllMovable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AllMovable.cpp; sourceTree = "<group>"; };
 		037A37341302C10100788A82 /* AllMovable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllMovable.h; sourceTree = "<group>"; };
@@ -237,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				037A37321302C10100788A82 /* Mario.h */,
-				037A37311302C10100788A82 /* Mario.cpp */,
 			);
 			name = Mario;
 			sourceTree = "<group>";
@@ -420,7 +416,6 @@
 				038B7C6F1344EB3B00BFECC0 /* Game.cpp in Sources */,
 				038B7C4F1344EA6800BFECC0 /* Goomba.cpp in Sources */,
 				038B7C611344EACB00BFECC0 /* Level.cpp in Sources */,
-				038B7C701344EB3B00BFECC0 /* Mario.cpp in Sources */,
 				038B7C4D1344EA6800BFECC0 /* AllMovable.cpp in Sources */,
 				038B7C501344EA6800BFECC0 /* Mushroom.cpp in Sources */,
 				038B7C651344EAE300BFECC0 /* Nonbreakable.cpp in Sources */,
@@ -450,7 +445,6 @@
 				037A374B1302C10100788A82 /* Game.cpp in Sources */,
 				037A374C1302C10100788A82 /* Goomba.cpp in Sources */,
 				037A374D1302C10100788A82 /* Level.cpp in Sources */,
-				037A374E1302C10100788A82 /* Mario.cpp in Sources */,
 				037A374F1302C10100788A82 /* AllMovable.cpp in Sources */,
 				037A37501302C10100788A82 /* Mushroom.cpp in Sources */,
 				037A37511302C10100788A82 /* Nonbreakable.cpp in Sources */,
