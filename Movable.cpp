@@ -51,6 +51,9 @@ bool Movable::canMove()
 		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE) {
 			this->setYVelocity(0.0);
 		}
+        else if (dBottom->objectType() == BACKGROUND){
+            this->setYVelocity(-2.0);
+        }
 	}
 
     // if nothing to the right or left

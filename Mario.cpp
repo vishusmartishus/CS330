@@ -505,6 +505,11 @@ bool Mario::check()
     if (!objb && this->getYVelocity() == 0) {
         this->setYVelocity(-2.0);
     }
+    if (objb) {
+        if (objb->objectType() == BACKGROUND) {
+            this->setYVelocity(-2.0);
+        }
+    }
     //mario jumps into something
     if (objt) {
         if (objt->objectType() == QUESTION) {
@@ -605,7 +610,7 @@ bool Mario::check()
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
                 if (getState() == BIG_STATE) {
                     this->setTop(this->top() - 16);
-                    this->state_ == SMALL_STATE;
+                    this->state_ = SMALL_STATE;
                 }
                 else{
                 this->state_ = BIG_STATE;
@@ -659,7 +664,7 @@ bool Mario::check()
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
                 if (getState() == BIG_STATE) {
                     this->setTop(this->top() - 16);
-                    this->state_ == SMALL_STATE;
+                    this->state_ = SMALL_STATE;
                 }
                 else{
                     this->state_ = BIG_STATE;
