@@ -185,11 +185,25 @@ void SceneWindow::displayCB()
 		for (int i=0; i<name.length(); ++i){
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
 		}
+        name = "Mario x";
+        glRasterPos2f(viewportLeftX_ +95, 100);
+        for (int i=0; i<name.length(); ++i){
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
+		}
+        
+        //draw lives
+        std::stringstream lives;
+        lives << game->getLives();
+        glColor3f(255,255,255);
+        glRasterPos2f(viewportLeftX_ + 130, 100);
+        for (int i=0; i<(lives.str()).length(); ++i){
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, lives.str()[i]);
+        }
 	}
 	
 	
 	//draw top line of game information
-	string name = "MARIO                                   WORLD           LIVES";
+	string name = "MARIO                                   WORLD           TIME";
 	glColor3f(255,255,255);
 	glRasterPos2f(viewportLeftX_ + 20, 210);
 	for (int i=0; i<name.length(); ++i){
@@ -224,9 +238,9 @@ void SceneWindow::displayCB()
 	for (int i=0; i<(level.str()).length(); ++i){
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, level.str()[i]);
 	}
-	//draw lives
+	//draw time
 	std::stringstream lives;
-	lives << game->getLives();
+	lives << game->getTime();
 	glColor3f(255,255,255);
 	glRasterPos2f(viewportLeftX_ + 201, 200);
 	for (int i=0; i<(lives.str()).length(); ++i){
@@ -301,7 +315,8 @@ void SceneWindow::timerCB(int value)
 	// iterate through objects and move them
 	// redraw   
 
-    if (!mario->isDead()){
+    if (!mario->isDead() && start_){
+        game->pulseClock();
         Level *level_ = Level:: sharedLevel();
         LList movable = level_->getActiveMovable();
         LListIterator li;
@@ -326,7 +341,7 @@ void SceneWindow::timerCB(int value)
 
         }
     }
-    else{
+    else if (start_ ){
         if (!pause_) {
             pause_ = true;
             deadups_ = true;
@@ -358,6 +373,7 @@ void SceneWindow::timerCB(int value)
             start_=false;
             sw->loadLevel();
             glClearColor(0, 0, 0, 0);
+            game->resetClock();
         }
         
     }

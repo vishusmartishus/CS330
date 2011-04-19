@@ -10,6 +10,8 @@ Game::Game()
     coinsTotal_ = 0;
     livesTotal_ = 3;
 	levelNumber_ = 1;
+    levelTime_ = 300;
+    microTime_ = 0;
 }
 
 //------------------------------------------------------------
@@ -62,6 +64,34 @@ void Game::addLife()
 void Game::subLife()
 {
     livesTotal_--;
+}
+
+//------------------------------------------------------------
+
+int Game::getTime()
+{
+    return levelTime_;
+}
+
+//------------------------------------------------------------
+
+void Game::pulseClock()
+{
+    if (microTime_ == 40) {
+        levelTime_--;
+        microTime_ = 0;
+    }
+    else{
+        microTime_++;
+    }
+}
+
+//------------------------------------------------------------
+
+void Game::resetClock()
+{
+    levelTime_ = 300;
+    microTime_=0;
 }
 
 
