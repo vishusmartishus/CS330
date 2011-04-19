@@ -15,6 +15,7 @@
 #include "Breakable.h"
 #include "Pipe.h"
 #include "Flag.h"
+#include "Background.h"
 
 using namespace std;
 
@@ -67,7 +68,6 @@ void Level::makeLevel(int levelNumber)
     string homeDir = cHomeDir;
     homeDir += "/CS330/";
     string fname;
-    cout << "home: " << homeDir << endl;
     
 	ifstream inFile;
 	if (levelNumber== 1) {
@@ -243,6 +243,24 @@ void Level::makeLevel(int levelNumber)
 			leftStart_ = xcoord;
 			bottomStart_ = ycoord;
 		}
+        else if (object== 'u' || object=='y' || object=='w' || object=='1'|| object=='2' || object=='3' || object=='7' || object =='8'){
+            //create bush
+            Background *background = new Background(object);
+            background->setTop(ycoord  + background->getHeight());
+            background->setBottom(ycoord);
+            background->setLeft(xcoord);
+            background->setRight(xcoord + background->getWidth());
+            
+            //place in correct list
+            if (xcoord<256) {
+                activeDrawable_.append(background);
+            }
+            else {
+                levelDrawable_.append(background);
+            }
+        }
+        
+
 
 		if (ycoord < 224) {
 			ycoord += 16;
@@ -251,8 +269,7 @@ void Level::makeLevel(int levelNumber)
          xcoord += 16;
          ycoord = 0; 
 		}
-		
-		
+	
 	}
 	inFile.close();
 }

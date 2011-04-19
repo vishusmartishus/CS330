@@ -57,8 +57,9 @@ void Mario::draw()
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
     
-    glColor4f(0.7f,0.9f,1.0f,1.0f);
+
     glBegin( GL_QUADS );
+    glColor4f(0.7f,0.9f,1.0f,1.0f);
     if (this->getXVelocity() >= 0) {
         glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
         glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
@@ -761,7 +762,7 @@ void Mario::sprite()
     homeDir += "/CS330/sprites/";
     
     string pos;
-    int height = 256;
+    int height = 32;
     
     for (int j = 0; j<=2; ++j) {
         stringstream out0;
@@ -773,7 +774,7 @@ void Mario::sprite()
         jName+="mario";
         
         if (j != 0) {
-            height = 512;
+            height = 64;
         }
         
         
@@ -789,9 +790,9 @@ void Mario::sprite()
             
             
             FILE *fp = fopen(iName.c_str(), "r");
-            unsigned char *texture = new unsigned char[4 * 256 * height];
-            if (fread(texture, sizeof(unsigned char), 4 * 256 * height, fp)
-                != 4* 256 *height) {
+            unsigned char *texture = new unsigned char[4 * 32 * height];
+            if (fread(texture, sizeof(unsigned char), 4 * 32 * height, fp)
+                != 4* 32 *height) {
                 fprintf(stderr, "error reading %s", iName.c_str());
             }
             fclose(fp);
@@ -799,7 +800,7 @@ void Mario::sprite()
             glGenTextures(1, &texture_[j][i]);
             glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
             
-            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+            glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                             GL_LINEAR_MIPMAP_NEAREST );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
@@ -808,7 +809,7 @@ void Mario::sprite()
                             GL_CLAMP );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                             GL_CLAMP );
-            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, height, GL_RGBA,
+            gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, height, GL_RGBA,
                               GL_UNSIGNED_BYTE, texture);
             delete [] texture;
             

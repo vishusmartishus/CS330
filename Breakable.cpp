@@ -49,7 +49,7 @@ void Breakable::draw()
 
 //------------------------------------------------------------
 
-// Method that destroys a block if Mario is big (has a mushroom or fireflower)
+// Method that destroys a block if Mario is big
 void Breakable::breakBlock(bool isLarge)
 {
 	if (isLarge == true) {
