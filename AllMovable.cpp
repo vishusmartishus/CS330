@@ -74,6 +74,8 @@ Drawable* AllMovable::checkRight()
 		//get left, right, top and bottom of block
 		objLeft = item->left();
 		objRight = item->right();
+        objTop = item->top();
+		objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisRight >= objLeft && thisRight <= objRight)
@@ -91,6 +93,8 @@ Drawable* AllMovable::checkRight()
 		//get left, right, top and bottom of block
 		objLeft = item->left();
 		objRight = item->right();
+        objTop = item->top();
+		objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisRight >= objLeft && thisRight <= objRight)
@@ -151,6 +155,8 @@ Drawable* AllMovable::checkLeft()
 		//get left, right, top and bottom of block
 		objLeft = item->left();
 		objRight = item->right();
+        objTop = item->top();
+		objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisLeft >= objLeft && thisLeft <= objRight)
@@ -168,6 +174,8 @@ Drawable* AllMovable::checkLeft()
 		//get left, right, top and bottom of block
 		objLeft = item->left();
 		objRight = item->right();
+        objTop = item->top();
+		objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisLeft >= objLeft && thisLeft <= objRight)
@@ -227,6 +235,8 @@ Drawable* AllMovable::checkTop()
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
+        objLeft = item->left();
+        objRight = item->right();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
@@ -243,6 +253,8 @@ Drawable* AllMovable::checkTop()
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
+        objLeft = item->left();
+        objRight = item->right();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
@@ -260,6 +272,7 @@ Drawable* AllMovable::checkTop()
 
 Drawable* AllMovable::checkBottom()
 {
+    
     if (this->objectType() == MARIO && this->getYVelocity() > 0) {
         return NULL;
     }
@@ -305,6 +318,8 @@ Drawable* AllMovable::checkBottom()
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
+        objLeft = item->left();
+        objRight = item->right();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
@@ -321,6 +336,8 @@ Drawable* AllMovable::checkBottom()
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
+        objLeft = item->left();
+        objRight = item->right();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
