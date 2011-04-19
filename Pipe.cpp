@@ -69,9 +69,9 @@ void Pipe::sprite()
         iName += ".tex";
         
         FILE *fp = fopen(iName.c_str(), "r");
-        unsigned char *texture = new unsigned char[4 * 512 * 256];
-        if (fread(texture, sizeof(unsigned char), 4 * 512 * 256, fp)
-            != 4* 512 *256) {
+        unsigned char *texture = new unsigned char[4 * 64 * 32];
+        if (fread(texture, sizeof(unsigned char), 4 * 64 * 32, fp)
+            != 4* 64 *32) {
             fprintf(stderr, "error reading %s", iName.c_str());
         }
         fclose(fp);
@@ -79,7 +79,7 @@ void Pipe::sprite()
         glGenTextures(1, &texture_[i]);
         glBindTexture(GL_TEXTURE_2D, texture_[i]);
         
-        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+        glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                         GL_LINEAR_MIPMAP_NEAREST );
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
@@ -88,7 +88,7 @@ void Pipe::sprite()
                         GL_CLAMP );
         glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                         GL_CLAMP );
-        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 512, 256, GL_RGBA,
+        gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 64, 32, GL_RGBA,
                           GL_UNSIGNED_BYTE, texture);
         delete [] texture;
         

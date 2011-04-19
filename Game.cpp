@@ -9,6 +9,7 @@ Game::Game()
     pointsTotal_ = 0;
     coinsTotal_ = 0;
     livesTotal_ = 3;
+	levelNumber_ = 1;
 }
 
 //------------------------------------------------------------

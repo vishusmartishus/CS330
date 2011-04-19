@@ -1,14 +1,14 @@
-// John (Jack) Johnson, Jamie Veals
+// Russell Watterson
 //------------------------------------------------------------
 
-#include "Coin.h"
+#include "Background.h"
 #include "Level.h"
 #include <string>
-#include <sstream>
+
 
 //------------------------------------------------------------
 
-void Coin::draw()
+void Background::draw()
 {
 	
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
@@ -29,8 +29,10 @@ void Coin::draw()
 	
 }
 
-void Coin::sprite()
+void Background::sprite()
 {
+    std::string types[9] = {"bush0", "bush1", "bush2", "cloud0", "cloud1", "cloud2", "mountain0", "mountain1", "pillar0"};
+    
     // Mac environment variable for home directory
     char *cHomeDir = NULL;
     
@@ -40,20 +42,23 @@ void Coin::sprite()
     if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
-
+    
     std::string homeDir = cHomeDir;
     
-    homeDir += "/CS330/sprites/coin0.tex";
+    homeDir += "/CS330/sprites/";
+    homeDir +=types[kind_];
+    homeDir +=".tex";
+    
     
     
     
     FILE *fp = fopen(homeDir.c_str(), "r");
-    unsigned char *texture = new unsigned char[4 * 32 * 32];
-    if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
-        != 4* 32 *32) {
+    unsigned char *texture = new unsigned char[4 * width_ * height_ * 4];
+    if (fread(texture, sizeof(unsigned char), 4 * width_ * height_ * 4, fp)
+        != 4* width_ *height_ * 4) {
         fprintf(stderr, "error reading %s", homeDir.c_str());
     }
-
+    
     fclose(fp);
     
     glGenTextures(1, &texture_);
@@ -68,7 +73,7 @@ void Coin::sprite()
                     GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                     GL_CLAMP );
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 32, GL_RGBA,
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, (2*width_), (2*height_) , GL_RGBA,
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;
     

@@ -87,9 +87,9 @@ void Shell::sprite()
     
     
     FILE *fp = fopen(homeDir.c_str(), "r");
-    unsigned char *texture = new unsigned char[4 * 256 * 256];
-    if (fread(texture, sizeof(unsigned char), 4 * 256 * 256, fp)
-        != 4* 256 *256) {
+    unsigned char *texture = new unsigned char[4 * 32 * 32];
+    if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
+        != 4* 32 *32) {
         fprintf(stderr, "error reading %s", homeDir.c_str());
     }
     fclose(fp);
@@ -97,7 +97,7 @@ void Shell::sprite()
     glGenTextures(1, &textureShell);
     glBindTexture(GL_TEXTURE_2D, textureShell);
     
-    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL );        
+    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                     GL_LINEAR_MIPMAP_NEAREST );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
@@ -106,7 +106,7 @@ void Shell::sprite()
                     GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                     GL_CLAMP );
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 256, 256, GL_RGBA,
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 32, GL_RGBA,
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;
 }
