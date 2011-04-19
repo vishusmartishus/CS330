@@ -49,7 +49,7 @@ Drawable* AllMovable::checkRight()
     thisTop = this->top();
     thisBottom = this->bottom();
     
-	// iterate through active Blocks list
+    // iterate through active Blocks list
 	while ((item = liBlocks.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -63,12 +63,14 @@ Drawable* AllMovable::checkRight()
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
     
-	// iterate through active Movable list
+    // iterate through active Movable list
 	while ((item = liMovable.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -82,12 +84,14 @@ Drawable* AllMovable::checkRight()
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
     
-	// iterate through active Drawable list
+    // iterate through active Drawable list
 	while ((item = liDrawable.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -95,17 +99,20 @@ Drawable* AllMovable::checkRight()
 		objRight = item->right();
         objTop = item->top();
 		objBottom = item->bottom();
+
         
 		// if the right is in between objects left & right boundaries
 		if (thisRight >= objLeft && thisRight <= objRight)
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
-    
+
 	return NULL;
 }
 
@@ -130,7 +137,7 @@ Drawable* AllMovable::checkLeft()
     thisTop = this->top();
     thisBottom = this->bottom();
     
-	// iterate through active Block list
+    // iterate through active Block list
 	while ((item = liBlocks.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -144,12 +151,14 @@ Drawable* AllMovable::checkLeft()
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
-    
-	// iterate through active Movable list
+
+    // iterate through active Movable list
 	while ((item = liMovable.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -163,7 +172,9 @@ Drawable* AllMovable::checkLeft()
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
@@ -182,11 +193,13 @@ Drawable* AllMovable::checkLeft()
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
-    
+
 	return NULL;
 }
 
@@ -211,7 +224,7 @@ Drawable* AllMovable::checkTop()
     thisLeft = this->left();
     thisRight = this->right();
     
-	// iterate through active Blocks list
+    // iterate through active Blocks list
 	while ((item = liBlocks.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -224,12 +237,14 @@ Drawable* AllMovable::checkTop()
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
     
-	// iterate through active Movable list
+    // iterate through active Movable list
 	while ((item = liMovable.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -242,7 +257,9 @@ Drawable* AllMovable::checkTop()
 		if (thisTop >= objBottom && thisTop <= objTop && item != this)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
@@ -253,18 +270,20 @@ Drawable* AllMovable::checkTop()
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
-        objLeft = item->left();
         objRight = item->right();
+        objLeft = item->left();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
-    
+
 	return NULL;    
 }
 
@@ -294,7 +313,7 @@ Drawable* AllMovable::checkBottom()
     thisLeft = this->left();
     thisRight = this->right();
     
-	// iterate through active Blocks list
+    // iterate through active Blocks list
 	while ((item = liBlocks.next())) 
 	{
 		//get left, right, top and bottom of block
@@ -307,25 +326,29 @@ Drawable* AllMovable::checkBottom()
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
     
-	// iterate through active Movable list
+    // iterate through active Movable list
 	while ((item = liMovable.next())) 
 	{
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
-        objLeft = item->left();
         objRight = item->right();
+        objLeft = item->left();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop && item != this)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
@@ -336,14 +359,16 @@ Drawable* AllMovable::checkBottom()
 		//get left, right, top and bottom of block
 		objTop = item->top();
 		objBottom = item->bottom();
-        objLeft = item->left();
         objRight = item->right();
+        objLeft = item->left();
         
 		// if the top is in between objects top & bottom boundaries
 		if (thisBottom >= objBottom && thisBottom <= objTop)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                return item;
+                if (item->objectType() != BACKGROUND) {
+                    return item;
+                }
             }
 		}
 	}
