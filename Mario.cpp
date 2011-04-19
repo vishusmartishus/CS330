@@ -689,6 +689,8 @@ bool Mario::check()
         else if (objl->objectType() == COIN){
             //Mario get some points
             }
+
+        
         
         
     }
