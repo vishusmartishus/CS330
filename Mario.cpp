@@ -759,6 +759,7 @@ void Mario::testSwitch() {
                 this->isDead_ = true;
                 break;
             case MUSHROOM:
+                Level::sharedLevel()->removeDrawable(objt);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                     this->setTop(this->top() + 16);
@@ -793,6 +794,7 @@ void Mario::testSwitch() {
             case TURTLE:
                 break;
             case MUSHROOM:
+                Level::sharedLevel()->removeDrawable(objb);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                     this->setTop(this->top() + 16);
@@ -832,46 +834,7 @@ void Mario::testSwitch() {
                 this->isDead_ = true;
                 break;
             case MUSHROOM:
-                if (this->state_ == SMALL_STATE) {
-                    this->state_ = BIG_STATE;
-                    this->setTop(this->top() + 16);
-                }
-                break;
-            case STAR:
-                starCount_ = 50;
-                break;
-            case FIREFLOWER:
-                this->state_ = FIRE_STATE;
-                break;
-            case COIN:
-                break;
-                
-        }
-    } else if (rightKey_) {
-        if (sprintKey_) {
-            this->setXVelocity(1.2);
-        } else {
-            this->setXVelocity(1.0);
-        }
-    }
-    //All objects that can hit Mario from the right
-    if (objr) {
-        switch (objr->objectType()) {
-            case PIPE:
-            case BREAKABLE:
-            case REGULAR:
-            case QUESTION:
-                if (this->getXVelocity() > 0) {
-                    this->setXVelocity(0.0);
-                }
-                break;
-            case GOOMBA:
-            case SHELL:
-            case ENEMYFIREBALL:
-            case TURTLE:
-                this->isDead_ = true;
-                break;
-            case MUSHROOM:
+                Level::sharedLevel()->removeDrawable(objl);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
                     this->setTop(this->top() + 16);
@@ -892,6 +855,47 @@ void Mario::testSwitch() {
             this->setXVelocity(-1.2);
         } else {
             this->setXVelocity(-1.0);
+        }
+    }
+    //All objects that can hit Mario from the right
+    if (objr) {
+        switch (objr->objectType()) {
+            case PIPE:
+            case BREAKABLE:
+            case REGULAR:
+            case QUESTION:
+                if (this->getXVelocity() > 0) {
+                    this->setXVelocity(0.0);
+                }
+                break;
+            case GOOMBA:
+            case SHELL:
+            case ENEMYFIREBALL:
+            case TURTLE:
+                this->isDead_ = true;
+                break;
+            case MUSHROOM:
+                Level::sharedLevel()->removeDrawable(objr);
+                if (this->state_ == SMALL_STATE) {
+                    this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
+                }
+                break;
+            case STAR:
+                starCount_ = 50;
+                break;
+            case FIREFLOWER:
+                this->state_ = FIRE_STATE;
+                break;
+            case COIN:
+                break;
+                
+        }
+    } else if (rightKey_) {
+        if (sprintKey_) {
+            this->setXVelocity(1.2);
+        } else {
+            this->setXVelocity(1.0);
         }
     }
     //stops Mario moving out of the left bound
