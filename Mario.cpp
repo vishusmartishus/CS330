@@ -22,7 +22,6 @@
 #include <sstream>
 using namespace std;
 
-
 //------------------------------------------------------------
 void Mario::draw()
 {
@@ -760,13 +759,13 @@ void Mario::testSwitch() {
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                this->isDead_ = true;
+                //this->isDead_ = true;
                 break;
             case MUSHROOM:
                 Level::sharedLevel()->removeDrawable(objt);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
-                    this->setTop(this->top() + 16);
+                    this->setTop(this->top() + 8);
                 }
                 break;
             case STAR:
@@ -774,8 +773,11 @@ void Mario::testSwitch() {
                 break;
             case FIREFLOWER:
                 this->state_ = FIRE_STATE;
+                Level::sharedLevel()->removeDrawable(objt);
                 break;
             case COIN:
+                game->addCoin();
+                Level::sharedLevel()->removeDrawable(objt);
                 break;
                 
         }
@@ -801,7 +803,7 @@ void Mario::testSwitch() {
                 Level::sharedLevel()->removeDrawable(objb);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
-                    this->setTop(this->top() + 16);
+                    this->setTop(this->top() + 8);
                 }
                 break;
             case STAR:
@@ -809,9 +811,11 @@ void Mario::testSwitch() {
                 break;
             case FIREFLOWER:
                 this->state_ = FIRE_STATE;
+                Level::sharedLevel()->removeDrawable(objb);
                 break;
             case COIN:
-                
+                game->addCoin();
+                Level::sharedLevel()->removeDrawable(objb);
                 break;
         }
     } else {
@@ -831,7 +835,6 @@ void Mario::testSwitch() {
                 }
                 break;
             case GOOMBA:
-                cout << "GOOMBA";
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
@@ -841,7 +844,7 @@ void Mario::testSwitch() {
                 Level::sharedLevel()->removeDrawable(objl);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
-                    this->setTop(this->top() + 16);
+                    this->setTop(this->top() + 8);
                 }
                 break;
             case STAR:
@@ -849,8 +852,11 @@ void Mario::testSwitch() {
                 break;
             case FIREFLOWER:
                 this->state_ = FIRE_STATE;
+                Level::sharedLevel()->removeDrawable(objl);
                 break;
             case COIN:
+                game->addCoin();
+                Level::sharedLevel()->removeDrawable(objl);
                 break;
                 
         }
@@ -882,7 +888,7 @@ void Mario::testSwitch() {
                 Level::sharedLevel()->removeDrawable(objr);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
-                    this->setTop(this->top() + 16);
+                    this->setTop(this->top() + 8);
                 }
                 break;
             case STAR:
@@ -890,8 +896,11 @@ void Mario::testSwitch() {
                 break;
             case FIREFLOWER:
                 this->state_ = FIRE_STATE;
+                Level::sharedLevel()->removeDrawable(objr);
                 break;
             case COIN:
+                game->addCoin();
+                Level::sharedLevel()->removeDrawable(objr);
                 break;
                 
         }

@@ -12,6 +12,9 @@
 const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 
 #include "AllMovable.h"
+#include "Game.h"
+extern Game *game;
+
 
 class Mario: public AllMovable {
 
