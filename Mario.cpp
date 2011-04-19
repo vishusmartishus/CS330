@@ -527,6 +527,7 @@ bool Mario::check()
             if (objt->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
                 }
                 else {
                     //add points
@@ -576,6 +577,7 @@ bool Mario::check()
             if (objb->objectType() == MUSHROOM) {
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
                 }
                 else if (objb->objectType() == FIREFLOWER) {
                     this->state_ = FIRE_STATE;
@@ -601,7 +603,13 @@ bool Mario::check()
                 //enemy dies
             }
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
-                this->state_--;
+                if (getState() == BIG_STATE) {
+                    this->setTop(this->top() - 16);
+                    this->state_ == SMALL_STATE;
+                }
+                else{
+                this->state_ = BIG_STATE;
+                }
             }
             else{
                 return false;
@@ -615,6 +623,7 @@ bool Mario::check()
             if (objl->objectType() == MUSHROOM) {
                 if (this->getState() == SMALL_STATE) {
                     this->state_ = BIG_STATE;
+                    this->setTop(this->top() + 16);
                 }
                 else{
                     //mario gets points
@@ -648,7 +657,13 @@ bool Mario::check()
                 //enemy dies
             }
             else if (this->getState() == BIG_STATE || this->getState() == FIRE_STATE){
-                this->state_--;
+                if (getState() == BIG_STATE) {
+                    this->setTop(this->top() - 16);
+                    this->state_ == SMALL_STATE;
+                }
+                else{
+                    this->state_ = BIG_STATE;
+                }
             }
             else{
                 return false;
@@ -672,6 +687,7 @@ bool Mario::check()
                 }
                 else {
                     this->state_ = FIRE_STATE;
+                    this->setTop(this->top() + 16);
                 }
             }
             else if (objr->objectType() == STAR){
