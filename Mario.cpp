@@ -564,6 +564,11 @@ bool Mario::check()
         else if (objt->objectType() == STAR) {
             starCount_ = 50;
         }
+        //mario jumps into coin
+        else if (objt->objectType() == COIN)
+        {
+            //give Mario coins
+        }
         /*
         else if (objt->objectType() == FIREFLOWER) {
             if (this->getState() == FIRE_STATE) {
@@ -693,7 +698,6 @@ bool Mario::check()
         else if (objl->objectType() == COIN){
             //Mario get some points
             }
-        
         
         
     }
