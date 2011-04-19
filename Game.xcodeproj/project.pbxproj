@@ -62,6 +62,8 @@
 		039EFB181344E6DF0074E32E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
 		03ECB8B71304C71700B5D298 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B61304C71700B5D298 /* GLUT.framework */; };
 		03ECB8B91304C71700B5D298 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B81304C71700B5D298 /* OpenGL.framework */; };
+		03F4164A135DD9210047A721 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A503E5135CC79200F72E5C /* Background.cpp */; };
+		03F41651135DD95D0047A721 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03739E77135759580001C080 /* Pipe.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Game.1 */; };
 		B7A503E7135CC79200F72E5C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A503E5135CC79200F72E5C /* Background.cpp */; };
@@ -243,7 +245,6 @@
 		037A375C1302C1BA00788A82 /* Drawable */ = {
 			isa = PBXGroup;
 			children = (
-				03739E77135759580001C080 /* Pipe.cpp */,
 				03739E78135759580001C080 /* Pipe.h */,
 				037A37201302C10100788A82 /* Base.h */,
 				037A371F1302C10100788A82 /* Base.cpp */,
@@ -261,6 +262,7 @@
 				03911FF4130CB9AB006F51B2 /* Coin.cpp */,
 				B7A503E5135CC79200F72E5C /* Background.cpp */,
 				B7A503E6135CC79200F72E5C /* Background.h */,
+				03739E77135759580001C080 /* Pipe.cpp */,
 			);
 			name = Drawable;
 			sourceTree = "<group>";
@@ -408,6 +410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F41651135DD95D0047A721 /* Pipe.cpp in Sources */,
+				03F4164A135DD9210047A721 /* Background.cpp in Sources */,
 				038B7C4B1344EA5500BFECC0 /* Base.cpp in Sources */,
 				038B7C641344EAE300BFECC0 /* Breakable.cpp in Sources */,
 				038B7C4C1344EA5500BFECC0 /* Drawable.cpp in Sources */,

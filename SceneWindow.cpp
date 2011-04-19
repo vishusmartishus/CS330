@@ -321,7 +321,8 @@ void SceneWindow::timerCB(int value)
 		viewportRightX_ = mario->right() + viewportWidth_/2;
 		viewportLeftX_ = mario->right() - viewportWidth_/2;
 		level_->updateExtents(viewportLeftX_, viewportRightX_);
-		mario->setLeftBound(viewportLeftX_);
+        mario->setLeftBound(viewportLeftX_);
+
 	}
 
 	glMatrixMode(GL_PROJECTION);
