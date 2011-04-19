@@ -77,7 +77,7 @@ Drawable* AllMovable::checkRight()
 		objLeft = item->left();
 		objRight = item->right();
         objTop = item->top();
-		objBottom = item->bottom();
+        objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisRight >= objLeft && thisRight <= objRight && item != this)
@@ -98,8 +98,7 @@ Drawable* AllMovable::checkRight()
 		objLeft = item->left();
 		objRight = item->right();
         objTop = item->top();
-		objBottom = item->bottom();
-
+        objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisRight >= objLeft && thisRight <= objRight)
@@ -165,7 +164,7 @@ Drawable* AllMovable::checkLeft()
 		objLeft = item->left();
 		objRight = item->right();
         objTop = item->top();
-		objBottom = item->bottom();
+        objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisLeft >= objLeft && thisLeft <= objRight && item != this)
@@ -186,7 +185,7 @@ Drawable* AllMovable::checkLeft()
 		objLeft = item->left();
 		objRight = item->right();
         objTop = item->top();
-		objBottom = item->bottom();
+        objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
 		if (thisLeft >= objLeft && thisLeft <= objRight )
