@@ -39,12 +39,13 @@ Mushroom::~Mushroom()
 
 void Mushroom::draw()
 {
-    
+    //Bind texture to quad
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, texture_);
     
+    //Draw Quad
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     glBegin( GL_QUADS );
     glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
@@ -76,10 +77,11 @@ void Mushroom::sprite()
     }
     std::string homeDir = cHomeDir;
     
+    //Set Filename
     homeDir += "/CS330/sprites/mushroom0.tex";
     
     
-    
+    //Load in Sprite
     FILE *fp = fopen(homeDir.c_str(), "r");
     unsigned char *texture = new unsigned char[4 * 32 * 32];
     if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
@@ -88,6 +90,7 @@ void Mushroom::sprite()
     }
     fclose(fp);
     
+    //Bind and Map Texture
     glGenTextures(1, &texture_);
     glBindTexture(GL_TEXTURE_2D, texture_);
     

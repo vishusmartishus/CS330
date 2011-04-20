@@ -45,6 +45,7 @@ private:
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     int leftBound_;
     GLuint texture_[3][4];
+    GLuint deadtexture_;
     int texturePos;
     
 	//Moves Mario to the left or right and calls check() at beginning

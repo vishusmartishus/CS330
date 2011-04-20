@@ -13,12 +13,16 @@ class Game {
         int getCoins(); //send coins
         int getLives(); //send lives
 		int getLevel(); //send level number
+        int getTime(); //send remaining time
         void addCoin(); //add a single coin to current total. also handles 100 coins=life transition
         void addLife(); //add life
         void subLife(); //subtract life
+
+        void pulseClock();
+        void resetClock();
 		void gameOver(); //alter values on game over condition
     private:
-        int pointsTotal_, coinsTotal_, livesTotal_, levelNumber_; //point total, coin total, life total
+        int pointsTotal_, coinsTotal_, livesTotal_, levelNumber_, levelTime_, microTime_; //point total, coin total, life total
         
 
 
