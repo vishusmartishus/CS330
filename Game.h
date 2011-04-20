@@ -17,9 +17,12 @@ class Game {
         void addCoin(); //add a single coin to current total. also handles 100 coins=life transition
         void addLife(); //add life
         void subLife(); //subtract life
+        void jumpEnemy(int num); //add points for enemies killed by jumping
+        void addPowerup(); //add points for getting a powerup
+        void breakBlock(bool isLarge); //add points for breaking a block
 
-        void pulseClock();
-        void resetClock();
+        void pulseClock(); //Increment the game clock
+        void resetClock(); //Reset the game clock
 		void gameOver(); //alter values on game over condition
     private:
         int pointsTotal_, coinsTotal_, livesTotal_, levelNumber_, levelTime_, microTime_; //point total, coin total, life total
