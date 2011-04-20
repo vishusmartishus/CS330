@@ -12,6 +12,9 @@
 const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 
 #include "AllMovable.h"
+#include "Game.h"
+extern Game *game;
+
 
 class Mario: public AllMovable {
 
@@ -42,12 +45,13 @@ private:
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     int leftBound_;
     GLuint texture_[3][4];
+    GLuint deadtexture_;
     int texturePos;
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
     //checks to see if Mario runs into an object
-    bool check();
+    void check();
 	//Returns true if Mario is in the fire state
 	bool fireball();
     //Handels all jump cases

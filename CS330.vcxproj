@@ -65,6 +65,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AllMovable.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Base.h" />
     <ClInclude Include="Breakable.h" />
     <ClInclude Include="Coin.h" />
@@ -92,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AllMovable.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Breakable.cpp" />
     <ClCompile Include="Coin.cpp" />

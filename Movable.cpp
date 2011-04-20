@@ -32,11 +32,12 @@ bool Movable::canMove()
     Drawable *dRight = checkRight();
     Drawable *dLeft = checkLeft();
     Drawable *dBottom = checkBottom();
+    int objType = this->objectType();
     
 	bool keepGoing = true;
     
     // if nothing underneath
-	if (dBottom == NULL) {
+	if ((dBottom == NULL || dBottom->objectType() == objType) || dBottom->objectType() == BACKGROUND) {
         if (this->objectType() == TURTLE){
             keepGoing = false;
         }
@@ -51,16 +52,19 @@ bool Movable::canMove()
 		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE) {
 			this->setYVelocity(0.0);
 		}
+        else if (dBottom->objectType() == BACKGROUND){
+            this->setYVelocity(-2.0);
+        }
 	}
 
     // if nothing to the right or left
-    if (dRight != NULL) {
+    if (dRight != NULL && dRight->objectType() != BACKGROUND) {
         if (dRight->objectType() == REGULAR || dRight->objectType() == BREAKABLE || dRight->objectType() == QUESTION || dRight->objectType() == PIPE) {
             keepGoing = false;
         }
     }
     
-    if (dLeft != NULL) {
+    if (dLeft != NULL && dLeft->objectType() != BACKGROUND) {
         if (dLeft->objectType() == REGULAR || dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION || dLeft->objectType() == PIPE) {
             keepGoing = false;
         }
@@ -115,6 +119,7 @@ void Movable::updateScene()
         updatedRight = this->right() + currentXVelocity;
         this->setRight(updatedRight);
     }
+    
 }
 
 //---------------------------------------------------------
