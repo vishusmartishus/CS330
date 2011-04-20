@@ -14,10 +14,12 @@
 #include "Coin.h"
 #include "LListIterator.h"
 using namespace std;
+
 //------------------------------------------------------------
+
 int main()
 {
-	// Creates four new coin pointers and two lists
+	// Creates four new coin pointers and three lists
     Coin *coin = new Coin();
 	Coin *coin2 = new Coin();
 	Coin *coin3 = new Coin();
@@ -27,15 +29,18 @@ int main()
     LList llist3 = LList();
     
     //------------------------------------------------------------
+
 	// Sets the initial coordinates of the coins
     coin->setLeft(0);
     coin2->setLeft(16);
     coin3->setLeft(48);
     coin4->setLeft(32);
+
     //------------------------------------------------------------
+
     // Test size() and append()
     
-	// Checks the initial size of llist
+	// Checks the initial size of an empty llist
 	assert(llist.size() == 0);
 
 	// Appends a coin to llist and checks that the size = 1
@@ -52,13 +57,15 @@ int main()
 	assert(llist.size() == 2);
 
     //------------------------------------------------------------
+
     // Test removeFirst()
 
-	// Removes the first coin in the list and checks the size = 1
+	// Removes the first coin in the llist and checks the size = 1
 	llist.removeFirst();
 	assert(llist.size() == 1);
 
     //------------------------------------------------------------
+
     // Test copy constructor
 
     // Copies llist into llist2 and checks llist2 size = 1
@@ -69,6 +76,7 @@ int main()
     assert(llist2.first() == llist.first());
     
     //------------------------------------------------------------
+
     // Test append again with copied list
 
 	// Appends a coin to llist2 and checks the size of both lists
@@ -89,26 +97,28 @@ int main()
     assert(llist2.first()->objectType() == COIN);
 
     //------------------------------------------------------------
+
     // Tests the iterator and insertInSortedOrder()
     
-    // Appends a coin to llist and inserts another coin in sorted order according to coordinates
+    // Appends three coins to llist3 and inserts another coin in sorted order according to coordinates
     llist3.append(coin);
     llist3.append(coin2);
 	llist3.append(coin3);
     llist3.insertInSortedOrder(coin4);
 	
-	
-	//Use the iterator to test to see if the order is correct 
+	// Use the iterator to test to see if the order is correct 
     // Should be coin, coin2, coin4, coin3
     LListIterator li;
     li.init(llist3);
 	Drawable *item;
+
 	// Array of coins for testing insertInSortedOrder
 	Coin *a[4];
 	a[0] = coin;
 	a[1] = coin2;
 	a[2] = coin4;
 	a[3] = coin3;
+
 	// Checks if the order of coins is correct after calling in sorted order and the list itterator
     int i = 0;
 	while ((item = li.next())) {
@@ -116,12 +126,14 @@ int main()
 		i++;
 	}
     
+	// Appends the four coins in order by coordinates into llist4
     LList llist4 = LList();
     llist4.append(coin);
     llist4.append(coin2);
     llist4.append(coin4);
     llist4.append(coin3);
     
+	// Checks to make sure the append works by comparing llist4 to the array of coins
     LListIterator li2;
     li2.init(llist4);
     i = 0;
@@ -130,13 +142,14 @@ int main()
 		i++;
 	}
     
-    
+    // Appends the four coins by coordinates to llist5 using insortedorder
     LList llist5 = LList();
     llist5.insertInSortedOrder(coin);
     llist5.insertInSortedOrder(coin2);
     llist5.insertInSortedOrder(coin3);
     llist5.insertInSortedOrder(coin4);
     
+	// Checks to make sure the insortedorder works by comparing llist5 to the array of coins
     LListIterator li3;
     li3.init(llist5);
     i = 0;
@@ -145,6 +158,7 @@ int main()
 		i++;
 	}
     
+	// If this message is output, then all the tests have passed
     cout << "tests successfully completed" << endl;
 	return 0;
 }
