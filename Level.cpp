@@ -243,7 +243,7 @@ void Level::makeLevel(int levelNumber)
 			leftStart_ = xcoord;
 			bottomStart_ = ycoord;
 		}
-        else if (object== 'u' || object=='y' || object=='w' || object=='1'|| object=='2' || object=='3' || object=='7' || object =='8'){
+        else if (object== 'u' || object=='y' || object=='w' || object=='1'|| object=='2' || object=='3' || object=='7' || object =='8' || object== 'v' || object== 't' || object== 'd'){
             //create bush
             Background *background = new Background(object);
             background->setTop(ycoord  + background->getHeight());

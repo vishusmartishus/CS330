@@ -31,7 +31,7 @@ void Background::draw()
 
 void Background::sprite()
 {
-    std::string types[9] = {"bush0", "bush1", "bush2", "cloud0", "cloud1", "cloud2", "mountain0", "mountain1", "pillar0"};
+    std::string types[11] = {"bush0", "bush1", "bush2", "cloud0", "cloud1", "cloud2", "mountain0", "mountain1", "trunk0", "trunk1", "trunk2"};
     
     // Mac environment variable for home directory
     char *cHomeDir = NULL;
