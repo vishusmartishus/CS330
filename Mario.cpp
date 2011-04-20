@@ -96,6 +96,7 @@ Mario::Mario()
     
     isDead_ = false;
     isInvincible_ = false;
+    compleateLevel_ = false;
     
     //init the keys
     jumpKey_ = false;
@@ -364,6 +365,9 @@ void Mario::check() {
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objb);
                 break;
+            case FLAG:
+                game->touchFlag(this->bottom());
+                compleateLevel_=true;
         }
     } else {
         if (this->getYVelocity() == 0.0) {

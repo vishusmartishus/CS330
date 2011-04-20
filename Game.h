@@ -20,6 +20,7 @@ class Game {
         void jumpEnemy(int num); //add points for enemies killed by jumping
         void addPowerup(); //add points for getting a powerup
         void breakBlock(bool isLarge); //add points for breaking a block
+        void touchFlag(int height); //adds points for flagpole and increment level
 
         void pulseClock(); //Increment the game clock
         void resetClock(); //Reset the game clock

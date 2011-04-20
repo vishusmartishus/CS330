@@ -133,6 +133,15 @@ void Game::breakBlock(bool isLarge)
     }
 }
 
+//------------------------------------------------------------
+
+void Game::touchFlag(int height)
+{
+    pointsTotal_+=height*10;
+    pointsTotal_+=getTime()*10;
+    levelNumber_+=1;
+}
+
 
 
 
