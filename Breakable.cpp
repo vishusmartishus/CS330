@@ -52,7 +52,7 @@ void Breakable::draw()
 // Method that destroys a block if Mario is big
 void Breakable::breakBlock(bool isLarge)
 {
-	// if Mario is large, the block is removed from the shared level
+	// if Mario is large, the block is removed from the shared level of objects to be drawn
 	if (isLarge == true) {
         Level::sharedLevel()->removeDrawable(this);
 	}

@@ -20,13 +20,7 @@ private:
 public:
 	Coin()
     {
-        
         sprite(); 
-
-
-
-
-
     }
 
 	virtual ~Coin()
