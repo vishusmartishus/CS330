@@ -25,6 +25,7 @@ using namespace std;
 //------------------------------------------------------------
 void Mario::draw()
 {
+    if (!this->isDead()){
     //Determine power up
     int dState= 0;
     
@@ -35,7 +36,7 @@ void Mario::draw()
         dState = 2;
     }
     
-    
+    //Determine sprite possition
     if (this->getYVelocity() != 0.0) {
         texturePos = 3;
     }
@@ -51,13 +52,20 @@ void Mario::draw()
         texturePos = 0;
     }
 
-             
+    //Bind Texture to Quad         
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, texture_[dState][texturePos]);
+    }
+    else{
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_BLEND);
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, deadtexture_);
+    }
     
-
+    //Draw Quad
     glBegin( GL_QUADS );
     glColor4f(0.7f,0.9f,1.0f,1.0f);
     if (this->getXVelocity() >= 0) {
@@ -88,6 +96,7 @@ Mario::Mario()
     
     isDead_ = false;
     isInvincible_ = false;
+    compleateLevel_ = false;
     
     //init the keys
     jumpKey_ = false;
@@ -281,6 +290,7 @@ void Mario::check() {
                     this->jumpCount_ = 0;
                 }
                 ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
+                ( game)->breakBlock(this->getState() != SMALL_STATE);
                 break;
             case GOOMBA:
             case SHELL:
@@ -289,6 +299,7 @@ void Mario::check() {
                 //this->isDead_ = true;
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objt);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -296,9 +307,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objt);
                 break;
@@ -320,13 +333,19 @@ void Mario::check() {
                     this->setYVelocity(0.0);
                 }
                 break;
+            case TURTLE:
+                game->jumpEnemy(1);
+                
             case GOOMBA:
+                game->jumpEnemy(1);
                 Level::sharedLevel()->removeDrawable(objb);
+                this->jumpCount_ = 25;
+                this->setYVelocity(2.0);
             case SHELL:
             case ENEMYFIREBALL:
-            case TURTLE:
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objb);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -334,9 +353,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objb);
                 break;
@@ -344,6 +365,9 @@ void Mario::check() {
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objb);
                 break;
+            case FLAG:
+                game->touchFlag(this->bottom());
+                compleateLevel_=true;
         }
     } else {
         if (this->getYVelocity() == 0.0) {
@@ -354,6 +378,7 @@ void Mario::check() {
     if (objl) {
         switch (objl->objectType()) {
             case PIPE:
+            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -368,6 +393,7 @@ void Mario::check() {
                 this->isDead_ = true;
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objl);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -375,9 +401,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
@@ -398,6 +426,7 @@ void Mario::check() {
     if (objr) {
         switch (objr->objectType()) {
             case PIPE:
+            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -412,6 +441,7 @@ void Mario::check() {
                 this->isDead_ = true;
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objr);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -419,15 +449,19 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objr);
                 break;
             case COIN:
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objr);
+                break;
+            case FLAG:
                 break;
                 
         }
@@ -458,10 +492,13 @@ void Mario::sprite()
     if (!cHomeDir) {
         cHomeDir = getenv("HOMEPATH");
     }
+    
+    // Set sprite home
     string homeDir = cHomeDir;
     string iName, jName;
     homeDir += "/CS330/sprites/";
     
+    //Generate Sprite filenames
     string pos;
     int height = 32;
     
@@ -489,7 +526,7 @@ void Mario::sprite()
             iName += pos;
             iName += ".tex";
             
-            
+            //Load Sprite into array of textures
             FILE *fp = fopen(iName.c_str(), "r");
             unsigned char *texture = new unsigned char[4 * 32 * height];
             if (fread(texture, sizeof(unsigned char), 4 * 32 * height, fp)
@@ -501,6 +538,7 @@ void Mario::sprite()
             glGenTextures(1, &texture_[j][i]);
             glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
             
+            //build MipMap
             glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                             GL_LINEAR_MIPMAP_NEAREST );
@@ -516,4 +554,32 @@ void Mario::sprite()
             
         }
     }
+    
+    iName = homeDir+"3mario0.tex";
+    //Load death texture
+    FILE *fp = fopen(iName.c_str(), "r");
+    unsigned char *texture = new unsigned char[4 * 32 * 32];
+    if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
+        != 4* 32 *32) {
+        fprintf(stderr, "error reading %s", iName.c_str());
+    }
+    fclose(fp);
+    
+    glGenTextures(1, &deadtexture_);
+    glBindTexture(GL_TEXTURE_2D, deadtexture_);
+    
+    //build MipMap
+    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                    GL_LINEAR_MIPMAP_NEAREST );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+                    GL_LINEAR );        
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
+                    GL_CLAMP );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
+                    GL_CLAMP );
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 32, GL_RGBA,
+                      GL_UNSIGNED_BYTE, texture);
+    delete [] texture;
+
 }
