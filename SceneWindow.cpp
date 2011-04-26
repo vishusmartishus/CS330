@@ -114,7 +114,7 @@ void SceneWindow::loadLevel()
         mario->setTop(32+16);
     }
     else{
-        mario->setTop(32+32);
+        mario->setTop(32+24);
     }
     mario->reset();
 	
