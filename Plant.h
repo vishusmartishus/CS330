@@ -21,7 +21,7 @@
 class Plant: public Movable {
 private:
     GLuint texture_[2];
-    int texturePos;
+    int texturePos, count_;
     void sprite();
 public:
 	// openGL draw method
@@ -38,8 +38,8 @@ public:
     int objectType() { return PLANT; }
     // method to shoot fireball from plant
     void shootFireball();
-	// plant's move is different from the normal move
-	void move();
+	// tracks the movement of the plant since the plant will always move
+	void updateScene();
     
 };
 
