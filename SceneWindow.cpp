@@ -82,7 +82,7 @@ void SceneWindow::mainLoop()
 
 void SceneWindow::startGame()
 {
-	
+	mario = new Mario();
 	pause_ = false;
 	coin = new Coin();
     sw->loadLevel();
@@ -105,14 +105,23 @@ void SceneWindow::loadLevel()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
-
-	mario = new Mario();
-    
     mario->setLeft(16);
     mario->setRight(16+16);
     mario->setBottom(32);
-    mario->setTop(32+16);
+    
+    if (mario->isDead() || mario->getState() == SMALL_STATE) {
+        
+        mario->setTop(32+16);
+    }
+    else{
+        mario->setTop(32+32);
+    }
+    mario->reset();
+	
+
+    
+    
+    
 		
     
 }
@@ -346,7 +355,6 @@ void SceneWindow::timerCB(int value)
         pause_ = false;
         viewportLeftX_ = 0;
         viewportRightX_ = viewportLeftX_ + viewportWidth_;
-        game->subLife();
         start_=false;
         sw->loadLevel();
         glClearColor(0, 0, 0, 0);
@@ -392,8 +400,8 @@ void SceneWindow::timerCB(int value)
         }
         else if (mario->top() > 0){
             if (deadups_ == false) {
-                mario->setBottom(mario->bottom()-1);
-                mario->setTop(mario->top()-1);
+                mario->setBottom(mario->bottom()-2);
+                mario->setTop(mario->top()-2);
             }
             else{
                 mario->setBottom(mario->bottom()+1);

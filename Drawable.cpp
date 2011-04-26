@@ -1,4 +1,4 @@
-// Alex Martishius, John (Jack) Johnson, Jay Bondzeleske
+// John (Jack) Johnson, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
 
 #include "Drawable.h"

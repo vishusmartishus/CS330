@@ -583,3 +583,26 @@ void Mario::sprite()
     delete [] texture;
 
 }
+
+void Mario::reset(){
+    if (isDead()) {
+        state_ = SMALL_STATE;
+    }
+    jumpCount_ = 0;
+    starCount_ = 0;
+    
+    isDead_ = false;
+    isInvincible_ = false;
+    compleateLevel_ = false;
+    
+    //init the keys
+    jumpKey_ = false;
+    rightKey_ = false;
+    leftKey_ = false;
+    sprintKey_ = false;
+    fireballKey_ = false;
+    
+    //Set X and Y velocity
+    this->setXVelocity(0.0);
+    this->setYVelocity(0.0);
+}
