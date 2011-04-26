@@ -15,6 +15,8 @@
 #include "Breakable.h"
 #include "Nonbreakable.h"
 #include "Goomba.h"
+#include "Shell.h"
+#include "MarioFireball.h"
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
@@ -160,11 +162,16 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'j')
     {
         sprintKey_ = true;
-    }
-    
-    if (button == 'k')
-    {
-        fireballKey_ = true;
+        if (this->state_ == FIRE_STATE) {
+            MarioFireball *fb = new MarioFireball;
+            fb->setTop(this->top());
+            fb->setLeft(this->right());
+            fb->setBottom(this->top() - 10);
+            fb->setRight(this->right() + 10);
+            fb->setXVelocity(1.0);
+            fb->setYVelocity(0.0);
+            Level::sharedLevel()->addMovable(fb);
+        }
     }
 }
 //------------------------------------------------------------
@@ -205,9 +212,6 @@ void Mario::updateKeyUp(unsigned char button)
 	}
 	if (button == 'j') {
 		sprintKey_ = false;
-	}
-	if (button == 'k') {
-		fireballKey_ = false;
 	}
 }
 //------------------------------------------------------------
@@ -266,7 +270,6 @@ void Mario::check() {
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
-    
     //All items that can hit Mario from the top
     if (objt)
         switch (objt->objectType()) {
@@ -323,6 +326,7 @@ void Mario::check() {
         }
     //All objects that can hit Mario from the bottom
     if (objb) {
+        Shell *nshell;
         switch (objb->objectType()) {
             case PIPE:
             case OFFQUESTION:
@@ -334,8 +338,13 @@ void Mario::check() {
                 }
                 break;
             case TURTLE:
-                game->jumpEnemy(1);
-                
+                nshell = new Shell();
+                nshell->setTop(objb->top()-8);
+                nshell->setRight(objb->right());
+                nshell->setLeft(objb->left());
+                nshell->setBottom(objb->bottom());
+                Level::sharedLevel()->addMovable(nshell);
+                //break;
             case GOOMBA:
                 game->jumpEnemy(1);
                 Level::sharedLevel()->removeDrawable(objb);
@@ -378,9 +387,9 @@ void Mario::check() {
     if (objl) {
         switch (objl->objectType()) {
             case PIPE:
-            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
+            case OFFQUESTION:
             case QUESTION:
                 if (this->getXVelocity() < 0) {
                     this->setXVelocity(0.0);
