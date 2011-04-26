@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
+// John (Jack) Johnson, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
 
 #include "Breakable.h"
@@ -52,6 +52,7 @@ void Breakable::draw()
 // Method that destroys a block if Mario is big
 void Breakable::breakBlock(bool isLarge)
 {
+	// if Mario is large, the block is removed from the shared level
 	if (isLarge == true) {
         Level::sharedLevel()->removeDrawable(this);
 	}

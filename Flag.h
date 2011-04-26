@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske, Jamie Veals
+// John (Jack) Johnson, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
 
 #ifndef _FLAG_H

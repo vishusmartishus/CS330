@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Alex Martishius, Jay Bondzeleske
+// John (Jack) Johnson, Jay Bondzeleske, Jamie Veals
 //------------------------------------------------------------
 
 #include "Flag.h"
