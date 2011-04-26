@@ -355,7 +355,6 @@ void SceneWindow::timerCB(int value)
         pause_ = false;
         viewportLeftX_ = 0;
         viewportRightX_ = viewportLeftX_ + viewportWidth_;
-        game->subLife();
         start_=false;
         sw->loadLevel();
         glClearColor(0, 0, 0, 0);
