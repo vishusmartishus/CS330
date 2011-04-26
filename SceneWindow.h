@@ -35,6 +35,7 @@ private:
 	bool pause_;
 	bool start_;
     bool deadups_;
+    int deathPosY_;
 };
 
 //----------------------------------------------------------------------

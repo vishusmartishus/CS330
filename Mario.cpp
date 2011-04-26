@@ -96,6 +96,7 @@ Mario::Mario()
     
     isDead_ = false;
     isInvincible_ = false;
+    compleateLevel_ = false;
     
     //init the keys
     jumpKey_ = false;
@@ -289,6 +290,7 @@ void Mario::check() {
                     this->jumpCount_ = 0;
                 }
                 ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
+                ( game)->breakBlock(this->getState() != SMALL_STATE);
                 break;
             case GOOMBA:
             case SHELL:
@@ -297,6 +299,7 @@ void Mario::check() {
                 //this->isDead_ = true;
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objt);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -304,9 +307,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objt);
                 break;
@@ -329,8 +334,10 @@ void Mario::check() {
                 }
                 break;
             case TURTLE:
+                game->jumpEnemy(1);
                 
             case GOOMBA:
+                game->jumpEnemy(1);
                 Level::sharedLevel()->removeDrawable(objb);
                 this->jumpCount_ = 25;
                 this->setYVelocity(2.0);
@@ -338,6 +345,7 @@ void Mario::check() {
             case ENEMYFIREBALL:
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objb);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -345,9 +353,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objb);
                 break;
@@ -355,6 +365,9 @@ void Mario::check() {
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objb);
                 break;
+            case FLAG:
+                game->touchFlag(this->bottom());
+                compleateLevel_=true;
         }
     } else {
         if (this->getYVelocity() == 0.0) {
@@ -365,6 +378,7 @@ void Mario::check() {
     if (objl) {
         switch (objl->objectType()) {
             case PIPE:
+            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -379,6 +393,7 @@ void Mario::check() {
                 this->isDead_ = true;
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objl);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -386,9 +401,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
@@ -409,6 +426,7 @@ void Mario::check() {
     if (objr) {
         switch (objr->objectType()) {
             case PIPE:
+            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
             case QUESTION:
@@ -423,6 +441,7 @@ void Mario::check() {
                 this->isDead_ = true;
                 break;
             case MUSHROOM:
+                game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objr);
                 if (this->state_ == SMALL_STATE) {
                     this->state_ = BIG_STATE;
@@ -430,9 +449,11 @@ void Mario::check() {
                 }
                 break;
             case STAR:
+                game->addPowerup();
                 starCount_ = 50;
                 break;
             case FIREFLOWER:
+                game->addPowerup();
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objr);
                 break;
