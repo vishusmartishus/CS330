@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Jay Bondzeleske, Alex Martishius
+// Jay Bondzeleske, John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 
 #ifndef _BREAKABLE_H

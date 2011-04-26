@@ -1,4 +1,4 @@
-// Jamie Veals, John (Jack) Johnson, Jay Bondzeleske\
+// Jamie Veals, John (Jack) Johnson, Jay Bondzeleske
 
 //------------------------------------------------------------
 
@@ -46,8 +46,8 @@ public:
 	bool killsFromSide() const { return killsSide_; }
     bool killsFromTop() const { return killsTop_; }
     int getPoints() const { return points_; }
-    // Setters for whether an option kills from the side(left or right), top, and bottom
-    // By default all kills are set to false, are to overridden by objects that kill Mario
+    // Setters for whether an object kills from the side(left or right), top, and bottom
+    // By default all kills are set to false, are to be overridden by objects that kill Mario
     void setKillsBottom(bool kills = false);
 	void setKillsSide(bool kills = false);
     void setKillsTop(bool kills = false);
