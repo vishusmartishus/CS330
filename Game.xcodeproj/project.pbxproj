@@ -12,11 +12,7 @@
 		03739E79135759580001C080 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03739E77135759580001C080 /* Pipe.cpp */; };
 		037608EF1342470000A50E9A /* test_LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037608EE1342470000A50E9A /* test_LList.cpp */; };
 		037608F01342471000A50E9A /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
-		037608F11342472700A50E9A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
-		037608F21342472700A50E9A /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
-		037A37451302C10100788A82 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
 		037A37461302C10100788A82 /* Breakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37211302C10100788A82 /* Breakable.cpp */; };
-		037A37471302C10100788A82 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
 		037A37491302C10100788A82 /* FireFlower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37271302C10100788A82 /* FireFlower.cpp */; };
 		037A374A1302C10100788A82 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37291302C10100788A82 /* Flag.cpp */; };
 		037A374B1302C10100788A82 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
@@ -32,8 +28,6 @@
 		037A37561302C10100788A82 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37411302C10100788A82 /* Turtle.cpp */; };
 		037A378D1302C3C300788A82 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
 		038B7C4A1344EA4000BFECC0 /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
-		038B7C4B1344EA5500BFECC0 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
-		038B7C4C1344EA5500BFECC0 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
 		038B7C4D1344EA6800BFECC0 /* AllMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37331302C10100788A82 /* AllMovable.cpp */; };
 		038B7C4E1344EA6800BFECC0 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
 		038B7C4F1344EA6800BFECC0 /* Goomba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372D1302C10100788A82 /* Goomba.cpp */; };
@@ -91,11 +85,9 @@
 		03739E78135759580001C080 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		037608E8134246D700A50E9A /* test_LList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_LList; sourceTree = BUILT_PRODUCTS_DIR; };
 		037608EE1342470000A50E9A /* test_LList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_LList.cpp; sourceTree = "<group>"; };
-		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
 		037A37201302C10100788A82 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
 		037A37211302C10100788A82 /* Breakable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Breakable.cpp; sourceTree = "<group>"; };
 		037A37221302C10100788A82 /* Breakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Breakable.h; sourceTree = "<group>"; };
-		037A37231302C10100788A82 /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
 		037A37241302C10100788A82 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
 		037A37271302C10100788A82 /* FireFlower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireFlower.cpp; sourceTree = "<group>"; };
 		037A37281302C10100788A82 /* FireFlower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireFlower.h; sourceTree = "<group>"; };
@@ -246,9 +238,7 @@
 			children = (
 				03739E78135759580001C080 /* Pipe.h */,
 				037A37201302C10100788A82 /* Base.h */,
-				037A371F1302C10100788A82 /* Base.cpp */,
 				037A37241302C10100788A82 /* Drawable.h */,
-				037A37231302C10100788A82 /* Drawable.cpp */,
 				037A372A1302C10100788A82 /* Flag.h */,
 				037A37291302C10100788A82 /* Flag.cpp */,
 				037A37221302C10100788A82 /* Breakable.h */,
@@ -373,7 +363,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -399,8 +388,6 @@
 			files = (
 				037608EF1342470000A50E9A /* test_LList.cpp in Sources */,
 				037608F01342471000A50E9A /* LList.cpp in Sources */,
-				037608F11342472700A50E9A /* Base.cpp in Sources */,
-				037608F21342472700A50E9A /* Drawable.cpp in Sources */,
 				039EFB0B1344E6B50074E32E /* Coin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,9 +398,7 @@
 			files = (
 				03F41651135DD95D0047A721 /* Pipe.cpp in Sources */,
 				03F4164A135DD9210047A721 /* Background.cpp in Sources */,
-				038B7C4B1344EA5500BFECC0 /* Base.cpp in Sources */,
 				038B7C641344EAE300BFECC0 /* Breakable.cpp in Sources */,
-				038B7C4C1344EA5500BFECC0 /* Drawable.cpp in Sources */,
 				038B7C6A1344EB1800BFECC0 /* FireFlower.cpp in Sources */,
 				038B7C6E1344EB3B00BFECC0 /* Flag.cpp in Sources */,
 				038B7C6F1344EB3B00BFECC0 /* Game.cpp in Sources */,
@@ -440,9 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
-				037A37451302C10100788A82 /* Base.cpp in Sources */,
 				037A37461302C10100788A82 /* Breakable.cpp in Sources */,
-				037A37471302C10100788A82 /* Drawable.cpp in Sources */,
 				037A37491302C10100788A82 /* FireFlower.cpp in Sources */,
 				037A374A1302C10100788A82 /* Flag.cpp in Sources */,
 				037A374B1302C10100788A82 /* Game.cpp in Sources */,
