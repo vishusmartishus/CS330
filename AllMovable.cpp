@@ -215,7 +215,7 @@ Drawable* AllMovable::checkTop()
 	liMovable.init(level->getActiveMovable());
 	liDrawable.init(level->getActiveDrawable());
     
-    Drawable *item;
+    Drawable *item, *newItem;;
     int thisTop, thisLeft, thisRight, objTop, objBottom, objLeft, objRight;
     
 	// get right value of object
@@ -235,9 +235,58 @@ Drawable* AllMovable::checkTop()
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
-			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                if (item->objectType() != BACKGROUND) {
-                    return item;
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight))
+			{
+                if (item->objectType() != BACKGROUND) 
+				{
+					// if the object is breakable
+					if(item->objectType() == BREAKABLE)
+					{
+						// gets the next block in list
+						while ((newItem = liBlocks.next()))
+						{
+							// check if question
+							if (newItem->objectType() == QUESTION)
+							{
+								int newObjTop = newItem->top();
+								int newObjBottom = newItem->bottom();
+								int newObjLeft = newItem->left();
+								int newObjRight = newItem->right();
+								// check if question is next to block
+								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
+								{
+										if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+										{
+											return newItem;
+										}
+								}
+							}
+						}
+					}
+					// if object is an offquestion
+					else if(item->objectType() == OFFQUESTION)
+					{
+						while ((newItem = liBlocks.next()))
+						{
+							// check if breakable
+							if (newItem->objectType() == BREAKABLE)
+							{
+								int newObjTop = newItem->top();
+								int newObjBottom = newItem->bottom();
+								int newObjLeft = newItem->left();
+								int newObjRight = newItem->right();
+								// check if question is next to block
+								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
+								{
+										if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+										{
+											return newItem;
+										}
+								}
+							}
+						}
+					}
+					return item;
                 }
             }
 		}
