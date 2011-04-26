@@ -72,6 +72,21 @@ public:
             width_ = 80;
             height_ = 35;
         }
+        else if (kind == 't'){
+            kind_ = 8;
+            width_ = 16;
+            height_ = 16;
+        }
+        else if (kind == 'v'){
+            kind_ = 9;
+            width_ = 16;
+            height_ = 16;
+        }
+        else if (kind == 'd'){
+            kind_ = 10;
+            width_ = 16;
+            height_ = 16;
+        }
         
         
         sprite(); 

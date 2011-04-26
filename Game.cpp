@@ -50,6 +50,7 @@ void Game::addCoin()
         addLife();
         coinsTotal_ = 0;
     }
+    pointsTotal_+=200;
 }
 
 //------------------------------------------------------------
@@ -104,7 +105,42 @@ void Game::gameOver()
 	levelNumber_ = 1;
 }
 
+//------------------------------------------------------------
 
+void Game::jumpEnemy(int num)
+{
+    if (num < 5) {
+        pointsTotal_+= 50* (2*num);
+    }
+    else{
+        addLife();
+    }
+}
+
+//------------------------------------------------------------
+
+void Game::addPowerup()
+{
+    pointsTotal_+=1000;
+}
+
+//------------------------------------------------------------
+
+void Game::breakBlock(bool isLarge)
+{
+    if (isLarge) {
+        pointsTotal_ +=50;
+    }
+}
+
+//------------------------------------------------------------
+
+void Game::touchFlag(int height)
+{
+    pointsTotal_+=height*10;
+    pointsTotal_+=getTime()*10;
+    levelNumber_+=1;
+}
 
 
 

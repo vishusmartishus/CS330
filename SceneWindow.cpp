@@ -80,10 +80,11 @@ void SceneWindow::mainLoop()
 
 void SceneWindow::startGame()
 {
-	sw->loadLevel();
+	
 	pause_ = false;
 	game = new Game();
 	coin = new Coin();
+    sw->loadLevel();
     glutTimerFunc(10, &SceneWindow::timerFunc, 0);
 	
 }
@@ -95,7 +96,7 @@ void SceneWindow::loadLevel()
 	//called from start game
 	//loads in current level from set checkpoint
 	Level *level_ = Level::sharedLevel();
-	level_->makeLevel();
+	level_->makeLevel(game->getLevel());
 	// initialize orthographic viewing projections
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -315,7 +316,18 @@ void SceneWindow::timerCB(int value)
 	// iterate through objects and move them
 	// redraw   
 
-    if (!mario->isDead() && start_){
+    if (mario->levelDone()) {
+        pause_ = false;
+        viewportLeftX_ = 0;
+        viewportRightX_ = viewportLeftX_ + viewportWidth_;
+        game->subLife();
+        start_=false;
+        sw->loadLevel();
+        glClearColor(0, 0, 0, 0);
+        game->resetClock();
+    }
+    else if (!mario->isDead() && start_){
+        
         game->pulseClock();
         Level *level_ = Level:: sharedLevel();
         LList movable = level_->getActiveMovable();
@@ -345,10 +357,11 @@ void SceneWindow::timerCB(int value)
         if (!pause_) {
             pause_ = true;
             deadups_ = true;
-            mario->setLeft(viewportLeftX_+124.0);
-            mario->setRight(viewportLeftX_+140.0);
-            mario->setBottom(136.0);
-            mario->setTop(152.0);
+            deathPosY_ = mario->bottom();
+            mario->setLeft(mario->left());
+            mario->setRight(mario->left()+16.0);
+            mario->setBottom(mario->bottom());
+            mario->setTop(mario->bottom()+16.0);
             
         }
         else if (mario->top() > 0){
@@ -359,7 +372,7 @@ void SceneWindow::timerCB(int value)
             else{
                 mario->setBottom(mario->bottom()+1);
                 mario->setTop(mario->top()+1);
-                if (mario->top() > 200.0) {
+                if (mario->bottom() > deathPosY_+48.0) {
                     deadups_ = false;
                 }
             }

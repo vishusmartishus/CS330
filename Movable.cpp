@@ -49,7 +49,7 @@ bool Movable::canMove()
     
     // if a block type is underneath
 	else {
-		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE) {
+		if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE || dBottom->objectType() == OFFQUESTION) {
 			this->setYVelocity(0.0);
 		}
         else if (dBottom->objectType() == BACKGROUND){
