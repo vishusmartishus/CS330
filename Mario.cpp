@@ -367,6 +367,7 @@ void Mario::check() {
             case PIPE:
             case BREAKABLE:
             case REGULAR:
+            case OFFQUESTION:
             case QUESTION:
                 if (this->getXVelocity() < 0) {
                     this->setXVelocity(0.0);
@@ -411,6 +412,7 @@ void Mario::check() {
             case PIPE:
             case BREAKABLE:
             case REGULAR:
+            case OFFQUESTION:
             case QUESTION:
                 if (this->getXVelocity() > 0) {
                     this->setXVelocity(0.0);
