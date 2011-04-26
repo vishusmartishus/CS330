@@ -29,16 +29,15 @@ Movable::~Movable()
 bool Movable::canMove()
 {
     // call checkRight and checkLeft methods
-    Drawable *dRight = checkRight();
-    Drawable *dLeft = checkLeft();
-    Drawable *dBottom = checkBottom();
-    int objType = this->objectType();
+    Drawable *dRight = this->checkRight();
+    Drawable *dLeft = this->checkLeft();
+    Drawable *dBottom = this->checkBottom();
     
 	bool keepGoing = true;
     
     // if nothing underneath
-	if ((dBottom == NULL || dBottom->objectType() == objType) || dBottom->objectType() == BACKGROUND) {
-        if (this->objectType() == TURTLE){
+	if ((dBottom == NULL || dBottom == this) || dBottom->objectType() == BACKGROUND || dBottom->objectType() == COIN) {
+        if (this->objectType() == TURTLE) {
             keepGoing = false;
         }
 		// check if goomba, mushroom, shell, can fall off edge
@@ -78,7 +77,6 @@ bool Movable::canMove()
 
 void Movable::updateScene()
 {
-    bool b;
     double currentXVelocity, currentYVelocity;
     double updatedLeft, updatedRight, updatedTop, updatedBottom;
     
@@ -95,12 +93,10 @@ void Movable::updateScene()
     this->setTop(updatedTop);
     updatedBottom = this->bottom() + currentYVelocity;
     this->setBottom(updatedBottom);
-    
-    b = canMove();
-    
-    // if b is false, can't move that direction, reverse x direction
-	// if b is true, movement can stay
-    if (b == false) {
+        
+    // if canMove is false, can't move that direction, reverse x direction
+	// if canMove is true, movement can stay
+    if (!canMove()) {
         // undo potential move
         updatedLeft = this->left() - currentXVelocity;
         this->setLeft(updatedLeft);
@@ -119,7 +115,6 @@ void Movable::updateScene()
         updatedRight = this->right() + currentXVelocity;
         this->setRight(updatedRight);
     }
-    
 }
 
 //---------------------------------------------------------
