@@ -167,8 +167,8 @@ void Mario::updateKeyDown(unsigned char button)
             MarioFireball *fb = new MarioFireball;
             fb->setTop(this->top());
             fb->setLeft(this->right());
-            fb->setBottom(this->top() - 10);
-            fb->setRight(this->right() + 10);
+            fb->setBottom(this->top() - 8);
+            fb->setRight(this->right() + 8);
             fb->setXVelocity(1.0);
             fb->setYVelocity(0.0);
             Level::sharedLevel()->addMovable(fb);
