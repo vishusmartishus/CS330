@@ -9,16 +9,30 @@ M unbreakable w/mushroom (or flower depending on mario's size)
 C unbreakable w/coin
 S star
 
-P pipe (left top)
-i pipe (right top)
-p pipe (left trunk)
-e pipe (right trunk)
+P pipe (top)
+p pipe (bottom)
+
 
 g goomba
 k koopa
+z pirahna plant
 
 c coin
 
+u bush (small)
+y bush (med)
+w bush (large)
+
+1 cloud (small)
+2 cloud (med)
+3 cloud (large)
+
+7 mountain (small)
+8 mountain (large)
+
+v trunk (top)
+t trunk (bottom)
+d trunk (brown)
 
 to be resolved:
 

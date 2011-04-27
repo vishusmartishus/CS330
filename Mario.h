@@ -12,6 +12,9 @@
 const int SMALL_STATE = 0, BIG_STATE = 1, FIRE_STATE = 2;
 
 #include "AllMovable.h"
+#include "Game.h"
+extern Game *game;
+
 
 class Mario: public AllMovable {
 
@@ -34,6 +37,10 @@ public:
     void setLeftBound(int leftBound);
     //returns the object type of Mario
     virtual int objectType() { return MARIO; }
+    //return end level
+    bool levelDone();
+    //reset to initial state
+    void reset();
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
@@ -42,12 +49,14 @@ private:
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     int leftBound_;
     GLuint texture_[3][4];
+    GLuint deadtexture_;
     int texturePos;
+    bool compleateLevel_;
     
 	//Moves Mario to the left or right and calls check() at beginning
 	void move();
     //checks to see if Mario runs into an object
-    bool check();
+    void check();
 	//Returns true if Mario is in the fire state
 	bool fireball();
     //Handels all jump cases
@@ -61,5 +70,6 @@ private:
 inline int Mario::getState() {return state_;}
 //inline getter for isDead_
 inline bool Mario::isDead() {return isDead_;}
+inline bool Mario::levelDone() {return compleateLevel_;}
 
 #endif

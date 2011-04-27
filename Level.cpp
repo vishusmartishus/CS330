@@ -12,6 +12,7 @@
 #include "Coin.h"
 #include "Goomba.h"
 #include "Turtle.h"
+#include "Plant.h"
 #include "Breakable.h"
 #include "Pipe.h"
 #include "Flag.h"
@@ -237,13 +238,31 @@ void Level::makeLevel(int levelNumber)
 				levelMovable_.append(koopa);
 			}
 		}
+		 else if (object == 'z') {
+			
+			//create plant
+			Plant *plant = new Plant;
+			plant->setTop(ycoord  + 16);
+			plant->setBottom(ycoord);
+			plant->setLeft(xcoord);
+			plant->setRight(xcoord + 16);
+			
+			//place in correct list
+			if (xcoord<256) {
+				activeMovable_.append(plant);
+			}
+			else {
+				levelMovable_.append(plant);
+			} 
+			
+		}
 		else if (object == 's') {
 			
 			//creates the coordinates for marios starting point
 			leftStart_ = xcoord;
 			bottomStart_ = ycoord;
 		}
-        else if (object== 'u' || object=='y' || object=='w' || object=='1'|| object=='2' || object=='3' || object=='7' || object =='8'){
+        else if (object== 'u' || object=='y' || object=='w' || object=='1'|| object=='2' || object=='3' || object=='7' || object =='8' || object== 'v' || object== 't' || object== 'd'){
             //create bush
             Background *background = new Background(object);
             background->setTop(ycoord  + background->getHeight());
@@ -278,6 +297,22 @@ void Level::updateExtents(int leftBound, int rightBound)
 {
 	//increases the active range for blocks to prevent an issue with goombas falling off the level
 	int blockRight = rightBound + 96;
+	//creates a left buffer range for movables and blocks
+	//blocks extend 16 past movables to correctly delete movables
+	int blockLeft, movableLeft;
+	//creates the buffer for blocks and movables after the extents update enough
+	if (leftBound >= 48){
+		blockLeft = leftBound - 48;
+	}
+	else {
+		blockLeft = leftBound;
+	}
+	if (leftBound >= 32){
+		movableLeft = leftBound - 32;
+	}
+	else {
+		movableLeft = leftBound;
+	}
 
 	//removes from the levelDrawable_ llist and adds onto the end of the active list
 	while (levelDrawable_.first() != NULL) {
@@ -314,7 +349,7 @@ void Level::updateExtents(int leftBound, int rightBound)
 	
 	//removes from the activeMovable_ llist and deletes the object
 	while (activeMovable_.first() != NULL) {
-		if (activeMovable_.first()->right() < leftBound) {
+		if (activeMovable_.first()->right() < movableLeft) {
 			Drawable *obj = activeMovable_.removeFirst();
 			delete obj;
 		}
@@ -336,7 +371,7 @@ void Level::updateExtents(int leftBound, int rightBound)
 	
 	//removes from the activeBlocks_ llist and deletes the object
 	while (activeBlocks_.first() != NULL) {
-		if (activeBlocks_.first()->right() < leftBound) {
+		if (activeBlocks_.first()->right() < blockLeft) {
 			Drawable *obj = activeBlocks_.removeFirst();
 			delete obj;
 		}
@@ -353,11 +388,11 @@ void Level::removeDrawable(Drawable *obj)
 	//checks the object type and calls remove on the correct list
 	type = obj->objectType();
 
-	if ((type = FLAG) || (type = FIREFLOWER) || (type = COIN)) {
+	if ((type == FLAG) || (type == FIREFLOWER) || (type == COIN)) {
 		activeDrawable_.removeDrawable(obj);
 	}
 
-	else if ((type = BREAKABLE) || (type = QUESTION) || (type = REGULAR)) {
+	else if ((type == BREAKABLE) || (type == QUESTION) || (type == REGULAR)) {
 		activeBlocks_.removeDrawable(obj);
 	}
 

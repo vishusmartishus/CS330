@@ -16,11 +16,12 @@ class Nonbreakable:public Drawable {
 
 public:
 
-    // Nonbreakable constructor that uses the object type and the held reward
+    // Constructor that uses the object type and the contained reward
     Nonbreakable(int type, int reward = 0)
     {
         // Will set the type of block dependent on the scene's given information
         // Only Question blocks can have rewards that are also set this way
+        // Default reward is 0 for none
 		type_ = type;
 		reward_ = reward;
     }

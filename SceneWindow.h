@@ -34,6 +34,8 @@ private:
 	int viewportLeftX_, viewportRightX_;
 	bool pause_;
 	bool start_;
+    bool deadups_;
+    int deathPosY_;
 };
 
 //----------------------------------------------------------------------

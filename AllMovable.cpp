@@ -80,7 +80,7 @@ Drawable* AllMovable::checkRight()
         objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
-		if (thisRight >= objLeft && thisRight <= objRight)
+		if (thisRight >= objLeft && thisRight <= objRight && item != this)
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
@@ -167,7 +167,7 @@ Drawable* AllMovable::checkLeft()
         objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
-		if (thisLeft >= objLeft && thisLeft <= objRight)
+		if (thisLeft >= objLeft && thisLeft <= objRight && item != this)
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
@@ -188,7 +188,7 @@ Drawable* AllMovable::checkLeft()
         objBottom = item->bottom();
         
 		// if the right is in between objects left & right boundaries
-		if (thisLeft >= objLeft && thisLeft <= objRight)
+		if (thisLeft >= objLeft && thisLeft <= objRight )
 		{
 			// check if between top and bottom
             if ((thisTop <= objTop && thisTop > objBottom) || (thisBottom < objTop && thisBottom >= objBottom)) {
@@ -215,7 +215,7 @@ Drawable* AllMovable::checkTop()
 	liMovable.init(level->getActiveMovable());
 	liDrawable.init(level->getActiveDrawable());
     
-    Drawable *item;
+    Drawable *item, *newItem;;
     int thisTop, thisLeft, thisRight, objTop, objBottom, objLeft, objRight;
     
 	// get right value of object
@@ -235,9 +235,58 @@ Drawable* AllMovable::checkTop()
 		// if the top is in between objects top & bottom boundaries
 		if (thisTop >= objBottom && thisTop <= objTop)
 		{
-			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
-                if (item->objectType() != BACKGROUND) {
-                    return item;
+			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight))
+			{
+                if (item->objectType() != BACKGROUND) 
+				{
+					// if the object is breakable
+					if(item->objectType() == BREAKABLE)
+					{
+						// gets the next block in list
+						while ((newItem = liBlocks.next()))
+						{
+							// check if question
+							if (newItem->objectType() == QUESTION)
+							{
+								int newObjTop = newItem->top();
+								int newObjBottom = newItem->bottom();
+								int newObjLeft = newItem->left();
+								int newObjRight = newItem->right();
+								// check if question is next to block
+								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
+								{
+										if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+										{
+											return newItem;
+										}
+								}
+							}
+						}
+					}
+					// if object is an offquestion
+					else if(item->objectType() == OFFQUESTION)
+					{
+						while ((newItem = liBlocks.next()))
+						{
+							// check if breakable
+							if (newItem->objectType() == BREAKABLE)
+							{
+								int newObjTop = newItem->top();
+								int newObjBottom = newItem->bottom();
+								int newObjLeft = newItem->left();
+								int newObjRight = newItem->right();
+								// check if question is next to block
+								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
+								{
+										if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+										{
+											return newItem;
+										}
+								}
+							}
+						}
+					}
+					return item;
                 }
             }
 		}
@@ -253,7 +302,7 @@ Drawable* AllMovable::checkTop()
         objRight = item->right();
         
 		// if the top is in between objects top & bottom boundaries
-		if (thisTop >= objBottom && thisTop <= objTop)
+		if (thisTop >= objBottom && thisTop <= objTop && item != this)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 if (item->objectType() != BACKGROUND) {
@@ -290,6 +339,7 @@ Drawable* AllMovable::checkTop()
 
 Drawable* AllMovable::checkBottom()
 {
+    
     if (this->objectType() == MARIO && this->getYVelocity() > 0) {
         return NULL;
     }
@@ -341,7 +391,7 @@ Drawable* AllMovable::checkBottom()
         objLeft = item->left();
         
 		// if the top is in between objects top & bottom boundaries
-		if (thisBottom >= objBottom && thisBottom <= objTop)
+		if (thisBottom >= objBottom && thisBottom <= objTop && item != this)
 		{
 			if ((thisLeft >= objLeft && thisLeft < objRight) || (thisRight > objLeft && thisRight <= objRight)) {
                 if (item->objectType() != BACKGROUND) {

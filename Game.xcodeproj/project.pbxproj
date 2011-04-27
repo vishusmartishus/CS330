@@ -12,17 +12,12 @@
 		03739E79135759580001C080 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03739E77135759580001C080 /* Pipe.cpp */; };
 		037608EF1342470000A50E9A /* test_LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037608EE1342470000A50E9A /* test_LList.cpp */; };
 		037608F01342471000A50E9A /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
-		037608F11342472700A50E9A /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
-		037608F21342472700A50E9A /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
-		037A37451302C10100788A82 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
 		037A37461302C10100788A82 /* Breakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37211302C10100788A82 /* Breakable.cpp */; };
-		037A37471302C10100788A82 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
 		037A37491302C10100788A82 /* FireFlower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37271302C10100788A82 /* FireFlower.cpp */; };
 		037A374A1302C10100788A82 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37291302C10100788A82 /* Flag.cpp */; };
 		037A374B1302C10100788A82 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
 		037A374C1302C10100788A82 /* Goomba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372D1302C10100788A82 /* Goomba.cpp */; };
 		037A374D1302C10100788A82 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372F1302C10100788A82 /* Level.cpp */; };
-		037A374E1302C10100788A82 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37311302C10100788A82 /* Mario.cpp */; };
 		037A374F1302C10100788A82 /* AllMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37331302C10100788A82 /* AllMovable.cpp */; };
 		037A37501302C10100788A82 /* Mushroom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37351302C10100788A82 /* Mushroom.cpp */; };
 		037A37511302C10100788A82 /* Nonbreakable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37371302C10100788A82 /* Nonbreakable.cpp */; };
@@ -33,8 +28,6 @@
 		037A37561302C10100788A82 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37411302C10100788A82 /* Turtle.cpp */; };
 		037A378D1302C3C300788A82 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
 		038B7C4A1344EA4000BFECC0 /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
-		038B7C4B1344EA5500BFECC0 /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A371F1302C10100788A82 /* Base.cpp */; };
-		038B7C4C1344EA5500BFECC0 /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37231302C10100788A82 /* Drawable.cpp */; };
 		038B7C4D1344EA6800BFECC0 /* AllMovable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37331302C10100788A82 /* AllMovable.cpp */; };
 		038B7C4E1344EA6800BFECC0 /* Movable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A378C1302C3C300788A82 /* Movable.cpp */; };
 		038B7C4F1344EA6800BFECC0 /* Goomba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372D1302C10100788A82 /* Goomba.cpp */; };
@@ -55,7 +48,6 @@
 		038B7C6B1344EB1800BFECC0 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		038B7C6E1344EB3B00BFECC0 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37291302C10100788A82 /* Flag.cpp */; };
 		038B7C6F1344EB3B00BFECC0 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A372B1302C10100788A82 /* Game.cpp */; };
-		038B7C701344EB3B00BFECC0 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A37311302C10100788A82 /* Mario.cpp */; };
 		03911FF6130CB9AB006F51B2 /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		039EFB0B1344E6B50074E32E /* Coin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03911FF4130CB9AB006F51B2 /* Coin.cpp */; };
 		039EFB171344E6DF0074E32E /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03ECB8B61304C71700B5D298 /* GLUT.framework */; };
@@ -67,6 +59,7 @@
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Game.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Game.1 */; };
 		B7A503E7135CC79200F72E5C /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A503E5135CC79200F72E5C /* Background.cpp */; };
+		B7DC8B26135DF9F4003E3DBD /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7DC8B25135DF9F4003E3DBD /* Mario.cpp */; };
 		DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
 /* End PBXBuildFile section */
 
@@ -92,11 +85,9 @@
 		03739E78135759580001C080 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		037608E8134246D700A50E9A /* test_LList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_LList; sourceTree = BUILT_PRODUCTS_DIR; };
 		037608EE1342470000A50E9A /* test_LList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_LList.cpp; sourceTree = "<group>"; };
-		037A371F1302C10100788A82 /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base.cpp; sourceTree = "<group>"; };
 		037A37201302C10100788A82 /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base.h; sourceTree = "<group>"; };
 		037A37211302C10100788A82 /* Breakable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Breakable.cpp; sourceTree = "<group>"; };
 		037A37221302C10100788A82 /* Breakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Breakable.h; sourceTree = "<group>"; };
-		037A37231302C10100788A82 /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
 		037A37241302C10100788A82 /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
 		037A37271302C10100788A82 /* FireFlower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireFlower.cpp; sourceTree = "<group>"; };
 		037A37281302C10100788A82 /* FireFlower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireFlower.h; sourceTree = "<group>"; };
@@ -108,7 +99,6 @@
 		037A372E1302C10100788A82 /* Goomba.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goomba.h; sourceTree = "<group>"; };
 		037A372F1302C10100788A82 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		037A37301302C10100788A82 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
-		037A37311302C10100788A82 /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
 		037A37321302C10100788A82 /* Mario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mario.h; sourceTree = "<group>"; };
 		037A37331302C10100788A82 /* AllMovable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AllMovable.cpp; sourceTree = "<group>"; };
 		037A37341302C10100788A82 /* AllMovable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllMovable.h; sourceTree = "<group>"; };
@@ -138,6 +128,7 @@
 		8DD76F6C0486A84900D96B5E /* Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Game; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A503E5135CC79200F72E5C /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
 		B7A503E6135CC79200F72E5C /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		B7DC8B25135DF9F4003E3DBD /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
 		C6859E8B029090EE04C91782 /* Game.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Game.1; sourceTree = "<group>"; };
 		DA38FB79130D9E4800C5F7A6 /* ListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNode.h; sourceTree = "<group>"; };
 		DA38FB7A130D9E5700C5F7A6 /* LList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LList.h; sourceTree = "<group>"; };
@@ -236,8 +227,8 @@
 		037A375B1302C16600788A82 /* Mario */ = {
 			isa = PBXGroup;
 			children = (
+				B7DC8B25135DF9F4003E3DBD /* Mario.cpp */,
 				037A37321302C10100788A82 /* Mario.h */,
-				037A37311302C10100788A82 /* Mario.cpp */,
 			);
 			name = Mario;
 			sourceTree = "<group>";
@@ -247,9 +238,7 @@
 			children = (
 				03739E78135759580001C080 /* Pipe.h */,
 				037A37201302C10100788A82 /* Base.h */,
-				037A371F1302C10100788A82 /* Base.cpp */,
 				037A37241302C10100788A82 /* Drawable.h */,
-				037A37231302C10100788A82 /* Drawable.cpp */,
 				037A372A1302C10100788A82 /* Flag.h */,
 				037A37291302C10100788A82 /* Flag.cpp */,
 				037A37221302C10100788A82 /* Breakable.h */,
@@ -374,7 +363,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -400,8 +388,6 @@
 			files = (
 				037608EF1342470000A50E9A /* test_LList.cpp in Sources */,
 				037608F01342471000A50E9A /* LList.cpp in Sources */,
-				037608F11342472700A50E9A /* Base.cpp in Sources */,
-				037608F21342472700A50E9A /* Drawable.cpp in Sources */,
 				039EFB0B1344E6B50074E32E /* Coin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,15 +398,12 @@
 			files = (
 				03F41651135DD95D0047A721 /* Pipe.cpp in Sources */,
 				03F4164A135DD9210047A721 /* Background.cpp in Sources */,
-				038B7C4B1344EA5500BFECC0 /* Base.cpp in Sources */,
 				038B7C641344EAE300BFECC0 /* Breakable.cpp in Sources */,
-				038B7C4C1344EA5500BFECC0 /* Drawable.cpp in Sources */,
 				038B7C6A1344EB1800BFECC0 /* FireFlower.cpp in Sources */,
 				038B7C6E1344EB3B00BFECC0 /* Flag.cpp in Sources */,
 				038B7C6F1344EB3B00BFECC0 /* Game.cpp in Sources */,
 				038B7C4F1344EA6800BFECC0 /* Goomba.cpp in Sources */,
 				038B7C611344EACB00BFECC0 /* Level.cpp in Sources */,
-				038B7C701344EB3B00BFECC0 /* Mario.cpp in Sources */,
 				038B7C4D1344EA6800BFECC0 /* AllMovable.cpp in Sources */,
 				038B7C501344EA6800BFECC0 /* Mushroom.cpp in Sources */,
 				038B7C651344EAE300BFECC0 /* Nonbreakable.cpp in Sources */,
@@ -442,15 +425,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
-				037A37451302C10100788A82 /* Base.cpp in Sources */,
 				037A37461302C10100788A82 /* Breakable.cpp in Sources */,
-				037A37471302C10100788A82 /* Drawable.cpp in Sources */,
 				037A37491302C10100788A82 /* FireFlower.cpp in Sources */,
 				037A374A1302C10100788A82 /* Flag.cpp in Sources */,
 				037A374B1302C10100788A82 /* Game.cpp in Sources */,
 				037A374C1302C10100788A82 /* Goomba.cpp in Sources */,
 				037A374D1302C10100788A82 /* Level.cpp in Sources */,
-				037A374E1302C10100788A82 /* Mario.cpp in Sources */,
 				037A374F1302C10100788A82 /* AllMovable.cpp in Sources */,
 				037A37501302C10100788A82 /* Mushroom.cpp in Sources */,
 				037A37511302C10100788A82 /* Nonbreakable.cpp in Sources */,
@@ -466,6 +446,7 @@
 				DA38FB7C130D9E5700C5F7A6 /* LList.cpp in Sources */,
 				03739E79135759580001C080 /* Pipe.cpp in Sources */,
 				B7A503E7135CC79200F72E5C /* Background.cpp in Sources */,
+				B7DC8B26135DF9F4003E3DBD /* Mario.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
