@@ -95,6 +95,7 @@ Mario::Mario()
     state_ = SMALL_STATE;
     jumpCount_ = 0;
     starCount_ = 0;
+    hitCount_ = 0;
     
     isDead_ = false;
     isInvincible_ = false;
@@ -246,6 +247,10 @@ void Mario::updateScene()
         check();
         jump();
         move();
+        if (starCount_ > 0)
+            starCount_ --;
+        if (hitCount_ > 0)
+            hitCount_--;   
     }
     
 }
@@ -299,7 +304,30 @@ void Mario::check() {
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                //this->isDead_ = true;
+                if (state_ > SMALL_STATE)
+                {
+                    if (hitCount_ == 0){
+                        hitCount_ = 200;
+                        if (state_ == BIG_STATE)
+                        {
+                            this->setTop(this->top() - 8.0);
+                            state_ = SMALL_STATE;
+                        }
+                        else if (state_ == FIRE_STATE)
+                        {
+                            state_ = BIG_STATE;
+                        }
+                    }
+                }
+                if (starCount_ > 0)
+                {
+                    game->jumpEnemy(1);
+                    Level::sharedLevel()->removeDrawable(objr);
+                }
+                else if (starCount_ == 0 and hitCount_ == 0)
+                {
+                    this->isDead_ = true;
+                }
                 break;
             case MUSHROOM:
                 game->addPowerup();
@@ -315,6 +343,10 @@ void Mario::check() {
                 break;
             case FIREFLOWER:
                 game->addPowerup();
+                if (state_ == SMALL_STATE)
+                {
+                    this->setTop(this->top() + 8);
+                }
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objt);
                 break;
@@ -367,6 +399,10 @@ void Mario::check() {
                 break;
             case FIREFLOWER:
                 game->addPowerup();
+                if (state_ == SMALL_STATE)
+                {
+                    this->setTop(this->top() + 8);
+                }
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objb);
                 break;
@@ -399,7 +435,30 @@ void Mario::check() {
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                this->isDead_ = true;
+                if (state_ > SMALL_STATE)
+                {
+                    if (hitCount_ == 0){
+                        hitCount_ = 200;
+                        if (state_ == BIG_STATE)
+                        {
+                            this->setTop(this->top() - 8.0);
+                            state_ = SMALL_STATE;
+                        }
+                        else if (state_ == FIRE_STATE)
+                        {
+                            state_ = BIG_STATE;
+                        }
+                    }
+                }
+                if (starCount_ > 0)
+                {
+                    game->jumpEnemy(1);
+                    Level::sharedLevel()->removeDrawable(objr);
+                }
+                else if (starCount_ == 0 and hitCount_ == 0)
+                {
+                    this->isDead_ = true;
+                }
                 break;
             case MUSHROOM:
                 game->addPowerup();
@@ -415,6 +474,10 @@ void Mario::check() {
                 break;
             case FIREFLOWER:
                 game->addPowerup();
+                if (state_ == SMALL_STATE)
+                {
+                    this->setTop(this->top() + 8);
+                }   
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
@@ -422,9 +485,9 @@ void Mario::check() {
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
-                
         }
-    } else if (leftKey_) {
+    } 
+    else if (leftKey_) {
         if (sprintKey_) {
             this->setXVelocity(-1.2);
         } else {
@@ -447,7 +510,30 @@ void Mario::check() {
             case SHELL:
             case ENEMYFIREBALL:
             case TURTLE:
-                this->isDead_ = true;
+                if (state_ > SMALL_STATE)
+                {
+                    if (hitCount_ == 0){
+                        hitCount_ = 200;
+                        if (state_ == BIG_STATE)
+                        {
+                            this->setTop(this->top() - 8.0);
+                            state_ = SMALL_STATE;
+                        }
+                        else if (state_ == FIRE_STATE)
+                        {
+                            state_ = BIG_STATE;
+                        }
+                    }
+                }
+                if (starCount_ > 0)
+                {
+                    game->jumpEnemy(1);
+                    Level::sharedLevel()->removeDrawable(objr);
+                }
+                else if (starCount_ == 0 and hitCount_ == 0)
+                {
+                    this->isDead_ = true;
+                }
                 break;
             case MUSHROOM:
                 game->addPowerup();
@@ -463,6 +549,10 @@ void Mario::check() {
                 break;
             case FIREFLOWER:
                 game->addPowerup();
+                if (state_ == SMALL_STATE)
+                {
+                    this->setTop(this->top() + 8);
+                }
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objr);
                 break;
@@ -474,7 +564,8 @@ void Mario::check() {
                 break;
                 
         }
-    } else if (rightKey_) {
+    } 
+    else if (rightKey_) {
         if (sprintKey_) {
             this->setXVelocity(1.2);
         } else {
