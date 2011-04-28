@@ -97,6 +97,7 @@ Mario::Mario()
     jumpCount_ = 0;
     starCount_ = 0;
     hitCount_ = 0;
+    direction_ = 1;
     
     isDead_ = false;
     isInvincible_ = false;
@@ -123,6 +124,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'a')
     {
         leftKey_ = true;
+        direction_ = 0;
         //set Mario's Velocity
         if (sprintKey_ == true)
         {
@@ -137,7 +139,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'd')
     {
         rightKey_ = true;
-        
+        direction_ = 1;
         //set Mario's velocity
         if (sprintKey_ == true)
         {
@@ -170,8 +172,13 @@ void Mario::updateKeyDown(unsigned char button)
             fb->setLeft(this->right());
             fb->setBottom(this->top() - 8);
             fb->setRight(this->right() + 8);
-            fb->setXVelocity(1.0);
-            fb->setYVelocity(0.0);
+            if (direction_ == 1) {
+                fb->setXVelocity(1.0);
+            }
+            else {
+                fb->setXVelocity(-1.0);
+            }
+            fb->setYVelocity(-0.5);
             Level::sharedLevel()->addMovable(fb);
         }
     }
@@ -291,15 +298,19 @@ void Mario::check() {
                     this->setXVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
-                ((Nonbreakable*)objt)->generateReward(this->getState() != SMALL_STATE);
+                if (this->getYVelocity() >= 0) {
+                    ((Nonbreakable*)objt)->generateReward(this->getState() != SMALL_STATE);
+                }
                 break;
             case BREAKABLE:
                 if (this->getYVelocity() > 0) {
                     this->setXVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
-                ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
-                ( game)->breakBlock(this->getState() != SMALL_STATE);
+                if (this->getYVelocity() >= 0) {
+                    ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
+                    (game)->breakBlock(this->getState() != SMALL_STATE);
+                }
                 break;
             case GOOMBA:
             case SHELL:
@@ -325,7 +336,7 @@ void Mario::check() {
                     game->jumpEnemy(1);
                     Level::sharedLevel()->removeDrawable(objr);
                 }
-                else if (starCount_ == 0 and hitCount_ == 0)
+                else if (starCount_ == 0 && hitCount_ == 0)
                 {
                     this->isDead_ = true;
                 }
@@ -456,7 +467,7 @@ void Mario::check() {
                     game->jumpEnemy(1);
                     Level::sharedLevel()->removeDrawable(objr);
                 }
-                else if (starCount_ == 0 and hitCount_ == 0)
+                else if (starCount_ == 0 && hitCount_ == 0)
                 {
                     this->isDead_ = true;
                 }
@@ -531,7 +542,7 @@ void Mario::check() {
                     game->jumpEnemy(1);
                     Level::sharedLevel()->removeDrawable(objr);
                 }
-                else if (starCount_ == 0 and hitCount_ == 0)
+                else if (starCount_ == 0 && hitCount_ == 0)
                 {
                     this->isDead_ = true;
                 }
@@ -577,6 +588,9 @@ void Mario::check() {
     if (this->left() < leftBound_ && this->getXVelocity() < 0)
     {
         this->setXVelocity(0.0);
+    }
+    if (this->top() <= 0 || game->getTime() <= 0) {
+        this->isDead_ = true;
     }
 }
 //------------------------------------------------------------

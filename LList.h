@@ -22,7 +22,7 @@ class LList {
 public:
 	LList();
 	~LList();
-	
+	//Copy methods
 	LList(const LList& source);
 	LList& operator=(const LList &list);
 	
