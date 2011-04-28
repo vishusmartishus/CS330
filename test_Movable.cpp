@@ -169,10 +169,7 @@ int main() {
         cout<< t1->checkTop();
         t1->updateScene();
         ++d;
-    }
 
 
-
-    }
 	return 0;
 }
