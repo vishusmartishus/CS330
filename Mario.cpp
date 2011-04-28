@@ -276,24 +276,26 @@ void Mario::check() {
             case OFFQUESTION:
             case REGULAR:
                 if (this->getYVelocity() > 0) {
-                    this->setXVelocity(0.0);
+                    this->setYVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
                 break;
             case QUESTION:
                 if (this->getYVelocity() > 0) {
-                    this->setXVelocity(0.0);
+                    this->setYVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
                 ((Nonbreakable*)objt)->generateReward(this->getState() != SMALL_STATE);
                 break;
             case BREAKABLE:
                 if (this->getYVelocity() > 0) {
-                    this->setXVelocity(0.0);
+                    this->setYVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
-                ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
-                ( game)->breakBlock(this->getState() != SMALL_STATE);
+                if (this->getYVelocity() >= 0) {
+                    ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
+                    (game)->breakBlock(this->getState() != SMALL_STATE);
+                }
                 break;
             case GOOMBA:
             case SHELL:
@@ -485,6 +487,9 @@ void Mario::check() {
     if (this->left() < leftBound_ && this->getXVelocity() < 0)
     {
         this->setXVelocity(0.0);
+    }
+    if (this->top() < 0 || game->getTime() <= 0) {
+        this->isDead_ = true;
     }
 }
 //------------------------------------------------------------
