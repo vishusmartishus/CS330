@@ -26,7 +26,7 @@ public:
 
 	}
 	 // OpenGL abstract method to draw object
-	virtual void draw();
+	virtual void draw(bool update);
 	// Returns object type BREAKABLE
 	virtual int objectType() { return BREAKABLE; }
     // BreakBlock method that destroys blocks

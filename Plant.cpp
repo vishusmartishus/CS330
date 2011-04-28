@@ -37,15 +37,18 @@ Plant::~Plant()
 
 //---------------------------------------------------------
 
-void Plant::draw()
+void Plant::draw(bool update)
 {
-    //Determine texture position
-    if (texturePos == 0) {
-        texturePos = 1;
+    if (update) {
+        //Determine texture position
+        if (texturePos == 0) {
+            texturePos = 1;
+        }
+        else{
+            texturePos = 0;
+        }
     }
-    else{
-        texturePos = 0;
-    }
+    
 	
     //Set proper blending for alpha
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);

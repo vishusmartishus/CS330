@@ -33,15 +33,18 @@ EnemyFireball::~EnemyFireball()
 
 //---------------------------------------------------------
 
-void EnemyFireball::draw()
+void EnemyFireball::draw(bool update)
 {
-    //Determine Texture Position
-    if (texturePos < 3) {
-        texturePos++;
+    if (update) {
+        //Determine Texture Position
+        if (texturePos < 3) {
+            texturePos++;
+        }
+        else{
+            texturePos = 0;
+        }
     }
-    else{
-        texturePos = 0;
-    }
+    
 	
     //Set proper blending for alpha
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);

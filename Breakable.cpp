@@ -6,7 +6,7 @@
 
 //------------------------------------------------------------
 
-void Breakable::draw()
+void Breakable::draw(bool update)
 {
     int j;
  

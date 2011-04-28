@@ -25,18 +25,22 @@
 using namespace std;
 
 //------------------------------------------------------------
-void Mario::draw()
+void Mario::draw(bool update)
 {
     if (!this->isDead()){
-    //Determine power up
-    int dState= 0;
+        //Determine power up
+        int dState= 0;
+        
+        if (this->state_ == BIG_STATE) {
+            dState = 1;
+        }
+        else if ( this->state_ == FIRE_STATE){
+            dState = 2;
+        }
+        if (update) {
+            
+        
     
-    if (this->state_ == BIG_STATE) {
-        dState = 1;
-    }
-    else if ( this->state_ == FIRE_STATE){
-        dState = 2;
-    }
     
     //Determine sprite possition
     if (this->getYVelocity() != 0.0) {
@@ -52,6 +56,7 @@ void Mario::draw()
     }
     else{
         texturePos = 0;
+    }
     }
 
     //Set proper blending for alpha        

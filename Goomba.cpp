@@ -41,16 +41,18 @@ Goomba::~Goomba()
 
 //---------------------------------------------------------
 
-void Goomba::draw()
+void Goomba::draw(bool update)
 {
-    
-    if (texturePos == 0) {
-        texturePos = 1;
+    if (update) {
+        if (texturePos == 0) {
+            texturePos = 1;
+        }
+        else{
+            texturePos = 0;
+        }
+
     }
-    else{
-        texturePos = 0;
-    }
-	
+    	
     //Set proper blending for alpha
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);

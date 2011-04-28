@@ -85,7 +85,7 @@ void SceneWindow::startGame()
 	pause_ = false;
 	coin = new Coin();
     sw->loadLevel();
-    glutTimerFunc(10, &SceneWindow::timerFunc, 0);
+    glutTimerFunc(1, &SceneWindow::timerFunc, 0);
 }
 
 //----------------------------------------------------------------------
@@ -169,23 +169,24 @@ void SceneWindow::displayCB()
         //Loops through all active drawable objects
 		li.init(drawable);
 		while ((item = li.next())) {
-			item->draw();
+			item->draw(true);
+		}
+        
+        //Loops through all active moveable objects
+		li.init(movable);
+		while ((item = li.next())) {
+			item->draw(game->spriteUpdate());
 		}
     
         //Loops through all active block objects
 		li.init(blocks);
 		while ((item = li.next())) {
-			item->draw();
-		}
-    
-        //Loops through all active moveable objects
-		li.init(movable);
-		while ((item = li.next())) {
-			item->draw();
+			item->draw(true);
 		}
         
 		// mario isn't in any of the lists, so must be drawn seperately
-		mario->draw();
+        
+		mario->draw(game->spriteUpdate());
 	}
     
     //Game is not started determine why and draw correct screen
@@ -264,7 +265,7 @@ void SceneWindow::displayCB()
 	coin->setBottom(198);
 	coin->setLeft(viewportLeftX_+70);
 	coin->setRight(viewportLeftX_ + 82);
-	coin->draw();
+	coin->draw(true);
 	std::stringstream coins;
 	coins << game->getCoins();
 	glColor3f(255,255,255);

@@ -11,7 +11,7 @@
 
 //------------------------------------------------------------
 
-void Nonbreakable::draw()
+void Nonbreakable::draw(bool update)
 {
 
 	if (type_ != REGULAR){
