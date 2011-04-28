@@ -54,7 +54,7 @@ void Mario::draw()
         texturePos = 0;
     }
 
-    //Bind Texture to Quad         
+    //Set proper blending for alpha        
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
@@ -84,6 +84,7 @@ void Mario::draw()
     }
     glEnd();
     
+    //Disable unwanted gl modes
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
 }
@@ -635,10 +636,11 @@ void Mario::sprite()
             }
             fclose(fp);
             
+            //Bind Texture to a GLuint
             glGenTextures(1, &texture_[j][i]);
             glBindTexture(GL_TEXTURE_2D, texture_[j][i]);
             
-            //build MipMap
+            //Set parameters for how the texture is displayed
             glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                             GL_LINEAR_MIPMAP_NEAREST );
@@ -648,6 +650,8 @@ void Mario::sprite()
                             GL_CLAMP );
             glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                             GL_CLAMP );
+            
+            //Build Mipmap
             gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, height, GL_RGBA,
                               GL_UNSIGNED_BYTE, texture);
             delete [] texture;
@@ -656,7 +660,7 @@ void Mario::sprite()
     }
     
     iName = homeDir+"3mario0.tex";
-    //Load death texture
+    //Read in the texture file
     FILE *fp = fopen(iName.c_str(), "r");
     unsigned char *texture = new unsigned char[4 * 32 * 32];
     if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
@@ -665,10 +669,11 @@ void Mario::sprite()
     }
     fclose(fp);
     
+    //Bind Texture to a GLuint
     glGenTextures(1, &deadtexture_);
     glBindTexture(GL_TEXTURE_2D, deadtexture_);
     
-    //build MipMap
+    //Set parameters for how the texture is displayed
     glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                     GL_LINEAR_MIPMAP_NEAREST );
@@ -678,6 +683,8 @@ void Mario::sprite()
                     GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                     GL_CLAMP );
+    
+    //Build Mipmap
     gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 32, GL_RGBA,
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;

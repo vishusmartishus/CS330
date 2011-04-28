@@ -24,7 +24,7 @@ private:
 public:
 	Background(char kind)
     {
-        //Bush
+        //Determine background element type
         if (kind == 'u') {
             kind_ = 0;
             width_ = 32;
