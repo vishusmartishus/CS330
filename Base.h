@@ -46,7 +46,7 @@ public:
 	// Abstract method to define an object by returning an integer
 	virtual int objectType();
     // OpenGL abstract method to draw object
-    virtual void draw()=0;
+    virtual void draw(bool update)=0;
     // By default an item isn't movable
     virtual bool isMovable() const { return false; }
     // Getters for the left coordinate, right coordinate, top coordinate, and bottom coordinate

@@ -32,7 +32,7 @@ public:
 	}
 
 	// OpenGL abstract method to draw object
-	virtual void draw();
+	virtual void draw(bool update);
 	// Returns object type, either a question block or a regular nonbreakable block
 	virtual int objectType() { return type_; }
     // GenerateReward method that creates an award

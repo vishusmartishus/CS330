@@ -6,7 +6,7 @@
 #include <string>
 #include <sstream>
 //------------------------------------------------------------
-void Pipe::draw()
+void Pipe::draw(bool update)
 {
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);

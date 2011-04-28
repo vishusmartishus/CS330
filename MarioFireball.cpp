@@ -35,15 +35,17 @@ MarioFireball::~MarioFireball()
 
 //---------------------------------------------------------
 
-void MarioFireball::draw()
+void MarioFireball::draw(bool update)
 {
+    if (update) {
+        if (texturePos < 3) {
+            texturePos++;
+        }
+        else{
+            texturePos = 0;
+        }
+    }
     
-    if (texturePos < 3) {
-        texturePos++;
-    }
-    else{
-        texturePos = 0;
-    }
 	
     //Set proper blending for alpha
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);

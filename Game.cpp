@@ -142,6 +142,16 @@ void Game::touchFlag(int height)
     levelNumber_+=1;
 }
 
+bool Game::spriteUpdate()
+{
+    if (microTime_ == 9 || microTime_ == 19 || microTime_ == 29 || microTime_ == 39) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 
 
 

@@ -29,7 +29,7 @@ public:
 	}
 
 	// OpenGL abstract method to draw object
-	virtual void draw();
+	virtual void draw(bool update);
 	// Returns object type COIN
 	int objectType() { return COIN; }
 };
