@@ -96,6 +96,7 @@ Mario::Mario()
     jumpCount_ = 0;
     starCount_ = 0;
     hitCount_ = 0;
+    direction_ = 1;
     
     isDead_ = false;
     isInvincible_ = false;
@@ -122,6 +123,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'a')
     {
         leftKey_ = true;
+        direction_ = 0;
         //set Mario's Velocity
         if (sprintKey_ == true)
         {
@@ -136,7 +138,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'd')
     {
         rightKey_ = true;
-        
+        direction_ = 1;
         //set Mario's velocity
         if (sprintKey_ == true)
         {
@@ -169,8 +171,13 @@ void Mario::updateKeyDown(unsigned char button)
             fb->setLeft(this->right());
             fb->setBottom(this->top() - 8);
             fb->setRight(this->right() + 8);
-            fb->setXVelocity(1.0);
-            fb->setYVelocity(0.0);
+            if (direction_ == 1) {
+                fb->setXVelocity(1.0);
+            }
+            else {
+                fb->setXVelocity(-1.0);
+            }
+            fb->setYVelocity(-0.5);
             Level::sharedLevel()->addMovable(fb);
         }
     }
@@ -281,13 +288,13 @@ void Mario::check() {
             case OFFQUESTION:
             case REGULAR:
                 if (this->getYVelocity() > 0) {
-                    this->setYVelocity(0.0);
+                    this->setXVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
                 break;
             case QUESTION:
                 if (this->getYVelocity() > 0) {
-                    this->setYVelocity(0.0);
+                    this->setXVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
                 if (this->getYVelocity() >= 0) {
@@ -296,7 +303,7 @@ void Mario::check() {
                 break;
             case BREAKABLE:
                 if (this->getYVelocity() > 0) {
-                    this->setYVelocity(0.0);
+                    this->setXVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
                 if (this->getYVelocity() >= 0) {
@@ -581,7 +588,7 @@ void Mario::check() {
     {
         this->setXVelocity(0.0);
     }
-    if (this->top() < 0 || game->getTime() <= 0) {
+    if (this->top() <= 0 || game->getTime() <= 0) {
         this->isDead_ = true;
     }
 }
