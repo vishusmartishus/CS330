@@ -283,11 +283,8 @@ void Mario::setLeftBound(int leftBound)
 //to see if Mario runs into anything
 void Mario::check() {
     Drawable *objb, *objt, *objl, *objr;
-    
-    objb = this->checkBottom();
+
     objt = this->checkTop();
-    objl = this->checkLeft();
-    objr = this->checkRight();
     //All items that can hit Mario from the top
     if (objt)
         switch (objt->objectType()) {
@@ -373,6 +370,7 @@ void Mario::check() {
                 break;
                 
         }
+    objb = this->checkBottom();
     //All objects that can hit Mario from the bottom
     if (objb) {
         Shell *nshell;
@@ -436,6 +434,7 @@ void Mario::check() {
             this->setYVelocity(-2.0);
         }
     }
+    objl = this->checkLeft();
     //All objects that can hit Mario from the left
     if (objl) {
         switch (objl->objectType()) {
@@ -502,6 +501,10 @@ void Mario::check() {
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
+            case FLAG:
+                game->touchFlag(this->bottom());
+                compleateLevel_=true;
+                break;
         }
     } 
     else if (leftKey_) {
@@ -511,6 +514,7 @@ void Mario::check() {
             this->setXVelocity(-1.0);
         }
     }
+    objr = this->checkRight();
     //All objects that can hit Mario from the right
     if (objr) {
         switch (objr->objectType()) {
@@ -578,6 +582,8 @@ void Mario::check() {
                 Level::sharedLevel()->removeDrawable(objr);
                 break;
             case FLAG:
+                game->touchFlag(this->bottom());
+                compleateLevel_=true;
                 break;
                 
         }
