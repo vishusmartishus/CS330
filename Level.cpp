@@ -12,6 +12,7 @@
 #include "Coin.h"
 #include "Goomba.h"
 #include "Turtle.h"
+#include "Plant.h"
 #include "Breakable.h"
 #include "Pipe.h"
 #include "Flag.h"
@@ -236,6 +237,24 @@ void Level::makeLevel(int levelNumber)
 			else {
 				levelMovable_.append(koopa);
 			}
+		}
+		 else if (object == 'z') {
+			
+			//create plant
+			Plant *plant = new Plant;
+			plant->setTop(ycoord  + 16);
+			plant->setBottom(ycoord);
+			plant->setLeft(xcoord);
+			plant->setRight(xcoord + 16);
+			
+			//place in correct list
+			if (xcoord<256) {
+				activeMovable_.append(plant);
+			}
+			else {
+				levelMovable_.append(plant);
+			} 
+			
 		}
 		else if (object == 's') {
 			

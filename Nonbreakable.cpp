@@ -114,6 +114,7 @@ void Nonbreakable::generateReward(bool isLarge)
         
         if (reward_ == COIN) {
             // Create a coin above block it was in and adds drawable coin to the level
+			// uses the left and right of the block and the top and bottom plus 16
             Coin *coin = new Coin();
 			coin->setLeft(this->left());
 			coin->setRight(this->right());
@@ -124,6 +125,7 @@ void Nonbreakable::generateReward(bool isLarge)
         else if (reward_ == MUSHROOM) {
             if (isLarge != true) {
                 // Create a mushroom above block it was in and adds drawable coin to the level
+				// uses the left and right of the block and the top and bottom plus 16
                 Mushroom *mushroom = new Mushroom();
 				mushroom->setLeft(this->left());
 				mushroom->setRight(this->right());
@@ -133,6 +135,7 @@ void Nonbreakable::generateReward(bool isLarge)
             }	
             else {
                 // Create a fireflower above block it was in and adds drawable coin to the level
+				// uses the left and right of the block and the top and bottom plus 16
                 FireFlower *fireFlower = new FireFlower();
 				fireFlower->setLeft(this->left());
 				fireFlower->setRight(this->right());
@@ -143,6 +146,7 @@ void Nonbreakable::generateReward(bool isLarge)
         }
         else {
             // Create a star above block it was in and adds drawable coin to the level
+			// uses the left and right of the block and the top and bottom plus 16
             Star *star = new Star();
 			star->setLeft(this->left());
 			star->setRight(this->right());

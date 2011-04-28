@@ -43,12 +43,11 @@ public:
 
 	}
 
-	// Returns an integer to indicate which object it is
-	// Called by movable and drawable classes to determine which object is in that spot: a reward, enemy, or block
+	// Abstract method to define an object by returning an integer
 	virtual int objectType();
     // OpenGL abstract method to draw object
     virtual void draw()=0;
-    //Sets the isMovable to false
+    // By default an item isn't movable
     virtual bool isMovable() const { return false; }
     // Getters for the left coordinate, right coordinate, top coordinate, and bottom coordinate
     double left() const { return left_; }
@@ -81,7 +80,7 @@ inline int Base::objectType()
 
 //------------------------------------------------------------
 
-// Sets left_ to the left coordinate given
+// Sets left coordinate
 inline void Base::setLeft(double left)
 {
     left_ = left;
@@ -89,7 +88,7 @@ inline void Base::setLeft(double left)
  
  //------------------------------------------------------------
 
- // Sets right_ to the right coordinate given
+ // Sets right coordinate
  inline void Base::setRight(double right)
  {
  right_ = right;
@@ -97,7 +96,7 @@ inline void Base::setLeft(double left)
 
  //------------------------------------------------------------
 
- // Sets top_ to the top coordinate given
+ // Sets top coordinate
  inline void Base::setTop(double top)
  {
  top_ = top;
@@ -105,7 +104,7 @@ inline void Base::setLeft(double left)
 
  //------------------------------------------------------------
 
- // Sets botttom_ to the bottom coordinate given
+ // Sets bottom coordinate
  inline void Base::setBottom(double bottom)
  {
  bottom_ = bottom;

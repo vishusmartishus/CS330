@@ -38,8 +38,6 @@ public:
     int objectType() { return PLANT; }
     // method to shoot fireball from plant
     void shootFireball();
-	// plant's move is different from the normal move
-	void move();
     
 };
 

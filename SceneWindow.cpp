@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <time.h>
 
 #include "SceneWindow.h"
 #include "Mario.h"
@@ -62,6 +63,7 @@ SceneWindow::SceneWindow(int argc, char **argv)
 	
 	glClearColor(0, 0, 0, 0);
 	start_=false;
+	game = new Game();
 	
 	
 	startGame();
@@ -80,9 +82,8 @@ void SceneWindow::mainLoop()
 
 void SceneWindow::startGame()
 {
-	
+	mario = new Mario();
 	pause_ = false;
-	game = new Game();
 	coin = new Coin();
     sw->loadLevel();
     glutTimerFunc(10, &SceneWindow::timerFunc, 0);
@@ -104,14 +105,23 @@ void SceneWindow::loadLevel()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
-
-	mario = new Mario();
-    
     mario->setLeft(16);
     mario->setRight(16+16);
     mario->setBottom(32);
-    mario->setTop(32+16);
+    
+    if (mario->isDead() || mario->getState() == SMALL_STATE) {
+        
+        mario->setTop(32+16);
+    }
+    else{
+        mario->setTop(32+24);
+    }
+    mario->reset();
+	
+
+    
+    
+    
 		
     
 }
@@ -180,26 +190,51 @@ void SceneWindow::displayCB()
 		mario->draw();
 	}
 	else {
-		string name = "Press 'S' to start";
-		glColor3f(255,255,255);
-		glRasterPos2f(viewportLeftX_ + 95, 110);
-		for (int i=0; i<name.length(); ++i){
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
-		}
-        name = "Mario x";
-        glRasterPos2f(viewportLeftX_ +95, 100);
-        for (int i=0; i<name.length(); ++i){
-			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
-		}
+		if (game->getLives()<0) {
+			string name = "GAME OVER";
+			glColor3f(255,255,255);
+			glRasterPos2f(viewportLeftX_ + 95, 110);
+			for (int i=0; i<name.length(); ++i){
+				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
+			}
+			glutSwapBuffers();
+			glutPostRedisplay();
+			
+			
+			//Return to the start screen in 3 sec
+			time_t start_time, cur_time;
+			time(&start_time);
+			do
+			{
+				time(&cur_time);
+			}
+			while((cur_time - start_time) < 3);
+			
+			game = new Game;
+			loadLevel();
+			}
+		else{
+			string press = "Press 'S' to start";
+			glColor3f(255,255,255);
+			glRasterPos2f(viewportLeftX_ + 95, 110);
+			for (int i=0; i<press.length(); ++i){
+				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, press[i]);
+				}
+			string name = "Mario x";
+			glRasterPos2f(viewportLeftX_ +95, 100);
+			for (int i=0; i<name.length(); ++i){
+				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, name[i]);
+			}
         
-        //draw lives
-        std::stringstream lives;
-        lives << game->getLives();
-        glColor3f(255,255,255);
-        glRasterPos2f(viewportLeftX_ + 130, 100);
-        for (int i=0; i<(lives.str()).length(); ++i){
-            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, lives.str()[i]);
-        }
+			//draw lives
+			std::stringstream lives;
+			lives << game->getLives();
+			glColor3f(255,255,255);
+			glRasterPos2f(viewportLeftX_ + 130, 100);
+			for (int i=0; i<(lives.str()).length(); ++i){
+				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, lives.str()[i]);
+				}
+		}
 	}
 	
 	
@@ -320,7 +355,6 @@ void SceneWindow::timerCB(int value)
         pause_ = false;
         viewportLeftX_ = 0;
         viewportRightX_ = viewportLeftX_ + viewportWidth_;
-        game->subLife();
         start_=false;
         sw->loadLevel();
         glClearColor(0, 0, 0, 0);
@@ -366,8 +400,8 @@ void SceneWindow::timerCB(int value)
         }
         else if (mario->top() > 0){
             if (deadups_ == false) {
-                mario->setBottom(mario->bottom()-1);
-                mario->setTop(mario->top()-1);
+                mario->setBottom(mario->bottom()-2);
+                mario->setTop(mario->top()-2);
             }
             else{
                 mario->setBottom(mario->bottom()+1);

@@ -15,6 +15,8 @@
 #include "Breakable.h"
 #include "Nonbreakable.h"
 #include "Goomba.h"
+#include "Shell.h"
+#include "MarioFireball.h"
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
@@ -94,6 +96,7 @@ Mario::Mario()
     jumpCount_ = 0;
     starCount_ = 0;
     hitCount_ = 0;
+    direction_ = 1;
     
     isDead_ = false;
     isInvincible_ = false;
@@ -120,6 +123,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'a')
     {
         leftKey_ = true;
+        direction_ = 0;
         //set Mario's Velocity
         if (sprintKey_ == true)
         {
@@ -134,7 +138,7 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'd')
     {
         rightKey_ = true;
-        
+        direction_ = 1;
         //set Mario's velocity
         if (sprintKey_ == true)
         {
@@ -161,11 +165,21 @@ void Mario::updateKeyDown(unsigned char button)
     if (button == 'j')
     {
         sprintKey_ = true;
-    }
-    
-    if (button == 'k')
-    {
-        fireballKey_ = true;
+        if (this->state_ == FIRE_STATE) {
+            MarioFireball *fb = new MarioFireball;
+            fb->setTop(this->top());
+            fb->setLeft(this->right());
+            fb->setBottom(this->top() - 8);
+            fb->setRight(this->right() + 8);
+            if (direction_ == 1) {
+                fb->setXVelocity(1.0);
+            }
+            else {
+                fb->setXVelocity(-1.0);
+            }
+            fb->setYVelocity(-0.5);
+            Level::sharedLevel()->addMovable(fb);
+        }
     }
 }
 //------------------------------------------------------------
@@ -207,9 +221,6 @@ void Mario::updateKeyUp(unsigned char button)
 	if (button == 'j') {
 		sprintKey_ = false;
 	}
-	if (button == 'k') {
-		fireballKey_ = false;
-	}
 }
 //------------------------------------------------------------
 //method to calculate Marios movement
@@ -246,8 +257,7 @@ void Mario::updateScene()
         if (starCount_ > 0)
             starCount_ --;
         if (hitCount_ > 0)
-            hitCount_--;
-        
+            hitCount_--;   
     }
     
 }
@@ -272,7 +282,6 @@ void Mario::check() {
     objt = this->checkTop();
     objl = this->checkLeft();
     objr = this->checkRight();
-    
     //All items that can hit Mario from the top
     if (objt)
         switch (objt->objectType()) {
@@ -327,7 +336,6 @@ void Mario::check() {
                     this->isDead_ = true;
                 }
                 break;
-                
             case MUSHROOM:
                 game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objt);
@@ -357,6 +365,7 @@ void Mario::check() {
         }
     //All objects that can hit Mario from the bottom
     if (objb) {
+        Shell *nshell;
         switch (objb->objectType()) {
             case PIPE:
             case OFFQUESTION:
@@ -368,8 +377,13 @@ void Mario::check() {
                 }
                 break;
             case TURTLE:
-                game->jumpEnemy(1);
-                
+                nshell = new Shell();
+                nshell->setTop(objb->top()-8);
+                nshell->setRight(objb->right());
+                nshell->setLeft(objb->left());
+                nshell->setBottom(objb->bottom());
+                Level::sharedLevel()->addMovable(nshell);
+                //break;
             case GOOMBA:
                 game->jumpEnemy(1);
                 Level::sharedLevel()->removeDrawable(objb);
@@ -388,7 +402,7 @@ void Mario::check() {
                 break;
             case STAR:
                 game->addPowerup();
-                starCount_ = 1000;
+                starCount_ = 50;
                 break;
             case FIREFLOWER:
                 game->addPowerup();
@@ -416,9 +430,9 @@ void Mario::check() {
     if (objl) {
         switch (objl->objectType()) {
             case PIPE:
-            case OFFQUESTION:
             case BREAKABLE:
             case REGULAR:
+            case OFFQUESTION:
             case QUESTION:
                 if (this->getXVelocity() < 0) {
                     this->setXVelocity(0.0);
@@ -453,7 +467,6 @@ void Mario::check() {
                     this->isDead_ = true;
                 }
                 break;
-                
             case MUSHROOM:
                 game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objl);
@@ -471,7 +484,7 @@ void Mario::check() {
                 if (state_ == SMALL_STATE)
                 {
                     this->setTop(this->top() + 8);
-                }
+                }   
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
@@ -479,7 +492,6 @@ void Mario::check() {
                 game->addCoin();
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
-                
         }
     } 
     else if (leftKey_) {
@@ -571,6 +583,9 @@ void Mario::check() {
     if (this->left() < leftBound_ && this->getXVelocity() < 0)
     {
         this->setXVelocity(0.0);
+    }
+    if (this->top() <= 0) {
+        isDead_ = true;
     }
 }
 //------------------------------------------------------------
@@ -677,4 +692,27 @@ void Mario::sprite()
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;
 
+}
+
+void Mario::reset(){
+    if (isDead()) {
+        state_ = SMALL_STATE;
+    }
+    jumpCount_ = 0;
+    starCount_ = 0;
+    
+    isDead_ = false;
+    isInvincible_ = false;
+    compleateLevel_ = false;
+    
+    //init the keys
+    jumpKey_ = false;
+    rightKey_ = false;
+    leftKey_ = false;
+    sprintKey_ = false;
+    fireballKey_ = false;
+    
+    //Set X and Y velocity
+    this->setXVelocity(0.0);
+    this->setYVelocity(0.0);
 }

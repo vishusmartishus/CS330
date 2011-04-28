@@ -43,6 +43,7 @@ public:
 	// instance variables.
 	void updateScene();
     
+    int count_;
 };
 
 //---------------------------------------------------------

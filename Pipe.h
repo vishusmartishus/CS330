@@ -14,10 +14,6 @@ public:
     Pipe()
     {
 		sprite();
-		
-		
-		
-		
     }
 	virtual ~Pipe()
 	{

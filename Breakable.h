@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Jay Bondzeleske, Alex Martishius
+// Jay Bondzeleske, John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 
 #ifndef _BREAKABLE_H
@@ -31,7 +31,7 @@ public:
 	virtual int objectType() { return BREAKABLE; }
     // BreakBlock method that destroys blocks
 	// Mario calls when he hits a block
-    // isLarge is bool that tells if Mario is big or small
+    // isLarge is bool value that tells if Mario is big or small
     void breakBlock(bool isLarge);
 };
 #endif

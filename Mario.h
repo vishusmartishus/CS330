@@ -39,10 +39,12 @@ public:
     virtual int objectType() { return MARIO; }
     //return end level
     bool levelDone();
+    //reset to initial state
+    void reset();
 
 private:
 	//State can be 0,1,2 depending if he is Big/Little/Fire Mario
-	int state_, jumpCount_, starCount_, hitCount_; 
+	int state_, jumpCount_, starCount_, hitCount_, direction_; 
 	bool isInvincible_, isDead_;
     bool jumpKey_, rightKey_, leftKey_, sprintKey_, fireballKey_;
     int leftBound_;
@@ -68,7 +70,6 @@ private:
 inline int Mario::getState() {return state_;}
 //inline getter for isDead_
 inline bool Mario::isDead() {return isDead_;}
-
 inline bool Mario::levelDone() {return compleateLevel_;}
 
 #endif
