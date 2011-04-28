@@ -32,7 +32,7 @@ public:
 	}
 
 	// OpenGL abstract method to draw object
-	virtual void draw();
+	virtual void draw(bool update);
 	// Returns object type FIREFLOWER
 	int objectType() { return FIREFLOWER; }
 };

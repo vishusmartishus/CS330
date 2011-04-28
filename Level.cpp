@@ -242,10 +242,10 @@ void Level::makeLevel(int levelNumber)
 			
 			//create plant
 			Plant *plant = new Plant;
-			plant->setTop(ycoord  + 16);
+			plant->setTop(ycoord  + 24);
 			plant->setBottom(ycoord);
-			plant->setLeft(xcoord);
-			plant->setRight(xcoord + 16);
+			plant->setLeft(xcoord-8);
+			plant->setRight(xcoord + 8);
 			
 			//place in correct list
 			if (xcoord<256) {

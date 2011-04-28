@@ -44,7 +44,7 @@ Shell::~Shell()
 
 //---------------------------------------------------------
 
-void Shell::draw()
+void Shell::draw(bool update)
 {
     //Set proper blending for alpha
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);

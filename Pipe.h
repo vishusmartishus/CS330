@@ -18,7 +18,7 @@ public:
 	virtual ~Pipe()
 	{
 	}
-	virtual void draw();
+	virtual void draw(bool update);
 	void setType(double type);
 	// Returns object type
 	virtual int objectType() { return PIPE; };

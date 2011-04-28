@@ -38,15 +38,17 @@ Turtle::~Turtle()
 
 //---------------------------------------------------------
 
-void Turtle::draw()
+void Turtle::draw(bool update)
 {
+    if (update) {
+        if (texturePos_ == 0) {
+            texturePos_ = 1;
+        }
+        else{
+            texturePos_ = 0;
+        }
+    }
     
-    if (texturePos_ == 0) {
-        texturePos_ = 1;
-    }
-    else{
-        texturePos_ = 0;
-    }
     
     
     

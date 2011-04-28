@@ -24,7 +24,7 @@ private:
     
 public:
 	// openGL draw method
-    virtual void draw();
+    virtual void draw(bool update);
 	
     // constructor
     MarioFireball();

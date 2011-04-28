@@ -25,6 +25,7 @@ class Game {
         void pulseClock(); //Increment the game clock
         void resetClock(); //Reset the game clock
 		void gameOver(); //alter values on game over condition
+        bool spriteUpdate(); //true if time to update
     private:
         int pointsTotal_, coinsTotal_, livesTotal_, levelNumber_, levelTime_, microTime_; //point total, coin total, life total
         

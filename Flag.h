@@ -27,7 +27,7 @@ public:
 	}
 
 	// OpenGL abstract method to draw object
-	virtual void draw();
+	virtual void draw(bool update);
 	// Returns object type FLAG
 	virtual int objectType() { return FLAG; }
     // Method to decide and return how many points are awarded by touching the flag at a certain point (touched)
