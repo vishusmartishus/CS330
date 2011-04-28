@@ -733,6 +733,7 @@ void Mario::reset(){
     leftKey_ = false;
     sprintKey_ = false;
     fireballKey_ = false;
+	direction_ = 1;
     
     //Set X and Y velocity
     this->setXVelocity(0.0);
