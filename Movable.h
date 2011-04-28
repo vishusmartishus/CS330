@@ -42,6 +42,8 @@ public:
 	// there are no methods to reverse velocity; this change can be handled directly by changing
 	// instance variables.
 	void updateScene();
+    
+    int count_;
 };
 
 //---------------------------------------------------------

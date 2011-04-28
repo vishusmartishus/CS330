@@ -25,7 +25,6 @@ Plant::Plant()
 	setPoints(0);
 	setXVelocity(0.0);
 	setYVelocity(1.0);
-    count_ = 120;
     
     sprite();
 }
@@ -75,41 +74,6 @@ void Plant::shootFireball()
 
 }
 
-//---------------------------------------------------------
-
-void Plant::updateScene()
-{
-    // uses the private variable count_ to time the movement of the piranha plant
-    // if the count is between 120 and 91 the plant should move upward
-    if (count_ >= 91 && count_ <= 120)
-    {
-        this->setYVelocity(1.0);
-    }
-    // if the count is between 90 and 61 the plant should stay stationary on top of the block
-    else if (count_ >= 61 && count_ <= 90)
-    {
-        this->setYVelocity(0.0);
-    }
-    // if the count is between 60 and 31 the plant should be moving back down
-    else if (count_ >= 31 && count_ <= 60)
-    {
-        this->setYVelocity(-1.0);
-    }
-    // if the count is between 30 and 0 the plant should be stationary and hiding
-    else if (count_ >= 0 && count_ <= 30)
-    {
-        this->setYVelocity(0.0);
-        
-        // when the count reaches 0 it will reset back to 0
-        if (count_ == 0)
-        {
-            count_ = 120;
-        }
-
-    }
-    count_--;
-
-}
 
 //---------------------------------------------------------
 
