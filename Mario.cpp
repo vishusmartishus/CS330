@@ -75,7 +75,7 @@ void Mario::draw(bool update)
     //Draw Quad
     glBegin( GL_QUADS );
     glColor4f(0.7f,0.9f,1.0f,1.0f);
-    if (this->getXVelocity() >= 0) {
+    if (this->direction_ == 1) {
         glTexCoord2d(0.0,0.0); glVertex2d(left(),bottom());
         glTexCoord2d(1.0,0.0); glVertex2d(right(),bottom());
         glTexCoord2d(1.0,1.0); glVertex2d(right(),top());
