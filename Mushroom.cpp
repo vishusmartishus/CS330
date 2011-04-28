@@ -39,7 +39,7 @@ Mushroom::~Mushroom()
 
 void Mushroom::draw()
 {
-    //Bind texture to quad
+    //Set proper blending for alpha
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_BLEND);
     glEnable( GL_TEXTURE_2D );
@@ -54,12 +54,9 @@ void Mushroom::draw()
     glTexCoord2d(0.0,1.0); glVertex2d(left(),top());
     glEnd();
     
+    //Disable unwanted gl modes
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
-    
-
-    
-    
 }
 
 //---------------------------------------------------------
@@ -81,7 +78,7 @@ void Mushroom::sprite()
     homeDir += "/CS330/sprites/mushroom0.tex";
     
     
-    //Load in Sprite
+    //Read in the texture file
     FILE *fp = fopen(homeDir.c_str(), "r");
     unsigned char *texture = new unsigned char[4 * 32 * 32];
     if (fread(texture, sizeof(unsigned char), 4 * 32 * 32, fp)
@@ -90,10 +87,11 @@ void Mushroom::sprite()
     }
     fclose(fp);
     
-    //Bind and Map Texture
+    //Bind Texture to a GLuint
     glGenTextures(1, &texture_);
     glBindTexture(GL_TEXTURE_2D, texture_);
     
+    //Set parameters for how the texture is displayed
     glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );        
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                     GL_LINEAR_MIPMAP_NEAREST );
@@ -103,6 +101,8 @@ void Mushroom::sprite()
                     GL_CLAMP );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
                     GL_CLAMP );
+    
+    //Build Mipmap
     gluBuild2DMipmaps(GL_TEXTURE_2D, 4, 32, 32, GL_RGBA,
                       GL_UNSIGNED_BYTE, texture);
     delete [] texture;
