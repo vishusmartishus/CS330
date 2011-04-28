@@ -73,3 +73,4 @@ inline bool Mario::isDead() {return isDead_;}
 inline bool Mario::levelDone() {return compleateLevel_;}
 
 #endif
+

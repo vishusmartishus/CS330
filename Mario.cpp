@@ -263,7 +263,7 @@ void Mario::updateScene()
         if (starCount_ > 0)
             starCount_ --;
         if (hitCount_ > 0)
-            hitCount_--;   
+            hitCount_--;
     }
     
 }
@@ -312,6 +312,16 @@ void Mario::check() {
                 if (this->getYVelocity() >= 0) {
                     ((Breakable*) objt)->breakBlock(this->getState() != SMALL_STATE);
                     (game)->breakBlock(this->getState() != SMALL_STATE);
+                    
+                    if (this->getState() != SMALL_STATE)
+                    {
+                        this->setTop(this->top() + 16);
+                        objt = this->checkTop();
+                        if (objt)
+                            Level::sharedLevel()->removeDrawable(objt);
+                        
+                        this->setTop(this->top() - 16);
+                    }
                 }
                 break;
             case GOOMBA:
@@ -343,6 +353,7 @@ void Mario::check() {
                     this->isDead_ = true;
                 }
                 break;
+                
             case MUSHROOM:
                 game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objt);
@@ -410,7 +421,7 @@ void Mario::check() {
                 break;
             case STAR:
                 game->addPowerup();
-                starCount_ = 50;
+                starCount_ = 1000;
                 break;
             case FIREFLOWER:
                 game->addPowerup();
@@ -476,6 +487,7 @@ void Mario::check() {
                     this->isDead_ = true;
                 }
                 break;
+                
             case MUSHROOM:
                 game->addPowerup();
                 Level::sharedLevel()->removeDrawable(objl);
@@ -493,7 +505,7 @@ void Mario::check() {
                 if (state_ == SMALL_STATE)
                 {
                     this->setTop(this->top() + 8);
-                }   
+                }
                 this->state_ = FIRE_STATE;
                 Level::sharedLevel()->removeDrawable(objl);
                 break;
@@ -715,7 +727,7 @@ void Mario::sprite()
     delete [] texture;
 
 }
-
+//------------------------------------------------------------
 void Mario::reset(){
     if (isDead()) {
         state_ = SMALL_STATE;
