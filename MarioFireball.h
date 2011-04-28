@@ -32,7 +32,7 @@ public:
     ~MarioFireball();
     
     // methods
-    
+    virtual bool canMove();
     // object type
     int objectType() { return MARIOFIREBALL; }
     

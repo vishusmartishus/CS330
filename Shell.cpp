@@ -12,6 +12,7 @@
 //---------------------------------------------------------
 
 #include "Shell.h"
+#include "Level.h"
 #include <string>
 #include <sstream>
 
@@ -40,6 +41,83 @@ Shell::Shell()
 
 Shell::~Shell()
 {
+}
+
+//---------------------------------------------------------
+
+bool Shell::canMove()
+{
+    // call checkRight and checkLeft methods
+    Drawable *dRight = this->checkRight();
+    Drawable *dLeft = this->checkLeft();
+    Drawable *dBottom = this->checkBottom();
+	Drawable *dTop = this->checkTop();
+    
+	bool keepGoing = true;
+    
+    if (dRight != NULL && dLeft != NULL && dTop != NULL && dBottom != NULL)
+	{
+		if (dRight->objectType() == GOOMBA || dRight->objectType() == TURTLE || dRight->objectType() == PLANT)
+		{
+			Level::sharedLevel()->removeDrawable(dRight);
+		}
+    }
+    if (dLeft != NULL) {
+        if (dLeft->objectType() == GOOMBA || dLeft->objectType() == TURTLE || dLeft->objectType() == PLANT)
+		{
+			Level::sharedLevel()->removeDrawable(dLeft);
+		}
+    }
+    if (dBottom != NULL) {
+        if (dBottom->objectType() == GOOMBA || dBottom->objectType() == TURTLE || dBottom->objectType() == PLANT)
+		{
+			Level::sharedLevel()->removeDrawable(dBottom);
+		}
+    }
+	if (dTop != NULL) {
+        if (dTop->objectType() == GOOMBA || dTop->objectType() == TURTLE || dTop->objectType() == PLANT)
+		{
+			Level::sharedLevel()->removeDrawable(dTop);
+		}
+    }	
+    
+    // if nothing underneath
+    if ((dBottom == NULL || dBottom == this) || dBottom->objectType() == BACKGROUND || dBottom->objectType() == COIN)
+    {
+        this->setXVelocity(-2.0);
+    }
+    
+    // if a block type is underneath
+    else 
+    {
+        if (dBottom->objectType() == REGULAR || dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE || dBottom->objectType() == OFFQUESTION || dBottom->objectType() == FLAG) 
+        {
+            this->setYVelocity(0.0);
+        }
+        else if (dBottom->objectType() == BACKGROUND)
+        {
+            this->setYVelocity(-2.0);
+        }
+    }
+    
+    // if nothing to the right or left
+    if (dRight != NULL && dRight->objectType() != BACKGROUND) 
+    {
+        if (dRight->objectType() == REGULAR || dRight->objectType() == BREAKABLE || dRight->objectType() == QUESTION || dRight->objectType() == PIPE || dRight->objectType() == FLAG) 
+        {
+            keepGoing = false;
+        }
+    }
+    
+    if (dLeft != NULL && dLeft->objectType() != BACKGROUND) 
+    {
+        if (dLeft->objectType() == REGULAR || dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION || dLeft->objectType() == PIPE || dLeft->objectType() == FLAG) 
+        {
+            keepGoing = false;
+        }
+    }
+    
+	return keepGoing;
 }
 
 //---------------------------------------------------------
