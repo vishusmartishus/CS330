@@ -290,7 +290,9 @@ void Mario::check() {
                     this->setYVelocity(0.0);
                     this->jumpCount_ = 0;
                 }
-                ((Nonbreakable*)objt)->generateReward(this->getState() != SMALL_STATE);
+                if (this->getYVelocity() >= 0) {
+                    ((Nonbreakable*)objt)->generateReward(this->getState() != SMALL_STATE);
+                }
                 break;
             case BREAKABLE:
                 if (this->getYVelocity() > 0) {
