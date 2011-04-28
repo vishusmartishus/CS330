@@ -86,10 +86,13 @@ bool MarioFireball::canMove()
 			Level::sharedLevel()->removeDrawable(dBottom);
 			Level::sharedLevel()->removeDrawable(this);
 		}
-        else if (dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION || dLeft->objectType() == PIPE || dLeft->objectType() == OFFQUESTION || dLeft->objectType() == REGULAR || dLeft->objectType() == FLAG)
+        else if (dBottom->objectType() == BREAKABLE || dBottom->objectType() == QUESTION || dBottom->objectType() == PIPE || dBottom->objectType() == OFFQUESTION || dBottom->objectType() == REGULAR || dBottom->objectType() == FLAG)
         {
             this->setYVelocity(0.0);
         }
+    }
+    else {
+        this->setYVelocity(-1.0);
     }
 
     return keepGoing;
