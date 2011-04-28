@@ -55,7 +55,7 @@ bool Shell::canMove()
     
 	bool keepGoing = true;
     
-    if (dRight != NULL && dLeft != NULL && dTop != NULL && dBottom != NULL)
+    if (dRight != NULL)
 	{
 		if (dRight->objectType() == GOOMBA || dRight->objectType() == TURTLE || dRight->objectType() == PLANT)
 		{
@@ -84,7 +84,7 @@ bool Shell::canMove()
     // if nothing underneath
     if ((dBottom == NULL || dBottom == this) || dBottom->objectType() == BACKGROUND || dBottom->objectType() == COIN)
     {
-        this->setXVelocity(-2.0);
+        this->setYVelocity(-2.0);
     }
     
     // if a block type is underneath

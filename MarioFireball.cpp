@@ -90,6 +90,10 @@ bool MarioFireball::canMove()
         {
             this->setYVelocity(0.0);
         }
+        else if (dBottom->objectType() == MARIOFIREBALL){
+            this->setYVelocity(-1.0);
+        }
+
     }
     else {
         this->setYVelocity(-1.0);
