@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		03462EDF130AFC4A004BBAE6 /* EnemyFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDB130AFC4A004BBAE6 /* EnemyFireball.cpp */; };
 		03462EE0130AFC4A004BBAE6 /* MarioFireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03462EDD130AFC4A004BBAE6 /* MarioFireball.cpp */; };
+		03624CA31369082F00BA62C2 /* SceneWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037A373B1302C10100788A82 /* SceneWindow.cpp */; };
+		03624CA61369083E00BA62C2 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7DC8B25135DF9F4003E3DBD /* Mario.cpp */; };
 		03739E79135759580001C080 /* Pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03739E77135759580001C080 /* Pipe.cpp */; };
 		037608EF1342470000A50E9A /* test_LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 037608EE1342470000A50E9A /* test_LList.cpp */; };
 		037608F01342471000A50E9A /* LList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA38FB7B130D9E5700C5F7A6 /* LList.cpp */; };
@@ -363,6 +365,7 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Game" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -397,6 +400,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03F41651135DD95D0047A721 /* Pipe.cpp in Sources */,
+				03624CA31369082F00BA62C2 /* SceneWindow.cpp in Sources */,
+				03624CA61369083E00BA62C2 /* Mario.cpp in Sources */,
 				03F4164A135DD9210047A721 /* Background.cpp in Sources */,
 				038B7C641344EAE300BFECC0 /* Breakable.cpp in Sources */,
 				038B7C6A1344EB1800BFECC0 /* FireFlower.cpp in Sources */,

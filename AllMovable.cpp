@@ -245,20 +245,21 @@ Drawable* AllMovable::checkTop()
 						// gets the next block in list
 						while ((newItem = liBlocks.next()))
 						{
+							int newObjTop, newObjBottom, newObjLeft, newObjRight;
 							// check if question
 							if (newItem->objectType() == QUESTION)
 							{
-								int newObjTop = newItem->top();
-								int newObjBottom = newItem->bottom();
-								int newObjLeft = newItem->left();
-								int newObjRight = newItem->right();
+								newObjTop = newItem->top();
+								newObjBottom = newItem->bottom();
+								newObjLeft = newItem->left();
+								newObjRight = newItem->right();
 								// check if question is next to block
 								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
 								{
-										if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
-										{
-											return newItem;
-										}
+									if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+									{
+										return newItem;
+									}
 								}
 							}
 						}
@@ -268,20 +269,36 @@ Drawable* AllMovable::checkTop()
 					{
 						while ((newItem = liBlocks.next()))
 						{
+							int newObjTop, newObjBottom, newObjLeft, newObjRight;
 							// check if breakable
 							if (newItem->objectType() == BREAKABLE)
 							{
-								int newObjTop = newItem->top();
-								int newObjBottom = newItem->bottom();
-								int newObjLeft = newItem->left();
-								int newObjRight = newItem->right();
+								newObjTop = newItem->top();
+								newObjBottom = newItem->bottom();
+								newObjLeft = newItem->left();
+								newObjRight = newItem->right();
 								// check if question is next to block
 								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
 								{
-										if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
-										{
-											return newItem;
-										}
+									if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+									{
+										return newItem;
+									}
+								}
+							}
+							else if (newItem->objectType() == QUESTION)
+							{
+								newObjTop = newItem->top();
+								newObjBottom = newItem->bottom();
+								newObjLeft = newItem->left();
+								newObjRight = newItem->right();
+								// check if question is next to block
+								if (newObjTop == objTop && newObjBottom == objBottom && newObjLeft == objRight)
+								{
+									if ((thisLeft >= newObjLeft && thisLeft < newObjRight) || (thisRight > newObjLeft && thisRight <= newObjRight))
+									{
+										return newItem;
+									}
 								}
 							}
 						}
