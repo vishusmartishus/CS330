@@ -32,7 +32,7 @@ public:
 	// call checkLeft and check Right methods in AllMovable
     // if returned drawable object is NULL, can move returns TRUE
     // if checks fail, returns FALSE, reverse objects direction
-	bool canMove();
+	virtual bool canMove();
 	//---------------------------------------------------------
 
 	// tells the object to move this step, which means to update its information for one frame.
@@ -42,8 +42,6 @@ public:
 	// there are no methods to reverse velocity; this change can be handled directly by changing
 	// instance variables.
 	void updateScene();
-    
-    int count_;
 };
 
 //---------------------------------------------------------

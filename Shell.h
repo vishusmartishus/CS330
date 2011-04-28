@@ -32,6 +32,7 @@ public:
     ~Shell();
     
     // methods
+    virtual bool canMove();
     
     // object type
     int objectType() { return SHELL; }

@@ -10,6 +10,7 @@
 //---------------------------------------------------------
 
 #include "MarioFireball.h"
+#include "Level.h"
 #include <string>
 #include <sstream>
 
@@ -31,6 +32,67 @@ MarioFireball::MarioFireball()
 
 MarioFireball::~MarioFireball()
 {
+}
+
+//---------------------------------------------------------
+
+bool MarioFireball::canMove()
+{
+    // call checkRight and checkLeft methods
+    Drawable *dRight = this->checkRight();
+    Drawable *dLeft = this->checkLeft();
+	Drawable *dTop = this->checkTop();
+    Drawable *dBottom = this->checkBottom();
+    
+	bool keepGoing = true;
+    
+	if (dRight != NULL)
+	{
+        if (dRight->objectType() == BREAKABLE || dRight->objectType() == QUESTION || dRight->objectType() == PIPE || dRight->objectType() == OFFQUESTION || dRight->objectType() == REGULAR || dRight->objectType() == FLAG)
+        {
+            Level::sharedLevel()->removeDrawable(this);
+        }
+        else if (dRight->objectType() == GOOMBA || dRight->objectType() == TURTLE || dRight->objectType() == PLANT)
+        {
+            Level::sharedLevel()->removeDrawable(dRight);
+            Level::sharedLevel()->removeDrawable(this);
+        }
+    }
+    
+    if (dLeft != NULL)
+	{
+        if (dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION || dLeft->objectType() == PIPE || dLeft->objectType() == OFFQUESTION || dLeft->objectType() == REGULAR || dLeft->objectType() == FLAG)
+        {
+            Level::sharedLevel()->removeDrawable(this);
+        }
+        else if (dLeft->objectType() == GOOMBA || dLeft->objectType() == TURTLE || dLeft->objectType() == PLANT)
+        {
+            Level::sharedLevel()->removeDrawable(dLeft);
+            Level::sharedLevel()->removeDrawable(this);
+        }
+    }
+    
+    if (dTop != NULL) {
+        if (dTop->objectType() == GOOMBA || dTop->objectType() == TURTLE || dTop->objectType() == PLANT)
+		{
+			Level::sharedLevel()->removeDrawable(dTop);
+			Level::sharedLevel()->removeDrawable(this);
+		}
+    }
+    
+    if (dBottom != NULL) {
+        if (dBottom->objectType() == GOOMBA || dBottom->objectType() == TURTLE || dBottom->objectType() == PLANT)
+		{
+			Level::sharedLevel()->removeDrawable(dBottom);
+			Level::sharedLevel()->removeDrawable(this);
+		}
+        else if (dLeft->objectType() == BREAKABLE || dLeft->objectType() == QUESTION || dLeft->objectType() == PIPE || dLeft->objectType() == OFFQUESTION || dLeft->objectType() == REGULAR || dLeft->objectType() == FLAG)
+        {
+            this->setYVelocity(0.0);
+        }
+    }
+
+    return keepGoing;
 }
 
 //---------------------------------------------------------

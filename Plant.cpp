@@ -25,7 +25,7 @@ Plant::Plant()
 	setPoints(0);
 	setXVelocity(0.0);
 	setYVelocity(1.0);
-    
+    count_ = 720;
     sprite();
 }
 
@@ -33,6 +33,64 @@ Plant::Plant()
 
 Plant::~Plant()
 {
+}
+
+//---------------------------------------------------------
+
+bool Plant::canMove()
+{
+    return true;
+}
+
+//---------------------------------------------------------
+
+void Plant::updateScene()
+{
+    // uses the private variable count_ to time the movement of the piranha plant
+    // if the count is between 120 and 91 the plant should move upward
+    if (count_ >= 690 && count_ <= 720)
+    {
+        this->setYVelocity(-0.5);
+    }
+    // if the count is between 90 and 61 the plant should stay stationary on top of the block
+    else if (count_ >=360  && count_ <= 689)
+    {
+        this->setYVelocity(0.0);
+    }
+    // if the count is between 60 and 31 the plant should be moving back down
+    else if (count_ >= 330 && count_ <= 359)
+    {
+        this->setYVelocity(0.5);
+    }
+    // if the count is between 30 and 0 the plant should be stationary and hiding
+    else if (count_ >= 0 && count_ <= 329)
+    {
+        this->setYVelocity(0.0);
+        
+        // when the count reaches 0 it will reset back to 0
+        if (count_ == 0)
+        {
+            count_ = 720;
+        }
+        
+    }
+    double currentXVelocity, currentYVelocity;
+    double updatedLeft, updatedRight, updatedTop, updatedBottom;
+    
+    // get velocities
+    currentXVelocity = this->getXVelocity();
+    currentYVelocity = this->getYVelocity();
+    
+    // update position to check next move
+    updatedLeft = this->left() + currentXVelocity;
+    this->setLeft(updatedLeft);
+    updatedRight = this->right() + currentXVelocity;
+    this->setRight(updatedRight);
+    updatedTop = this->top() + currentYVelocity;
+    this->setTop(updatedTop);
+    updatedBottom = this->bottom() + currentYVelocity;
+    this->setBottom(updatedBottom);
+    count_--;
 }
 
 //---------------------------------------------------------
