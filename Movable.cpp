@@ -12,6 +12,7 @@
 
 #include "Movable.h"
 #include "Level.h"
+#include <iostream>
 
 //---------------------------------------------------------
 
@@ -34,12 +35,13 @@ bool Movable::canMove()
     Drawable *dLeft = this->checkLeft();
     Drawable *dBottom = this->checkBottom();
 	Drawable *dTop = this->checkTop();
+    count_ = 720;
 
 	bool keepGoing = true;
     
-	if (this->objectType() == MARIOFIREBALL)
+	if (this->objectType() == MARIOFIREBALL && dRight != NULL && dLeft != NULL && dTop != NULL && dBottom != NULL)
 	{
-		/*
+		
 		bool killed = false;
 		if (this->getXVelocity() < 0)
 		{
@@ -87,7 +89,7 @@ bool Movable::canMove()
 		{
 			Level::sharedLevel()->removeDrawable(this);
 		}
-		*/
+		
 	}
 	else
 	{
@@ -99,7 +101,7 @@ bool Movable::canMove()
 				keepGoing = false;
 			}
 			// check if goomba, mushroom, shell, can fall off edge
-			else 
+			else if (this->objectType() != MARIOFIREBALL)
 			{
 				this->setYVelocity(-2.0);
 			}
@@ -135,9 +137,9 @@ bool Movable::canMove()
 			}
 		}
 	}
-	if (this->objectType() == SHELL)
+	if (this->objectType() == SHELL && dRight != NULL && dLeft != NULL && dTop != NULL && dBottom != NULL)
 	{
-		/*
+		
 		if (dRight->objectType() == GOOMBA || dRight->objectType() == TURTLE || dRight->objectType() == PLANT)
 		{
 			Level::sharedLevel()->removeDrawable(dRight);
@@ -152,7 +154,7 @@ bool Movable::canMove()
 		{
 			Level::sharedLevel()->removeDrawable(dBottom);
 		}
-		*/
+		
 	}
 
 	return keepGoing;
@@ -163,43 +165,96 @@ bool Movable::canMove()
 
 void Movable::updateScene()
 {
-    double currentXVelocity, currentYVelocity;
-    double updatedLeft, updatedRight, updatedTop, updatedBottom;
-    
-    // get velocities
-    currentXVelocity = this->getXVelocity();
-    currentYVelocity = this->getYVelocity();
-    
-    // update position to check next move
-    updatedLeft = this->left() + currentXVelocity;
-    this->setLeft(updatedLeft);
-    updatedRight = this->right() + currentXVelocity;
-    this->setRight(updatedRight);
-    updatedTop = this->top() + currentYVelocity;
-    this->setTop(updatedTop);
-    updatedBottom = this->bottom() + currentYVelocity;
-    this->setBottom(updatedBottom);
+    if (this->objectType() == PLANT)
+    {
+        // uses the private variable count_ to time the movement of the piranha plant
+        // if the count is between 120 and 91 the plant should move upward
+        if (count_ >= 690 && count_ <= 720)
+        {
+            this->setYVelocity(-0.5);
+        }
+        // if the count is between 90 and 61 the plant should stay stationary on top of the block
+        else if (count_ >=360  && count_ <= 689)
+        {
+            this->setYVelocity(0.0);
+        }
+        // if the count is between 60 and 31 the plant should be moving back down
+        else if (count_ >= 330 && count_ <= 359)
+        {
+            this->setYVelocity(0.5);
+        }
+        // if the count is between 30 and 0 the plant should be stationary and hiding
+        else if (count_ >= 0 && count_ <= 329)
+        {
+            this->setYVelocity(0.0);
+            
+            // when the count reaches 0 it will reset back to 0
+            if (count_ == 0)
+            {
+                count_ = 720;
+            }
+            
+        }
+        double currentXVelocity, currentYVelocity;
+        double updatedLeft, updatedRight, updatedTop, updatedBottom;
         
-    // if canMove is false, can't move that direction, reverse x direction
-	// if canMove is true, movement can stay
-    if (!canMove()) {
-        // undo potential move
-        updatedLeft = this->left() - currentXVelocity;
-        this->setLeft(updatedLeft);
-        updatedRight = this->right() - currentXVelocity;
-        this->setRight(updatedRight);
-        updatedTop = this->top() - currentYVelocity;
-        this->setTop(updatedTop);
-        updatedBottom = this->bottom() - currentYVelocity;
-        this->setBottom(updatedBottom);
+        // get velocities
+        currentXVelocity = this->getXVelocity();
+        currentYVelocity = this->getYVelocity();
         
-        // reverse x
-        currentXVelocity = (-1) * currentXVelocity;
-        this->setXVelocity(currentXVelocity);
+        // update position to check next move
         updatedLeft = this->left() + currentXVelocity;
         this->setLeft(updatedLeft);
         updatedRight = this->right() + currentXVelocity;
         this->setRight(updatedRight);
+        updatedTop = this->top() + currentYVelocity;
+        this->setTop(updatedTop);
+        updatedBottom = this->bottom() + currentYVelocity;
+        this->setBottom(updatedBottom);
+        count_--;
+        
+    }
+    
+    else
+    {
+        double currentXVelocity, currentYVelocity;
+        double updatedLeft, updatedRight, updatedTop, updatedBottom;
+        
+        // get velocities
+        currentXVelocity = this->getXVelocity();
+        currentYVelocity = this->getYVelocity();
+        
+        // update position to check next move
+        updatedLeft = this->left() + currentXVelocity;
+        this->setLeft(updatedLeft);
+        updatedRight = this->right() + currentXVelocity;
+        this->setRight(updatedRight);
+        updatedTop = this->top() + currentYVelocity;
+        this->setTop(updatedTop);
+        updatedBottom = this->bottom() + currentYVelocity;
+        this->setBottom(updatedBottom);
+        
+        // if canMove is false, can't move that direction, reverse x direction
+        // if canMove is true, movement can stay
+        if (!canMove()) {
+            // undo potential move
+            updatedLeft = this->left() - currentXVelocity;
+            this->setLeft(updatedLeft);
+            updatedRight = this->right() - currentXVelocity;
+            this->setRight(updatedRight);
+            updatedTop = this->top() - currentYVelocity;
+            this->setTop(updatedTop);
+            updatedBottom = this->bottom() - currentYVelocity;
+            this->setBottom(updatedBottom);
+            
+            // reverse x
+            currentXVelocity = (-1) * currentXVelocity;
+            this->setXVelocity(currentXVelocity);
+            updatedLeft = this->left() + currentXVelocity;
+            this->setLeft(updatedLeft);
+            updatedRight = this->right() + currentXVelocity;
+            this->setRight(updatedRight);
+        }
     }
 }
 
