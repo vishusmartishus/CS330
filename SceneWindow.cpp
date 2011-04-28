@@ -108,6 +108,7 @@ void SceneWindow::loadLevel()
     mario->setLeft(16);
     mario->setRight(16+16);
     mario->setBottom(32);
+	mario->setLeftBound(0);
     
     if (mario->isDead() || mario->getState() == SMALL_STATE) {
         
