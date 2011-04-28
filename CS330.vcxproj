@@ -94,10 +94,8 @@
   <ItemGroup>
     <ClCompile Include="AllMovable.cpp" />
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Base.cpp" />
     <ClCompile Include="Breakable.cpp" />
     <ClCompile Include="Coin.cpp" />
-    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="EnemyFireball.cpp" />
     <ClCompile Include="Fireflower.cpp" />
     <ClCompile Include="Flag.cpp" />

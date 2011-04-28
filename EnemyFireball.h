@@ -17,6 +17,10 @@
 //---------------------------------------------------------
 
 class EnemyFireball: public Movable {
+private:
+    GLuint texture_[4];
+    int texturePos;
+    void sprite();
     
 public:
 	// openGL draw method
