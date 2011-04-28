@@ -1,4 +1,4 @@
-// Jamie Veals, John (Jack) Johnson, Jay Bondzeleske\
+// Jamie Veals, John (Jack) Johnson, Jay Bondzeleske
 
 //------------------------------------------------------------
 
@@ -46,8 +46,8 @@ public:
 	bool killsFromSide() const { return killsSide_; }
     bool killsFromTop() const { return killsTop_; }
     int getPoints() const { return points_; }
-    // Setters for whether an option kills from the side(left or right), top, and bottom
-    // By default all kills are set to false, are to overridden by objects that kill Mario
+    // Setters for whether an object kills from the side(left or right), top, and bottom
+    // By default all kills are set to false, have to be overridden by objects that kill Mario
     void setKillsBottom(bool kills = false);
 	void setKillsSide(bool kills = false);
     void setKillsTop(bool kills = false);
@@ -68,7 +68,7 @@ private:
 // Inline methods
 //------------------------------------------------------------
 
-// Sets killsBottom_ based on boolean value given from the object
+// Sets killsBottom_ 
 inline void Drawable::setKillsBottom(bool kills)
 {
     killsBottom_ = kills;
@@ -76,7 +76,7 @@ inline void Drawable::setKillsBottom(bool kills)
 
 //------------------------------------------------------------
 
-// Sets killsSide_ based on boolean value given from the object
+// Sets killsSide_
 inline void Drawable::setKillsSide(bool kills)
 {
     killsSide_ = kills;
@@ -84,7 +84,7 @@ inline void Drawable::setKillsSide(bool kills)
 
 //------------------------------------------------------------
 
-// Sets killsTop_ based on boolean value given from the object
+// Sets killsTop_
 inline void Drawable::setKillsTop(bool kills)
 {
     killsTop_ = kills;
@@ -92,7 +92,7 @@ inline void Drawable::setKillsTop(bool kills)
 
 //------------------------------------------------------------
 
-// Sets points_ based on integer value given from the object
+// Sets points_ for individual object
 inline void Drawable::setPoints(int points)
 {
     points_ = points;

@@ -1,4 +1,4 @@
-// John (Jack) Johnson, Jamie Veals
+// Jay Bondzeleske, John (Jack) Johnson, Jamie Veals
 //------------------------------------------------------------
 
 #ifndef _COIN_H
@@ -20,13 +20,7 @@ private:
 public:
 	Coin()
     {
-        
         sprite(); 
-
-
-
-
-
     }
 
 	virtual ~Coin()

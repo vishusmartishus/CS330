@@ -15,6 +15,7 @@ p pipe (bottom)
 
 g goomba
 k koopa
+z pirahna plant
 
 c coin
 

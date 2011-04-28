@@ -45,7 +45,6 @@ SceneWindow::SceneWindow(int argc, char **argv)
 	glutKeyboardUpFunc(&SceneWindow::keyboardUpFunc);
 	glutIgnoreKeyRepeat(true);
 	
-	
     
     // initialize orthographic viewing projections
     glMatrixMode(GL_PROJECTION);
@@ -54,6 +53,7 @@ SceneWindow::SceneWindow(int argc, char **argv)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    
 	// view port initializer
 	viewportWidth_ = WINDOWWIDTH/2;
 	viewportHeight_ = WINDOWHEIGHT/2;
@@ -64,7 +64,6 @@ SceneWindow::SceneWindow(int argc, char **argv)
 	glClearColor(0, 0, 0, 0);
 	start_=false;
 	game = new Game();
-	
 	
 	startGame();
 	
@@ -82,39 +81,42 @@ void SceneWindow::mainLoop()
 
 void SceneWindow::startGame()
 {
-	
+	mario = new Mario();
 	pause_ = false;
 	coin = new Coin();
     sw->loadLevel();
     glutTimerFunc(10, &SceneWindow::timerFunc, 0);
-	
 }
 
 //----------------------------------------------------------------------
 
 void SceneWindow::loadLevel()
 {
-	//called from start game
-	//loads in current level from set checkpoint
+    //loads in current level
 	Level *level_ = Level::sharedLevel();
 	level_->makeLevel(game->getLevel());
+    
 	// initialize orthographic viewing projections
+    //Reset Viewport
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0, WINDOWWIDTH, 0, WINDOWHEIGHT/2);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
-
-	mario = new Mario();
-    
+    //Set Marios Starting Position
     mario->setLeft(16);
     mario->setRight(16+16);
     mario->setBottom(32);
-    mario->setTop(32+16);
-		
     
+    if (mario->isDead() || mario->getState() == SMALL_STATE) {
+        
+        mario->setTop(32+16);
+    }
+    else{
+        mario->setTop(32+24);
+    }
+    mario->reset();
 }
 
 //----------------------------------------------------------------------
@@ -151,6 +153,7 @@ void SceneWindow::displayCB()
 {    
     // clear window
     glClear(GL_COLOR_BUFFER_BIT);
+    
 	// gets lists of the active objects to draw them
 	Level *level_ = Level::sharedLevel();
 	LList movable = level_->getActiveMovable();
@@ -163,24 +166,33 @@ void SceneWindow::displayCB()
 		
 		Drawable *item;
 	
+        //Loops through all active drawable objects
 		li.init(drawable);
 		while ((item = li.next())) {
 			item->draw();
 		}
     
+        //Loops through all active block objects
 		li.init(blocks);
 		while ((item = li.next())) {
 			item->draw();
 		}
     
+        //Loops through all active moveable objects
 		li.init(movable);
 		while ((item = li.next())) {
 			item->draw();
 		}
+        
 		// mario isn't in any of the lists, so must be drawn seperately
 		mario->draw();
 	}
+    
+    //Game is not started determine why and draw correct screen
 	else {
+        
+        //Mario is out of lives
+        //Draw Game over Screen
 		if (game->getLives()<0) {
 			string name = "GAME OVER";
 			glColor3f(255,255,255);
@@ -204,6 +216,9 @@ void SceneWindow::displayCB()
 			game = new Game;
 			loadLevel();
 			}
+        
+        //User has not yet started a level
+        //Draw Load Screen
 		else{
 			string press = "Press 'S' to start";
 			glColor3f(255,255,255);
@@ -274,6 +289,8 @@ void SceneWindow::displayCB()
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, lives.str()[i]);
 	}
 	
+    //Game is Paused
+    //Overlay Pause on active game
 	if (pause_ && !mario->isDead()) {
 		string pause = "PAUSE";
 		glColor3f(255,255,255);
@@ -342,18 +359,23 @@ void SceneWindow::timerCB(int value)
 	// iterate through objects and move them
 	// redraw   
 
+    
+    //Mario is at the end of a level
+    //Load next level and reset level independant variables
     if (mario->levelDone()) {
         pause_ = false;
         viewportLeftX_ = 0;
         viewportRightX_ = viewportLeftX_ + viewportWidth_;
-        game->subLife();
         start_=false;
         sw->loadLevel();
         glClearColor(0, 0, 0, 0);
         game->resetClock();
     }
+    
+    //Game is active
     else if (!mario->isDead() && start_){
         
+        //Pulse Clock and update active lists
         game->pulseClock();
         Level *level_ = Level:: sharedLevel();
         LList movable = level_->getActiveMovable();
@@ -367,6 +389,7 @@ void SceneWindow::timerCB(int value)
         }
         
         mario ->updateScene();
+        
         // check if screen needs to be moved
         int viewportMid_;
         viewportMid_ = (viewportLeftX_ + viewportRightX_)/2;
@@ -379,7 +402,12 @@ void SceneWindow::timerCB(int value)
 
         }
     }
+    
+    //Mario is dead
+    //Update his position for death animation
     else if (start_ ){
+        
+        //Set point of death for reference
         if (!pause_) {
             pause_ = true;
             deadups_ = true;
@@ -390,11 +418,19 @@ void SceneWindow::timerCB(int value)
             mario->setTop(mario->bottom()+16.0);
             
         }
+        
+        //Mario is in the death animation and still on screen
         else if (mario->top() > 0){
+            
+            //Mario has reached the peak of the animation
+            //Move his position down
             if (deadups_ == false) {
-                mario->setBottom(mario->bottom()-1);
-                mario->setTop(mario->top()-1);
+                mario->setBottom(mario->bottom()-2);
+                mario->setTop(mario->top()-2);
             }
+            
+            //Mario starting the death animation
+            //Move his position up
             else{
                 mario->setBottom(mario->bottom()+1);
                 mario->setTop(mario->top()+1);
@@ -404,6 +440,9 @@ void SceneWindow::timerCB(int value)
             }
             
         }
+        
+        //Mario is dead and the death animation is over
+        //Reset level
         else{
             pause_ = false;
             viewportLeftX_ = 0;
