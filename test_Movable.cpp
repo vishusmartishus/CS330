@@ -14,12 +14,16 @@
 #include "Goomba.h"
 #include "Turtle.h"
 #include "Nonbreakable.h"
+#include "SceneWindow.h"
 #include <iostream>
 using namespace std;
 
-int main() {
-    
+SceneWindow *sw;
 
+int main(int argc, char **argv) {
+    
+    sw = new SceneWindow(argc, (char**) argv);
+    
 
     Level* level = Level::sharedLevel();
     
@@ -169,7 +173,7 @@ int main() {
         cout<< t1->checkTop();
         t1->updateScene();
         ++d;
-
+    }
 
 	return 0;
 }
