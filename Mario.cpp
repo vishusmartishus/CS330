@@ -335,7 +335,7 @@ void Mario::check() {
                     game->jumpEnemy(1);
                     Level::sharedLevel()->removeDrawable(objr);
                 }
-                else if (starCount_ == 0 and hitCount_ == 0)
+                else if (starCount_ == 0 && hitCount_ == 0)
                 {
                     this->isDead_ = true;
                 }
@@ -466,7 +466,7 @@ void Mario::check() {
                     game->jumpEnemy(1);
                     Level::sharedLevel()->removeDrawable(objr);
                 }
-                else if (starCount_ == 0 and hitCount_ == 0)
+                else if (starCount_ == 0 && hitCount_ == 0)
                 {
                     this->isDead_ = true;
                 }
@@ -541,7 +541,7 @@ void Mario::check() {
                     game->jumpEnemy(1);
                     Level::sharedLevel()->removeDrawable(objr);
                 }
-                else if (starCount_ == 0 and hitCount_ == 0)
+                else if (starCount_ == 0 && hitCount_ == 0)
                 {
                     this->isDead_ = true;
                 }
