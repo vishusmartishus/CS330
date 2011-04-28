@@ -2,7 +2,6 @@
 //Zach Adams, Alex Strohmeyer, Josh Woods
 
 #include <cstdlib>
-#include <iostream>
 #include <string>
 #include "Level.h"
 #include "Drawable.h"
@@ -26,7 +25,7 @@ Level* Level::sharedLevel()
 {
 	if(! instanceFlag)
 	{
-		single= new Level();
+		single = new Level();
 		instanceFlag = true;
 		return single;
 	}
@@ -79,16 +78,19 @@ void Level::makeLevel(int levelNumber)
         fname = homeDir + "levelfiles/level3.txt";
 		inFile.open(fname.c_str());
 	}
+	
 	int xcoord = 0, ycoord = 0, type, reward;
 	char object;
 	
+	//checks if the file exists and is readable
 	while (inFile.good()) {
+		
 		object= inFile.get();
-
 		
 		/*at this point the variable 'object' has the next item in the .txt 
 		 and here the 'object' and it's xcord and ycord are sent off to the 
 		 correct LList*/
+
 		if (object== 'b') {
 			//create breakable block
 			Breakable *bBlock = new Breakable;
@@ -106,8 +108,8 @@ void Level::makeLevel(int levelNumber)
 		}
 
 		else if (object== 'B' || object=='M' || object=='C' || object=='S'){
-			// sets the type and reward based off the letter passed and creates the block
 			
+			// sets the type and reward based off the letter passed and creates the block
 			if (object == 'B') {
 				type = REGULAR;
 				reward = 0;
@@ -124,9 +126,8 @@ void Level::makeLevel(int levelNumber)
 				type = QUESTION;
 				reward = COIN;
 			}
-			
+			//creates the block with the type and reward
 			Nonbreakable *nBlock = new Nonbreakable(type, reward);
-
 			nBlock->setTop(ycoord  + 16);
 			nBlock->setBottom(ycoord);
 			nBlock->setLeft(xcoord);
@@ -139,8 +140,8 @@ void Level::makeLevel(int levelNumber)
 			else {
 				levelBlocks_.append(nBlock);
 			}
-
 		}
+
 		else if (object == 'c') {
 			
 			//create coin
@@ -158,6 +159,7 @@ void Level::makeLevel(int levelNumber)
 				levelDrawable_.append(coin);
 			}
 		}
+
 		else if (object== 'f'){
 			//create flag pole
 			Flag *flag = new Flag;
@@ -173,6 +175,7 @@ void Level::makeLevel(int levelNumber)
 				levelBlocks_.append(flag);
 			}
 		}
+
 		else if (object== 'P'){
 			//create Pipe top
 			Pipe *pipe = new Pipe;
@@ -189,6 +192,7 @@ void Level::makeLevel(int levelNumber)
 				levelBlocks_.append(pipe);
 			}
 		}
+
 		else if (object== 'p'){
 			//create Pipe body
 			Pipe *pipe = new Pipe;
@@ -205,7 +209,9 @@ void Level::makeLevel(int levelNumber)
 				levelBlocks_.append(pipe);
 			}
 		}
+
 		else if (object== 'g'){
+			
 			//create goomba
 			Goomba *goomba = new Goomba;
 			goomba->setTop(ycoord  + 16);
@@ -221,6 +227,7 @@ void Level::makeLevel(int levelNumber)
 				levelMovable_.append(goomba);
 			}
 		}
+
 		else if (object == 'k') {
 			
 			//create koopa
@@ -238,6 +245,7 @@ void Level::makeLevel(int levelNumber)
 				levelMovable_.append(koopa);
 			}
 		}
+
 		 else if (object == 'z') {
 			
 			//create plant
@@ -254,16 +262,18 @@ void Level::makeLevel(int levelNumber)
 			else {
 				levelMovable_.append(plant);
 			} 
-			
 		}
+
 		else if (object == 's') {
 			
 			//creates the coordinates for marios starting point
 			leftStart_ = xcoord;
 			bottomStart_ = ycoord;
 		}
+
         else if (object== 'u' || object=='y' || object=='w' || object=='1'|| object=='2' || object=='3' || object=='7' || object =='8' || object== 'v' || object== 't' || object== 'd'){
-            //create bush
+            
+			//create bush
             Background *background = new Background(object);
             background->setTop(ycoord  + background->getHeight());
             background->setBottom(ycoord);
@@ -280,10 +290,11 @@ void Level::makeLevel(int levelNumber)
         }
         
 
-
+		//increases the y value until the objects hit the top of the screen
 		if (ycoord < 224) {
 			ycoord += 16;
 		}
+		//when the y value hits the highest point it resets to 0 and increases the x value
 		else if (ycoord == 224) {
          xcoord += 16;
          ycoord = 0; 
@@ -403,6 +414,7 @@ void Level::removeDrawable(Drawable *obj)
 //------------------------------------------------------------
 void Level::loadTestLevel()
 {
+	//creates 2 rows of blocks across the bottom of the level for debugging
 	int left, bottom, i;
 	bottom = 0;
 	left = 0;

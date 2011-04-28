@@ -12,13 +12,16 @@ class Level {
 //------------------------------------------------------------    
 public:
 	//Creates the LLists from a text file
-	void makeLevel(int levelNumber= 1);
+	void makeLevel(int levelNumber = 1);
+
 	//updates the active area and activates the relevant drawables, removes inactive items from the front of the list
 	void updateExtents(int leftBound, int rightBound);
+
 	//iterates through the llist to find and remove the object
 	void removeDrawable(Drawable *obj);
 	static Level* sharedLevel();
 	~Level();
+
 	//getters for all six linked lists
 	LList& getActiveMovable() {return activeMovable_; }
 	LList& getActiveDrawable() {return activeDrawable_; }
@@ -26,13 +29,18 @@ public:
 	LList& getLevelMovable() {return levelMovable_; }
 	LList& getLevelDrawable() {return levelDrawable_; }
 	LList& getLevelBlocks() {return levelBlocks_; }
+
 	//creates a line of unbreakable blocks across the bottom for testing
 	void loadTestLevel();
+
 	//add rewards in sorted order
 	void addMovable(Drawable *obj);
 	void addDrawable(Drawable *obj);
+
 	//empties the current lists to create a new level
 	void resetLevel();
+
+	//starting position of marios left and bottom
 	int getLeftStart(){ return leftStart_;}
 	int getBottomStart(){ return bottomStart_;}
 
