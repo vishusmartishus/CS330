@@ -3,6 +3,7 @@
  *  Game
  *
  *  Created by David M. Reed on 3/31/11. Modified by Alex Martishius and Matt Oldfield: 4/13/11
+ *  Finished by Alex Martishius 4/28/11
  *  Copyright 2011 __MyCompanyName__. All rights reserved.
  *
  */
@@ -54,10 +55,10 @@ int main(int argc, char **argv) {
     Nonbreakable *n7 = new Nonbreakable(REGULAR);
     // set starting positions for test cases
     //place goomba 1
-    g1->setLeft(16);
-    g1->setRight(32);
-    g1->setBottom(0);
-    g1->setTop(16);
+    g1->setLeft(64);
+    g1->setRight(80);
+    g1->setBottom(16);
+    g1->setTop(32);
     //place block 1
     n1->setLeft(32);
     n1->setRight(48);
@@ -139,38 +140,162 @@ int main(int argc, char **argv) {
     int c = 3;
     int d = 4;
     
-    while(a<120) {
-        cout<< g1->checkRight();
-        cout<< g1->checkLeft();
-        cout<< g1->checkBottom();
-        cout<< g1->checkTop();
+    cout<< "goomba 1 checks:"<<endl;
+    
+    while(a<120) 
+    {
+        if (g1->checkRight())
+        {
+            cout<< g1->checkRight()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (g1->checkLeft()) 
+        {
+            cout<< g1->checkLeft()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (g1->checkBottom())
+        {
+            cout<< g1->checkBottom()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if(g1->checkTop()) 
+        {
+            cout<< g1->checkTop()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
         g1->updateScene();
         ++a;
     }
     
-    while(b<120) {
-        cout<< g2->checkRight();
-        cout<< g2->checkLeft();
-        cout<< g2->checkBottom();
-        cout<< g2->checkTop();
+    cout<< "goomba 2 checks:"<<endl;
+    
+    while(b<120)
+    {
+        if (g2->checkRight())
+        {
+            cout<< g2->checkRight()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (g2->checkLeft())
+        {
+            cout<< g2->checkLeft()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (g2->checkBottom())
+        {
+            cout<< g2->checkBottom()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if(g2->checkTop())
+        {
+            cout<< g2->checkTop()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
         g2->updateScene();
         ++b;
     }
     
-    while(c<120) {
-        cout<< g3->checkRight();
-        cout<< g3->checkLeft();
-        cout<< g3->checkBottom();
-        cout<< g3->checkTop();
+    cout<< "goomba 3 checks:"<<endl;
+    
+    while(c<120)
+    {
+        if (g3->checkRight())
+        {
+            cout<< g3->checkRight()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (g3->checkLeft())
+        {
+            cout<< g3->checkLeft()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (g3->checkBottom())
+        {
+            cout<< g3->checkBottom()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if(g3->checkTop()) 
+        {
+            cout<< g3->checkTop()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
         g3->updateScene();
         ++c;
     }
     
-    while(d<120) {
-        cout<< t1->checkRight();
-        cout<< t1->checkLeft();
-        cout<< t1->checkBottom();
-        cout<< t1->checkTop();
+    cout<< "turtle checks"<<endl;
+    
+    while(d<120) 
+    {
+        if (t1->checkRight())
+        {
+            cout<< t1->checkRight()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (t1->checkLeft()) 
+        {
+            cout<< t1->checkLeft()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if (t1->checkBottom())
+        {
+            cout<< t1->checkBottom()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
+        if(t1->checkTop()) 
+        {
+            cout<< t1->checkTop()->objectType();
+        }
+        else
+        {
+            cout<<"NULL ";
+        }
         t1->updateScene();
         ++d;
     }
